@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 
 @Component({
   selector: 'isard-navigation',
+  standalone: true,
   templateUrl: './navigation.component.html',
   styleUrl: './navigation.component.scss',
   imports: []
