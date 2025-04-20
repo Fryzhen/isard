@@ -12,7 +12,7 @@
       },
       "root": "",
       "sourceRoot": "src",
-      "prefix": "app",
+      "prefix": "isard",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -28,7 +28,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets",
+                "output": "./assets"
               }
             ],
             "styles": [

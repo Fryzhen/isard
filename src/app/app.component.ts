@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {NavigationComponent} from './components/navigation/navigation.component';
+import {RouterOutlet} from '@angular/router';
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet],
+  selector: 'isard-root',
   templateUrl: './app.component.html',
+  imports: [
+    NavigationComponent,
+    RouterOutlet
+  ],
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
-  title = 'isard';
+export class AppComponent implements OnInit {
+
+  constructor() {
+  }
+
+  public ngOnInit() {}
+
 }
