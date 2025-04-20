@@ -1,7 +1,15 @@
-export interface IMember {
+import {Helmet} from './Helmet';
+import {License} from './License';
+import {Suit} from './Suit';
+import {Account} from './Account';
+
+export interface Driver {
   cust_id: number,
   display_name: string,
   helmet: Helmet,
+}
+
+export interface IMember extends Driver{
   last_login: Date,
   member_since: Date,
   club_id: number,
