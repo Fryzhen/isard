@@ -1,5 +1,3 @@
-
-
 export interface License {
   category_id: number,
   category: string,

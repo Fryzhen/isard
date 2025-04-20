@@ -1,4 +1,4 @@
-import {Track} from './Member';
+import {Track} from './Track';
 
 export interface Session {
   session_id: number;

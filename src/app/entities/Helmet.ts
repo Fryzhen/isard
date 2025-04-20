@@ -1,5 +1,3 @@
-
-
 export interface Helmet {
   pattern: number,
   color1: string,

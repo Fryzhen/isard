@@ -1,5 +1,3 @@
-
-
 export interface Suit {
   pattern: number,
   color1: string,

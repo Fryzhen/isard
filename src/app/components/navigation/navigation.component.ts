@@ -6,9 +6,4 @@ import {Component} from '@angular/core';
   styleUrl: './navigation.component.scss',
   imports: []
 })
-export class NavigationComponent {
-
-  constructor(
-  ) {
-  }
-}
+export class NavigationComponent {}

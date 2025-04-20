@@ -1,5 +1,3 @@
-
-
 export interface Event {
   event_type: string;
   subsession_id: number;
