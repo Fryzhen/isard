@@ -1,0 +1,106 @@
+// iracing colors
+$ir-blue: #0F1F43 !default;
+$ir-blue-alt: #254185 !default;
+$ir-red: #CE3A2B !default;
+
+// couleurs de base
+$white: #fff !default;
+$offwhite: #f5f8fb !default;
+$gray-100: #fafafa !default;
+$gray-150: #eee !default;
+$gray-200: #e1e3e5 !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #c8c8c8 !default;
+$gray-500: #bbbbbb !default;
+$gray-550: #999999 !default;
+$gray-580: #808080 !default;
+
+$gray-600: #67757f !default;
+$gray-640: #696969 !default;
+$gray-650: #555555 !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$blue-1: #0055a0 !default;
+$blue-2: #2d689f !default;
+$blue-3: #66afe9 !default;
+$blue-4: #2c77ba !default;
+$blue-5: #53a8c1 !default;
+$blue-6: #005ba2 !default;
+$blue-7: #0052a0 !default;
+$blue-8: #78c1dd !default;
+$blue-9: #1f98c7 !default;
+$blue-10: #097da0 !default;
+$blue-10d: #005d80 !default;
+$blue-11: #1e90ff !default;
+$blue-12: #27a8cf !default;
+$blue-13: #addeea !default;
+$blue-14: #1f55a0 !default;
+$blue-15: #d8e7f5 !default;
+$blue-16: #337ab7 !default;
+$blue-17: #1e90ffff !default;
+$blue-18: #474d6d !default;
+$blue-19: #ccdcec !default;
+$blue-20: #7faacf !default;
+$blue-21: #a6b9cc !default;
+
+$yellow: #ffd800 !default;
+$jaune1: #ffef99 !default;
+$yellow-1: #fff5c1 !default;
+$yellow-2: #b1974c !default;
+$cyan: #09ada6 !default;
+$cyan-2: #00879e !default;
+$cyan-3: #a9f3ef !default;
+$green: #9dbb61 !default;
+
+$green-2: green !default;
+$green-3: #32cd32 !default;
+$green-4: #00b050 !default;
+$green-5: #00ff84 !default;
+
+$orange-1: #febb5f !default;
+$orange-2: #ffa90d !default;
+$orange-3: #ea700d !default;
+$orange-4: #ffc000 !default;
+$orange-5: #fc9803 !default;
+
+$marron: #a0522d;
+
+$red: #c05046 !default;
+$red-1: #e51400 !default;
+$red-2: #ef3308 !default;
+$dark-red: #bf0000 !default;
+$dark-red-2: #a52a2a !default;
+
+$pink-1: #de3f7e !default;
+$pink-2: #ff0066 !default;
+$rose1: #ff0094 !default;
+$rose2: mistyrose !default;
+
+$violet1: #cc8ccc !default;
+$violet2: #eeacee !default;
+$violet3: #fbd4f2 !default;
+$violet4: #f0ddf0 !default;
+$violet5: #f5e3f5 !default;
+$violet6: #8e448e !default;
+
+$bleu1: #0e86a9 !default;
+$bleu2: $blue-5 !default;
+$bleu3: #87c3d5 !default;
+$bleu4: #cfe7ee !default;
+$bleu5: #ddeef3 !default;
+
+// couleurs pour bootstrap
+$primary: $ir-blue-alt !default;
+$primary-alt: $ir-blue !default;
+$secondary: $gray-600 !default;
+$success: $green-3 !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $ir-red !default;
+$danger-1: $red-1 !default;
+$light: $gray-100 !default;
+$light-2: $gray-300 !default;
+$dark: $gray-800 !default;
