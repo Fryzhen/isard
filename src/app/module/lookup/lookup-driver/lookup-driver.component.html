@@ -2,7 +2,9 @@
 <input (input)="onInputChange($event)" />
 <div *ngIf="drivers && drivers.length > 0; else noDrivers">
   <div *ngFor="let driver of drivers">
-    {{driver.cust_id}} - {{driver.display_name}}
+    <a (click)="redirectToMember(driver.cust_id)">
+      {{driver.cust_id}} - {{driver.display_name}}
+    </a>
   </div>
 </div>
 <ng-template #noDrivers>

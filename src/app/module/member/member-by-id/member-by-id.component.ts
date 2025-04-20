@@ -24,10 +24,12 @@ export class MemberByIdComponent implements OnInit {
   ngOnInit(): void {
     this.memberId = this.route.snapshot.paramMap.get('memberId');
     console.log('Member ID:', this.memberId);
-    this.memberService.getMember(this.memberId).then(member => {
+    if (this.memberId) {
+    this.memberService.getMember(+this.memberId).then(member => {
       console.log("Member data:");
       console.log(member);
       this.member = member;
     })
+    }
   }
 }

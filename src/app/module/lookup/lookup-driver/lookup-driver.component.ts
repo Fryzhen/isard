@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {LookupService} from '../../../services/lookup.service';
 import {Driver} from '../../../entities/Member';
 import {NgForOf, NgIf} from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'isard-lookup-driver',
@@ -16,7 +17,10 @@ export class LookupDriverComponent {
   drivers: Driver[];
   private debounceTimeout: number; // Variable pour stocker l'identifiant du timeout
 
-  constructor(private lookupService: LookupService) {
+  constructor(
+    private lookupService: LookupService,
+    private router: Router
+  ) {
     this.drivers = [];
     this.debounceTimeout = 0; // Initialisation du timeout
   }
@@ -37,5 +41,9 @@ export class LookupDriverComponent {
         });
       }, 500); // Délai de 0,5 seconde
     }
+  }
+
+  redirectToMember(cust_id: number): void {
+    this.router.navigate(['/member', cust_id]);
   }
 }
