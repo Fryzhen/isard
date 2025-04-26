@@ -13,23 +13,21 @@ import {NgIf} from '@angular/common';
   ],
 })
 export class MemberByIdComponent implements OnInit {
-  memberId: string | null = null;
   member?: Member = undefined;
 
   constructor(
     private route: ActivatedRoute,
-    private memberService: MemberService
-  ) {}
+    private memberService: MemberService,
+  ) {
+    route.params.subscribe(val => {
+      if (val['memberId']) {
+        this.memberService.getMember(+val['memberId']).then(member => this.member = member).catch(error => {
+          console.error('Error fetching member:', error);
+        });
+      }
+    });
+  }
 
   ngOnInit(): void {
-    this.memberId = this.route.snapshot.paramMap.get('memberId');
-    console.log('Member ID:', this.memberId);
-    if (this.memberId) {
-    this.memberService.getMember(+this.memberId).then(member => {
-      console.log("Member data:");
-      console.log(member);
-      this.member = member;
-    })
-    }
   }
 }

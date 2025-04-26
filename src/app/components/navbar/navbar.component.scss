@@ -1,0 +1,24 @@
+@import "../../styles/colors.scss";
+
+.navbar {
+  background-color: $ir-blue-alt !important;
+
+  > img {
+    margin-top: -10px !important;
+    margin-bottom: -10px !important;
+  }
+
+  .nav-link, .navbar-brand {
+    color: $white !important;
+  }
+}
+
+.search-results {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown-item {
+  cursor: pointer;
+  text-wrap: wrap;
+}
