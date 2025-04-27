@@ -46,10 +46,10 @@ export class NavbarComponent {
 
   onDriverSelect(driver: Driver): void {
     this.drivers = [];
-    this.redirectToRoute(['/member', "" + driver.cust_id]);
+    this.redirectTo(['/member', "" + driver.cust_id]);
   }
 
-  redirectToRoute(route: string[]): void {
+  redirectTo(route: string[]): void {
     this.router.navigate(route);
   }
 }

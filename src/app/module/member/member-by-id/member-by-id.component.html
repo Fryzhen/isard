@@ -1,7 +1,16 @@
-<div *ngIf="member !== undefined; else memberNoExist">
-  <p>{{ member.cust_id }}</p>
-  <p>{{ member.display_name }}</p>
+<div *ngIf="!isCharging; else pageCharging">
+  <div *ngIf="member; else memberNoExist">
+    <p>{{ member.cust_id }}</p>
+    <p>{{ member.display_name }}</p>
+  </div>
 </div>
 <ng-template #memberNoExist>
-  <h3 class="align-content-center ">No drivers found.</h3>
+  <div class="center-screen">
+    <h3> No drivers found.</h3>
+    <p>Please check the ID you entered.</p>
+  </div>
+
+</ng-template>
+<ng-template #pageCharging>
+  <h3 class="center-screen">Chargement en cours</h3>
 </ng-template>
