@@ -3,9 +3,21 @@
 .navbar {
   background-color: $ir-blue-alt !important;
 
-  > img {
+  .navbar-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+  }
+
+  img {
     margin-top: -10px !important;
     margin-bottom: -10px !important;
+    margin-left: -15px !important;
+  }
+
+  .navbar-toggler {
+    background-color: $white !important;
   }
 
   .nav-link, .navbar-brand {
