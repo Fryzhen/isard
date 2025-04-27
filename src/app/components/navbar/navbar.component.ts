@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LookupService} from '../../services/lookup.service';
+import {LookupService} from '../../services/requests/lookup.service';
 import {Router} from '@angular/router';
 import {NgForOf, NgIf, NgOptimizedImage, NgStyle} from '@angular/common';
 import {FormsModule} from '@angular/forms';
@@ -46,6 +46,10 @@ export class NavbarComponent {
 
   onDriverSelect(driver: Driver): void {
     this.drivers = [];
-    this.router.navigate(['/member', driver.cust_id]);
+    this.redirectToRoute(['/member', "" + driver.cust_id]);
+  }
+
+  redirectToRoute(route: string[]): void {
+    this.router.navigate(route);
   }
 }

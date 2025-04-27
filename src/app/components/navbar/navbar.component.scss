@@ -1,4 +1,4 @@
-@import "../../styles/colors.scss";
+@import "../../styles/variables.scss";
 
 .navbar {
   background-color: $ir-blue-alt !important;
@@ -9,6 +9,7 @@
   }
 
   .nav-link, .navbar-brand {
+    cursor: pointer;
     color: $white !important;
   }
 }

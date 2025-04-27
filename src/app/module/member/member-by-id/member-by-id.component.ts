@@ -1,8 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {MemberService} from '../../../services/member.service';
+import {MemberService} from '../../../services/requests/member.service';
 import {Member} from '../../../entities/Member';
 import {NgIf} from '@angular/common';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'isard-lookup-driver',
@@ -18,10 +19,16 @@ export class MemberByIdComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private memberService: MemberService,
+    private titleService: Title,
   ) {
     route.params.subscribe(val => {
       if (val['memberId']) {
-        this.memberService.getMember(+val['memberId']).then(member => this.member = member).catch(error => {
+        this.memberService.getMember(+val['memberId'])
+        .then(member => {
+          this.member = member
+          this.titleService.setTitle('ISARD : ' + this.member?.display_name);
+        })
+        .catch(error => {
           console.error('Error fetching member:', error);
         });
       }

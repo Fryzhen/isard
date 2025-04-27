@@ -1,8 +1,7 @@
-<h1>Member</h1>
-<div *ngIf="member; else memberNoExist">
+<div *ngIf="member !== undefined; else memberNoExist">
   <p>{{ member.cust_id }}</p>
   <p>{{ member.display_name }}</p>
 </div>
 <ng-template #memberNoExist>
-  <p>No drivers found.</p>
+  <h3 class="align-content-center ">No drivers found.</h3>
 </ng-template>
