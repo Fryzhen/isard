@@ -1,16 +1,29 @@
-<div *ngIf="!isCharging; else pageCharging">
-  <div *ngIf="member; else memberNoExist">
-    <p>{{ member.cust_id }}</p>
-    <p>{{ member.display_name }}</p>
-  </div>
-</div>
+<ng-container *ngIf="!isCharging; else pageCharging">
+  <ng-container *ngIf="member; else memberNoExist">
+    <div class="fullscreen">
+      <div class="side-pannel">
+        <p>{{ member.cust_id }}</p>
+        <p>{{ member.display_name }}</p>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-primary">Left</button>
+          <button type="button" class="btn btn-primary">Middle</button>
+          <button type="button" class="btn btn-primary">Right</button>
+        </div>
+      </div>
+      <div class="center-pannel">
+        <h2> coucou</h2>
+        <ng-container #centerPannel></ng-container>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
 <ng-template #memberNoExist>
   <div class="center-screen">
     <h3> No drivers found.</h3>
     <p>Please check the ID you entered.</p>
   </div>
-
 </ng-template>
+
 <ng-template #pageCharging>
   <h3 class="center-screen">Chargement en cours</h3>
 </ng-template>
