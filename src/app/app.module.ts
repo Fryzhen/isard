@@ -1,17 +1,10 @@
-import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app.routes';
-import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app.routes';
 
 @NgModule({
-  declarations: [
-    HomeComponent, // Declare your component here
-  ],
+  declarations: [],
   imports: [
-    BrowserModule,
     AppRoutingModule,
-    AppComponent,
   ],
 })
 export class AppModule {}

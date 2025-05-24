@@ -1,17 +1,16 @@
-import {Component, ComponentRef, OnInit, ViewContainerRef, viewChild, ViewChild} from '@angular/core';
-import {ActivatedRoute, ɵEmptyOutletComponent} from '@angular/router';
-import {MemberService} from '../../../services/requests/member.service';
-import {Member} from '../../../entities/Member';
-import {NgIf} from '@angular/common';
+import {Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MemberService} from '../../../services/member.service';
+import {Member} from '../../../entities/driver/Member';
 import {Title} from '@angular/platform-browser';
-import {Router} from '@angular/router';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'isard-lookup-driver',
   templateUrl: './member-by-id.component.html',
   styleUrls: ['./member-by-id.component.scss'],
   imports: [
-    NgIf,
+    CommonModule,
   ],
 })
 export class MemberByIdComponent implements OnInit {
@@ -30,17 +29,17 @@ export class MemberByIdComponent implements OnInit {
   ) {
     route.params.subscribe(val => {
       if (val['memberId']) {
-        this.memberService.getMember(+val['memberId'], true)
-        .then(member => {
-          console.log(member);
-          this.member = member
-          this.titleService.setTitle('ISARD : ' + this.member?.display_name);
-          this.isCharging = false;
+        this.memberService.getMember(+val['memberId'], true).subscribe({
+          next: (member: Member) => {
+            this.member = member
+            this.titleService.setTitle('ISARD : ' + this.member?.display_name);
+            this.isCharging = false;
+          },
+          error: error => {
+            this.isCharging = false;
+            console.error('Error fetching member:', error);
+          }
         })
-        .catch(error => {
-          this.isCharging = false;
-          console.error('Error fetching member:', error);
-        });
       }
     });
   }

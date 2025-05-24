@@ -1,21 +1,16 @@
 import {Component} from '@angular/core';
-import {LookupService} from '../../services/requests/lookup.service';
+import {LookupService} from '../../services/lookup.service';
 import {Router} from '@angular/router';
-import {NgForOf, NgIf, NgOptimizedImage, NgStyle} from '@angular/common';
-import {FormsModule} from '@angular/forms';
-import {Driver} from '../../entities/Member';
+import {Driver} from '../../entities/driver/Member';
+import {CommonModule} from '@angular/common';
 
 @Component({
   selector: 'isard-navbar',
-  imports: [
-    FormsModule,
-    NgIf,
-    NgForOf,
-    NgStyle,
-    NgOptimizedImage
-  ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
+  imports: [
+    CommonModule,
+  ]
 })
 export class NavbarComponent {
   drivers: Driver[] = [];
@@ -34,13 +29,18 @@ export class NavbarComponent {
     }
     if (inputElement.value.length >= 1) {
       this.debounceTimeout = setTimeout(() => {
-        this.lookupService.getLookupDrivers(inputElement.value).then((drivers: Driver[]) => {
-          console.log('Drivers:', drivers); // Log the response
-          this.drivers = drivers;
-        }).catch((error: Error) => {
-          console.error('Error fetching drivers:', error); // Log any errors
+        this.lookupService.getLookupDrivers(inputElement.value).subscribe({
+          next: (drivers: Driver[]) => {
+            console.log('Drivers:', drivers); // Log the response
+            this.drivers = drivers;
+          },
+          error: (error: Error) => {
+            console.error('Error fetching drivers:', error);
+          }
         });
-      }, 500); // Délai de 0,5 seconde
+      }, 500);
+    } else {
+      this.drivers = [];
     }
   }
 

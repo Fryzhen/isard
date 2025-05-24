@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
+import {Component, Input, OnInit} from '@angular/core';
+import {CommonModule} from '@angular/common';
 
 export interface Notification {
   message: string;
@@ -10,8 +10,7 @@ export interface Notification {
   selector: 'isard-notification',
   templateUrl: './notification.component.html',
   imports: [
-    NgClass,
-    NgIf,
+    CommonModule,
   ],
   styleUrls: ['./notification.component.scss']
 })

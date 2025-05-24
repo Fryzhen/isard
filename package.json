@@ -8,7 +8,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint:scss:fix": "yarn run lint:scss --fix",
+    "lint:script:fix": "yarn run lint:script --fix",
+    "lint:html:fix": "yarn run lint:html --fix",
+    "lint:all:fix": "yarn run lint:html:fix && yarn run lint:script:fix && yarn run lint:scss:fix"
   },
   "private": true,
   "dependencies": {
