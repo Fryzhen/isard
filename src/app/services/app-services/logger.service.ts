@@ -5,34 +5,20 @@ import {NotificationService} from './notification.service';
   providedIn: 'root'
 })
 export class LoggerService {
-  constructor(private notificationService: NotificationService) {
-  }
 
-  log(message: string, notify: boolean = false): void {
+  log(message: string): void {
     console.log(`Log: ${message}`);
-    if (notify) {
-      this.notificationService.success(message);
-    }
   }
 
-  warn(message: string, notify: boolean = false): void {
+  warn(message: string): void {
     console.warn(`Warning: ${message}`);
-    if (notify) {
-      this.notificationService.warning(message);
-    }
   }
 
-  error(message: string, notify: boolean = false): void {
+  error(message: string): void {
     console.error(`Error: ${message}`);
-    if (notify) {
-      this.notificationService.error(message);
-    }
   }
 
-  info(message: string, notify: boolean = false): void {
+  info(message: string): void {
     console.info(`Info: ${message}`);
-    if (notify) {
-      this.notificationService.success(message);
-    }
   }
 }
