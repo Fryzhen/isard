@@ -17,10 +17,9 @@ import {LoggerService} from '../../services/app-services/logger.service';
 export class MemberComponent implements OnInit {
   member?: Member = undefined;
   isCharging = true;
-
-  #componentRef?: ComponentRef<null>
   @ViewChild('centerPannel', {static: true}) public centerPannel?: ViewContainerRef;
   public vcr = viewChild('centerPannel', {read: ViewContainerRef});
+  #componentRef?: ComponentRef<null>
 
   constructor(
     private route: ActivatedRoute,

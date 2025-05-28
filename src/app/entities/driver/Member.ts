@@ -9,7 +9,7 @@ export interface Driver {
   helmet: Helmet,
 }
 
-export interface IMember extends Driver{
+export interface IMember extends Driver {
   last_login: Date,
   member_since: Date,
   club_id: number,

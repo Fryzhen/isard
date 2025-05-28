@@ -20,7 +20,8 @@ export class NotificationService {
 
   notifyRequest$ = this.notifyRequest.asObservable();
 
-  constructor() {}
+  constructor() {
+  }
 
   public success(message: string) {
     this.notify(message, NotificationType.Success);

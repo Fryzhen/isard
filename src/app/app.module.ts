@@ -7,4 +7,5 @@ import {AppRoutingModule} from './app.routes';
     AppRoutingModule,
   ],
 })
-export class AppModule {}
+export class AppModule {
+}

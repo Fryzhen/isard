@@ -15,4 +15,5 @@ import {NotificationComponent} from './components/notification/notification.comp
     NotificationComponent,
   ]
 })
-export class AppComponent {}
+export class AppComponent {
+}

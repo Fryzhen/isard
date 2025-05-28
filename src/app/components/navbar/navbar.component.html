@@ -1,40 +1,41 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <div class="navbar-logo">
-      <img src="./assets/iracing/iRacing-Icon-Color-White.svg" alt="Logo d'Iracing" height="70" width="90">
-      <a class="navbar-brand" (click)="redirectTo([''])">ISARD</a>
+      <img alt="Logo d'Iracing" height="70" src="./assets/iracing/iRacing-Icon-Color-White.svg" width="90">
+      <a (click)="redirectTo([''])" class="navbar-brand">ISARD</a>
     </div>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+      <span class="navbar-toggler-icon"></span>
+    </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link" (click)="redirectTo([''])">Home</a>
+          <a (click)="redirectTo([''])" class="nav-link">Home</a>
         </li>
-<!--        <li class="nav-item dropdown">-->
-<!--          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
-<!--            Dropdown-->
-<!--          </a>-->
-<!--          <ul class="dropdown-menu">-->
-<!--            <li><a class="dropdown-item" href="#">Action</a></li>-->
-<!--            <li><a class="dropdown-item" href="#">Another action</a></li>-->
-<!--            <li>-->
-<!--              <hr class="dropdown-divider">-->
-<!--            </li>-->
-<!--            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
-<!--          </ul>-->
-<!--        </li>-->
+        <!--        <li class="nav-item dropdown">-->
+        <!--          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
+        <!--            Dropdown-->
+        <!--          </a>-->
+        <!--          <ul class="dropdown-menu">-->
+        <!--            <li><a class="dropdown-item" href="#">Action</a></li>-->
+        <!--            <li><a class="dropdown-item" href="#">Another action</a></li>-->
+        <!--            <li>-->
+        <!--              <hr class="dropdown-divider">-->
+        <!--            </li>-->
+        <!--            <li><a class="dropdown-item" href="#">Something else here</a></li>-->
+        <!--          </ul>-->
+        <!--        </li>-->
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-          <input type="text"
+          <input (input)="onSearch($event)"
                  class="form-control"
                  placeholder="Search"
-                 (input)="onSearch($event)">
-          <ul *ngIf="drivers.length > 0" class="dropdown-menu search-results" [ngStyle]="{ 'display': 'block' }">
-            <li *ngFor="let driver of drivers"><a class="dropdown-item" (click)="onDriverSelect(driver)">{{ driver.display_name }}</a></li>
+                 type="text">
+          <ul *ngIf="drivers.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
+            <li *ngFor="let driver of drivers"><a (click)="onDriverSelect(driver)"
+                                                  class="dropdown-item">{{ driver.display_name }}</a></li>
           </ul>
         </li>
       </ul>
