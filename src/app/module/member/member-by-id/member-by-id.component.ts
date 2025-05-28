@@ -1,9 +1,10 @@
 import {Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MemberService} from '../../../services/member.service';
+import {MemberService} from '../../../services/request-services/member.service';
 import {Member} from '../../../entities/driver/Member';
 import {Title} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
+import {NotificationService} from '../../../services/app-services/notification.service';
 
 @Component({
   selector: 'isard-lookup-driver',
@@ -24,6 +25,7 @@ export class MemberByIdComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private memberService: MemberService,
+    private notificationService: NotificationService,
     private titleService: Title,
     private router: Router,
   ) {
@@ -34,6 +36,7 @@ export class MemberByIdComponent implements OnInit {
             this.member = member
             this.titleService.setTitle('ISARD : ' + this.member?.display_name);
             this.isCharging = false;
+            this.notificationService.success('Member loaded successfully');
           },
           error: error => {
             this.isCharging = false;

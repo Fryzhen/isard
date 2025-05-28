@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
-import {SearchSeriesConfig} from '../entities/api/Configs';
+import {environment} from '../../../environments/environment';
+import {SearchSeriesConfig} from '../../entities/api/Configs';
 
 @Injectable({
   providedIn: 'root',

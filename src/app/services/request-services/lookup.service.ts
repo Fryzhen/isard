@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {environment} from '../../environments/environment';
-import {Driver} from '../entities/driver/Member';
+import {environment} from '../../../environments/environment';
+import {Driver} from '../../entities/driver/Member';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
 

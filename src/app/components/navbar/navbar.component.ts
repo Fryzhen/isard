@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {LookupService} from '../../services/lookup.service';
+import {LookupService} from '../../services/request-services/lookup.service';
 import {Router} from '@angular/router';
 import {Driver} from '../../entities/driver/Member';
 import {CommonModule} from '@angular/common';

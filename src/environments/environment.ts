@@ -1,4 +1,4 @@
 export const environment = {
-  apiUrl: 'http://api.iracing.fryzhen.fr',
+  apiUrl: 'https://api.iracing.fryzhen.fr',
   production: true,
 };
