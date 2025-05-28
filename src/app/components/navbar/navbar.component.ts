@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {LookupService} from '../../services/request-services/lookup.service';
 import {Router} from '@angular/router';
 import {Driver} from '../../entities/driver/Member';
-import {CommonModule} from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 @Component({
   selector: 'isard-navbar',
@@ -10,6 +10,7 @@ import {CommonModule} from '@angular/common';
   styleUrl: './navbar.component.scss',
   imports: [
     CommonModule,
+    NgOptimizedImage,
   ]
 })
 export class NavbarComponent {
