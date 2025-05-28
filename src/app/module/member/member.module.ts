@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
-import { MemberByIdComponent } from './member-by-id/member-by-id.component';
+import { MemberComponent } from './member.component';
 
 const routes: Routes = [
   {
     path: ':memberId',
-    component: MemberByIdComponent,
+    component: MemberComponent,
   },
 ];
 

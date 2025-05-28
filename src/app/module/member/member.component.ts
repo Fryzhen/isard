@@ -1,20 +1,20 @@
 import {Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {MemberService} from '../../../services/request-services/member.service';
-import {Member} from '../../../entities/driver/Member';
+import {MemberService} from '../../services/request-services/member.service';
+import {Member} from '../../entities/driver/Member';
 import {Title} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
-import {NotificationService} from '../../../services/app-services/notification.service';
+import {LoggerService} from '../../services/app-services/logger.service';
 
 @Component({
   selector: 'isard-lookup-driver',
-  templateUrl: './member-by-id.component.html',
-  styleUrls: ['./member-by-id.component.scss'],
+  templateUrl: './member.component.html',
+  styleUrls: ['./member.component.scss'],
   imports: [
     CommonModule,
   ],
 })
-export class MemberByIdComponent implements OnInit {
+export class MemberComponent implements OnInit {
   member?: Member = undefined;
   isCharging = true;
 
@@ -25,7 +25,7 @@ export class MemberByIdComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private memberService: MemberService,
-    private notificationService: NotificationService,
+    private loggerService: LoggerService,
     private titleService: Title,
     private router: Router,
   ) {
@@ -36,11 +36,11 @@ export class MemberByIdComponent implements OnInit {
             this.member = member
             this.titleService.setTitle('ISARD : ' + this.member?.display_name);
             this.isCharging = false;
-            this.notificationService.success('Member loaded successfully');
+            this.loggerService.log('Member loaded successfully');
           },
           error: error => {
             this.isCharging = false;
-            console.error('Error fetching member:', error);
+            this.loggerService.error(error, true);
           }
         })
       }
