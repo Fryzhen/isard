@@ -1,3 +1,6 @@
-<div *ngIf="visible" [ngClass]="notification.type" (click)="dismiss()">
-  <p>{{ notification.message }}</p>
+<div
+  [ngClass]="[notification.type, showNotification ? 'show' : '']"
+  class="notification"
+>
+  <h5 class="notification-message">{{ notification.message }}</h5>
 </div>

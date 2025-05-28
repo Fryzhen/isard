@@ -1,10 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
-export interface Notification {
-  message: string;
-  type: 'success' | 'error' | 'warning';
-}
+import {INotification, NotificationService, NotificationType} from '../../services/app-services/notification.service';
+import { debounceTime, tap } from 'rxjs/operators';
 
 @Component({
   selector: 'isard-notification',
@@ -15,16 +12,30 @@ export interface Notification {
   styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
-  @Input() notification!: Notification;
-  visible: boolean = true;
+  showNotification: boolean = false;
 
-  ngOnInit(): void {
-    setTimeout(() => {
-      this.dismiss()
-    }, 5000);
+  notification: INotification = {
+    message: '',
+    type: NotificationType.Error,
+  };
+
+  constructor(
+    private notificationService: NotificationService
+  ) {
   }
 
-  dismiss(): void {
-    this.visible = false; // Hide on click
+  ngOnInit(): void {
+    this.notificationService.notifyRequest$
+    .pipe(
+      tap((notification: INotification) => {
+        this.notification = notification;
+        this.showNotification = true;
+      }),
+      debounceTime(3000),
+      tap(() => {
+        this.showNotification = false;
+      })
+    )
+    .subscribe();
   }
 }
