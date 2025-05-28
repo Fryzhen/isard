@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {INotification, NotificationService, NotificationType} from '../../services/app-services/notification.service';
-import { debounceTime, tap } from 'rxjs/operators';
+import {debounceTime, tap} from 'rxjs/operators';
 
 @Component({
   selector: 'isard-notification',

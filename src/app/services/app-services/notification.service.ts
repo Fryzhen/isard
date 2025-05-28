@@ -1,6 +1,5 @@
 import {ReplaySubject} from 'rxjs';
 import {Injectable} from '@angular/core';
-import {LoggerService} from './logger.service';
 
 export interface INotification {
   message: string,
