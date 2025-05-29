@@ -12,7 +12,7 @@ import {License} from '../../entities/driver/License';
   styleUrl: './licence-tile.component.scss'
 })
 export class LicenceTileComponent {
-  @Input({ required: true }) licence!: License;
+  @Input({required: true}) licence!: License;
 
   // protected currentColor =
 
@@ -25,10 +25,10 @@ export class LicenceTileComponent {
   }
 
   protected mapColor: Record<string, string> = {
-    'dirt_road': '',
-    'dirt_oval': '',
-    'formula_car': '',
-    'oval': '',
-    'sports_car': '',
+    'rookie': '#891816',
+    'classd': '#9B3F06',
+    'classc': '#9B7C06',
+    'classb': '#217C06',
+    'classa': '#02449F',
   }
 }

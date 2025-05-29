@@ -17,5 +17,6 @@ export class HomeComponent {
     './assets/background/nascar-race.jpg',
   ];
 
-  constructor() {}
+  constructor() {
+  }
 }

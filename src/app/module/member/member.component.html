@@ -4,7 +4,7 @@
       <div class="side-panel">
         <div class="driver-info">
           <div class="driver-name">{{ member.display_name }}</div>
-          <div class="country-info" *ngIf="member.club_name">
+          <div *ngIf="member.club_name" class="country-info">
             <span>{{ member.club_name }}</span>
           </div>
           <div class="last-login">
@@ -12,8 +12,8 @@
           </div>
         </div>
 
-        <div class="licenses" *ngIf="member.licenses">
-          <div class="license-item" *ngFor="let license of member.licenses">
+        <div *ngIf="member.licenses" class="licenses">
+          <div *ngFor="let license of member.licenses" class="license-item">
             <isard-licence-tile [licence]="license"></isard-licence-tile>
           </div>
         </div>

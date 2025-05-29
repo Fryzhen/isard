@@ -1,12 +1,11 @@
-import { Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { MemberService } from '../../services/request-services/member.service';
-import { Member } from '../../entities/driver/Member';
-import { Title } from '@angular/platform-browser';
-import { CommonModule } from '@angular/common';
-import { LoggerService } from '../../services/app-services/logger.service';
-import { NotificationService } from '../../services/app-services/notification.service';
-import { DatePipe } from '@angular/common';
+import {Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef} from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
+import {MemberService} from '../../services/request-services/member.service';
+import {Member} from '../../entities/driver/Member';
+import {Title} from '@angular/platform-browser';
+import {CommonModule, DatePipe} from '@angular/common';
+import {LoggerService} from '../../services/app-services/logger.service';
+import {NotificationService} from '../../services/app-services/notification.service';
 import {LicenceTileComponent} from '../../components/licence-tile/licence-tile.component';
 
 @Component({
@@ -22,8 +21,8 @@ import {LicenceTileComponent} from '../../components/licence-tile/licence-tile.c
 export class MemberComponent implements OnInit {
   member?: Member = undefined;
   isCharging = true;
-  @ViewChild('centerPanel', { static: true }) public centerPanel?: ViewContainerRef;
-  public vcr = viewChild('centerPanel', { read: ViewContainerRef });
+  @ViewChild('centerPanel', {static: true}) public centerPanel?: ViewContainerRef;
+  public vcr = viewChild('centerPanel', {read: ViewContainerRef});
   #componentRef?: ComponentRef<null>
 
   constructor(

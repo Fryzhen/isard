@@ -1,13 +1,13 @@
-<div class="licence-tile" [ngClass]="licence.group_name.toLowerCase().replace(' ','')">
-  <svg viewBox="0 0 24 24" focusable="false" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+<div [ngClass]="licence.group_name.toLowerCase().replace(' ','')" class="licence-tile">
+  <svg class="svg-icon" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     [ngClass]="licence.category.toLowerCase().replace(' ','')">
-    <path fill-rule="evenodd"
+    <path [attr.d]="mapPath[licence.category]"
+          [attr.fill]="mapColor[licence.group_name.toLowerCase().replace(' ','')]"
           clip-rule="evenodd"
-          [attr.fill]="mapColor[licence.category]"
-          [attr.d]="mapPath[licence.category]"
+          fill-rule="evenodd"
     ></path>
   </svg>
-  <span class="group-name">{{licence.group_name}}</span>
-  <span class="safety-rating">{{licence.safety_rating.toFixed(2)}}</span>
-  <span class="irating">{{licence.irating}}</span>
+  <span class="group-name">{{ licence.group_name }}</span>
+  <span class="safety-rating">SR: {{ licence.safety_rating.toFixed(2) }}</span>
+  <span class="irating">IR: {{ licence.irating }}</span>
 </div>

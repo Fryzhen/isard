@@ -1,7 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {NgOptimizedImage} from '@angular/common';
-import {Input} from '@angular/core';
-import {OnInit} from '@angular/core';
 
 @Component({
   selector: 'isard-background',

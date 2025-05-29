@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {Driver} from '../../entities/driver/Member';
 import {LookupService} from '../../services/request-services/lookup.service';
