@@ -2,28 +2,42 @@
   <ng-container *ngIf="member; else memberNoExist">
     <div class="fullscreen">
       <div class="side-panel">
-        <p>{{ member.cust_id }}</p>
-        <p>{{ member.display_name }}</p>
-        <div aria-label="Basic example" class="btn-group" role="group">
-          <button class="btn btn-primary" type="button">Left</button>
-          <button class="btn btn-primary" type="button">Middle</button>
-          <button class="btn btn-primary" type="button">Right</button>
+        <div class="driver-info">
+          <div class="driver-name">{{ member.display_name }}</div>
+          <div class="country-info" *ngIf="member.country">
+            <img [src]="'https://flagcdn.com/w40/' + member.country_code?.toLowerCase() + '.png'" [alt]="member.country">
+            <span>{{ member.country }}</span>
+          </div>
+          <div class="last-login">
+            Last login: {{ member.last_login | date:'medium' }}
+          </div>
+        </div>
+
+        <div class="licenses" *ngIf="member.licenses">
+          <h4>Licenses</h4>
+          <div class="license-item" *ngFor="let license of member.licenses">
+            <div class="category">{{ license.category_name }}</div>
+            <div class="irating">iRating: {{ license.irating }}</div>
+          </div>
         </div>
       </div>
-      <div class="center-pannel">
-        <h2> coucou</h2>
-        <ng-container #centerPannel></ng-container>
+
+      <div class="center-panel">
+        <ng-container #centerPanel></ng-container>
       </div>
     </div>
   </ng-container>
 </ng-container>
+
 <ng-template #memberNoExist>
   <div class="center-screen">
-    <h3> No drivers found.</h3>
-    <p> Please check the ID you entered. </p>
+    <h3>No drivers found.</h3>
+    <p>Please check the ID you entered.</p>
   </div>
 </ng-template>
 
 <ng-template #pageCharging>
-  <h3 class="center-screen">Chargement en cours ...</h3>
+  <div class="center-screen">
+    <h3>Loading...</h3>
+  </div>
 </ng-template>

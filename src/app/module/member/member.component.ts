@@ -1,11 +1,12 @@
-import {Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {MemberService} from '../../services/request-services/member.service';
-import {Member} from '../../entities/driver/Member';
-import {Title} from '@angular/platform-browser';
-import {CommonModule} from '@angular/common';
-import {LoggerService} from '../../services/app-services/logger.service';
-import {NotificationService} from '../../services/app-services/notification.service';
+import { Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MemberService } from '../../services/request-services/member.service';
+import { Member } from '../../entities/driver/Member';
+import { Title } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { LoggerService } from '../../services/app-services/logger.service';
+import { NotificationService } from '../../services/app-services/notification.service';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'isard-lookup-driver',
@@ -13,13 +14,14 @@ import {NotificationService} from '../../services/app-services/notification.serv
   styleUrls: ['./member.component.scss'],
   imports: [
     CommonModule,
+    DatePipe
   ],
 })
 export class MemberComponent implements OnInit {
   member?: Member = undefined;
   isCharging = true;
-  @ViewChild('centerPannel', {static: true}) public centerPannel?: ViewContainerRef;
-  public vcr = viewChild('centerPannel', {read: ViewContainerRef});
+  @ViewChild('centerPanel', { static: true }) public centerPanel?: ViewContainerRef;
+  public vcr = viewChild('centerPanel', { read: ViewContainerRef });
   #componentRef?: ComponentRef<null>
 
   constructor(
@@ -34,7 +36,7 @@ export class MemberComponent implements OnInit {
       if (val['memberId']) {
         this.memberService.getMember(+val['memberId'], true).subscribe({
           next: (member: Member) => {
-            this.member = member
+            this.member = member;
             this.isCharging = false;
             this.titleService.setTitle('ISARD : ' + this.member?.display_name);
             this.loggerService.log('Member loaded successfully');
@@ -45,7 +47,7 @@ export class MemberComponent implements OnInit {
             this.loggerService.error(error);
             this.notificationService.error('Member not found, please check the ID or contact support.');
           }
-        })
+        });
       }
     });
   }
