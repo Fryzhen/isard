@@ -1,7 +1,6 @@
-<div class="licence-tile">
-  <img ngSrc="{{'./assets/iracing/licences-icons/' + licence.category + '.svg'}}" fill alt="{{licence.category}}">
-  <p class="css-1gmjgtw">Class C</p>
-  <p class="css-1gmjgtw">3.41</p>
-  <p class="css-xwl7qa">1626</p>
-  <div class="css-0"></div>
+<div class="licence-tile" [ngClass]="licence.group_name.toLowerCase()">
+  <img [ngSrc]="'./assets/iracing/licences-icons/' + licence.category + '.svg'" [width]="20" [height]="20" [alt]="licence.category">
+  <span class="group-name">{{licence.group_name}}</span>
+  <span class="safety-rating">{{licence.safety_rating.toFixed(2)}}</span>
+  <span class="irating">{{licence.irating}}</span>
 </div>
