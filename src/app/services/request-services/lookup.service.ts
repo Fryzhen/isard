@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {Driver} from '../../entities/driver/Member';
 import {Observable} from 'rxjs';
 import {HttpClient} from '@angular/common/http';
+import {Driver} from './iracing-entities';
 
 @Injectable({
   providedIn: 'root',
@@ -13,14 +13,6 @@ export class LookupService {
   constructor(
     private http: HttpClient,
   ) {
-  }
-
-  getLookupClubHistory(season_year: number, season_quarter: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/club_history?season_year=${season_year}&season_quarter=${season_quarter}`);
-  }
-
-  getLookupCountries(): Observable<any> {
-    return this.http.get(`${this.baseUrl}/countries`);
   }
 
   getLookupDrivers(search_term: string, league_id?: number): Observable<Driver[]> {

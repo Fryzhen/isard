@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {NgClass, NgIf} from '@angular/common';
-import {License} from '../../entities/driver/License';
+import {License} from '../../services/request-services/iracing-entities';
 
 @Component({
   selector: 'isard-licence-tile',

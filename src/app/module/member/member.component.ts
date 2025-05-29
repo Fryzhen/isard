@@ -1,7 +1,7 @@
 import {Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {MemberService} from '../../services/request-services/member.service';
-import {Member} from '../../entities/driver/Member';
+import {Member} from '../../services/request-services/iracing-entities';
 import {Title} from '@angular/platform-browser';
 import {CommonModule, DatePipe} from '@angular/common';
 import {LoggerService} from '../../services/app-services/logger.service';

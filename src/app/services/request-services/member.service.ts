@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
-import {Member} from '../../entities/driver/Member';
+import {Member} from './iracing-entities';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
@@ -38,9 +38,5 @@ export class MemberService {
         return response.members
       })
     );
-  }
-
-  getAwards(cust_id: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/awards?cust_id=${cust_id}`);
   }
 }

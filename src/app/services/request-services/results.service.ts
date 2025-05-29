@@ -1,6 +1,14 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {SearchSeriesConfig} from '../../entities/api/Configs';
+import {HttpClient} from '@angular/common/http';
+
+export interface SearchSeriesConfig {
+  series_id?: number,
+  official_only?: boolean,
+  event_types?: number[],
+  category_ids?: number[],
+}
 
 @Injectable({
   providedIn: 'root',

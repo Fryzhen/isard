@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
-import {Driver} from '../../entities/driver/Member';
+import {Driver} from '../../services/request-services/iracing-entities';
 import {LookupService} from '../../services/request-services/lookup.service';
 import {Router} from '@angular/router';
 
