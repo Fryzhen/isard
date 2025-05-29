@@ -4,20 +4,19 @@
       <div class="side-panel">
         <div class="driver-info">
           <div class="driver-name">{{ member.display_name }}</div>
-          <div class="country-info" *ngIf="member.country">
-            <img [src]="'https://flagcdn.com/w40/' + member.country_code?.toLowerCase() + '.png'" [alt]="member.country">
-            <span>{{ member.country }}</span>
+          <div class="country-info" *ngIf="member.club_name">
+            <span>{{ member.club_name }}</span>
           </div>
           <div class="last-login">
-            Last login: {{ member.last_login | date:'medium' }}
+            Last login: {{ member.last_login | date:'short' }}
           </div>
         </div>
 
-        <div class="licenses" *ngIf="member.license">
+        <div class="licenses" *ngIf="member.licenses">
           <h4>Licenses</h4>
-          <div class="license-item" *ngFor="let license of member.license">
+          <div class="license-item" *ngFor="let license of member.licenses">
             <div class="category">{{ license.category_name }}</div>
-            <div class="irating">iRating: {{ license.irating }}</div>
+            <isard-licence-tile [licence]="license"></isard-licence-tile>
           </div>
         </div>
       </div>

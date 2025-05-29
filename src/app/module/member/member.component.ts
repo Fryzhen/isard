@@ -7,6 +7,7 @@ import { CommonModule } from '@angular/common';
 import { LoggerService } from '../../services/app-services/logger.service';
 import { NotificationService } from '../../services/app-services/notification.service';
 import { DatePipe } from '@angular/common';
+import {LicenceTileComponent} from '../../components/licence-tile/licence-tile.component';
 
 @Component({
   selector: 'isard-lookup-driver',
@@ -14,7 +15,8 @@ import { DatePipe } from '@angular/common';
   styleUrls: ['./member.component.scss'],
   imports: [
     CommonModule,
-    DatePipe
+    DatePipe,
+    LicenceTileComponent
   ],
 })
 export class MemberComponent implements OnInit {
@@ -40,6 +42,8 @@ export class MemberComponent implements OnInit {
             this.isCharging = false;
             this.titleService.setTitle('ISARD : ' + this.member?.display_name);
             this.loggerService.log('Member loaded successfully');
+            console.log(member);
+            console.log(member.licenses);
           },
           error: error => {
             this.isCharging = false;

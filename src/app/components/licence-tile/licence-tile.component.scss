@@ -1,0 +1,56 @@
+.licence-tile {
+  display: flex;
+  -moz-box-align: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 3px;
+  background: var(--ir-colors-yellow-100);
+  border-color: var(--ir-colors-yellow-500);
+  border-width: 1px;
+  color: var(--ir-colors-yellow-700);
+  -moz-box-pack: center;
+  justify-content: center;
+  pointer-events: none;
+  position: relative;
+  z-index: 2;
+  border-radius: 6px;
+  height: 24px;
+  padding-inline: 1px;
+  border-style: solid;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  font-size: 1rem;
+
+  >div {
+    border-bottom-style: solid;
+    border-bottom-width: 0px;
+    border-left-style: solid;
+    border-left-width: 0px;
+    border-right-style: solid;
+    border-right-width: 0px;
+    border-top-style: solid;
+    border-top-width: 0px;
+    box-sizing: border-box;
+    color: rgb(155, 124, 6);
+    color-scheme: light;
+    display: flow-root;
+    font-family: "Inter", sans-serif;
+    font-feature-settings: "kern";
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+    margin-bottom: 0px;
+    margin-left: 4px;
+    margin-right: 0px;
+    margin-top: 0px;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    pointer-events: none;
+    position: relative;
+    text-overflow: ellipsis;
+    text-rendering: geometricprecision;
+    word-break: normal;
+    z-index: 1
+  }
+}

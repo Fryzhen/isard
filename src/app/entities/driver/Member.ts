@@ -15,12 +15,10 @@ export interface IMember extends Driver {
   club_id: number,
   club_name: string,
   ai?: boolean,
-  country_code?: string,
-  country?: string,
 }
 
 export interface Member extends IMember {
-  license?: License[],
+  licenses?: License[],
 }
 
 export interface PersonnalMember extends IMember {
@@ -55,4 +53,6 @@ export interface PersonnalMember extends IMember {
   },
   account: Account,
   suit: Suit,
+  country_code?: string,
+  country?: string,
 }
