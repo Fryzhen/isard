@@ -32,14 +32,10 @@
       </ul>
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
-          <input (input)="onSearch($event)"
-                 class="form-control"
-                 placeholder="Search"
-                 type="text">
-          <ul *ngIf="drivers.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
-            <li *ngFor="let driver of drivers"><a (click)="onDriverSelect(driver)"
-                                                  class="dropdown-item">{{ driver.display_name }}</a></li>
-          </ul>
+          <isard-picklist
+
+          >
+          </isard-picklist>
         </li>
       </ul>
     </div>
