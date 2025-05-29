@@ -3,6 +3,8 @@ import {NavbarComponent} from './components/navbar/navbar.component';
 import {RouterOutlet} from '@angular/router';
 import {CommonModule} from '@angular/common';
 import {NotificationComponent} from './components/notification/notification.component';
+import {HeaderComponent} from './components/header/header.component';
+import {FooterComponent} from './components/footer/footer.component';
 
 @Component({
   selector: 'isard-root',
@@ -13,6 +15,8 @@ import {NotificationComponent} from './components/notification/notification.comp
     RouterOutlet,
     CommonModule,
     NotificationComponent,
+    HeaderComponent,
+    FooterComponent,
   ]
 })
 export class AppComponent {
