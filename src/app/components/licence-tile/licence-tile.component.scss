@@ -1,3 +1,5 @@
+@import "../../styles/variables.scss";
+
 .licence-tile {
   display: flex;
   align-items: center;
@@ -9,7 +11,7 @@
   height: 28px;
   border: 1px solid;
 
-  img {
+  .svg-icon {
     width: 20px;
     height: 20px;
   }
@@ -29,38 +31,32 @@
 
   // License class colors
   &.rookie {
-    background-color: #FFE5CC;
-    border-color: #FF9933;
-    color: #994D00;
+    background-color: $licence-rookie-background;
+    border-color: $licence-rookie-border;
+    color: $licence-rookie-text;
   }
 
-  &.class\ d {
-    background-color: #FFE5CC;
-    border-color: #FF6600;
-    color: #993D00;
+  &.classd {
+    background-color: $licence-class-d-background;
+    border-color: $licence-class-d-border;
+    color: $licence-class-d-text;
   }
 
-  &.class\ c {
-    background-color: #FFFBCC;
-    border-color: #FFD700;
-    color: #997F00;
+  &.classc {
+    background-color: $licence-class-c-background;
+    border-color: $licence-class-c-border;
+    color: $licence-class-c-text;
   }
 
-  &.class\ b {
-    background-color: #E5FFCC;
-    border-color: #66FF33;
-    color: #3D991F;
+  &.classb {
+    background-color: $licence-class-b-background;
+    border-color: $licence-class-b-border;
+    color: $licence-class-b-text;
   }
 
-  &.class\ a {
-    background-color: #CCF2FF;
-    border-color: #33CCFF;
-    color: #006680;
-  }
-
-  &.pro {
-    background-color: #000000;
-    border-color: #FF0000;
-    color: #FFFFFF;
+  &.classa {
+    background-color: $licence-class-a-background;
+    border-color: $licence-class-a-border;
+    color: $licence-class-a-text;
   }
 }

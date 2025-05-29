@@ -1,5 +1,12 @@
-<div class="licence-tile" [ngClass]="licence.group_name.toLowerCase()">
-  <img [ngSrc]="'./assets/iracing/licences-icons/' + licence.category + '.svg'" [width]="20" [height]="20" [alt]="licence.category">
+<div class="licence-tile" [ngClass]="licence.group_name.toLowerCase().replace(' ','')">
+  <svg viewBox="0 0 24 24" focusable="false" xmlns="http://www.w3.org/2000/svg" class="svg-icon">
+    [ngClass]="licence.category.toLowerCase().replace(' ','')">
+    <path fill-rule="evenodd"
+          clip-rule="evenodd"
+          [attr.fill]="mapColor[licence.category]"
+          [attr.d]="mapPath[licence.category]"
+    ></path>
+  </svg>
   <span class="group-name">{{licence.group_name}}</span>
   <span class="safety-rating">{{licence.safety_rating.toFixed(2)}}</span>
   <span class="irating">{{licence.irating}}</span>

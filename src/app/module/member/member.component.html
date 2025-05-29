@@ -13,9 +13,7 @@
         </div>
 
         <div class="licenses" *ngIf="member.licenses">
-          <h4>Licenses</h4>
           <div class="license-item" *ngFor="let license of member.licenses">
-            <div class="category">{{ license.category_name }}</div>
             <isard-licence-tile [licence]="license"></isard-licence-tile>
           </div>
         </div>
