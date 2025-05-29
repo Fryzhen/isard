@@ -58,10 +58,16 @@
     }
 
     .licenses {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+
       .license-item {
-        margin: 10px 0;
         border-radius: 6px;
         background-color: $offwhite;
+        min-width: 270px;
+        max-width: 270px;
 
         .category {
           font-weight: bold;
