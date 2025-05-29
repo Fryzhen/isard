@@ -7,6 +7,7 @@ import {CommonModule, DatePipe} from '@angular/common';
 import {LoggerService} from '../../services/app-services/logger.service';
 import {NotificationService} from '../../services/app-services/notification.service';
 import {LicenceTileComponent} from '../../components/licence-tile/licence-tile.component';
+import {MemberInfoPanelComponent} from './member-info-panel/member-info-panel.component';
 
 @Component({
   selector: 'isard-lookup-driver',
@@ -14,8 +15,7 @@ import {LicenceTileComponent} from '../../components/licence-tile/licence-tile.c
   styleUrls: ['./member.component.scss'],
   imports: [
     CommonModule,
-    DatePipe,
-    LicenceTileComponent
+    MemberInfoPanelComponent
   ],
 })
 export class MemberComponent implements OnInit {
