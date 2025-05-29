@@ -3,12 +3,16 @@
     <div class="fullscreen">
       <div class="side">
         <isard-member-info-panel [member]="member"></isard-member-info-panel>
-        <isard-member-parameter-panel></isard-member-parameter-panel>
+        <isard-member-parameter-panel
+          [currentScreenDisplay]="currentScreenDisplay"
+          (screenDisplayChange)="setDisplay($event)">
+        </isard-member-parameter-panel>
+
       </div>
       <div class="center">
         <isard-member-last-races *ngIf="currentScreenDisplay == MemberScreenDisplay.LastRaces" [member]="member"></isard-member-last-races>
-        <isard-member-stats-global *ngIf="currentScreenDisplay == MemberScreenDisplay.YearlyStats" [member]="member"></isard-member-stats-global>
-        <isard-member-stats-yearly *ngIf="currentScreenDisplay == MemberScreenDisplay.GlobalStats" [member]="member"></isard-member-stats-yearly>
+        <isard-member-stats-global *ngIf="currentScreenDisplay == MemberScreenDisplay.GlobalStats" [member]="member"></isard-member-stats-global>
+        <isard-member-stats-yearly *ngIf="currentScreenDisplay == MemberScreenDisplay.YearlyStats" [member]="member"></isard-member-stats-yearly>
       </div>
     </div>
   </ng-container>

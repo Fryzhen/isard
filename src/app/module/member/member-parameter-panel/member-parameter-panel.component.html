@@ -1,2 +1,25 @@
 <div class="panel">
+  <div class="btn-group">
+    <button
+      type="button"
+      class="btn btn-primary"
+      [class.active]="currentScreenDisplay === MemberScreenDisplay.LastRaces"
+      (click)="changeDisplay(MemberScreenDisplay.LastRaces)">
+      Last Races
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      [class.active]="currentScreenDisplay === MemberScreenDisplay.GlobalStats"
+      (click)="changeDisplay(MemberScreenDisplay.GlobalStats)">
+      Global Stats
+    </button>
+    <button
+      type="button"
+      class="btn btn-primary"
+      [class.active]="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
+      (click)="changeDisplay(MemberScreenDisplay.YearlyStats)">
+      Yearly Stats
+    </button>
+  </div>
 </div>

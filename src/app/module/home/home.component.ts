@@ -15,7 +15,4 @@ export class HomeComponent {
     './assets/background/w12-sunset.jpg',
     './assets/background/nascar-race.jpg',
   ];
-
-  constructor() {
-  }
 }

@@ -34,7 +34,7 @@ export enum MemberScreenDisplay {
 export class MemberComponent implements OnInit {
   member?: Member = undefined;
   isCharging = true;
-  currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.GlobalStats;
+  currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.LastRaces;
   protected readonly MemberScreenDisplay = MemberScreenDisplay;
 
   constructor(
@@ -66,4 +66,9 @@ export class MemberComponent implements OnInit {
       }
     });
   }
+
+  setDisplay(screen: MemberScreenDisplay): void {
+    this.currentScreenDisplay = screen;
+  }
+
 }
