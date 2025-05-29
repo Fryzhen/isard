@@ -1,7 +1,6 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import {LicenceTileComponent} from '../../../components/licence-tile/licence-tile.component';
-import {Input} from '@angular/core';
 import {Member} from '../../../services/request-services/iracing-entities';
 
 @Component({

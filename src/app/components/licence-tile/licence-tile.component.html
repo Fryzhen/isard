@@ -8,6 +8,6 @@
     ></path>
   </svg>
   <span class="group-name">{{ licence.group_name }}</span>
-  <span class="safety-rating" *ngIf="licence.safety_rating">SR: {{ licence.safety_rating.toFixed(2) }}</span>
-  <span class="irating" *ngIf="licence.irating">IR: {{ licence.irating }}</span>
+  <span *ngIf="licence.safety_rating" class="safety-rating">SR: {{ licence.safety_rating.toFixed(2) }}</span>
+  <span *ngIf="licence.irating" class="irating">IR: {{ licence.irating }}</span>
 </div>

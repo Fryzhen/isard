@@ -1,4 +1,3 @@
-// src/app/module/home/home.component.ts
 import {Component} from '@angular/core';
 import {BackgroundComponent} from '../../components/background/background.component';
 

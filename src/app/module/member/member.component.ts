@@ -3,11 +3,11 @@ import {ActivatedRoute, Router} from '@angular/router';
 import {MemberService} from '../../services/request-services/member.service';
 import {Member} from '../../services/request-services/iracing-entities';
 import {Title} from '@angular/platform-browser';
-import {CommonModule, DatePipe} from '@angular/common';
+import {CommonModule} from '@angular/common';
 import {LoggerService} from '../../services/app-services/logger.service';
 import {NotificationService} from '../../services/app-services/notification.service';
-import {LicenceTileComponent} from '../../components/licence-tile/licence-tile.component';
 import {MemberInfoPanelComponent} from './member-info-panel/member-info-panel.component';
+import {MemberParameterPanelComponent} from './member-parameter-panel/member-parameter-panel.component';
 
 @Component({
   selector: 'isard-lookup-driver',
@@ -15,7 +15,8 @@ import {MemberInfoPanelComponent} from './member-info-panel/member-info-panel.co
   styleUrls: ['./member.component.scss'],
   imports: [
     CommonModule,
-    MemberInfoPanelComponent
+    MemberInfoPanelComponent,
+    MemberParameterPanelComponent
   ],
 })
 export class MemberComponent implements OnInit {
