@@ -1,5 +1,5 @@
-import {Component, ComponentRef, OnInit, viewChild, ViewChild, ViewContainerRef} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 import {MemberService} from '../../services/request-services/member.service';
 import {Member} from '../../services/request-services/iracing-entities';
 import {Title} from '@angular/platform-browser';
@@ -8,6 +8,15 @@ import {LoggerService} from '../../services/app-services/logger.service';
 import {NotificationService} from '../../services/app-services/notification.service';
 import {MemberInfoPanelComponent} from './member-info-panel/member-info-panel.component';
 import {MemberParameterPanelComponent} from './member-parameter-panel/member-parameter-panel.component';
+import {MemberLastRacesComponent} from './member-last-races/member-last-races.component';
+import {MemberStatsGlobalComponent} from './member-stats-global/member-stats-global.component';
+import {MemberStatsYearlyComponent} from './member-stats-yearly/member-stats-yearly.component';
+
+export enum MemberScreenDisplay {
+  LastRaces = 0,
+  GlobalStats = 1,
+  YearlyStats = 2,
+}
 
 @Component({
   selector: 'isard-lookup-driver',
@@ -16,15 +25,17 @@ import {MemberParameterPanelComponent} from './member-parameter-panel/member-par
   imports: [
     CommonModule,
     MemberInfoPanelComponent,
-    MemberParameterPanelComponent
+    MemberParameterPanelComponent,
+    MemberLastRacesComponent,
+    MemberStatsGlobalComponent,
+    MemberStatsYearlyComponent
   ],
 })
 export class MemberComponent implements OnInit {
   member?: Member = undefined;
   isCharging = true;
-  @ViewChild('centerPanel', {static: true}) public centerPanel?: ViewContainerRef;
-  public vcr = viewChild('centerPanel', {read: ViewContainerRef});
-  #componentRef?: ComponentRef<null>
+  currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.GlobalStats;
+  protected readonly MemberScreenDisplay = MemberScreenDisplay;
 
   constructor(
     private route: ActivatedRoute,
@@ -32,9 +43,11 @@ export class MemberComponent implements OnInit {
     private loggerService: LoggerService,
     private notificationService: NotificationService,
     private titleService: Title,
-    private router: Router,
   ) {
-    route.params.subscribe(val => {
+  }
+
+  ngOnInit(): void {
+    this.route.params.subscribe(val => {
       if (val['memberId']) {
         this.memberService.getMember(+val['memberId'], true).subscribe({
           next: (member: Member) => {
@@ -42,8 +55,6 @@ export class MemberComponent implements OnInit {
             this.isCharging = false;
             this.titleService.setTitle('ISARD : ' + this.member?.display_name);
             this.loggerService.log('Member loaded successfully');
-            console.log(member);
-            console.log(member.licenses);
           },
           error: error => {
             this.isCharging = false;
@@ -54,12 +65,5 @@ export class MemberComponent implements OnInit {
         });
       }
     });
-  }
-
-  ngOnInit(): void {
-  }
-
-  redirectTo(route: string[]): void {
-    this.router.navigate(route);
   }
 }
