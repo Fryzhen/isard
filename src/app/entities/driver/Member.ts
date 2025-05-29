@@ -15,8 +15,8 @@ export interface IMember extends Driver {
   club_id: number,
   club_name: string,
   ai?: boolean,
-  country_code?: boolean,
-  country?: boolean,
+  country_code?: string,
+  country?: string,
 }
 
 export interface Member extends IMember {

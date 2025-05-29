@@ -13,9 +13,9 @@
           </div>
         </div>
 
-        <div class="licenses" *ngIf="member.licenses">
+        <div class="licenses" *ngIf="member.license">
           <h4>Licenses</h4>
-          <div class="license-item" *ngFor="let license of member.licenses">
+          <div class="license-item" *ngFor="let license of member.license">
             <div class="category">{{ license.category_name }}</div>
             <div class="irating">iRating: {{ license.irating }}</div>
           </div>
