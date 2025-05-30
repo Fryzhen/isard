@@ -2,6 +2,10 @@ import {Component} from '@angular/core';
 import {Router} from '@angular/router';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {PicklistComponent} from '../picklist/picklist.component';
+import {Driver} from '../../services/request-services/iracing-entities';
+import {LookupService} from '../../services/request-services/lookup.service';
+import {NotificationService} from '../../services/app-services/notification.service';
+import {LoggerService} from '../../services/app-services/logger.service';
 
 @Component({
   standalone: true,
@@ -15,13 +19,40 @@ import {PicklistComponent} from '../picklist/picklist.component';
   ]
 })
 export class NavbarComponent {
+  drivers: Driver[] = [];
 
   constructor(
-    private router: Router
+    private router: Router,
+    private lookupService: LookupService,
+    private notificationService: NotificationService,
+    private loggerService: LoggerService
   ) {
   }
 
   redirectTo(route: string[]): void {
     this.router.navigate(route).then();
+  }
+
+  onSearch(searchTerm: string): void {
+    this.lookupService.getLookupDrivers(searchTerm).subscribe({
+      next: (drivers: Driver[]) => {
+        this.drivers = drivers;
+      },
+      error: (error: Error) => {
+        this.loggerService.error(error.message);
+        this.notificationService.error('Failed to load drivers. Please try again later.');
+      }
+    });
+  }
+
+  driversToItems(drivers: Driver[]) {
+    return drivers.map(driver => ({
+      name: driver.display_name,
+      id: driver.cust_id
+    }));
+  }
+
+  onItemClick(itemId: number): void {
+    this.redirectTo([`/member/${itemId}`]);
   }
 }

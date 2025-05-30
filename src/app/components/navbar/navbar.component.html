@@ -34,7 +34,10 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <isard-picklist
-
+            [items]="driversToItems(drivers)"
+            [placeholder]="'Search Drivers'"
+            (searchChange)="onSearch($event)"
+            (itemClick)="onItemClick($event)"
           >
           </isard-picklist>
         </li>

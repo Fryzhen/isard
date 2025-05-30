@@ -1,8 +1,10 @@
-import {Component} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
-import {Driver} from '../../services/request-services/iracing-entities';
-import {LookupService} from '../../services/request-services/lookup.service';
-import {Router} from '@angular/router';
+
+interface PickListItems {
+  name: string;
+  id: number;
+}
 
 @Component({
   standalone: true,
@@ -16,14 +18,12 @@ import {Router} from '@angular/router';
   styleUrl: './picklist.component.scss'
 })
 export class PicklistComponent {
-  drivers: Driver[] = [];
-  private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
+  @Input() items: PickListItems[] = [];
+  @Input() placeholder: string = 'Search...';
+  @Output() searchChange = new EventEmitter<string>();
+  @Output() itemClick = new EventEmitter<number>();
 
-  constructor(
-    private lookupService: LookupService,
-    private router: Router
-  ) {
-  }
+  private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
 
   onSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
@@ -33,27 +33,15 @@ export class PicklistComponent {
     }
     if (inputElement.value.length >= 1) {
       this.debounceTimeout = setTimeout(() => {
-        this.lookupService.getLookupDrivers(inputElement.value).subscribe({
-          next: (drivers: Driver[]) => {
-            console.log('Drivers:', drivers); // Log the response
-            this.drivers = drivers;
-          },
-          error: (error: Error) => {
-            console.error('Error fetching drivers:', error);
-          }
-        });
+        this.searchChange.emit(inputElement.value);
       }, 500);
     } else {
-      this.drivers = [];
+      this.items = [];
     }
   }
 
-  onDriverSelect(driver: Driver): void {
-    this.drivers = [];
-    this.redirectTo(['/member', "" + driver.cust_id]);
-  }
-
-  redirectTo(route: string[]): void {
-    this.router.navigate(route).then();
+  onItemClick(id: number): void {
+    this.items = []; // Clear items after selection
+    this.itemClick.emit(id);
   }
 }

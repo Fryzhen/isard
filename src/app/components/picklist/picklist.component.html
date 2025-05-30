@@ -1,8 +1,9 @@
 <input (input)="onSearch($event)"
        class="form-control"
-       placeholder="Search"
+       placeholder="{{placeholder}}"
        type="text">
-<ul *ngIf="drivers.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
-  <li *ngFor="let driver of drivers"><a (click)="onDriverSelect(driver)"
-                                        class="dropdown-item">{{ driver.display_name }}</a></li>
+<ul *ngIf="items.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
+  <li *ngFor="let item of items">
+    <a (click)="onItemClick(item.id)" class="dropdown-item">{{ item.name }}</a>
+  </li>
 </ul>
