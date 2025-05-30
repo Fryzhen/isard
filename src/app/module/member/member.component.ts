@@ -8,14 +8,16 @@ import {LoggerService} from '../../services/app-services/logger.service';
 import {NotificationService} from '../../services/app-services/notification.service';
 import {MemberInfoPanelComponent} from './member-info-panel/member-info-panel.component';
 import {MemberParameterPanelComponent} from './member-parameter-panel/member-parameter-panel.component';
-import {MemberLastRacesComponent} from './member-last-races/member-last-races.component';
-import {MemberStatsGlobalComponent} from './member-stats-global/member-stats-global.component';
-import {MemberStatsYearlyComponent} from './member-stats-yearly/member-stats-yearly.component';
+import {MemberLastRacesComponent} from './member-center-panel/member-last-races/member-last-races.component';
+import {MemberStatsGlobalComponent} from './member-center-panel/member-stats-global/member-stats-global.component';
+import {MemberStatsYearlyComponent} from './member-center-panel/member-stats-yearly/member-stats-yearly.component';
+import {LoadingScreenComponent} from '../../components/loading-screen/loading-screen.component';
 
 export enum MemberScreenDisplay {
-  LastRaces = 0,
-  GlobalStats = 1,
-  YearlyStats = 2,
+  LastRaces,
+  AllRaces,
+  GlobalStats,
+  YearlyStats,
 }
 
 @Component({
@@ -29,7 +31,8 @@ export enum MemberScreenDisplay {
     MemberParameterPanelComponent,
     MemberLastRacesComponent,
     MemberStatsGlobalComponent,
-    MemberStatsYearlyComponent
+    MemberStatsYearlyComponent,
+    LoadingScreenComponent
   ],
 })
 export class MemberComponent implements OnInit {

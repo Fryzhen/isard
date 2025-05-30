@@ -1,15 +1,17 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Member, Race} from '../../../services/request-services/iracing-entities';
+import {Member, Race} from '../../../../services/request-services/iracing-entities';
 import {CommonModule, NgForOf} from '@angular/common';
-import {StatsService} from '../../../services/request-services/stats.service';
-import {NotificationService} from '../../../services/app-services/notification.service';
+import {StatsService} from '../../../../services/request-services/stats.service';
+import {NotificationService} from '../../../../services/app-services/notification.service';
+import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
 
 @Component({
   standalone: true,
   selector: 'isard-member-last-races',
   imports: [
     NgForOf,
-    CommonModule
+    CommonModule,
+    LoadingScreenComponent
   ],
   templateUrl: './member-last-races.component.html',
   styleUrl: './member-last-races.component.scss'

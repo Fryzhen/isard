@@ -1,6 +1,6 @@
 <div class="panel">
   <h3>Career Stats</h3>
-  <ng-container *ngIf="stats">
+  <ng-container *ngIf="stats; else pageCharging">
     <table class="table">
       <thead>
       <tr>
@@ -47,3 +47,6 @@
     </table>
   </ng-container>
 </div>
+<ng-template #pageCharging>
+  <isard-loading-screen></isard-loading-screen>
+</ng-template>

@@ -1,6 +1,6 @@
 <div class="panel">
   <h3>Yearly Stats</h3>
-  <ng-container *ngIf="stats">
+  <ng-container *ngIf="stats; else pageCharging">
     <ng-container *ngFor="let year of years">
       <h4 class="year">{{ year }}</h4>
       <table class="table">
@@ -50,3 +50,6 @@
     </ng-container>
   </ng-container>
 </div>
+<ng-template #pageCharging>
+  <isard-loading-screen></isard-loading-screen>
+</ng-template>

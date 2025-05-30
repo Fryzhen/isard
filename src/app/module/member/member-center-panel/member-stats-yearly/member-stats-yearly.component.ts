@@ -1,9 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Member, YearStats} from '../../../services/request-services/iracing-entities';
-import {IconComponent} from '../../../components/icon/icon.component';
+import {Member, YearStats} from '../../../../services/request-services/iracing-entities';
+import {IconComponent} from '../../../../components/icon/icon.component';
 import {NgForOf, NgIf} from '@angular/common';
-import {StatsService} from '../../../services/request-services/stats.service';
-import {LicenceService} from '../../../services/app-services/licence.service';
+import {StatsService} from '../../../../services/request-services/stats.service';
+import {LicenceService} from '../../../../services/app-services/licence.service';
+import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
 
 @Component({
   standalone: true,
@@ -11,7 +12,8 @@ import {LicenceService} from '../../../services/app-services/licence.service';
   imports: [
     IconComponent,
     NgForOf,
-    NgIf
+    NgIf,
+    LoadingScreenComponent
   ],
   templateUrl: './member-stats-yearly.component.html',
   styleUrl: './member-stats-yearly.component.scss'

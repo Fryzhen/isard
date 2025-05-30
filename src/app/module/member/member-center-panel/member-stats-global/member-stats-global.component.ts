@@ -1,10 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Member} from '../../../services/request-services/iracing-entities';
+import {Member} from '../../../../services/request-services/iracing-entities';
 import {DatePipe, NgForOf, NgIf} from '@angular/common';
-import {StatsService} from '../../../services/request-services/stats.service';
-import {CareerStats} from '../../../services/request-services/iracing-entities';
-import {IconComponent} from '../../../components/icon/icon.component';
-import {LicenceService} from '../../../services/app-services/licence.service';
+import {StatsService} from '../../../../services/request-services/stats.service';
+import {CareerStats} from '../../../../services/request-services/iracing-entities';
+import {IconComponent} from '../../../../components/icon/icon.component';
+import {LicenceService} from '../../../../services/app-services/licence.service';
+import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
 
 @Component({
   standalone: true,
@@ -12,7 +13,8 @@ import {LicenceService} from '../../../services/app-services/licence.service';
   imports: [
     NgForOf,
     NgIf,
-    IconComponent
+    IconComponent,
+    LoadingScreenComponent
   ],
   templateUrl: './member-stats-global.component.html',
   styleUrl: './member-stats-global.component.scss'
