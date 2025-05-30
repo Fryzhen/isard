@@ -4,6 +4,7 @@ import {INotification, NotificationService, NotificationType} from '../../servic
 import {debounceTime, tap} from 'rxjs/operators';
 
 @Component({
+  standalone: true,
   selector: 'isard-notification',
   templateUrl: './notification.component.html',
   imports: [

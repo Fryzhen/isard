@@ -2,6 +2,7 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MemberScreenDisplay} from '../member.component';
 
 @Component({
+  standalone: true,
   selector: 'isard-member-parameter-panel',
   imports: [],
   templateUrl: './member-parameter-panel.component.html',

@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {BackgroundComponent} from '../../components/background/background.component';
 
 @Component({
+  standalone: true,
   selector: 'isard-home',
   templateUrl: './home.component.html',
   imports: [BackgroundComponent],

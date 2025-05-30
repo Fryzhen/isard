@@ -4,6 +4,7 @@ import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {PicklistComponent} from '../picklist/picklist.component';
 
 @Component({
+  standalone: true,
   selector: 'isard-navbar',
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss',

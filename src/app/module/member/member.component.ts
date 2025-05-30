@@ -19,6 +19,7 @@ export enum MemberScreenDisplay {
 }
 
 @Component({
+  standalone: true,
   selector: 'isard-lookup-driver',
   templateUrl: './member.component.html',
   styleUrls: ['./member.component.scss'],

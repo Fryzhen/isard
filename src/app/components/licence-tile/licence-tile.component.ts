@@ -3,8 +3,8 @@ import {NgClass, NgIf} from '@angular/common';
 import {License} from '../../services/request-services/iracing-entities';
 
 @Component({
-  selector: 'isard-licence-tile',
   standalone: true,
+  selector: 'isard-licence-tile',
   imports: [
     NgClass,
     NgIf

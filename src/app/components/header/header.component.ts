@@ -3,6 +3,7 @@ import {NavbarComponent} from '../navbar/navbar.component';
 import {NotificationComponent} from '../notification/notification.component';
 
 @Component({
+  standalone: true,
   selector: 'isard-header',
   imports: [
     NavbarComponent,

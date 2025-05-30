@@ -5,6 +5,7 @@ import {LookupService} from '../../services/request-services/lookup.service';
 import {Router} from '@angular/router';
 
 @Component({
+  standalone: true,
   selector: 'isard-picklist',
   imports: [
     NgForOf,

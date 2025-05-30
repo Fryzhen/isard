@@ -4,6 +4,7 @@ import {LicenceTileComponent} from '../../../components/licence-tile/licence-til
 import {Member} from '../../../services/request-services/iracing-entities';
 
 @Component({
+  standalone: true,
   selector: 'isard-member-info-panel',
   imports: [
     DatePipe,
