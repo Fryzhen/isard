@@ -17,7 +17,7 @@ import {Router} from '@angular/router';
 })
 export class PicklistComponent {
   drivers: Driver[] = [];
-  private debounceTimeout = 0;
+  private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
     private lookupService: LookupService,
