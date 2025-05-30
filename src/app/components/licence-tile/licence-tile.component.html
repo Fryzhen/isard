@@ -1,12 +1,11 @@
 <div [ngClass]="licence.group_name.toLowerCase().replace(' ','')" class="licence-tile">
-  <svg class="svg-icon" focusable="false" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    [ngClass]="licence.category.toLowerCase().replace(' ','')">
-    <path [attr.d]="mapPath[licence.category]"
-          [attr.fill]="mapColor[licence.group_name.toLowerCase().replace(' ','')]"
-          clip-rule="evenodd"
-          fill-rule="evenodd"
-    ></path>
-  </svg>
+  <isard-icon
+    [width]="24"
+    [height]="24"
+    [path]="getLicenceIcon()"
+    [color]="getLicenceColor()"
+    [ngClass]="licence.category.toLowerCase().replace(' ','')"
+  ></isard-icon>
   <span class="group-name">{{ licence.group_name }}</span>
   <span *ngIf="licence.safety_rating" class="safety-rating">SR: {{ licence.safety_rating.toFixed(2) }}</span>
   <span *ngIf="licence.irating" class="irating">IR: {{ licence.irating }}</span>

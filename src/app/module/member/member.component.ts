@@ -35,7 +35,7 @@ export enum MemberScreenDisplay {
 export class MemberComponent implements OnInit {
   member?: Member = undefined;
   isCharging = true;
-  currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.LastRaces;
+  currentScreenDisplay: MemberScreenDisplay | undefined = MemberScreenDisplay.LastRaces;
   protected readonly MemberScreenDisplay = MemberScreenDisplay;
 
   constructor(
@@ -49,12 +49,14 @@ export class MemberComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(val => {
+      this.isCharging = true;
       if (val['memberId']) {
         this.memberService.getMember(+val['memberId'], true).subscribe({
           next: (member: Member) => {
             this.member = member;
             this.isCharging = false;
             this.titleService.setTitle('ISARD : ' + this.member?.display_name);
+            this.currentScreenDisplay = MemberScreenDisplay.LastRaces;
             this.loggerService.log('Member loaded successfully');
           },
           error: error => {

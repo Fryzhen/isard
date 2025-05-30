@@ -11,7 +11,7 @@ import {NgOptimizedImage} from '@angular/common';
   styleUrl: './background.component.scss'
 })
 export class BackgroundComponent implements OnInit {
-  @Input({required: true}) images!: string[]
+  @Input({required: true}) images!: string[];
   currentIndex = 0;
   nextIndex = 1;
   currentImage = '';

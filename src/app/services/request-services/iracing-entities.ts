@@ -43,3 +43,72 @@ export interface Helmet {
   helmet_type: number
 }
 
+export interface Race {
+  season_id: number;
+  series_id: number;
+  series_name: string;
+  car_id: number;
+  car_class_id: number;
+  livery: Livery;
+  license_level: number;
+  session_start_time: Date;
+  winner_group_id: number;
+  winner_name: string;
+  winner_helmet: Helmet;
+  winner_license_level: number;
+  start_position: number;
+  finish_position: number;
+  qualifying_time: number;
+  laps: number;
+  laps_led: number;
+  incidents: number;
+  club_points: number;
+  points: number;
+  strength_of_field: number;
+  subsession_id: number;
+  old_sub_level: number;
+  new_sub_level: number;
+  oldi_rating: number;
+  newi_rating: number;
+  track: Track;
+  drop_race: boolean;
+  season_year: number;
+  season_quarter: number;
+  race_week_num: number;
+}
+
+export interface Track {
+  track_id: number;
+  track_name: string;
+}
+
+export interface Livery {
+  car_id: number;
+  pattern: number;
+  color1: string;
+  color2: string;
+  color3: string;
+}
+
+export interface CareerStats {
+  category_id: number;
+  category: string;
+  starts: number;
+  wins: number;
+  top5: number;
+  poles: number;
+  avg_start_position: number;
+  avg_finish_position: number;
+  laps: number;
+  laps_led: number;
+  avg_incidents: number;
+  avg_points: number;
+  win_percentage: number;
+  top5_percentage: number;
+  laps_led_percentage: number;
+  total_club_points: number;
+  poles_percentage: number;
+}
+export interface YearStats extends CareerStats {
+  year: number;
+}

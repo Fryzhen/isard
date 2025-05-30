@@ -17,6 +17,6 @@ export class LookupService {
 
   getLookupDrivers(search_term: string, league_id?: number): Observable<Driver[]> {
     const league_id_param = league_id ? `&league_id=${league_id}` : '';
-    return this.http.get<Driver[]>(`${this.baseUrl}/drivers?search_term=${search_term}${league_id_param}`)
+    return this.http.get<Driver[]>(`${this.baseUrl}/drivers?search_term=${search_term}${league_id_param}`);
   }
 }

@@ -3,6 +3,7 @@ import {Injectable} from '@angular/core';
 
 export interface INotification {
   message: string,
+
   type: NotificationType,
 }
 

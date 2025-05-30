@@ -34,8 +34,8 @@ export class MemberService {
     return this.http.get<{
       members: Member[]
     }>(`${this.baseUrl}/get?cust_ids=${cust_ids_strings}${include_licenses_param}`).pipe(
-      map((response: { members: Member[] }) => {
-        return response.members
+      map((response: {members: Member[]}) => {
+        return response.members;
       })
     );
   }

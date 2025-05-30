@@ -27,16 +27,16 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.notificationService.notifyRequest$
-    .pipe(
-      tap((notification: INotification) => {
-        this.notification = notification;
-        this.showNotification = true;
-      }),
-      debounceTime(3000),
-      tap(() => {
-        this.showNotification = false;
-      })
-    )
-    .subscribe();
+      .pipe(
+        tap((notification: INotification) => {
+          this.notification = notification;
+          this.showNotification = true;
+        }),
+        debounceTime(3000),
+        tap(() => {
+          this.showNotification = false;
+        })
+      )
+      .subscribe();
   }
 }

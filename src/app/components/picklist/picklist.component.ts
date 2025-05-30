@@ -1,8 +1,9 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {NgForOf, NgIf, NgStyle} from '@angular/common';
 
 interface PickListItems {
   name: string;
+
   id: number;
 }
 

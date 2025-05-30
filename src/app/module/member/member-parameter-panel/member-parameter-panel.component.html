@@ -1,24 +1,24 @@
 <div class="panel">
   <div class="btn-group">
     <button
-      type="button"
-      class="btn btn-primary"
+      (click)="changeDisplay(MemberScreenDisplay.LastRaces)"
       [class.active]="currentScreenDisplay === MemberScreenDisplay.LastRaces"
-      (click)="changeDisplay(MemberScreenDisplay.LastRaces)">
+      class="btn btn-primary"
+      type="button">
       Last Races
     </button>
     <button
-      type="button"
-      class="btn btn-primary"
+      (click)="changeDisplay(MemberScreenDisplay.GlobalStats)"
       [class.active]="currentScreenDisplay === MemberScreenDisplay.GlobalStats"
-      (click)="changeDisplay(MemberScreenDisplay.GlobalStats)">
+      class="btn btn-primary"
+      type="button">
       Global Stats
     </button>
     <button
-      type="button"
-      class="btn btn-primary"
+      (click)="changeDisplay(MemberScreenDisplay.YearlyStats)"
       [class.active]="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
-      (click)="changeDisplay(MemberScreenDisplay.YearlyStats)">
+      class="btn btn-primary"
+      type="button">
       Yearly Stats
     </button>
   </div>

@@ -1,7 +1,8 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <div class="navbar-logo">
-      <img alt="Logo d'Iracing" ngSrc="./assets/iracing/iRacing-Icon-Color-White.svg" height="72" width="{{72 * 486 / 372}}">
+      <img alt="Logo d'Iracing" height="72" ngSrc="./assets/iracing/iRacing-Icon-Color-White.svg"
+           width="{{72 * 486 / 372}}">
     </div>
     <a (click)="redirectTo([''])" class="navbar-brand">ISARD</a>
     <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
@@ -14,9 +15,9 @@
         <li class="nav-item">
           <a (click)="redirectTo([''])" class="nav-link">Home</a>
         </li>
-<!--        <li class="nav-item">-->
-<!--          <a (click)="redirectTo(['about'])" class="nav-link">About</a>-->
-<!--        </li>-->
+        <!--        <li class="nav-item">-->
+        <!--          <a (click)="redirectTo(['about'])" class="nav-link">About</a>-->
+        <!--        </li>-->
         <!--        <li class="nav-item dropdown">-->
         <!--          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">-->
         <!--            Dropdown-->
@@ -34,10 +35,10 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item dropdown">
           <isard-picklist
+            (itemClick)="onItemClick($event)"
+            (searchChange)="onSearch($event)"
             [items]="driversToItems(drivers)"
             [placeholder]="'Search Drivers'"
-            (searchChange)="onSearch($event)"
-            (itemClick)="onItemClick($event)"
           >
           </isard-picklist>
         </li>

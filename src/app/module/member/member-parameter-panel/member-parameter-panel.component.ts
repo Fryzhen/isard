@@ -9,7 +9,7 @@ import {MemberScreenDisplay} from '../member.component';
   styleUrl: './member-parameter-panel.component.scss'
 })
 export class MemberParameterPanelComponent {
-  @Input() currentScreenDisplay!: MemberScreenDisplay;
+  @Input() currentScreenDisplay!: MemberScreenDisplay | undefined;
   @Output() screenDisplayChange = new EventEmitter<MemberScreenDisplay>();
 
   protected readonly MemberScreenDisplay = MemberScreenDisplay;

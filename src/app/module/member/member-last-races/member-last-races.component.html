@@ -1,3 +1,54 @@
 <div class="panel">
-  <h4>Last Races</h4>
+  <h3>Last Races</h3>
+  <ng-container *ngIf="races">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Car</th>
+        <th scope="col">Track</th>
+        <th class="text-center" scope="col">Start</th>
+        <th class="text-center" scope="col">Finish</th>
+        <th class="text-center" scope="col">Pos Dif</th>
+        <th class="text-center" scope="col">Inc</th>
+        <th class="text-center" scope="col">IR Dif</th>
+        <th class="text-center" scope="col">SR Dif</th>
+        <th class="text-center" scope="col"></th>
+      </tr>
+      </thead>
+      <tbody>
+      <ng-container *ngFor="let race of races">
+        <tr>
+          <th scope="row">{{ race.session_start_time | date }}</th>
+          <td>{{ race.series_name }}</td>
+          <td>{{ race.track.track_name }}</td>
+          <td class="text-center">{{ race.start_position }}
+          </td>
+          <td class="text-center">{{ race.finish_position }}
+          </td>
+          <td
+            [ngClass]="{'positive': race.start_position > race.finish_position, 'negative': race.start_position < race.finish_position}"
+            class="text-center">
+            {{ race.start_position - race.finish_position }}
+          </td>
+          <td class="text-center">{{ race.incidents }}
+          </td>
+          <td
+            [ngClass]="{'positive': race.newi_rating > race.oldi_rating, 'negative': race.newi_rating < race.oldi_rating}"
+            class="text-center">
+            {{ race.newi_rating - race.oldi_rating }}
+          </td>
+          <td
+            [ngClass]="{'positive': race.new_sub_level > race.old_sub_level, 'negative': race.new_sub_level < race.old_sub_level}"
+            class="text-center">
+            {{ (race.new_sub_level - race.old_sub_level) / 100 }}
+          </td>
+          <td class="text-center">
+            <button type="button" class="btn btn-secondary" (click)="onClickResult(race)">Result</button>
+          </td>
+        </tr>
+      </ng-container>
+      </tbody>
+    </table>
+  </ng-container>
 </div>

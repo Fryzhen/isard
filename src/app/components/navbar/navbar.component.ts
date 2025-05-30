@@ -29,8 +29,8 @@ export class NavbarComponent {
   ) {
   }
 
-  redirectTo(route: string[]): void {
-    this.router.navigate(route).then();
+  redirectTo(route: string[]): Promise<boolean> {
+    return this.router.navigate(route);
   }
 
   onSearch(searchTerm: string): void {
@@ -53,6 +53,12 @@ export class NavbarComponent {
   }
 
   onItemClick(itemId: number): void {
-    this.redirectTo([`/member/${itemId}`]);
+    this.redirectTo([`/member/${itemId}`]).then((success: boolean) => {
+      if (success) {
+        this.drivers = [];
+      } else {
+        this.notificationService.error('Failed to navigate to the member page.');
+      }
+    })
   }
 }
