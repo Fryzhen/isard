@@ -54,6 +54,6 @@ export class PicklistComponent {
   }
 
   redirectTo(route: string[]): void {
-    this.router.navigate(route);
+    this.router.navigate(route).then();
   }
 }

@@ -13,7 +13,7 @@ import {debounceTime, tap} from 'rxjs/operators';
   styleUrls: ['./notification.component.scss']
 })
 export class NotificationComponent implements OnInit {
-  showNotification: boolean = false;
+  showNotification = false;
 
   notification: INotification = {
     message: '',

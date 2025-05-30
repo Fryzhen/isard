@@ -27,7 +27,7 @@ export class ResultsService {
   }
 
   searchSeries(cust_id: string, season_year: number, season_quarter: number, race_week_num: number, config?: SearchSeriesConfig): Promise<any> {
-    var configString = "";
+    let configString = '';
     if (config) {
       const series_id = config.series_id ? `&series_id=${config.series_id}` : '';
       const official_only = config.official_only ? `&official_only=${config.official_only}` : '';
@@ -37,7 +37,7 @@ export class ResultsService {
     }
     this.http.get(`${this.baseUrl}/search_series?cust_id=${cust_id}&season_year=${season_year}&season_quarter=${season_quarter}&race_week_num=${race_week_num}${configString}`)
     .subscribe((response) => {
-      return null
+      return response;
     });
   }
 }
