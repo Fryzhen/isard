@@ -1,11 +1,13 @@
 import {Component} from '@angular/core';
 import {BackgroundComponent} from '../../components/background/background.component';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   standalone: true,
   selector: 'isard-home',
   templateUrl: './home.component.html',
-  imports: [BackgroundComponent],
+  imports: [BackgroundComponent, TranslatePipe],
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
@@ -16,4 +18,13 @@ export class HomeComponent {
     './assets/background/w12-sunset.jpg',
     './assets/background/nascar-race.jpg',
   ];
+
+  constructor(
+    private titleService: Title,
+    private translateService: TranslateService,
+  ) {
+    this.translateService.get('Home.Title').subscribe((text: string) => {
+      this.titleService.setTitle(text);
+    });
+  }
 }

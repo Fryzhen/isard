@@ -9,14 +9,15 @@ import {NotificationService} from '../../services/app-services/notification.serv
 import {MemberInfoPanelComponent} from './member-info-panel/member-info-panel.component';
 import {MemberParameterPanelComponent} from './member-parameter-panel/member-parameter-panel.component';
 import {MemberLastRacesComponent} from './member-center-panel/member-last-races/member-last-races.component';
-import {MemberStatsGlobalComponent} from './member-center-panel/member-stats-global/member-stats-global.component';
+import {MemberStatsCareerComponent} from './member-center-panel/member-stats-career/member-stats-career.component';
 import {MemberStatsYearlyComponent} from './member-center-panel/member-stats-yearly/member-stats-yearly.component';
 import {LoadingScreenComponent} from '../../components/loading-screen/loading-screen.component';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 
 export enum MemberScreenDisplay {
   LastRaces,
   AllRaces,
-  GlobalStats,
+  CareerStats,
   YearlyStats,
 }
 
@@ -30,9 +31,10 @@ export enum MemberScreenDisplay {
     MemberInfoPanelComponent,
     MemberParameterPanelComponent,
     MemberLastRacesComponent,
-    MemberStatsGlobalComponent,
     MemberStatsYearlyComponent,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    TranslatePipe,
+    MemberStatsCareerComponent
   ],
 })
 export class MemberComponent implements OnInit {
@@ -47,6 +49,7 @@ export class MemberComponent implements OnInit {
     private loggerService: LoggerService,
     private notificationService: NotificationService,
     private titleService: Title,
+    private translateService: TranslateService,
   ) {
   }
 
@@ -58,15 +61,20 @@ export class MemberComponent implements OnInit {
           next: (member: Member) => {
             this.member = member;
             this.isCharging = false;
-            this.titleService.setTitle('ISARD : ' + this.member?.display_name);
             this.currentScreenDisplay = MemberScreenDisplay.LastRaces;
-            this.loggerService.log('Member loaded successfully');
+            this.translateService.get('Member.MainPanel.Title').subscribe((text: string) => {
+              this.titleService.setTitle(text + " : " + this.member?.display_name);
+            });
           },
           error: error => {
             this.isCharging = false;
-            this.titleService.setTitle('ISARD : Member not found');
             this.loggerService.error(error);
-            this.notificationService.error('Member not found, please check the ID or contact support.');
+            this.translateService.get('Member.Errors.MemberNotFoundTitle').subscribe((text: string) => {
+              this.titleService.setTitle(text);
+            });
+            this.translateService.get('Member.Errors.MemberNotFound').subscribe((text: string) => {
+              this.notificationService.error(text);
+            });
           }
         });
       }

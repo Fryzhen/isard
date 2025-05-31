@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
   selector: 'isard-loading-screen',
-  imports: [],
+  imports: [
+    TranslatePipe
+  ],
   templateUrl: './loading-screen.component.html',
   styleUrl: './loading-screen.component.scss'
 })

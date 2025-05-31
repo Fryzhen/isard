@@ -6,6 +6,8 @@ import {Driver} from '../../services/request-services/iracing-entities';
 import {LookupService} from '../../services/request-services/lookup.service';
 import {NotificationService} from '../../services/app-services/notification.service';
 import {LoggerService} from '../../services/app-services/logger.service';
+import {TranslatePipe} from '@ngx-translate/core';
+import {LanguageComponent} from '../language/language.component';
 
 @Component({
   standalone: true,
@@ -16,6 +18,8 @@ import {LoggerService} from '../../services/app-services/logger.service';
     CommonModule,
     NgOptimizedImage,
     PicklistComponent,
+    TranslatePipe,
+    LanguageComponent
   ]
 })
 export class NavbarComponent {

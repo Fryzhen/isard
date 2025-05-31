@@ -4,6 +4,8 @@ import {CommonModule, NgForOf} from '@angular/common';
 import {StatsService} from '../../../../services/request-services/stats.service';
 import {NotificationService} from '../../../../services/app-services/notification.service';
 import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
+import {TranslatePipe} from '@ngx-translate/core';
+import {LocalizedDatePipe} from '../../../../services/app-services/localized-date.pipe';
 
 @Component({
   standalone: true,
@@ -11,7 +13,9 @@ import {LoadingScreenComponent} from '../../../../components/loading-screen/load
   imports: [
     NgForOf,
     CommonModule,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    TranslatePipe,
+    LocalizedDatePipe
   ],
   templateUrl: './member-last-races.component.html',
   styleUrl: './member-last-races.component.scss'

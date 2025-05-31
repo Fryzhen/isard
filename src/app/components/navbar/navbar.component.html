@@ -1,19 +1,20 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
     <div class="navbar-logo">
-      <img alt="Logo d'Iracing" height="56" ngSrc="./assets/iracing/iRacing-Icon-Color-White.svg"
+      <img height="56" ngSrc="./assets/iracing/iRacing-Icon-Color-White.svg"
            width="{{56 * 486 / 372}}">
     </div>
-    <a (click)="redirectTo([''])" class="navbar-brand">ISARD</a>
-    <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+    <a (click)="redirectTo([''])" class="navbar-brand">{{ 'Components.Navbar.Title' | translate }}</a>
+    <button aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-label]='"Components.Navbar.LabelToggleMenu" | translate'
             class="navbar-toggler"
             data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <isard-language></isard-language>
         <li class="nav-item">
-          <a (click)="redirectTo([''])" class="nav-link">Home</a>
+          <a (click)="redirectTo([''])" class="nav-link">{{ 'Components.Navbar.Home' | translate }}</a>
         </li>
         <!--        <li class="nav-item">-->
         <!--          <a (click)="redirectTo(['about'])" class="nav-link">About</a>-->
@@ -38,7 +39,7 @@
             (itemClick)="onItemClick($event)"
             (searchChange)="onSearch($event)"
             [items]="driversToItems(drivers)"
-            [placeholder]="'Search Drivers'"
+            [placeholder]="'Components.Navbar.DriverSearchPlaceholder' | translate"
           >
           </isard-picklist>
         </li>

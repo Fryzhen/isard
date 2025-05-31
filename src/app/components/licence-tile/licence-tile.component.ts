@@ -3,6 +3,7 @@ import {NgClass, NgIf} from '@angular/common';
 import {License} from '../../services/request-services/iracing-entities';
 import {LicenceService} from '../../services/app-services/licence.service';
 import {IconComponent} from '../icon/icon.component';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
@@ -10,7 +11,8 @@ import {IconComponent} from '../icon/icon.component';
   imports: [
     NgClass,
     NgIf,
-    IconComponent
+    IconComponent,
+    TranslatePipe
   ],
   templateUrl: './licence-tile.component.html',
   styleUrl: './licence-tile.component.scss'
