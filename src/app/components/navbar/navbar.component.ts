@@ -34,15 +34,19 @@ export class NavbarComponent {
   }
 
   onSearch(searchTerm: string): void {
-    this.lookupService.getLookupDrivers(searchTerm).subscribe({
-      next: (drivers: Driver[]) => {
-        this.drivers = drivers;
-      },
-      error: (error: Error) => {
-        this.loggerService.error(error.message);
-        this.notificationService.error('Failed to load drivers. Please try again later.');
-      }
-    });
+    if (searchTerm !== '') {
+      this.lookupService.getLookupDrivers(searchTerm).subscribe({
+        next: (drivers: Driver[]) => {
+          this.drivers = drivers;
+        },
+        error: (error: Error) => {
+          this.loggerService.error(error.message);
+          this.notificationService.error('Failed to load drivers. Please try again later.');
+        }
+      });
+    } else {
+      this.drivers = [];
+    }
   }
 
   driversToItems(drivers: Driver[]) {
