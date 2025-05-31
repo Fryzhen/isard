@@ -1,0 +1,87 @@
+{
+  "Components": {
+    "LicenceTile": {
+      "Irating": "IR",
+      "SafetyRating": "SR"
+    },
+    "Loading": {
+      "LoadingText": "Chargement en cours"
+    },
+    "Navbar": {
+      "Title": "ISACP",
+      "LabelToggleMenu": "Activer la navigation",
+      "Home": "Accueil",
+      "DriverSearchPlaceholder": "Rechercher un pilote"
+    }
+  },
+  "Home": {
+    "Title": "ISACP",
+    "SubTitle": "IRacing Statistiques et Analyses des Courses et Pilotes"
+  },
+  "Member": {
+    "Errors": {
+      "NoDriver": "Aucun pilote trouvé",
+      "CheckId": "Veuillez vérifier l'ID que vous avez entré.",
+      "MemberNotFound": "Membre non trouvé, veuillez vérifier l'ID ou contactez le support.",
+      "MemberNotFoundTitle": "ISACP : Membre non trouvé"
+    },
+    "MainPanel": {
+      "Title": "ISACP"
+    },
+    "InfoPanel": {
+      "LastConnection":"Dernière connection"
+    },
+    "ParameterPanel": {
+      "LastRaces": "Courses Récentes",
+      "CareerStats": "Stats Globales",
+      "YearlyStats": "Stats Par Année"
+    },
+    "LastRacesPanel": {
+      "Title": "Courses Récentes",
+      "Table": {
+        "Date": "Date",
+        "Car": "Voiture",
+        "Track": "Circuit",
+        "Start": "Pos Départ",
+        "Finish": "Pos Arrivée",
+        "PosDif": "Dif",
+        "Incidents": "Inc",
+        "IrDif": "IR Dif",
+        "SrDif": "SR Dif",
+        "Result": "Résultat"
+      }
+    },
+    "CareerPanel": {
+      "Title": "Stats Globales",
+      "Table": {
+        "Category": "Catégorie",
+        "Starts": "Départs",
+        "Wins": "Victoires",
+        "Top5": "Top5",
+        "Poles": "Poles",
+        "AverageStart": "Moy Départ",
+        "AverageFinish": "Moy Arrivée",
+        "AverageIncidents": "Moy Incidents",
+        "WinPercentage": "Victoire %",
+        "Top5Percentage": "Top 5 %",
+        "PolePercentage": "Poles %"
+      }
+    },
+    "YearlyPanel": {
+      "Title": "Stats Par Année",
+      "Table": {
+        "Category": "Catégorie",
+        "Starts": "Départs",
+        "Wins": "Victoires",
+        "Top5": "Top5",
+        "Poles": "Poles",
+        "AverageStart": "Moy Départ",
+        "AverageFinish": "Moy Arrivée",
+        "AverageIncidents": "Moy Incidents",
+        "WinPercentage": "Victoire %",
+        "Top5Percentage": "Top 5 %",
+        "PolePercentage": "Poles %"
+      }
+    }
+  }
+}

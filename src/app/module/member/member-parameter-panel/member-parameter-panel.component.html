@@ -5,21 +5,21 @@
       [class.active]="currentScreenDisplay === MemberScreenDisplay.LastRaces"
       class="btn btn-primary"
       type="button">
-      Last Races
+      {{ 'Member.ParameterPanel.LastRaces' | translate }}
     </button>
     <button
-      (click)="changeDisplay(MemberScreenDisplay.GlobalStats)"
-      [class.active]="currentScreenDisplay === MemberScreenDisplay.GlobalStats"
+      (click)="changeDisplay(MemberScreenDisplay.CareerStats)"
+      [class.active]="currentScreenDisplay === MemberScreenDisplay.CareerStats"
       class="btn btn-primary"
       type="button">
-      Global Stats
+      {{ 'Member.ParameterPanel.CareerStats' | translate }}
     </button>
     <button
       (click)="changeDisplay(MemberScreenDisplay.YearlyStats)"
       [class.active]="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
       class="btn btn-primary"
       type="button">
-      Yearly Stats
+      {{ 'Member.ParameterPanel.YearlyStats' | translate }}
     </button>
   </div>
 </div>

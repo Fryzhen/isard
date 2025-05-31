@@ -5,6 +5,7 @@ import {NgForOf, NgIf} from '@angular/common';
 import {StatsService} from '../../../../services/request-services/stats.service';
 import {LicenceService} from '../../../../services/app-services/licence.service';
 import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
+import {TranslatePipe} from '@ngx-translate/core';
 
 @Component({
   standalone: true,
@@ -13,7 +14,8 @@ import {LoadingScreenComponent} from '../../../../components/loading-screen/load
     IconComponent,
     NgForOf,
     NgIf,
-    LoadingScreenComponent
+    LoadingScreenComponent,
+    TranslatePipe
   ],
   templateUrl: './member-stats-yearly.component.html',
   styleUrl: './member-stats-yearly.component.scss'

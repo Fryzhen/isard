@@ -7,10 +7,10 @@ import {debounceTime, tap} from 'rxjs/operators';
   standalone: true,
   selector: 'isard-notification',
   templateUrl: './notification.component.html',
+  styleUrls: ['./notification.component.scss'],
   imports: [
     CommonModule,
-  ],
-  styleUrls: ['./notification.component.scss']
+  ]
 })
 export class NotificationComponent implements OnInit {
   showNotification = false;

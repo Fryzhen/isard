@@ -2,6 +2,7 @@
 
 .navbar {
   z-index: 5;
+  display: flex;
   background-color: $ir-blue-alt !important;
 
   .navbar-logo {
@@ -9,7 +10,7 @@
     align-items: center !important;
     justify-content: center !important;
     flex-direction: row !important;
-    margin: -8px 12px -8px -12px !important;
+    margin-right: 12px
   }
 
   .navbar-toggler {

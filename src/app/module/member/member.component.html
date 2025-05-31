@@ -12,8 +12,8 @@
       <div class="center">
         <isard-member-last-races *ngIf="currentScreenDisplay === MemberScreenDisplay.LastRaces"
                                  [member]="member"></isard-member-last-races>
-        <isard-member-stats-global *ngIf="currentScreenDisplay === MemberScreenDisplay.GlobalStats"
-                                   [member]="member"></isard-member-stats-global>
+        <isard-member-stats-career *ngIf="currentScreenDisplay === MemberScreenDisplay.CareerStats"
+                                   [member]="member"></isard-member-stats-career>
         <isard-member-stats-yearly *ngIf="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
                                    [member]="member"></isard-member-stats-yearly>
       </div>
@@ -23,8 +23,8 @@
 
 <ng-template #memberNoExist>
   <div class="center-screen">
-    <h3>No drivers found.</h3>
-    <p>Please check the ID you entered.</p>
+    <h3>{{ 'Member.Errors.NoDriver' | translate }}</h3>
+    <p>{{ 'Member.Errors.CheckId' | translate }}</p>
   </div>
 </ng-template>
 

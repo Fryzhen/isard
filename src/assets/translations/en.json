@@ -1,0 +1,87 @@
+{
+  "Components": {
+    "LicenceTile": {
+      "Irating": "IR",
+      "SafetyRating": "SR"
+    },
+    "Loading": {
+      "LoadingText": "Loading"
+    },
+    "Navbar": {
+      "Title": "ISARD",
+      "LabelToggleMenu": "Toggle navigation",
+      "Home": "Home",
+      "DriverSearchPlaceholder": "Search a Driver"
+    }
+  },
+  "Home": {
+    "Title": "ISARD",
+    "SubTitle": "IRacing Statistics and Analysis of Races and Drivers"
+  },
+  "Member": {
+    "Errors": {
+      "NoDriver": "No drivers found.",
+      "CheckId": "Please check the ID you entered.",
+      "MemberNotFound": "Member not found, please check the ID or contact support.",
+      "MemberNotFoundTitle": "ISARD : Member not found"
+    },
+    "MainPanel": {
+      "Title": "ISARD"
+    },
+    "InfoPanel": {
+      "LastConnection":"Last Connection"
+    },
+    "ParameterPanel": {
+      "LastRaces": "Last Races",
+      "CareerStats": "Career Stats",
+      "YearlyStats": "Yearly Stats"
+    },
+    "LastRacesPanel": {
+      "Title": "Last Races",
+      "Table": {
+        "Date": "Date",
+        "Car": "Car",
+        "Track": "Track",
+        "Start": "Start",
+        "Finish": "Finish",
+        "PosDif": "Pos Dif",
+        "Incidents": "Inc",
+        "IrDif": "IR Dif",
+        "SrDif": "SR Dif",
+        "Result": "Result"
+      }
+    },
+    "CareerPanel": {
+      "Title": "Carrer Stats",
+      "Table": {
+        "Category": "Category",
+        "Starts": "Starts",
+        "Wins": "Wins",
+        "Top5": "Top5",
+        "Poles": "Poles",
+        "AverageStart": "Avg Start",
+        "AverageFinish": "Avg Finish",
+        "AverageIncidents": "Avg Inc",
+        "WinPercentage": "Win %",
+        "Top5Percentage": "Top 5 %",
+        "PolePercentage": "Poles %"
+      }
+    },
+    "YearlyPanel": {
+      "Title": "Yearly Stats",
+      "Table": {
+        "Category": "Category",
+        "Starts": "Starts",
+        "Wins": "Wins",
+        "Top5": "Top5",
+        "Poles": "Poles",
+        "AverageStart": "Avg Start",
+        "AverageFinish": "Avg Finish",
+        "AverageIncidents": "Avg Inc",
+        "WinPercentage": "Win %",
+        "Top5Percentage": "Top 5 %",
+        "PolePercentage": "Poles %"
+      }
+    }
+  }
+}

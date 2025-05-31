@@ -3,7 +3,6 @@ import {NgForOf, NgIf, NgStyle} from '@angular/common';
 
 interface PickListItems {
   name: string;
-
   id: number;
 }
 
@@ -32,17 +31,17 @@ export class PicklistComponent {
     if (this.debounceTimeout) {
       clearTimeout(this.debounceTimeout);
     }
-    if (inputElement.value.length >= 1) {
+    if (inputElement.value.length > 0) {
       this.debounceTimeout = setTimeout(() => {
         this.searchChange.emit(inputElement.value);
       }, 500);
     } else {
-      this.items = [];
+      this.searchChange.emit(inputElement.value);
     }
   }
 
   onItemClick(id: number): void {
-    this.items = []; // Clear items after selection
+    this.items = [];
     this.itemClick.emit(id);
   }
 }
