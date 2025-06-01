@@ -5,14 +5,14 @@
       <thead>
       <tr>
         <th scope="col">{{ 'Member.LastRacesPanel.Table.Date' | translate }}</th>
-        <th scope="col">{{ 'Member.LastRacesPanel.Table.Car'| translate}}</th>
-        <th scope="col">{{ 'Member.LastRacesPanel.Table.Track'| translate}}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Start'| translate}}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Finish'| translate}}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.PosDif'| translate}}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Incidents'| translate}}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.IrDif'| translate}}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.SrDif'| translate}}</th>
+        <th scope="col">{{ 'Member.LastRacesPanel.Table.Car'| translate }}</th>
+        <th scope="col">{{ 'Member.LastRacesPanel.Table.Track'| translate }}</th>
+        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Start'| translate }}</th>
+        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Finish'| translate }}</th>
+        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.PosDif'| translate }}</th>
+        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Incidents'| translate }}</th>
+        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.IrDif'| translate }}</th>
+        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.SrDif'| translate }}</th>
         <th class="text-center" scope="col"></th>
       </tr>
       </thead>
@@ -44,7 +44,9 @@
             {{ (race.new_sub_level - race.old_sub_level) / 100 }}
           </td>
           <td class="text-center">
-            <button type="button" class="btn btn-secondary" (click)="onClickResult(race)">{{ 'Member.LastRacesPanel.Table.Result'| translate}}</button>
+            <button (click)="onClickResult(race)" class="btn btn-secondary"
+                    type="button">{{ 'Member.LastRacesPanel.Table.Result'| translate }}
+            </button>
           </td>
         </tr>
       </ng-container>

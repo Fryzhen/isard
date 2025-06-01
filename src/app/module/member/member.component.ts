@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MemberService} from '../../services/request-services/member.service';
-import {Member} from '../../services/request-services/iracing-entities';
+import {CareerStats, Member, Race, YearStats} from '../../services/request-services/iracing-entities';
 import {Title} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {LoggerService} from '../../services/app-services/logger.service';
@@ -13,12 +13,19 @@ import {MemberStatsCareerComponent} from './member-center-panel/member-stats-car
 import {MemberStatsYearlyComponent} from './member-center-panel/member-stats-yearly/member-stats-yearly.component';
 import {LoadingScreenComponent} from '../../components/loading-screen/loading-screen.component';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
+import {StatsService} from '../../services/request-services/stats.service';
 
 export enum MemberScreenDisplay {
   LastRaces,
   AllRaces,
   CareerStats,
   YearlyStats,
+}
+
+export interface CenterPanelRequest {
+  lastRaces: Race[] | undefined;
+  careerStats: CareerStats[] | undefined;
+  yearlyStats: YearStats[] | undefined;
 }
 
 @Component({
@@ -38,8 +45,10 @@ export enum MemberScreenDisplay {
   ],
 })
 export class MemberComponent implements OnInit {
-  member?: Member = undefined;
   isCharging = true;
+  member?: Member = undefined;
+  centerPanelRequest: CenterPanelRequest;
+
   currentScreenDisplay: MemberScreenDisplay | undefined = MemberScreenDisplay.LastRaces;
   protected readonly MemberScreenDisplay = MemberScreenDisplay;
 
@@ -50,32 +59,42 @@ export class MemberComponent implements OnInit {
     private notificationService: NotificationService,
     private titleService: Title,
     private translateService: TranslateService,
+    private statsService: StatsService,
   ) {
+    this.centerPanelRequest = {
+      lastRaces: undefined,
+      yearlyStats: undefined,
+      careerStats: undefined
+    } as CenterPanelRequest;
   }
 
   ngOnInit(): void {
     this.route.params.subscribe(val => {
       this.isCharging = true;
       if (val['memberId']) {
-        this.memberService.getMember(+val['memberId'], true).subscribe({
-          next: (member: Member) => {
-            this.member = member;
-            this.isCharging = false;
-            this.currentScreenDisplay = MemberScreenDisplay.LastRaces;
-            this.translateService.get('Member.MainPanel.Title').subscribe((text: string) => {
-              this.titleService.setTitle(text + " : " + this.member?.display_name);
-            });
-          },
-          error: error => {
-            this.isCharging = false;
-            this.loggerService.error(error);
-            this.translateService.get('Member.Errors.MemberNotFoundTitle').subscribe((text: string) => {
-              this.titleService.setTitle(text);
-            });
-            this.translateService.get('Member.Errors.MemberNotFound').subscribe((text: string) => {
-              this.notificationService.error(text);
-            });
-          }
+        this.getMember(+val['memberId']);
+      }
+    });
+  }
+
+  getMember(memberId: number): void {
+    this.memberService.getMember(memberId, true).subscribe({
+      next: (member: Member) => {
+        this.member = member;
+        this.isCharging = false;
+        this.setDisplay(MemberScreenDisplay.LastRaces);
+        this.translateService.get('Member.MainPanel.Title').subscribe((text: string) => {
+          this.titleService.setTitle(text + " : " + this.member?.display_name);
+        });
+      },
+      error: error => {
+        this.isCharging = false;
+        this.loggerService.error(error);
+        this.translateService.get('Member.Errors.MemberNotFoundTitle').subscribe((text: string) => {
+          this.titleService.setTitle(text);
+        });
+        this.translateService.get('Member.Errors.MemberNotFound').subscribe((text: string) => {
+          this.notificationService.error(text);
         });
       }
     });
@@ -83,6 +102,38 @@ export class MemberComponent implements OnInit {
 
   setDisplay(screen: MemberScreenDisplay): void {
     this.currentScreenDisplay = screen;
+    if (this.member?.cust_id) {
+      if (screen === MemberScreenDisplay.LastRaces && this.centerPanelRequest.lastRaces === undefined) {
+        this.getLastRace(this.member?.cust_id);
+      } else if (screen === MemberScreenDisplay.CareerStats && this.centerPanelRequest.careerStats === undefined) {
+        this.getCareerStats(this.member?.cust_id);
+      } else if (screen === MemberScreenDisplay.YearlyStats && this.centerPanelRequest.yearlyStats === undefined) {
+        this.getYearlyStats(this.member?.cust_id);
+      }
+    }
   }
 
+  private getLastRace(memberId: number) {
+    this.statsService.getRecentRaces(memberId).subscribe({
+      next: (races: Race[]) => {
+        this.centerPanelRequest.lastRaces = races;
+      }
+    });
+  }
+
+  private getCareerStats(memberId: number) {
+    this.statsService.getCareerStats(memberId).subscribe({
+      next: (stats: CareerStats[]) => {
+        this.centerPanelRequest.careerStats = stats;
+      }
+    });
+  }
+
+  private getYearlyStats(memberId: number) {
+    this.statsService.getYearlyStats(memberId).subscribe({
+      next: (stats: YearStats[]) => {
+        this.centerPanelRequest.yearlyStats = stats;
+      }
+    });
+  }
 }

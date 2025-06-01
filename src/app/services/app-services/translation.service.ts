@@ -33,5 +33,4 @@ export class TranslationService {
   public getLanguage() {
     return this.selectedLanguage;
   }
-
 }

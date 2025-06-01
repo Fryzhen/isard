@@ -11,7 +11,9 @@
       "Title": "ISARD",
       "LabelToggleMenu": "Toggle navigation",
       "Home": "Home",
-      "DriverSearchPlaceholder": "Search a Driver"
+      "DriverSearchPlaceholder": "Search a Driver",
+      "ErrorFailLoad": "Failed to load drivers. Please try again later.",
+      "ErrorFailNavigate": "Failed to navigate to the member page."
     }
   },
   "Home": {
@@ -29,7 +31,7 @@
       "Title": "ISARD"
     },
     "InfoPanel": {
-      "LastConnection":"Last Connection"
+      "LastConnection": "Last Connection"
     },
     "ParameterPanel": {
       "LastRaces": "Last Races",

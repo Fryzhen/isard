@@ -11,7 +11,9 @@
       "Title": "ISACP",
       "LabelToggleMenu": "Activer la navigation",
       "Home": "Accueil",
-      "DriverSearchPlaceholder": "Rechercher un pilote"
+      "DriverSearchPlaceholder": "Rechercher un pilote",
+      "ErrorFailLoad": "Impossible de charger les pilotes. Essayez plus tard.",
+      "ErrorFailNavigate": "Impossible de naviguer jusqu'à la page du membre."
     }
   },
   "Home": {
@@ -29,7 +31,7 @@
       "Title": "ISACP"
     },
     "InfoPanel": {
-      "LastConnection":"Dernière connection"
+      "LastConnection": "Dernière connection"
     },
     "ParameterPanel": {
       "LastRaces": "Courses Récentes",

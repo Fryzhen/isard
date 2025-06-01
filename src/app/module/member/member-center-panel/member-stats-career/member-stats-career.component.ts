@@ -1,8 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Member} from '../../../../services/request-services/iracing-entities';
-import {NgForOf, NgIf} from '@angular/common';
-import {StatsService} from '../../../../services/request-services/stats.service';
+import {Component, Input} from '@angular/core';
 import {CareerStats} from '../../../../services/request-services/iracing-entities';
+import {NgForOf, NgIf} from '@angular/common';
 import {IconComponent} from '../../../../components/icon/icon.component';
 import {LicenceService} from '../../../../services/app-services/licence.service';
 import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
@@ -21,22 +19,12 @@ import {TranslatePipe} from '@ngx-translate/core';
   templateUrl: './member-stats-career.component.html',
   styleUrl: './member-stats-career.component.scss'
 })
-export class MemberStatsCareerComponent implements OnInit {
-  @Input() member!: Member;
-  stats: CareerStats[] | undefined = undefined;
+export class MemberStatsCareerComponent {
+  @Input() stats: CareerStats[] | undefined = undefined;
 
   constructor(
-    private statsService: StatsService,
     private licenceService: LicenceService
   ) {
-  }
-
-  ngOnInit(): void {
-    this.statsService.getCareerStats(this.member.cust_id).subscribe({
-      next: (stats: CareerStats[]) => {
-        this.stats = stats;
-      }
-    });
   }
 
   getIcon(category_id: number) {

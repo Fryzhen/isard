@@ -1,8 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Member, YearStats} from '../../../../services/request-services/iracing-entities';
+import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
+import {YearStats} from '../../../../services/request-services/iracing-entities';
 import {IconComponent} from '../../../../components/icon/icon.component';
 import {NgForOf, NgIf} from '@angular/common';
-import {StatsService} from '../../../../services/request-services/stats.service';
 import {LicenceService} from '../../../../services/app-services/licence.service';
 import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
 import {TranslatePipe} from '@ngx-translate/core';
@@ -20,31 +19,25 @@ import {TranslatePipe} from '@ngx-translate/core';
   templateUrl: './member-stats-yearly.component.html',
   styleUrl: './member-stats-yearly.component.scss'
 })
-export class MemberStatsYearlyComponent implements OnInit {
-  @Input() member!: Member;
-  stats: YearStats[] | undefined = undefined;
+export class MemberStatsYearlyComponent implements OnChanges {
+  @Input() stats: YearStats[] | undefined = undefined;
   years: number[] = [];
 
   constructor(
-    private statsService: StatsService,
     private licenceService: LicenceService
   ) {
   }
 
-  ngOnInit(): void {
-    this.statsService.getYearlyStats(this.member.cust_id).subscribe({
-      next: (stats: YearStats[]) => {
-        this.stats = stats;
-        this.years = [...new Set(stats.map((s: YearStats) => s.year).sort((a, b) => b - a))];
-      }
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    this.years = [...new Set(this.stats?.map((s: YearStats) => s.year).sort((a, b) => b - a))]
   }
 
   getIcon(category_id: number) {
     return this.licenceService.getLicenceIcon(category_id);
   }
 
-  getYearStats(year: number): YearStats[]{
+  getYearStats(year: number): YearStats[] {
     return this.stats?.filter((s: YearStats) => s.year === year) ?? [];
   }
 }

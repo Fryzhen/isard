@@ -109,6 +109,7 @@ export interface CareerStats {
   total_club_points: number;
   poles_percentage: number;
 }
+
 export interface YearStats extends CareerStats {
   year: number;
 }

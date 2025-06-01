@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {NgOptimizedImage} from '@angular/common';
 
 @Component({
   standalone: true,

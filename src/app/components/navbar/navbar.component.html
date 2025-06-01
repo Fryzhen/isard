@@ -5,7 +5,8 @@
            width="{{56 * 486 / 372}}">
     </div>
     <a (click)="redirectTo([''])" class="navbar-brand">{{ 'Components.Navbar.Title' | translate }}</a>
-    <button aria-controls="navbarSupportedContent" aria-expanded="false" [attr.aria-label]='"Components.Navbar.LabelToggleMenu" | translate'
+    <button [attr.aria-label]='"Components.Navbar.LabelToggleMenu" | translate' aria-controls="navbarSupportedContent"
+            aria-expanded="false"
             class="navbar-toggler"
             data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
       <span class="navbar-toggler-icon"></span>

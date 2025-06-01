@@ -11,11 +11,11 @@
       </div>
       <div class="center">
         <isard-member-last-races *ngIf="currentScreenDisplay === MemberScreenDisplay.LastRaces"
-                                 [member]="member"></isard-member-last-races>
+                                 [races]="centerPanelRequest.lastRaces"></isard-member-last-races>
         <isard-member-stats-career *ngIf="currentScreenDisplay === MemberScreenDisplay.CareerStats"
-                                   [member]="member"></isard-member-stats-career>
+                                   [stats]="centerPanelRequest.careerStats"></isard-member-stats-career>
         <isard-member-stats-yearly *ngIf="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
-                                   [member]="member"></isard-member-stats-yearly>
+                                   [stats]="centerPanelRequest.yearlyStats"></isard-member-stats-yearly>
       </div>
     </div>
   </ng-container>

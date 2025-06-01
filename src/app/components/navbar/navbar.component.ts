@@ -6,7 +6,7 @@ import {Driver} from '../../services/request-services/iracing-entities';
 import {LookupService} from '../../services/request-services/lookup.service';
 import {NotificationService} from '../../services/app-services/notification.service';
 import {LoggerService} from '../../services/app-services/logger.service';
-import {TranslatePipe} from '@ngx-translate/core';
+import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {LanguageComponent} from '../language/language.component';
 
 @Component({
@@ -29,7 +29,8 @@ export class NavbarComponent {
     private router: Router,
     private lookupService: LookupService,
     private notificationService: NotificationService,
-    private loggerService: LoggerService
+    private loggerService: LoggerService,
+    private translateService: TranslateService,
   ) {
   }
 
@@ -45,7 +46,9 @@ export class NavbarComponent {
         },
         error: (error: Error) => {
           this.loggerService.error(error.message);
-          this.notificationService.error('Failed to load drivers. Please try again later.');
+          this.translateService.get('Components.NavBar.ErrorFailLoad').subscribe((text: string) => {
+            this.notificationService.error(text);
+          });
         }
       });
     } else {
@@ -65,7 +68,9 @@ export class NavbarComponent {
       if (success) {
         this.drivers = [];
       } else {
-        this.notificationService.error('Failed to navigate to the member page.');
+        this.translateService.get('Components.NavBar.ErrorFailNavigate').subscribe((text: string) => {
+          this.notificationService.error(text);
+        });
       }
     })
   }
