@@ -1,12 +1,14 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MemberScreenDisplay} from '../member.component';
 import {TranslatePipe} from '@ngx-translate/core';
+import {BoxComponent} from '../../../components/box/box.component';
 
 @Component({
   standalone: true,
   selector: 'isard-member-parameter-panel',
   imports: [
-    TranslatePipe
+    TranslatePipe,
+    BoxComponent
   ],
   templateUrl: './member-parameter-panel.component.html',
   styleUrl: './member-parameter-panel.component.scss'

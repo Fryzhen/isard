@@ -1,4 +1,4 @@
-<div class="panel">
+<isard-box>
   <h3>{{ 'Member.YearlyPanel.Title' | translate }}</h3>
   <ng-container *ngIf="stats; else pageCharging">
     <ng-container *ngFor="let year of years">
@@ -48,7 +48,7 @@
       </table>
     </ng-container>
   </ng-container>
-</div>
+</isard-box>
 <ng-template #pageCharging>
   <isard-loading-screen></isard-loading-screen>
 </ng-template>

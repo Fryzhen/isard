@@ -4,6 +4,7 @@ import {LicenceTileComponent} from '../../../components/licence-tile/licence-til
 import {Member} from '../../../services/request-services/iracing-entities';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LocalizedDatePipe} from '../../../services/app-services/localized-date.pipe';
+import {BoxComponent} from '../../../components/box/box.component';
 
 @Component({
   standalone: true,
@@ -13,7 +14,8 @@ import {LocalizedDatePipe} from '../../../services/app-services/localized-date.p
     NgForOf,
     NgIf,
     TranslatePipe,
-    LocalizedDatePipe
+    LocalizedDatePipe,
+    BoxComponent
   ],
   templateUrl: './member-info-panel.component.html',
   styleUrl: './member-info-panel.component.scss'

@@ -5,6 +5,7 @@ import {IconComponent} from '../../../../components/icon/icon.component';
 import {LicenceService} from '../../../../services/app-services/licence.service';
 import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
 import {TranslatePipe} from '@ngx-translate/core';
+import {BoxComponent} from '../../../../components/box/box.component';
 
 @Component({
   standalone: true,
@@ -14,7 +15,8 @@ import {TranslatePipe} from '@ngx-translate/core';
     NgIf,
     IconComponent,
     LoadingScreenComponent,
-    TranslatePipe
+    TranslatePipe,
+    BoxComponent
   ],
   templateUrl: './member-stats-career.component.html',
   styleUrl: './member-stats-career.component.scss'

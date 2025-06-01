@@ -5,6 +5,7 @@ import {NotificationService} from '../../../../services/app-services/notificatio
 import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
 import {TranslatePipe} from '@ngx-translate/core';
 import {LocalizedDatePipe} from '../../../../services/app-services/localized-date.pipe';
+import {BoxComponent} from '../../../../components/box/box.component';
 
 @Component({
   standalone: true,
@@ -14,7 +15,8 @@ import {LocalizedDatePipe} from '../../../../services/app-services/localized-dat
     CommonModule,
     LoadingScreenComponent,
     TranslatePipe,
-    LocalizedDatePipe
+    LocalizedDatePipe,
+    BoxComponent
   ],
   templateUrl: './member-last-races.component.html',
   styleUrl: './member-last-races.component.scss'
