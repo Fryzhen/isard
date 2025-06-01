@@ -29,7 +29,8 @@
       "CheckId": "Please check the ID you entered.",
       "MemberNotFound": "Member not found, please check the ID or contact support.",
       "MemberNotFoundTitle": "ISARD : Member not found",
-      "ImpossibleGetDrivers": "The drivers could not be loaded."
+      "ImpossibleGetDrivers": "The drivers could not be loaded.",
+      "ImpossibleGetData": "The data could not be loaded"
     },
     "Research": {
       "Title": "Research a Driver"
@@ -43,7 +44,8 @@
     "ParameterPanel": {
       "LastRaces": "Last Races",
       "CareerStats": "Career Stats",
-      "YearlyStats": "Yearly Stats"
+      "YearlyStats": "Yearly Stats",
+      "AllRaces": "All Races"
     },
     "LastRacesPanel": {
       "Title": "Last Races",

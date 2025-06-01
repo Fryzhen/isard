@@ -1,19 +1,24 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {MemberService} from '../../../services/request-services/member.service';
-import {CareerStats, Member, Race, YearStats} from '../../../services/request-services/iracing-entities';
+import {CareerStats, Member, Race, RecentRace, YearStats} from '../../../services/request-services/iracing-entities';
 import {Title} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
 import {LoggerService} from '../../../services/app-services/logger.service';
 import {NotificationService} from '../../../services/app-services/notification.service';
 import {MemberInfoPanelComponent} from './member-info-panel/member-info-panel.component';
-import {MemberParameterPanelComponent} from './member-parameter-panel/member-parameter-panel.component';
+import {
+  MemberParameterPanel,
+  MemberParameterPanelComponent
+} from './member-parameter-panel/member-parameter-panel.component';
 import {MemberLastRacesComponent} from './member-center-panel/member-last-races/member-last-races.component';
 import {MemberStatsCareerComponent} from './member-center-panel/member-stats-career/member-stats-career.component';
 import {MemberStatsYearlyComponent} from './member-center-panel/member-stats-yearly/member-stats-yearly.component';
 import {LoadingScreenComponent} from '../../../components/loading-screen/loading-screen.component';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
 import {StatsService} from '../../../services/request-services/stats.service';
+import {MemberAllRacesComponent} from './member-center-panel/member-all-races/member-all-races.component';
+import {ResultsService, SearchSeriesConfig} from '../../../services/request-services/results.service';
 
 export enum MemberScreenDisplay {
   LastRaces,
@@ -23,7 +28,8 @@ export enum MemberScreenDisplay {
 }
 
 export interface CenterPanelRequest {
-  lastRaces: Race[] | undefined;
+  allRaces: Race[] | undefined;
+  lastRaces: RecentRace[] | undefined;
   careerStats: CareerStats[] | undefined;
   yearlyStats: YearStats[] | undefined;
 }
@@ -41,7 +47,8 @@ export interface CenterPanelRequest {
     MemberStatsYearlyComponent,
     LoadingScreenComponent,
     TranslatePipe,
-    MemberStatsCareerComponent
+    MemberStatsCareerComponent,
+    MemberAllRacesComponent
   ],
 })
 export class MemberByIdComponent implements OnInit {
@@ -60,6 +67,7 @@ export class MemberByIdComponent implements OnInit {
     private titleService: Title,
     private translateService: TranslateService,
     private statsService: StatsService,
+    private resultService: ResultsService
   ) {
     this.centerPanelRequest = {
       lastRaces: undefined,
@@ -82,7 +90,7 @@ export class MemberByIdComponent implements OnInit {
       next: (member: Member) => {
         this.member = member;
         this.isCharging = false;
-        this.setDisplay(MemberScreenDisplay.LastRaces);
+        this.setDisplay({screen: MemberScreenDisplay.LastRaces} as MemberParameterPanel);
         this.translateService.get('Member.MainPanel.Title').subscribe((text: string) => {
           this.titleService.setTitle(text + " : " + this.member?.display_name);
         });
@@ -100,23 +108,31 @@ export class MemberByIdComponent implements OnInit {
     });
   }
 
-  setDisplay(screen: MemberScreenDisplay): void {
-    this.currentScreenDisplay = screen;
+  setDisplay(parameters: MemberParameterPanel): void {
+    this.currentScreenDisplay = parameters.screen;
     if (this.member?.cust_id) {
-      if (screen === MemberScreenDisplay.LastRaces && this.centerPanelRequest.lastRaces === undefined) {
-        this.getLastRace(this.member?.cust_id);
-      } else if (screen === MemberScreenDisplay.CareerStats && this.centerPanelRequest.careerStats === undefined) {
+      if (parameters.screen === MemberScreenDisplay.LastRaces && this.centerPanelRequest.lastRaces === undefined) {
+        this.getLastRaces(this.member?.cust_id);
+      } else if (parameters.screen === MemberScreenDisplay.CareerStats && this.centerPanelRequest.careerStats === undefined) {
         this.getCareerStats(this.member?.cust_id);
-      } else if (screen === MemberScreenDisplay.YearlyStats && this.centerPanelRequest.yearlyStats === undefined) {
+      } else if (parameters.screen === MemberScreenDisplay.YearlyStats && this.centerPanelRequest.yearlyStats === undefined) {
         this.getYearlyStats(this.member?.cust_id);
+      } else if (parameters.screen === MemberScreenDisplay.AllRaces && this.centerPanelRequest.allRaces === undefined) {
+        this.getAllRaces(this.member?.cust_id, 2025, 2)
       }
     }
   }
 
-  private getLastRace(memberId: number) {
+  private getLastRaces(memberId: number) {
     this.statsService.getRecentRaces(memberId).subscribe({
-      next: (races: Race[]) => {
+      next: (races: RecentRace[]) => {
         this.centerPanelRequest.lastRaces = races;
+      },
+      error: (error: string) => {
+        this.translateService.get('Components.NavBar.ImpossibleGetData').subscribe((text: string) => {
+          this.notificationService.error(text);
+        });
+        this.loggerService.error(error);
       }
     });
   }
@@ -125,6 +141,12 @@ export class MemberByIdComponent implements OnInit {
     this.statsService.getCareerStats(memberId).subscribe({
       next: (stats: CareerStats[]) => {
         this.centerPanelRequest.careerStats = stats;
+      },
+      error: (error: string) => {
+        this.translateService.get('Components.NavBar.ImpossibleGetData').subscribe((text: string) => {
+          this.notificationService.error(text);
+        });
+        this.loggerService.error(error);
       }
     });
   }
@@ -133,7 +155,27 @@ export class MemberByIdComponent implements OnInit {
     this.statsService.getYearlyStats(memberId).subscribe({
       next: (stats: YearStats[]) => {
         this.centerPanelRequest.yearlyStats = stats;
+      },
+      error: (error: string) => {
+        this.translateService.get('Components.NavBar.ImpossibleGetData').subscribe((text: string) => {
+          this.notificationService.error(text);
+        });
+        this.loggerService.error(error);
       }
     });
+  }
+
+  private getAllRaces(memberId: number, season_year: number, season_quarter: number, config?: SearchSeriesConfig) {
+    this.resultService.searchSeries(memberId, season_year, season_quarter, config).subscribe({
+      next: (races: Race[]) => {
+        this.centerPanelRequest.allRaces = races;
+      },
+      error: (error: string) => {
+        this.translateService.get('Components.NavBar.ImpossibleGetData').subscribe((text: string) => {
+          this.notificationService.error(text);
+        });
+        this.loggerService.error(error);
+      }
+    })
   }
 }

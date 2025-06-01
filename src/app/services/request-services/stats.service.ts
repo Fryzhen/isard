@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {CareerStats, Race, YearStats} from './iracing-entities';
+import {CareerStats, RecentRace, YearStats} from './iracing-entities';
 import {map} from 'rxjs/operators';
 import {Observable} from 'rxjs';
 
@@ -16,9 +16,9 @@ export class StatsService {
   ) {
   }
 
-  getRecentRaces(cust_id: number): Observable<Race[]> {
-    return this.http.get<{ races: Race[] }>(`${this.baseUrl}/member_recent_races?cust_id=${cust_id}`).pipe(
-      map((request: { races: Race[] }) => {
+  getRecentRaces(cust_id: number): Observable<RecentRace[]> {
+    return this.http.get<{ races: RecentRace[] }>(`${this.baseUrl}/member_recent_races?cust_id=${cust_id}`).pipe(
+      map((request: { races: RecentRace[] }) => {
           return request.races;
         }
       )

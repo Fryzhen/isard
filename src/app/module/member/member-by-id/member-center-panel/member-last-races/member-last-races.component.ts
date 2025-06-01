@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Race} from '../../../../../services/request-services/iracing-entities';
+import {RecentRace} from '../../../../../services/request-services/iracing-entities';
 import {CommonModule, NgForOf} from '@angular/common';
 import {NotificationService} from '../../../../../services/app-services/notification.service';
 import {LoadingScreenComponent} from '../../../../../components/loading-screen/loading-screen.component';
@@ -22,7 +22,7 @@ import {BoxComponent} from '../../../../../components/box/box.component';
   styleUrl: './member-last-races.component.scss'
 })
 export class MemberLastRacesComponent implements OnInit {
-  @Input() races: Race[] | undefined = undefined;
+  @Input() races: RecentRace[] | undefined = undefined;
 
   constructor(
     private notificationsService: NotificationService,
@@ -32,7 +32,7 @@ export class MemberLastRacesComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  onClickResult(race: Race) {
+  onClickResult(race: RecentRace) {
     this.notificationsService.error("This feature is not implemented yet.");
   }
 }

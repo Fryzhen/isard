@@ -2,6 +2,14 @@ import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MemberScreenDisplay} from '../member-by-id.component';
 import {TranslatePipe} from '@ngx-translate/core';
 import {BoxComponent} from '../../../../components/box/box.component';
+import {EventType} from '../../../../services/request-services/iracing-entities';
+
+export interface MemberParameterPanel {
+  screen: MemberScreenDisplay,
+  year: number,
+  quarter: number,
+  eventType: EventType[]
+}
 
 @Component({
   standalone: true,
@@ -15,11 +23,11 @@ import {BoxComponent} from '../../../../components/box/box.component';
 })
 export class MemberParameterPanelComponent {
   @Input() currentScreenDisplay!: MemberScreenDisplay | undefined;
-  @Output() screenDisplayChange = new EventEmitter<MemberScreenDisplay>();
+  @Output() parameters = new EventEmitter<MemberParameterPanel>();
 
   protected readonly MemberScreenDisplay = MemberScreenDisplay;
 
-  changeDisplay(screen: MemberScreenDisplay): void {
-    this.screenDisplayChange.emit(screen);
+  changeScreen(screen: MemberScreenDisplay): void {
+    this.parameters.emit({screen: screen} as MemberParameterPanel);
   }
 }

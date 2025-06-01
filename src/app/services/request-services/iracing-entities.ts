@@ -43,41 +43,27 @@ export interface Helmet {
   helmet_type: number
 }
 
-export interface Race {
-  season_id: number;
-  series_id: number;
-  series_name: string;
-  car_id: number;
-  car_class_id: number;
+export interface RecentRace extends IRace {
   livery: Livery;
   license_level: number;
   session_start_time: Date;
-  winner_group_id: number;
-  winner_name: string;
   winner_helmet: Helmet;
   winner_license_level: number;
   start_position: number;
   finish_position: number;
   qualifying_time: number;
   laps: number;
-  laps_led: number;
-  incidents: number;
   club_points: number;
   points: number;
   strength_of_field: number;
-  subsession_id: number;
   old_sub_level: number;
   new_sub_level: number;
   oldi_rating: number;
   newi_rating: number;
-  track: Track;
-  drop_race: boolean;
-  season_year: number;
-  season_quarter: number;
-  race_week_num: number;
 }
 
 export interface Track {
+  config_name?: string;
   track_id: number;
   track_name: string;
 }
@@ -156,4 +142,64 @@ export interface Car {
 
 export interface CarType {
   car_type: string;
+}
+
+export interface Race extends IRace {
+  session_id: number;
+  start_time: Date;
+  end_time: Date;
+  license_category_id: number;
+  license_category: string;
+  num_drivers: number;
+  num_cautions: number;
+  num_caution_laps: number;
+  num_lead_changes: number;
+  event_average_lap: number;
+  event_best_lap_time: number;
+  event_laps_complete: number;
+  driver_changes: boolean;
+  winner_ai: boolean;
+  cust_id: number;
+  starting_position: number;
+  finish_position: number;
+  starting_position_in_class: number;
+  finish_position_in_class: number;
+  laps_complete: number;
+  car_class_name: string;
+  car_class_short_name: string;
+  car_name: string;
+  car_name_abbreviated: string;
+  official_session: boolean;
+  event_type: number;
+  event_type_name: string;
+  series_short_name: string;
+  event_strength_of_field: number;
+  champ_points: number;
+  season_license_group: number;
+  season_license_group_name: string;
+}
+
+export interface IRace {
+  season_id: number;
+  series_id: number;
+  series_name: string;
+  car_id: number;
+  car_class_id: number;
+  track: Track;
+  winner_group_id: number;
+  winner_name: string;
+  laps_led: number;
+  incidents: number;
+  subsession_id: number;
+  drop_race: boolean;
+  season_year: number;
+  season_quarter: number;
+  race_week_num: number;
+}
+
+export enum EventType {
+  Practice = 2,
+  Qualify = 3,
+  Time_Trial = 4,
+  Race = 5
 }
