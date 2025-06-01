@@ -11,6 +11,8 @@
       "Title": "ISARD",
       "LabelToggleMenu": "Toggle navigation",
       "Home": "Home",
+      "Driver": "Driver",
+      "ResearchDriver": "Research a Driver",
       "DriverSearchPlaceholder": "Search a Driver",
       "ErrorFailLoad": "Failed to load drivers. Please try again later.",
       "ErrorFailNavigate": "Failed to navigate to the member page."

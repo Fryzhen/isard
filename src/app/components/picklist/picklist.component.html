@@ -1,6 +1,6 @@
 <isard-input
-  (searchChange)="onSearch($event)"
   (enterPressed)="onEnterPressed()"
+  (searchChange)="onSearch($event)"
   [placeholder]="placeholder"
 ></isard-input>
 <ul *ngIf="items.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">

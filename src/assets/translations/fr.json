@@ -11,6 +11,8 @@
       "Title": "ISACP",
       "LabelToggleMenu": "Activer la navigation",
       "Home": "Accueil",
+      "Driver": "Pilote",
+      "ResearchDriver": "Rechercher un Pilote",
       "DriverSearchPlaceholder": "Rechercher un pilote",
       "ErrorFailLoad": "Impossible de charger les pilotes. Essayez plus tard.",
       "ErrorFailNavigate": "Impossible de naviguer jusqu'à la page du membre."
