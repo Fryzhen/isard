@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {CareerStats} from '../../../../services/request-services/iracing-entities';
+import {CareerStats} from '../../../../../services/request-services/iracing-entities';
 import {NgForOf, NgIf} from '@angular/common';
-import {IconComponent} from '../../../../components/icon/icon.component';
-import {LicenceService} from '../../../../services/app-services/licence.service';
-import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
+import {IconComponent} from '../../../../../components/icon/icon.component';
+import {LicenceService} from '../../../../../services/app-services/licence.service';
+import {LoadingScreenComponent} from '../../../../../components/loading-screen/loading-screen.component';
 import {TranslatePipe} from '@ngx-translate/core';
-import {BoxComponent} from '../../../../components/box/box.component';
+import {BoxComponent} from '../../../../../components/box/box.component';
 
 @Component({
   standalone: true,

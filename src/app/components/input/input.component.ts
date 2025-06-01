@@ -10,6 +10,7 @@ import {TranslateService} from '@ngx-translate/core';
 })
 export class InputComponent {
   @Input() placeholder: string = '';
+  @Input() emptyWhenChoose: boolean = false;
   @Output() searchChange = new EventEmitter<Event>();
   @Output() enterPressed = new EventEmitter<Event>();
 
@@ -29,7 +30,9 @@ export class InputComponent {
     this.enterPressed.emit(event);
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.value) {
-      inputElement.value = '';
+      if (this.emptyWhenChoose) {
+        inputElement.value = '';
+      }
       this.searchChange.emit(event);
     }
   }

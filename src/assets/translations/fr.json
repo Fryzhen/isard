@@ -11,8 +11,6 @@
       "Title": "ISACP",
       "LabelToggleMenu": "Activer la navigation",
       "Home": "Accueil",
-      "Driver": "Pilote",
-      "ResearchDriver": "Rechercher un Pilote",
       "DriverSearchPlaceholder": "Rechercher un pilote",
       "ErrorFailLoad": "Impossible de charger les pilotes. Essayez plus tard.",
       "ErrorFailNavigate": "Impossible de naviguer jusqu'à la page du membre."
@@ -30,7 +28,11 @@
       "NoDriver": "Aucun pilote trouvé",
       "CheckId": "Veuillez vérifier l'ID que vous avez entré.",
       "MemberNotFound": "Membre non trouvé, veuillez vérifier l'ID ou contactez le support.",
-      "MemberNotFoundTitle": "ISACP : Membre non trouvé"
+      "MemberNotFoundTitle": "ISACP : Membre non trouvé",
+      "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés"
+    },
+    "Research": {
+      "Title": "Rechercher un Pilote"
     },
     "MainPanel": {
       "Title": "ISACP"

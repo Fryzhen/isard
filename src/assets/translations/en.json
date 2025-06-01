@@ -11,8 +11,6 @@
       "Title": "ISARD",
       "LabelToggleMenu": "Toggle navigation",
       "Home": "Home",
-      "Driver": "Driver",
-      "ResearchDriver": "Research a Driver",
       "DriverSearchPlaceholder": "Search a Driver",
       "ErrorFailLoad": "Failed to load drivers. Please try again later.",
       "ErrorFailNavigate": "Failed to navigate to the member page."
@@ -30,7 +28,11 @@
       "NoDriver": "No drivers found.",
       "CheckId": "Please check the ID you entered.",
       "MemberNotFound": "Member not found, please check the ID or contact support.",
-      "MemberNotFoundTitle": "ISARD : Member not found"
+      "MemberNotFoundTitle": "ISARD : Member not found",
+      "ImpossibleGetDrivers": "The drivers could not be loaded."
+    },
+    "Research": {
+      "Title": "Research a Driver"
     },
     "MainPanel": {
       "Title": "ISARD"

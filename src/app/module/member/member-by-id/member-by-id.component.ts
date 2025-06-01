@@ -1,19 +1,19 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {MemberService} from '../../services/request-services/member.service';
-import {CareerStats, Member, Race, YearStats} from '../../services/request-services/iracing-entities';
+import {MemberService} from '../../../services/request-services/member.service';
+import {CareerStats, Member, Race, YearStats} from '../../../services/request-services/iracing-entities';
 import {Title} from '@angular/platform-browser';
 import {CommonModule} from '@angular/common';
-import {LoggerService} from '../../services/app-services/logger.service';
-import {NotificationService} from '../../services/app-services/notification.service';
+import {LoggerService} from '../../../services/app-services/logger.service';
+import {NotificationService} from '../../../services/app-services/notification.service';
 import {MemberInfoPanelComponent} from './member-info-panel/member-info-panel.component';
 import {MemberParameterPanelComponent} from './member-parameter-panel/member-parameter-panel.component';
 import {MemberLastRacesComponent} from './member-center-panel/member-last-races/member-last-races.component';
 import {MemberStatsCareerComponent} from './member-center-panel/member-stats-career/member-stats-career.component';
 import {MemberStatsYearlyComponent} from './member-center-panel/member-stats-yearly/member-stats-yearly.component';
-import {LoadingScreenComponent} from '../../components/loading-screen/loading-screen.component';
+import {LoadingScreenComponent} from '../../../components/loading-screen/loading-screen.component';
 import {TranslatePipe, TranslateService} from '@ngx-translate/core';
-import {StatsService} from '../../services/request-services/stats.service';
+import {StatsService} from '../../../services/request-services/stats.service';
 
 export enum MemberScreenDisplay {
   LastRaces,
@@ -31,8 +31,8 @@ export interface CenterPanelRequest {
 @Component({
   standalone: true,
   selector: 'isard-lookup-driver',
-  templateUrl: './member.component.html',
-  styleUrls: ['./member.component.scss'],
+  templateUrl: './member-by-id.component.html',
+  styleUrls: ['./member-by-id.component.scss'],
   imports: [
     CommonModule,
     MemberInfoPanelComponent,
@@ -44,7 +44,7 @@ export interface CenterPanelRequest {
     MemberStatsCareerComponent
   ],
 })
-export class MemberComponent implements OnInit {
+export class MemberByIdComponent implements OnInit {
   isCharging = true;
   member?: Member = undefined;
   centerPanelRequest: CenterPanelRequest;

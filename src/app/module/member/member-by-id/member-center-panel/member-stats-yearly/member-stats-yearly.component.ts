@@ -1,11 +1,11 @@
 import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {YearStats} from '../../../../services/request-services/iracing-entities';
-import {IconComponent} from '../../../../components/icon/icon.component';
+import {YearStats} from '../../../../../services/request-services/iracing-entities';
+import {IconComponent} from '../../../../../components/icon/icon.component';
 import {NgForOf, NgIf} from '@angular/common';
-import {LicenceService} from '../../../../services/app-services/licence.service';
-import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
+import {LicenceService} from '../../../../../services/app-services/licence.service';
+import {LoadingScreenComponent} from '../../../../../components/loading-screen/loading-screen.component';
 import {TranslatePipe} from '@ngx-translate/core';
-import {BoxComponent} from '../../../../components/box/box.component';
+import {BoxComponent} from '../../../../../components/box/box.component';
 
 @Component({
   standalone: true,

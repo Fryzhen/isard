@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {MemberScreenDisplay} from '../member.component';
+import {MemberScreenDisplay} from '../member-by-id.component';
 import {TranslatePipe} from '@ngx-translate/core';
-import {BoxComponent} from '../../../components/box/box.component';
+import {BoxComponent} from '../../../../components/box/box.component';
 
 @Component({
   standalone: true,

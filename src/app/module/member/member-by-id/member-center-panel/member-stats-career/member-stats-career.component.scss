@@ -1,4 +1,4 @@
-@import "../../../../styles/variables";
+@import "../../../../../styles/variables";
 
 .table {
   @media (max-width: 1200px) {
@@ -6,4 +6,8 @@
     overflow-x: scroll;
     display: block;
   }
+}
+
+.year {
+  margin-top: 10px;
 }

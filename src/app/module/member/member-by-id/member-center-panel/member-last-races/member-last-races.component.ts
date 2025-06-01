@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Race} from '../../../../services/request-services/iracing-entities';
+import {Race} from '../../../../../services/request-services/iracing-entities';
 import {CommonModule, NgForOf} from '@angular/common';
-import {NotificationService} from '../../../../services/app-services/notification.service';
-import {LoadingScreenComponent} from '../../../../components/loading-screen/loading-screen.component';
+import {NotificationService} from '../../../../../services/app-services/notification.service';
+import {LoadingScreenComponent} from '../../../../../components/loading-screen/loading-screen.component';
 import {TranslatePipe} from '@ngx-translate/core';
-import {LocalizedDatePipe} from '../../../../services/app-services/localized-date.pipe';
-import {BoxComponent} from '../../../../components/box/box.component';
+import {LocalizedDatePipe} from '../../../../../services/app-services/localized-date.pipe';
+import {BoxComponent} from '../../../../../components/box/box.component';
 
 @Component({
   standalone: true,
