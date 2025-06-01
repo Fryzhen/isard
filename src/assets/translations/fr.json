@@ -14,6 +14,9 @@
       "DriverSearchPlaceholder": "Rechercher un pilote",
       "ErrorFailLoad": "Impossible de charger les pilotes. Essayez plus tard.",
       "ErrorFailNavigate": "Impossible de naviguer jusqu'à la page du membre."
+    },
+    "Input": {
+      "DefaultPlaceholder": "Rechercher..."
     }
   },
   "Home": {

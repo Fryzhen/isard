@@ -68,7 +68,7 @@ export class NavbarComponent {
       if (success) {
         this.drivers = [];
       } else {
-        this.translateService.get('Components.NavBar.ErrorFailNavigate').subscribe((text: string) => {
+        this.translateService.get('Components.Navbar.ErrorFailNavigate').subscribe((text: string) => {
           this.notificationService.error(text);
         });
       }

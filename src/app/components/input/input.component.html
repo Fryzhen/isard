@@ -1,10 +1,6 @@
 <input (change)="onSearch($event)"
        (input)="onSearch($event)"
+       (keyup.enter)="onEnterSearch($event)"
        class="form-control"
        placeholder="{{placeholder}}"
        type="text">
-<ul *ngIf="items.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
-  <li *ngFor="let item of items">
-    <a (click)="onItemClick(item.id)" class="dropdown-item">{{ item.name }}</a>
-  </li>
-</ul>

@@ -1,8 +1,8 @@
-<input (change)="onSearch($event)"
-       (input)="onSearch($event)"
-       class="form-control"
-       placeholder="{{placeholder}}"
-       type="text">
+<isard-input
+  (searchChange)="onSearch($event)"
+  (enterPressed)="onEnterPressed()"
+  [placeholder]="placeholder"
+></isard-input>
 <ul *ngIf="items.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
   <li *ngFor="let item of items">
     <a (click)="onItemClick(item.id)" class="dropdown-item">{{ item.name }}</a>

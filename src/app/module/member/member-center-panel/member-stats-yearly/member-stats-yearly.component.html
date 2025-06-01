@@ -1,5 +1,5 @@
 <div class="panel">
-  <h3>Yearly Stats</h3>
+  <h3>{{ 'Member.YearlyPanel.Title' | translate }}</h3>
   <ng-container *ngIf="stats; else pageCharging">
     <ng-container *ngFor="let year of years">
       <h4 class="year">{{ year }}</h4>
@@ -7,17 +7,17 @@
         <thead>
         <tr>
           <th scope="col"></th>
-          <th scope="col">{{ 'Member.CareerPanel.Table.Category' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.Starts' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.Wins' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.Top5' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.Poles' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.AverageStart' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.AverageFinish' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.AverageIncidents' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.WinPercentage' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.Top5Percentage' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.CareerPanel.Table.PolePercentage' | translate }}</th>
+          <th scope="col">{{ 'Member.YearlyPanel.Table.Category' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Starts' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Wins' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Top5' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Poles' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.AverageStart' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.AverageFinish' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.AverageIncidents' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.WinPercentage' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Top5Percentage' | translate }}</th>
+          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.PolePercentage' | translate }}</th>
         </tr>
         </thead>
         <tbody>

@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {NgForOf, NgIf, NgStyle} from '@angular/common';
+import {InputComponent} from '../input/input.component';
 
 interface PickListItems {
   name: string;
@@ -12,7 +13,8 @@ interface PickListItems {
   imports: [
     NgForOf,
     NgIf,
-    NgStyle
+    NgStyle,
+    InputComponent
   ],
   templateUrl: './picklist.component.html',
   styleUrl: './picklist.component.scss'
@@ -40,7 +42,16 @@ export class PicklistComponent {
     }
   }
 
+  onEnterPressed() {
+    if (this.items.length > 0) {
+      this.onItemClick(this.items[0].id)
+    }
+  }
+
   onItemClick(id: number): void {
+    if (this.debounceTimeout) {
+      clearTimeout(this.debounceTimeout);
+    }
     this.items = [];
     this.itemClick.emit(id);
   }
