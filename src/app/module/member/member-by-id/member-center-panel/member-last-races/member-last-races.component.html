@@ -1,57 +1,11 @@
 <isard-box>
   <h3>{{ 'Member.LastRacesPanel.Title' | translate }}</h3>
   <ng-container *ngIf="races; else pageCharging">
-    <table class="table">
-      <thead>
-      <tr>
-        <th scope="col">{{ 'Member.LastRacesPanel.Table.Date' | translate }}</th>
-        <th scope="col">{{ 'Member.LastRacesPanel.Table.Car'| translate }}</th>
-        <th scope="col">{{ 'Member.LastRacesPanel.Table.Track'| translate }}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Start'| translate }}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Finish'| translate }}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.PosDif'| translate }}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.Incidents'| translate }}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.IrDif'| translate }}</th>
-        <th class="text-center" scope="col">{{ 'Member.LastRacesPanel.Table.SrDif'| translate }}</th>
-        <th class="text-center" scope="col"></th>
-      </tr>
-      </thead>
-      <tbody>
-      <ng-container *ngFor="let race of races">
-        <tr>
-          <th scope="row">{{ race.session_start_time | localizedDate }}</th>
-          <td>{{ race.series_name }}</td>
-          <td>{{ race.track.track_name }}</td>
-          <td class="text-center">{{ race.start_position }}
-          </td>
-          <td class="text-center">{{ race.finish_position }}
-          </td>
-          <td
-            [ngClass]="{'positive': race.start_position > race.finish_position, 'negative': race.start_position < race.finish_position}"
-            class="text-center">
-            {{ race.start_position - race.finish_position }}
-          </td>
-          <td class="text-center">{{ race.incidents }}
-          </td>
-          <td
-            [ngClass]="{'positive': race.newi_rating > race.oldi_rating, 'negative': race.newi_rating < race.oldi_rating}"
-            class="text-center">
-            {{ race.newi_rating - race.oldi_rating }}
-          </td>
-          <td
-            [ngClass]="{'positive': race.new_sub_level > race.old_sub_level, 'negative': race.new_sub_level < race.old_sub_level}"
-            class="text-center">
-            {{ (race.new_sub_level - race.old_sub_level) / 100 }}
-          </td>
-          <td class="text-center">
-            <button (click)="onClickResult(race)" class="btn btn-secondary"
-                    type="button">{{ 'Member.LastRacesPanel.Table.Result'| translate }}
-            </button>
-          </td>
-        </tr>
-      </ng-container>
-      </tbody>
-    </table>
+    <isard-table
+      [header]="getHeader()"
+      [rows]="getRows()"
+    >
+    </isard-table>
   </ng-container>
 </isard-box>
 <ng-template #pageCharging>

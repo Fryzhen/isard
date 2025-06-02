@@ -1,0 +1,35 @@
+<table class="table">
+  <thead>
+  <tr>
+    <ng-container *ngFor="let head of header">
+      <th scope="col" [ngClass]="{'text-centrer': head.isCenter}">{{ head.value }}</th>
+    </ng-container>
+  </tr>
+  </thead>
+  <tbody>
+  <ng-container *ngFor="let row of rows">
+    <tr>
+      <ng-container *ngFor="let box of row">
+        <ng-container *ngIf="!box.isButton">
+          <td
+            [ngClass]="{
+            'positive': box.isPositive,
+            'negative': box.isNegative,
+            'text-centrer': box.isCenter}">
+            {{ box.value }}
+          </td>
+        </ng-container>
+        <ng-container *ngIf="box.isButton">
+          <button
+            [ngClass]="{
+            'text-centrer': box.isCenter}"
+            (click)="box.onClick" class="btn btn-secondary"
+            type="button">
+            {{ box.value }}
+          </button>
+        </ng-container>
+      </ng-container>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>
