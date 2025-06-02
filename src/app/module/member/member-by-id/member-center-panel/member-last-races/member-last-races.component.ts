@@ -33,6 +33,6 @@ export class MemberLastRacesComponent implements OnInit {
   }
 
   onClickResult(race: RecentRace) {
-    this.notificationsService.error("This feature is not implemented yet.");
+    this.notificationsService.error('This feature is not implemented yet.');
   }
 }

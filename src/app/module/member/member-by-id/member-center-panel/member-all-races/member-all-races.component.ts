@@ -1,21 +1,16 @@
 import {Component, Input} from '@angular/core';
-import {ResultsService, SearchSeriesConfig} from '../../../../../services/request-services/results.service';
-import {EventType} from '../../../../../services/request-services/iracing-entities';
+import {Race} from '../../../../../services/request-services/iracing-entities';
+import {BoxComponent} from '../../../../../components/box/box.component';
 
 @Component({
+  standalone: true,
   selector: 'isard-member-all-races',
-  imports: [],
+  imports: [
+    BoxComponent
+  ],
   templateUrl: './member-all-races.component.html',
   styleUrl: './member-all-races.component.scss'
 })
 export class MemberAllRacesComponent {
-  @Input() races!: any;
-
-  constructor(
-  ) {
-    this.onChange();
-  }
-
-  onChange(): void {
-  }
+  @Input() races!: Race[] | undefined;
 }

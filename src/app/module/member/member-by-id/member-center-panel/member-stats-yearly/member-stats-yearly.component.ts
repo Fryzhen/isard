@@ -31,7 +31,7 @@ export class MemberStatsYearlyComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.years = [...new Set(this.stats?.map((s: YearStats) => s.year).sort((a, b) => b - a))]
+    this.years = [...new Set(this.stats?.map((s: YearStats) => s.year).sort((a, b) => b - a))];
   }
 
   getIcon(category_id: number) {

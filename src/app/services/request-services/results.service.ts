@@ -1,19 +1,24 @@
 import {Injectable} from '@angular/core';
 import {environment} from '../../../environments/environment';
 import {HttpClient} from '@angular/common/http';
-import {forkJoin, Observable, switchMap} from 'rxjs';
+import {Observable} from 'rxjs';
 import {EventType, Race} from './iracing-entities';
 
 export interface SearchSeriesConfig {
   race_week_num: number,
+
   series_id?: number,
+
   official_only?: boolean,
+
   event_types?: EventType[],
+
   category_ids?: number[],
 }
 
 export interface SearchSeriesResponse {
   type: string;
+
   data: {
     chunk_info: {
       base_download_url: string;
@@ -42,7 +47,7 @@ export class ResultsService {
   // }
 
   searchSeries(cust_id: number, season_year: number, season_quarter: number, config?: SearchSeriesConfig): Observable<Race[]> {
-    console.log("Search Series", cust_id, season_year, season_quarter);
+    console.log('Search Series', cust_id, season_year, season_quarter);
     let configString = '';
     if (config) {
       const race_week_num = config.race_week_num ? `&race_week_num=${config.race_week_num}` : '';
@@ -52,6 +57,6 @@ export class ResultsService {
       const category_ids = config.category_ids ? `&category_ids=${config.category_ids.join(',')}` : '';
       configString = `${series_id}${official_only}${event_types}${category_ids}${race_week_num}`;
     }
-    return this.http.get<Race[]>(`${this.baseUrl}/search_series?cust_id=${cust_id}&season_year=${season_year}&season_quarter=${season_quarter}${configString}`)
+    return this.http.get<Race[]>(`${this.baseUrl}/search_series?cust_id=${cust_id}&season_year=${season_year}&season_quarter=${season_quarter}${configString}`);
   }
 }

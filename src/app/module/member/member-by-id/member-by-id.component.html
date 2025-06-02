@@ -10,27 +10,11 @@
 
       </div>
       <div class="center">
-        <isard-member-last-races
-          *ngIf="currentScreenDisplay === MemberScreenDisplay.LastRaces"
-          [races]="centerPanelRequest.lastRaces">
-        </isard-member-last-races>
-
-        <isard-member-stats-career
-          *ngIf="currentScreenDisplay === MemberScreenDisplay.CareerStats"
-          [stats]="centerPanelRequest.careerStats">
-        </isard-member-stats-career>
-
-        <isard-member-stats-yearly
-          *ngIf="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
-          [stats]="centerPanelRequest.yearlyStats">
-        </isard-member-stats-yearly>
-
-        <isard-member-all-races
-          *ngIf="currentScreenDisplay === MemberScreenDisplay.AllRaces"
-          [races]="centerPanelRequest.allRaces"
+        <isard-member-center-panel
+          [parameters]="getParameters()"
+          [member]="member"
         >
-
-        </isard-member-all-races>
+        </isard-member-center-panel>
       </div>
     </div>
   </ng-container>

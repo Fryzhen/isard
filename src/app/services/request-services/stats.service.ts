@@ -17,8 +17,8 @@ export class StatsService {
   }
 
   getRecentRaces(cust_id: number): Observable<RecentRace[]> {
-    return this.http.get<{ races: RecentRace[] }>(`${this.baseUrl}/member_recent_races?cust_id=${cust_id}`).pipe(
-      map((request: { races: RecentRace[] }) => {
+    return this.http.get<{races: RecentRace[]}>(`${this.baseUrl}/member_recent_races?cust_id=${cust_id}`).pipe(
+      map((request: {races: RecentRace[]}) => {
           return request.races;
         }
       )
@@ -26,8 +26,8 @@ export class StatsService {
   }
 
   getCareerStats(cust_id: number): Observable<CareerStats[]> {
-    return this.http.get<{ stats: CareerStats[] }>(`${this.baseUrl}/member_career?cust_id=${cust_id}`).pipe(
-      map((request: { stats: CareerStats[] }) => {
+    return this.http.get<{stats: CareerStats[]}>(`${this.baseUrl}/member_career?cust_id=${cust_id}`).pipe(
+      map((request: {stats: CareerStats[]}) => {
           return request.stats;
         }
       )
@@ -35,8 +35,8 @@ export class StatsService {
   }
 
   getYearlyStats(cust_id: number): Observable<YearStats[]> {
-    return this.http.get<{ stats: YearStats[] }>(`${this.baseUrl}/member_yearly?cust_id=${cust_id}`).pipe(
-      map((request: { stats: YearStats[] }) => {
+    return this.http.get<{stats: YearStats[]}>(`${this.baseUrl}/member_yearly?cust_id=${cust_id}`).pipe(
+      map((request: {stats: YearStats[]}) => {
           return request.stats;
         }
       )

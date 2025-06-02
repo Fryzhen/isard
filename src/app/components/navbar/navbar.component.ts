@@ -72,6 +72,6 @@ export class NavbarComponent {
           this.notificationService.error(text);
         });
       }
-    })
+    });
   }
 }

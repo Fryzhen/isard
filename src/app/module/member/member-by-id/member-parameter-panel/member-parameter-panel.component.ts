@@ -4,10 +4,13 @@ import {TranslatePipe} from '@ngx-translate/core';
 import {BoxComponent} from '../../../../components/box/box.component';
 import {EventType} from '../../../../services/request-services/iracing-entities';
 
-export interface MemberParameterPanel {
+export interface MemberParameters {
   screen: MemberScreenDisplay,
+
   year: number,
+
   quarter: number,
+
   eventType: EventType[]
 }
 
@@ -23,11 +26,11 @@ export interface MemberParameterPanel {
 })
 export class MemberParameterPanelComponent {
   @Input() currentScreenDisplay!: MemberScreenDisplay | undefined;
-  @Output() parameters = new EventEmitter<MemberParameterPanel>();
+  @Output() parameters = new EventEmitter<MemberParameters>();
 
   protected readonly MemberScreenDisplay = MemberScreenDisplay;
 
   changeScreen(screen: MemberScreenDisplay): void {
-    this.parameters.emit({screen: screen} as MemberParameterPanel);
+    this.parameters.emit({screen: screen} as MemberParameters);
   }
 }

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 
 @Component({
+  standalone: true,
   selector: 'isard-box',
   imports: [],
   templateUrl: './box.component.html',

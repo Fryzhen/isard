@@ -18,7 +18,7 @@ import {TranslationService} from './services/app-services/translation.service';
 export class AppComponent {
 
   constructor(private translationService: TranslationService) {
-    this.translationService.init()
+    this.translationService.init();
   }
 
 }

@@ -11,7 +11,7 @@ import {TranslatePipe} from '@ngx-translate/core';
   styleUrl: './loading-screen.component.scss'
 })
 export class LoadingScreenComponent {
-  points = ''
+  points = '';
   pointsCount = 0;
 
   constructor() {

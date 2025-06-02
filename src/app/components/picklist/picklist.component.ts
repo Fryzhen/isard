@@ -4,6 +4,7 @@ import {InputComponent} from '../input/input.component';
 
 interface PickListItems {
   name: string;
+
   id: number;
 }
 
@@ -44,7 +45,7 @@ export class PicklistComponent {
 
   onEnterPressed() {
     if (this.items.length > 0) {
-      this.onItemClick(this.items[0].id)
+      this.onItemClick(this.items[0].id);
     }
   }
 

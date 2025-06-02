@@ -1,0 +1,19 @@
+<isard-member-last-races
+  *ngIf="parameters.screen === MemberScreenDisplay.LastRaces"
+  [races]="centerPanelRequest.lastRaces">
+</isard-member-last-races>
+
+<isard-member-stats-career
+  *ngIf="parameters.screen === MemberScreenDisplay.CareerStats"
+  [stats]="centerPanelRequest.careerStats">
+</isard-member-stats-career>
+
+<isard-member-stats-yearly
+  *ngIf="parameters.screen === MemberScreenDisplay.YearlyStats"
+  [stats]="centerPanelRequest.yearlyStats">
+</isard-member-stats-yearly>
+
+<isard-member-all-races
+  *ngIf="parameters.screen === MemberScreenDisplay.AllRaces"
+  [races]="centerPanelRequest.allRaces">
+</isard-member-all-races>
