@@ -93,6 +93,9 @@
         "Top5Percentage": "Top 5 %",
         "PolePercentage": "Poles %"
       }
+    },
+    "AllRacesPanel": {
+      "Title": "All Races"
     }
   }
 }
