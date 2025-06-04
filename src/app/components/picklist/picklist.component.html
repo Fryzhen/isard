@@ -1,7 +1,7 @@
 <isard-input
         (enterPressed)="onEnterPressed()"
         (searchChange)="onSearch($event)"
-        [emptyWhenChoose]="true"
+        [emptyWhenChoose]="canBeEmptied()"
         [placeholder]="placeholder"
 ></isard-input>
 <ul *ngIf="items.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
