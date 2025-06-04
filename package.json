@@ -11,6 +11,7 @@
     "lint:html": "eslint \"src/app/**/*.html\" --max-warnings=0",
     "lint:scss": "stylelint \"src/**/*.scss\" --max-warnings=0",
     "lint:script": "eslint \"src/**/*.{js,ts}\" --max-warnings=0",
+    "lint:all": "yarn run lint:html && yarn run lint:script && yarn run lint:scss",
     "lint:scss:fix": "yarn run lint:scss --fix",
     "lint:script:fix": "yarn run lint:script --fix",
     "lint:html:fix": "yarn run lint:html --fix",
@@ -47,6 +48,10 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "stylelint": "^16.20.0",
+    "stylelint-config-standard": "^38.0.0",
+    "stylelint-config-standard-scss": "^15.0.1",
+    "stylelint-prettier": "^5.0.3",
     "typescript": "~5.7.2",
     "typescript-eslint": "8.27.0"
   }

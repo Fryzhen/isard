@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../styles/variables";
 
 .language {
   margin: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
@@ -8,7 +8,13 @@
   gap: 5px;
   color: white;
 
-  > img {
-    cursor: pointer;
+  .flag-btn {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+
+    > img {
+      cursor: pointer;
+    }
   }
 }

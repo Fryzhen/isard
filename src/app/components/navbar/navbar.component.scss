@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../styles/variables";
 
 .navbar {
   z-index: 5;
@@ -10,14 +10,15 @@
     align-items: center !important;
     justify-content: center !important;
     flex-direction: row !important;
-    margin-right: 12px
+    margin-right: 12px;
   }
 
   .navbar-toggler {
     background-color: $white !important;
   }
 
-  .nav-link, .navbar-brand {
+  .nav-link,
+  .navbar-brand {
     cursor: pointer;
     color: $white !important;
   }

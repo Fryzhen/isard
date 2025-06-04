@@ -1,0 +1,36 @@
+{
+  "defaultSeverity": "error",
+  "plugins": ["stylelint-prettier"],
+  "extends": ["stylelint-config-standard-scss"],
+  "rules": {
+    "prettier/prettier": [
+      true,
+      {
+        "endOfLine": "auto"
+      }
+    ],
+    "declaration-empty-line-before": [
+      "always",
+      {
+        "except": ["first-nested"],
+        "ignore": ["after-comment", "after-declaration"]
+      }
+    ],
+    "property-no-vendor-prefix": null,
+    "scss/no-global-function-names": null,
+    "declaration-block-no-redundant-longhand-properties": null,
+    "no-descending-specificity": null,
+    "color-function-notation": null,
+    "color-hex-length": null,
+    "alpha-value-notation": null,
+    "no-empty-source": null,
+    "scss/dollar-variable-empty-line-before": null,
+    "scss/at-if-no-null": null,
+    "selector-id-pattern": [
+      "^[a-zA-Z][a-zA-Z0-9]*$",
+      {
+        "message": "Selector IDs must start with a letter and be camel cased"
+      }
+    ]
+  }
+}

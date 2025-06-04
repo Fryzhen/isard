@@ -9,8 +9,8 @@ import {TranslateService} from "@ngx-translate/core";
   styleUrl: "./input.component.scss"
 })
 export class InputComponent {
-  @Input() placeholder: string = "";
-  @Input() emptyWhenChoose: boolean = false;
+  @Input() placeholder = "";
+  @Input() emptyWhenChoose = false;
   @Output() searchChange = new EventEmitter<Event>();
   @Output() enterPressed = new EventEmitter<Event>();
 

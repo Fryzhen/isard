@@ -21,4 +21,8 @@ export class TableComponent {
   @Input() rows!: TableCell[][];
   @Input() header!: TableHeader[];
   protected readonly TableCellType = TableCellType;
+
+  getValueAsDate(value: string | Date | number) {
+    return value as Date;
+  }
 }

@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {InputComponent} from "../input/input.component";
+import {TranslateService} from "@ngx-translate/core";
 
 interface PickListItems {
   name: string;
@@ -22,9 +23,15 @@ interface PickListItems {
 })
 export class PicklistComponent {
   @Input() items: PickListItems[] = [];
-  @Input() placeholder: string = "Search...";
+  @Input() placeholder = "";
   @Output() searchChange = new EventEmitter<string>();
   @Output() itemClick = new EventEmitter<number>();
+
+  constructor(
+    private readonly translateService: TranslateService,
+  ) {
+    this.placeholder = this.translateService.instant("Components.Input.DefaultPlaceholder");
+  }
 
   private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
 

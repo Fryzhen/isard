@@ -27,7 +27,7 @@
               'positive': box.isPositive,
               'negative': box.isNegative,
               'text-centrer': box.isCenter}">
-                        {{ box.value | localizedDate: box.dateFormat }}
+                        {{ getValueAsDate(box.value) | localizedDate: box.dateFormat }}
                     </td>
                 </ng-container>
 

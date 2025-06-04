@@ -1,4 +1,4 @@
-@import "../../styles/variables.scss";
+@import "../../styles/variables";
 
 .isard-home {
   .home-title {
@@ -6,11 +6,12 @@
     flex-direction: column;
     margin: 10%;
 
-    h1, h2 {
+    h1,
+    h2 {
       color: $white;
       font-style: normal;
       font-weight: 900;
-      font-family: 'Lato', sans-serif;
+      font-family: Lato, sans-serif;
     }
   }
 }

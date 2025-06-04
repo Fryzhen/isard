@@ -6,7 +6,7 @@
   padding: 10px;
   gap: 20px;
 
-  @media (max-width: 1200px) {
+  @media (width <= 1200px) {
     flex-direction: column;
     padding: 10px;
   }
@@ -18,7 +18,7 @@
     height: fit-content;
     gap: 20px;
 
-    @media (max-width: 1200px) {
+    @media (width <= 1200px) {
       width: 100%;
       margin: 0;
     }
@@ -29,7 +29,7 @@
     min-width: 0;
     height: fit-content;
 
-    @media (max-width: 1200px) {
+    @media (width <= 1200px) {
       margin: 0;
     }
   }

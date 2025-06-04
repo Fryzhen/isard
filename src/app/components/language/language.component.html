@@ -1,5 +1,29 @@
 <div class="language center">
-    <img (click)="setLanguage('fr')" alt="fr" height="16" ngSrc="assets/translations/fr-flag.svg" width="24">
+    <button
+        type="button"
+        (click)="setLanguage('fr')"
+        [attr.aria-label]="'French'"
+        class="flag-btn"
+    >
+        <img
+            alt="fr"
+            height="16"
+            ngSrc="assets/translations/fr-flag.svg"
+            width="24"
+        />
+    </button>
     /
-    <img (click)="setLanguage('en')" alt="en" height="16" ngSrc="assets/translations/en-flag.svg" width="24">
+    <button
+        type="button"
+        (click)="setLanguage('en')"
+        [attr.aria-label]="'English'"
+        class="flag-btn"
+    >
+        <img
+            alt="en"
+            height="16"
+            ngSrc="assets/translations/en-flag.svg"
+            width="24"
+        />
+    </button>
 </div>

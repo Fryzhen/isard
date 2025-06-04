@@ -11,12 +11,12 @@ import {InputComponent} from "../input/input.component";
   styleUrl: "./research-input.component.scss"
 })
 export class ResearchInputComponent {
-  @Output() onResearch = new EventEmitter<string>();
+  @Output() research = new EventEmitter<string>();
   private input: HTMLInputElement | undefined;
 
-  onSearch($event: Event) {
+  onSearch() {
     if (this.input) {
-      this.onResearch.emit(this.input.value);
+      this.research.emit(this.input.value);
     }
   }
 
