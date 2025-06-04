@@ -63,4 +63,8 @@ export class PicklistComponent {
     this.items = [];
     this.itemClick.emit(id);
   }
+
+  canBeEmptied() {
+    return this.items.length > 0;
+  }
 }
