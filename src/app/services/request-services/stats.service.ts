@@ -12,7 +12,7 @@ export class StatsService {
   baseUrl: string = environment.apiUrl + "/stats";
 
   constructor(
-    private http: HttpClient,
+    private readonly http: HttpClient,
   ) {
   }
 

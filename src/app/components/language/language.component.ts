@@ -13,7 +13,9 @@ import {TranslationService} from "../../services/app-services/translation.servic
 })
 export class LanguageComponent {
 
-  constructor(private translationService: TranslationService) {
+  constructor(
+    private readonly translationService: TranslationService
+  ) {
   }
 
   setLanguage(language: string) {

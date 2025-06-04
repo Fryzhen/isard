@@ -15,7 +15,7 @@ export class InputComponent {
   @Output() enterPressed = new EventEmitter<Event>();
 
   constructor(
-    private translateService: TranslateService,
+    private readonly translateService: TranslateService,
   ) {
     this.placeholder = this.translateService.instant("Components.Input.DefaultPlaceholder");
   }

@@ -6,13 +6,9 @@ import {EventType, Race} from "./iracing-entities";
 
 export interface SearchSeriesConfig {
   race_week_num: number,
-
   series_id?: number,
-
   official_only?: boolean,
-
   event_types?: EventType[],
-
   category_ids?: number[],
 }
 
@@ -37,7 +33,7 @@ export class ResultsService {
   baseUrl: string = environment.apiUrl + "/results";
 
   constructor(
-    private http: HttpClient,
+    private readonly http: HttpClient,
   ) {
   }
 

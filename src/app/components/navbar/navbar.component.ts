@@ -26,11 +26,11 @@ export class NavbarComponent {
   drivers: Driver[] = [];
 
   constructor(
-    private router: Router,
-    private lookupService: LookupService,
-    private notificationService: NotificationService,
-    private loggerService: LoggerService,
-    private translateService: TranslateService,
+    private readonly router: Router,
+    private readonly lookupService: LookupService,
+    private readonly notificationService: NotificationService,
+    private readonly loggerService: LoggerService,
+    private readonly translateService: TranslateService,
   ) {
   }
 
@@ -62,12 +62,8 @@ export class NavbarComponent {
   }
 
   onItemClick(itemId: number): void {
-    this.redirectTo([`/member/${itemId}`]).then((success: boolean) => {
-      if (success) {
-        this.drivers = [];
-      } else {
-        this.notificationService.error(this.translateService.instant("Components.Navbar.ErrorFailNavigate"));
-      }
-    });
+    this.redirectTo([`/member/${itemId}`]).then(() => {
+      this.drivers = [];
+    })
   }
 }

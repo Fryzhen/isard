@@ -13,7 +13,10 @@ import {Title} from "@angular/platform-browser";
 export class HomeComponent {
   images = ["./assets/background/double-ferrari.jpg", "./assets/background/inside-ir18.jpg", "./assets/background/nascar-drift.jpg", "./assets/background/w12-sunset.jpg", "./assets/background/nascar-race.jpg",];
 
-  constructor(private titleService: Title, private translateService: TranslateService,) {
+  constructor(
+    private readonly titleService: Title,
+    private readonly translateService: TranslateService
+  ) {
     this.titleService.setTitle(this.translateService.instant("Home.Title"));
   }
 }

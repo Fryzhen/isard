@@ -3,7 +3,6 @@ import {Injectable} from "@angular/core";
 
 export interface INotification {
   message: string,
-
   type: NotificationType,
 }
 
@@ -17,7 +16,7 @@ export enum NotificationType {
   providedIn: "root",
 })
 export class NotificationService {
-  private notifyRequest = new ReplaySubject<INotification>();
+  private readonly notifyRequest = new ReplaySubject<INotification>();
 
   notifyRequest$ = this.notifyRequest.asObservable();
 

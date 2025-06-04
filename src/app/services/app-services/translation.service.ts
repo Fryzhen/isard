@@ -8,10 +8,11 @@ import {TranslateService} from "@ngx-translate/core";
   providedIn: "root"
 })
 export class TranslationService {
-
   selectedLanguage = "en";
 
-  constructor(private translate: TranslateService) {
+  constructor(
+    private readonly translate: TranslateService
+  ) {
   }
 
   public init() {

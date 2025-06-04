@@ -11,7 +11,7 @@ export class LookupService {
   baseUrl: string = environment.apiUrl + "/lookup";
 
   constructor(
-    private http: HttpClient,
+    private readonly http: HttpClient,
   ) {
   }
 

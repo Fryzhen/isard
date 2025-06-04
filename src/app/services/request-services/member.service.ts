@@ -12,7 +12,7 @@ export class MemberService {
   baseUrl: string = environment.apiUrl + "/member";
 
   constructor(
-    private http: HttpClient,
+    private readonly http: HttpClient,
   ) {
   }
 

@@ -21,7 +21,7 @@ export class LicenceTileComponent {
   @Input({required: true}) licence!: License;
 
   constructor(
-    private licenceService: LicenceService
+    private readonly licenceService: LicenceService
   ) {
   }
 

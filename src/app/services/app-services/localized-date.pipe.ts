@@ -8,7 +8,9 @@ import {TranslateService} from "@ngx-translate/core";
   pure: false
 })
 export class LocalizedDatePipe implements PipeTransform {
-  constructor(private translateService: TranslateService) {
+  constructor(
+    private readonly translateService: TranslateService
+  ) {
   }
 
   transform(value: any, pattern: string = "mediumDate"): any {

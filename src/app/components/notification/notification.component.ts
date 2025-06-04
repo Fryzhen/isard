@@ -21,7 +21,7 @@ export class NotificationComponent implements OnInit {
   };
 
   constructor(
-    private notificationService: NotificationService
+    private readonly notificationService: NotificationService
   ) {
   }
 
