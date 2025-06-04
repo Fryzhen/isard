@@ -12,8 +12,8 @@ import {LanguageComponent} from "../language/language.component";
 @Component({
   standalone: true,
   selector: "isard-navbar",
-  templateUrl: "./Navbar.component.html",
-  styleUrl: "./Navbar.component.scss",
+  templateUrl: "./navbar.component.html",
+  styleUrl: "./navbar.component.scss",
   imports: [
     CommonModule,
     NgOptimizedImage,
