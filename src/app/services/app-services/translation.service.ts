@@ -30,8 +30,4 @@ export class TranslationService {
     this.selectedLanguage = language;
     this.translate.use(language);
   }
-
-  public getLanguage() {
-    return this.selectedLanguage;
-  }
 }

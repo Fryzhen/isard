@@ -1,7 +1,6 @@
 import {Component, Input} from "@angular/core";
 import {CareerStats} from "../../../../../services/request-services/iracing-entities";
-import {NgForOf, NgIf} from "@angular/common";
-import {IconComponent} from "../../../../../components/icon/icon.component";
+import {NgIf} from "@angular/common";
 import {LicenceService} from "../../../../../services/app-services/licence.service";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
@@ -13,9 +12,7 @@ import {TableCell, TableHeader, TableService} from "../../../../../services/app-
   standalone: true,
   selector: "isard-member-stats-career",
   imports: [
-    NgForOf,
     NgIf,
-    IconComponent,
     LoadingScreenComponent,
     TranslatePipe,
     BoxComponent,

@@ -2,6 +2,7 @@ import {Component, EventEmitter, Output} from "@angular/core";
 import {InputComponent} from "../input/input.component";
 
 @Component({
+  standalone: true,
   selector: "isard-research-input",
   imports: [
     InputComponent

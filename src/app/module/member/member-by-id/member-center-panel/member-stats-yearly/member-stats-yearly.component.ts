@@ -1,6 +1,5 @@
 import {Component, Input, OnChanges} from "@angular/core";
 import {YearStats} from "../../../../../services/request-services/iracing-entities";
-import {IconComponent} from "../../../../../components/icon/icon.component";
 import {NgForOf, NgIf} from "@angular/common";
 import {LicenceService} from "../../../../../services/app-services/licence.service";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
@@ -13,7 +12,6 @@ import {TableCell, TableHeader, TableService} from "../../../../../services/app-
   standalone: true,
   selector: "isard-member-stats-yearly",
   imports: [
-    IconComponent,
     NgForOf,
     NgIf,
     LoadingScreenComponent,

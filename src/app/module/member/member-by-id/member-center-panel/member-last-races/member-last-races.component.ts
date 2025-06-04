@@ -1,9 +1,8 @@
 import {Component, Input} from "@angular/core";
 import {RecentRace} from "../../../../../services/request-services/iracing-entities";
-import {CommonModule, NgForOf} from "@angular/common";
+import {CommonModule} from "@angular/common";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
-import {LocalizedDatePipe} from "../../../../../services/app-services/localized-date.pipe";
 import {BoxComponent} from "../../../../../components/box/box.component";
 import {TableComponent} from "../../../../../components/table/table.component";
 import {TableCell, TableHeader, TableService} from "../../../../../services/app-services/table.service";
@@ -12,7 +11,13 @@ import {NotificationService} from "../../../../../services/app-services/notifica
 @Component({
   standalone: true,
   selector: "isard-member-last-races",
-  imports: [NgForOf, CommonModule, LoadingScreenComponent, TranslatePipe, LocalizedDatePipe, BoxComponent, TableComponent],
+  imports: [
+    CommonModule,
+    LoadingScreenComponent,
+    TranslatePipe,
+    BoxComponent,
+    TableComponent
+  ],
   templateUrl: "./member-last-races.component.html",
   styleUrl: "./member-last-races.component.scss"
 })
