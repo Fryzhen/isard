@@ -1,8 +1,8 @@
 <isard-box>
-  <h3>{{ 'Member.AllRacesPanel.Title' | translate }}</h3>
-  <ng-container *ngIf="races; else pageCharging">
-  </ng-container>
+    <h3>{{ 'Member.AllRacesPanel.Title' | translate }}</h3>
+    <ng-container *ngIf="races; else pageCharging">
+    </ng-container>
 </isard-box>
 <ng-template #pageCharging>
-  <isard-loading-screen></isard-loading-screen>
+    <isard-loading-screen></isard-loading-screen>
 </ng-template>

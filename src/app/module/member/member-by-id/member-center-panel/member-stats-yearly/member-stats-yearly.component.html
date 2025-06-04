@@ -1,54 +1,17 @@
 <isard-box>
-  <h3>{{ 'Member.YearlyPanel.Title' | translate }}</h3>
-  <ng-container *ngIf="stats; else pageCharging">
-    <ng-container *ngFor="let year of years">
-      <h4 class="year">{{ year }}</h4>
-      <table class="table">
-        <thead>
-        <tr>
-          <th scope="col"></th>
-          <th scope="col">{{ 'Member.YearlyPanel.Table.Category' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Starts' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Wins' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Top5' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Poles' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.AverageStart' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.AverageFinish' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.AverageIncidents' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.WinPercentage' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.Top5Percentage' | translate }}</th>
-          <th class="text-center" scope="col">{{ 'Member.YearlyPanel.Table.PolePercentage' | translate }}</th>
-        </tr>
-        </thead>
-        <tbody>
-        <ng-container *ngFor="let stat of getYearStats(year)">
-          <tr>
-            <th class="text-center" scope="row">
-              <isard-icon
-                [height]="30"
-                [path]="getIcon(stat.category_id)"
-                [width]="30"
-              >
-              </isard-icon>
-            </th>
-            <td>{{ stat.category }}</td>
-            <td class="text-center">{{ stat.starts }}</td>
-            <td class="text-center">{{ stat.wins }}</td>
-            <td class="text-center">{{ stat.top5 }}</td>
-            <td class="text-center">{{ stat.poles }}</td>
-            <td class="text-center">{{ stat.avg_start_position }}</td>
-            <td class="text-center">{{ stat.avg_finish_position }}</td>
-            <td class="text-center">{{ stat.avg_incidents }}</td>
-            <td class="text-center">{{ stat.win_percentage }}%</td>
-            <td class="text-center">{{ stat.top5_percentage }}%</td>
-            <td class="text-center">{{ stat.poles_percentage }}%</td>
-          </tr>
+    <h3>{{ 'Member.YearlyPanel.Title' | translate }}</h3>
+    <ng-container *ngIf="stats; else pageCharging">
+        <ng-container *ngFor="let year of years">
+            <h4 class="year">{{ year }}</h4>
+            <isard-table
+                    [header]="getHeader()"
+                    [rows]="getRows(getYearStats(year))"
+            >
+            </isard-table>
         </ng-container>
-        </tbody>
-      </table>
     </ng-container>
-  </ng-container>
 </isard-box>
 <ng-template #pageCharging>
-  <isard-loading-screen></isard-loading-screen>
+    <isard-loading-screen></isard-loading-screen>
 </ng-template>
+

@@ -1,17 +1,17 @@
-import {Component} from '@angular/core';
-import {TranslatePipe} from '@ngx-translate/core';
+import {Component} from "@angular/core";
+import {TranslatePipe} from "@ngx-translate/core";
 
 @Component({
   standalone: true,
-  selector: 'isard-loading-screen',
+  selector: "isard-loading-screen",
   imports: [
     TranslatePipe
   ],
-  templateUrl: './loading-screen.component.html',
-  styleUrl: './loading-screen.component.scss'
+  templateUrl: "./loading-screen.component.html",
+  styleUrl: "./loading-screen.component.scss"
 })
 export class LoadingScreenComponent {
-  points = '';
+  points = "";
   pointsCount = 0;
 
   constructor() {
@@ -21,6 +21,6 @@ export class LoadingScreenComponent {
 
   private updatePoints(): void {
     this.pointsCount = (this.pointsCount + 1) % 4; // Cycle through 0 to 3
-    this.points = '.'.repeat(this.pointsCount); // Create a string with the current number of dots
+    this.points = ".".repeat(this.pointsCount); // Create a string with the current number of dots
   }
 }

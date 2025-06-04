@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {NgForOf, NgIf, NgStyle} from '@angular/common';
-import {InputComponent} from '../input/input.component';
+import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {InputComponent} from "../input/input.component";
 
 interface PickListItems {
   name: string;
@@ -10,19 +10,19 @@ interface PickListItems {
 
 @Component({
   standalone: true,
-  selector: 'isard-picklist',
+  selector: "isard-picklist",
   imports: [
     NgForOf,
     NgIf,
     NgStyle,
     InputComponent
   ],
-  templateUrl: './picklist.component.html',
-  styleUrl: './picklist.component.scss'
+  templateUrl: "./picklist.component.html",
+  styleUrl: "./picklist.component.scss"
 })
 export class PicklistComponent {
   @Input() items: PickListItems[] = [];
-  @Input() placeholder: string = 'Search...';
+  @Input() placeholder: string = "Search...";
   @Output() searchChange = new EventEmitter<string>();
   @Output() itemClick = new EventEmitter<number>();
 

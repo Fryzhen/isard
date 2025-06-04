@@ -1,13 +1,13 @@
 <isard-box>
-  <h3>{{ 'Member.LastRacesPanel.Title' | translate }}</h3>
-  <ng-container *ngIf="races; else pageCharging">
-    <isard-table
-      [header]="getHeader()"
-      [rows]="getRows()"
-    >
-    </isard-table>
-  </ng-container>
+    <h3>{{ 'Member.LastRacesPanel.Title' | translate }}</h3>
+    <ng-container *ngIf="races; else pageCharging">
+        <isard-table
+                [header]="getHeader()"
+                [rows]="getRows()"
+        >
+        </isard-table>
+    </ng-container>
 </isard-box>
 <ng-template #pageCharging>
-  <isard-loading-screen></isard-loading-screen>
+    <isard-loading-screen></isard-loading-screen>
 </ng-template>

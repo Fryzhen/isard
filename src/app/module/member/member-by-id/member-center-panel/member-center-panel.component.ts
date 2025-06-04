@@ -1,17 +1,17 @@
-import {Component, Input, OnChanges, SimpleChanges} from '@angular/core';
-import {MemberScreenDisplay} from '../member-by-id.component';
-import {NgIf} from '@angular/common';
-import {MemberStatsYearlyComponent} from './member-stats-yearly/member-stats-yearly.component';
-import {MemberAllRacesComponent} from './member-all-races/member-all-races.component';
-import {MemberStatsCareerComponent} from './member-stats-career/member-stats-career.component';
-import {MemberLastRacesComponent} from './member-last-races/member-last-races.component';
-import {CareerStats, Member, Race, RecentRace, YearStats} from '../../../../services/request-services/iracing-entities';
-import {ResultsService, SearchSeriesConfig} from '../../../../services/request-services/results.service';
-import {MemberParameters} from '../member-parameter-panel/member-parameter-panel.component';
-import {StatsService} from '../../../../services/request-services/stats.service';
-import {LoggerService} from '../../../../services/app-services/logger.service';
-import {NotificationService} from '../../../../services/app-services/notification.service';
-import {TranslateService} from '@ngx-translate/core';
+import {Component, Input, OnChanges} from "@angular/core";
+import {MemberScreenDisplay} from "../member-by-id.component";
+import {NgIf} from "@angular/common";
+import {MemberStatsYearlyComponent} from "./member-stats-yearly/member-stats-yearly.component";
+import {MemberAllRacesComponent} from "./member-all-races/member-all-races.component";
+import {MemberStatsCareerComponent} from "./member-stats-career/member-stats-career.component";
+import {MemberLastRacesComponent} from "./member-last-races/member-last-races.component";
+import {CareerStats, Member, Race, RecentRace, YearStats} from "../../../../services/request-services/iracing-entities";
+import {ResultsService, SearchSeriesConfig} from "../../../../services/request-services/results.service";
+import {MemberParameters} from "../member-parameter-panel/member-parameter-panel.component";
+import {StatsService} from "../../../../services/request-services/stats.service";
+import {LoggerService} from "../../../../services/app-services/logger.service";
+import {NotificationService} from "../../../../services/app-services/notification.service";
+import {TranslateService} from "@ngx-translate/core";
 
 export interface CenterPanelRequest {
   allRaces: Race[] | undefined;
@@ -22,18 +22,24 @@ export interface CenterPanelRequest {
 
 @Component({
   standalone: true,
-  selector: 'isard-member-center-panel',
+  selector: "isard-member-center-panel",
   imports: [NgIf, MemberStatsYearlyComponent, MemberAllRacesComponent, MemberStatsCareerComponent, MemberLastRacesComponent],
-  templateUrl: './member-center-panel.component.html',
-  styleUrl: './member-center-panel.component.scss'
+  templateUrl: "./member-center-panel.component.html",
+  styleUrl: "./member-center-panel.component.scss"
 })
-export class MemberCenterPanelComponent implements OnChanges{
+export class MemberCenterPanelComponent implements OnChanges {
   centerPanelRequest: CenterPanelRequest;
   @Input() member!: Member;
   @Input() parameters!: MemberParameters;
   protected readonly MemberScreenDisplay = MemberScreenDisplay;
 
-  constructor(private loggerService: LoggerService, private notificationService: NotificationService, private translateService: TranslateService, private statsService: StatsService, private resultService: ResultsService) {
+  constructor(
+    private readonly loggerService: LoggerService,
+    private readonly notificationService: NotificationService,
+    private readonly translateService: TranslateService,
+    private readonly statsService: StatsService,
+    private readonly resultService: ResultsService
+  ) {
     this.centerPanelRequest = {} as CenterPanelRequest;
   }
 
@@ -60,9 +66,7 @@ export class MemberCenterPanelComponent implements OnChanges{
       next: (races: RecentRace[]) => {
         this.centerPanelRequest.lastRaces = races;
       }, error: (error: string) => {
-        this.translateService.get('Components.NavBar.ImpossibleGetData').subscribe((text: string) => {
-          this.notificationService.error(text);
-        });
+        this.notificationService.error(this.translateService.instant("Components.NavBar.ImpossibleGetData"));
         this.loggerService.error(error);
       }
     });
@@ -73,9 +77,7 @@ export class MemberCenterPanelComponent implements OnChanges{
       next: (stats: CareerStats[]) => {
         this.centerPanelRequest.careerStats = stats;
       }, error: (error: string) => {
-        this.translateService.get('Components.NavBar.ImpossibleGetData').subscribe((text: string) => {
-          this.notificationService.error(text);
-        });
+        this.notificationService.error(this.translateService.instant("Components.NavBar.ImpossibleGetData"));
         this.loggerService.error(error);
       }
     });
@@ -86,9 +88,7 @@ export class MemberCenterPanelComponent implements OnChanges{
       next: (stats: YearStats[]) => {
         this.centerPanelRequest.yearlyStats = stats;
       }, error: (error: string) => {
-        this.translateService.get('Components.NavBar.ImpossibleGetData').subscribe((text: string) => {
-          this.notificationService.error(text);
-        });
+        this.notificationService.error(this.translateService.instant("Components.NavBar.ImpossibleGetData"));
         this.loggerService.error(error);
       }
     });
@@ -99,9 +99,7 @@ export class MemberCenterPanelComponent implements OnChanges{
       next: (races: Race[]) => {
         this.centerPanelRequest.allRaces = races;
       }, error: (error: string) => {
-        this.translateService.get('Components.NavBar.ImpossibleGetData').subscribe((text: string) => {
-          this.notificationService.error(text);
-        });
+        this.notificationService.error(this.translateService.instant("Components.NavBar.ImpossibleGetData"));
         this.loggerService.error(error);
       }
     });

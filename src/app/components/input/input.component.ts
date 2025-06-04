@@ -1,15 +1,15 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {TranslateService} from '@ngx-translate/core';
+import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   standalone: true,
-  selector: 'isard-input',
+  selector: "isard-input",
   imports: [],
-  templateUrl: './input.component.html',
-  styleUrl: './input.component.scss'
+  templateUrl: "./input.component.html",
+  styleUrl: "./input.component.scss"
 })
 export class InputComponent {
-  @Input() placeholder: string = '';
+  @Input() placeholder: string = "";
   @Input() emptyWhenChoose: boolean = false;
   @Output() searchChange = new EventEmitter<Event>();
   @Output() enterPressed = new EventEmitter<Event>();
@@ -17,9 +17,7 @@ export class InputComponent {
   constructor(
     private translateService: TranslateService,
   ) {
-    this.translateService.get('Components.Input.DefaultPlaceholder').subscribe((text: string) => {
-      this.placeholder = text;
-    });
+    this.placeholder = this.translateService.instant("Components.Input.DefaultPlaceholder");
   }
 
   onSearch(event: Event): void {
@@ -31,7 +29,7 @@ export class InputComponent {
     const inputElement = event.target as HTMLInputElement;
     if (inputElement.value) {
       if (this.emptyWhenChoose) {
-        inputElement.value = '';
+        inputElement.value = "";
       }
       this.searchChange.emit(event);
     }

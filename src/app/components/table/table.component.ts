@@ -1,32 +1,24 @@
-import {Component, Input} from '@angular/core';
-import {NgClass, NgForOf, NgIf} from '@angular/common';
-
-export interface TableHeader {
-  value: string | Date;
-  isCenter?: boolean;
-}
-
-export interface TableRow {
-  value: string | Date;
-  isPositive?: boolean;
-  isNegative?: boolean;
-  isCenter?: boolean;
-  isButton?: boolean;
-  onClick?: (id: number) => number;
-}
+import {Component, Input} from "@angular/core";
+import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {TableCell, TableCellType, TableHeader} from "../../services/app-services/table.service";
+import {LocalizedDatePipe} from "../../services/app-services/localized-date.pipe";
+import {IconComponent} from "../icon/icon.component";
 
 @Component({
   standalone: true,
-  selector: 'isard-table',
+  selector: "isard-table",
   imports: [
     NgForOf,
     NgClass,
-    NgIf
+    NgIf,
+    LocalizedDatePipe,
+    IconComponent
   ],
-  templateUrl: './table.component.html',
-  styleUrl: './table.component.scss'
+  templateUrl: "./table.component.html",
+  styleUrl: "./table.component.scss"
 })
 export class TableComponent {
-  @Input() rows!: TableRow[][]
-  @Input() header!: TableHeader[]
+  @Input() rows!: TableCell[][];
+  @Input() header!: TableHeader[];
+  protected readonly TableCellType = TableCellType;
 }

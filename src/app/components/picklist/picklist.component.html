@@ -1,11 +1,11 @@
 <isard-input
-  (enterPressed)="onEnterPressed()"
-  (searchChange)="onSearch($event)"
-  [emptyWhenChoose]="true"
-  [placeholder]="placeholder"
+        (enterPressed)="onEnterPressed()"
+        (searchChange)="onSearch($event)"
+        [emptyWhenChoose]="true"
+        [placeholder]="placeholder"
 ></isard-input>
 <ul *ngIf="items.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
-  <li *ngFor="let item of items">
-    <a (click)="onItemClick(item.id)" class="dropdown-item">{{ item.name }}</a>
-  </li>
+    <li *ngFor="let item of items">
+        <a (click)="onItemClick(item.id)" class="dropdown-item">{{ item.name }}</a>
+    </li>
 </ul>

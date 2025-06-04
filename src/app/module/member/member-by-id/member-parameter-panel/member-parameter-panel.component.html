@@ -1,32 +1,32 @@
 <isard-box>
-  <div class="btn-group">
-    <button
-      (click)="changeScreen(MemberScreenDisplay.LastRaces)"
-      [class.active]="currentScreenDisplay === MemberScreenDisplay.LastRaces"
-      class="btn btn-primary"
-      type="button">
-      {{ 'Member.ParameterPanel.LastRaces' | translate }}
-    </button>
-    <button
-      (click)="changeScreen(MemberScreenDisplay.CareerStats)"
-      [class.active]="currentScreenDisplay === MemberScreenDisplay.CareerStats"
-      class="btn btn-primary"
-      type="button">
-      {{ 'Member.ParameterPanel.CareerStats' | translate }}
-    </button>
-    <button
-      (click)="changeScreen(MemberScreenDisplay.YearlyStats)"
-      [class.active]="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
-      class="btn btn-primary"
-      type="button">
-      {{ 'Member.ParameterPanel.YearlyStats' | translate }}
-    </button>
-    <button
-      (click)="changeScreen(MemberScreenDisplay.AllRaces)"
-      [class.active]="currentScreenDisplay === MemberScreenDisplay.AllRaces"
-      class="btn btn-primary"
-      type="button">
-      {{ 'Member.ParameterPanel.AllRaces' | translate }}
-    </button>
-  </div>
+    <div class="btn-group">
+        <button
+                (click)="changeScreen(MemberScreenDisplay.LastRaces)"
+                [class.active]="currentScreenDisplay === MemberScreenDisplay.LastRaces"
+                class="btn btn-primary"
+                type="button">
+            {{ 'Member.ParameterPanel.LastRaces' | translate }}
+        </button>
+        <button
+                (click)="changeScreen(MemberScreenDisplay.CareerStats)"
+                [class.active]="currentScreenDisplay === MemberScreenDisplay.CareerStats"
+                class="btn btn-primary"
+                type="button">
+            {{ 'Member.ParameterPanel.CareerStats' | translate }}
+        </button>
+        <button
+                (click)="changeScreen(MemberScreenDisplay.YearlyStats)"
+                [class.active]="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
+                class="btn btn-primary"
+                type="button">
+            {{ 'Member.ParameterPanel.YearlyStats' | translate }}
+        </button>
+        <button
+                (click)="changeScreen(MemberScreenDisplay.AllRaces)"
+                [class.active]="currentScreenDisplay === MemberScreenDisplay.AllRaces"
+                class="btn btn-primary"
+                type="button">
+            {{ 'Member.ParameterPanel.AllRaces' | translate }}
+        </button>
+    </div>
 </isard-box>

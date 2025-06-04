@@ -1,15 +1,15 @@
-import {Injectable} from '@angular/core';
-import {environment} from '../../../environments/environment';
-import {HttpClient} from '@angular/common/http';
-import {CareerStats, RecentRace, YearStats} from './iracing-entities';
-import {map} from 'rxjs/operators';
-import {Observable} from 'rxjs';
+import {Injectable} from "@angular/core";
+import {environment} from "../../../environments/environment";
+import {HttpClient} from "@angular/common/http";
+import {CareerStats, RecentRace, YearStats} from "./iracing-entities";
+import {map} from "rxjs/operators";
+import {Observable} from "rxjs";
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class StatsService {
-  baseUrl: string = environment.apiUrl + '/stats';
+  baseUrl: string = environment.apiUrl + "/stats";
 
   constructor(
     private http: HttpClient,

@@ -1,17 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from "@angular/core";
 
 @Component({
   standalone: true,
-  selector: 'isard-background',
-  templateUrl: './background.component.html',
-  styleUrl: './background.component.scss'
+  selector: "isard-background",
+  templateUrl: "./background.component.html",
+  styleUrl: "./background.component.scss"
 })
 export class BackgroundComponent implements OnInit {
   @Input({required: true}) images!: string[];
   currentIndex = 0;
   nextIndex = 1;
-  currentImage = '';
-  nextImage = '';
+  currentImage = "";
+  nextImage = "";
   nextOpacity = 0;
 
   ngOnInit(): void {

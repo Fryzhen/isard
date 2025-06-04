@@ -1,5 +1,5 @@
-import {ReplaySubject} from 'rxjs';
-import {Injectable} from '@angular/core';
+import {ReplaySubject} from "rxjs";
+import {Injectable} from "@angular/core";
 
 export interface INotification {
   message: string,
@@ -8,13 +8,13 @@ export interface INotification {
 }
 
 export enum NotificationType {
-  Success = 'success',
-  Warning = 'warning',
-  Error = 'error',
+  Success = "success",
+  Warning = "warning",
+  Error = "error",
 }
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: "root",
 })
 export class NotificationService {
   private notifyRequest = new ReplaySubject<INotification>();

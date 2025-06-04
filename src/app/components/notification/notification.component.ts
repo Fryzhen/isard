@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {CommonModule} from '@angular/common';
-import {INotification, NotificationService, NotificationType} from '../../services/app-services/notification.service';
-import {debounceTime, tap} from 'rxjs/operators';
+import {Component, OnInit} from "@angular/core";
+import {CommonModule} from "@angular/common";
+import {INotification, NotificationService, NotificationType} from "../../services/app-services/notification.service";
+import {debounceTime, tap} from "rxjs/operators";
 
 @Component({
   standalone: true,
-  selector: 'isard-notification',
-  templateUrl: './notification.component.html',
-  styleUrls: ['./notification.component.scss'],
+  selector: "isard-notification",
+  templateUrl: "./notification.component.html",
+  styleUrls: ["./notification.component.scss"],
   imports: [
     CommonModule,
   ]
@@ -16,7 +16,7 @@ export class NotificationComponent implements OnInit {
   showNotification = false;
 
   notification: INotification = {
-    message: '',
+    message: "",
     type: NotificationType.Error,
   };
 

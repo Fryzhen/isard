@@ -1,35 +1,61 @@
 <table class="table">
-  <thead>
-  <tr>
-    <ng-container *ngFor="let head of header">
-      <th scope="col" [ngClass]="{'text-centrer': head.isCenter}">{{ head.value }}</th>
-    </ng-container>
-  </tr>
-  </thead>
-  <tbody>
-  <ng-container *ngFor="let row of rows">
+    <thead>
     <tr>
-      <ng-container *ngFor="let box of row">
-        <ng-container *ngIf="!box.isButton">
-          <td
-            [ngClass]="{
-            'positive': box.isPositive,
-            'negative': box.isNegative,
-            'text-centrer': box.isCenter}">
-            {{ box.value }}
-          </td>
+        <ng-container *ngFor="let head of header">
+            <th [ngClass]="{'text-centrer': head.isCenter}" scope="col">{{ head.value }}</th>
         </ng-container>
-        <ng-container *ngIf="box.isButton">
-          <button
-            [ngClass]="{
-            'text-centrer': box.isCenter}"
-            (click)="box.onClick" class="btn btn-secondary"
-            type="button">
-            {{ box.value }}
-          </button>
-        </ng-container>
-      </ng-container>
     </tr>
-  </ng-container>
-  </tbody>
+    </thead>
+    <tbody>
+    <ng-container *ngFor="let row of rows">
+        <tr>
+            <ng-container *ngFor="let box of row">
+
+                <ng-container *ngIf="box.type === TableCellType.TEXT">
+                    <td
+                            [ngClass]="{
+              'positive': box.isPositive,
+              'negative': box.isNegative,
+              'text-centrer': box.isCenter}">
+                        {{ box.value }}
+                    </td>
+                </ng-container>
+
+                <ng-container *ngIf="box.type === TableCellType.DATE">
+                    <td
+                            [ngClass]="{
+              'positive': box.isPositive,
+              'negative': box.isNegative,
+              'text-centrer': box.isCenter}">
+                        {{ box.value | localizedDate: box.dateFormat }}
+                    </td>
+                </ng-container>
+
+                <ng-container *ngIf="box.type === TableCellType.BUTTON">
+                    <td
+                            [ngClass]="{'text-centrer': box.isCenter}">
+                        <button
+                                (click)="box.onClick" class="btn btn-secondary"
+                                type="button">
+                            {{ box.value }}
+                        </button>
+                    </td>
+                </ng-container>
+
+                <ng-container *ngIf="box.type === TableCellType.ICON">
+                    <td
+                            [ngClass]="{'text-centrer': box.isCenter}">
+                        <isard-icon
+                                [height]="30"
+                                [path]="box.value.toString()"
+                                [width]="30"
+                        >
+                        </isard-icon>
+                    </td>
+                </ng-container>
+
+            </ng-container>
+        </tr>
+    </ng-container>
+    </tbody>
 </table>

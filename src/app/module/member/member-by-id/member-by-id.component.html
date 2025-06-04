@@ -1,32 +1,32 @@
 <ng-container *ngIf="!isCharging; else pageCharging">
-  <ng-container *ngIf="member; else memberNoExist">
-    <div class="fullscreen">
-      <div class="side">
-        <isard-member-info-panel [member]="member"></isard-member-info-panel>
-        <isard-member-parameter-panel
-          (parameters)="setDisplay($event)"
-          [currentScreenDisplay]="currentScreenDisplay">
-        </isard-member-parameter-panel>
+    <ng-container *ngIf="member; else memberNoExist">
+        <div class="fullscreen">
+            <div class="side">
+                <isard-member-info-panel [member]="member"></isard-member-info-panel>
+                <isard-member-parameter-panel
+                        (parameters)="setDisplay($event)"
+                        [currentScreenDisplay]="currentScreenDisplay">
+                </isard-member-parameter-panel>
 
-      </div>
-      <div class="center">
-        <isard-member-center-panel
-          [parameters]="getParameters()"
-          [member]="member"
-        >
-        </isard-member-center-panel>
-      </div>
-    </div>
-  </ng-container>
+            </div>
+            <div class="center">
+                <isard-member-center-panel
+                        [member]="member"
+                        [parameters]="getParameters()"
+                >
+                </isard-member-center-panel>
+            </div>
+        </div>
+    </ng-container>
 </ng-container>
 
 <ng-template #memberNoExist>
-  <div class="center-screen">
-    <h3>{{ 'Member.Errors.NoDriver' | translate }}</h3>
-    <p>{{ 'Member.Errors.CheckId' | translate }}</p>
-  </div>
+    <div class="center-screen">
+        <h3>{{ 'Member.Errors.NoDriver' | translate }}</h3>
+        <p>{{ 'Member.Errors.CheckId' | translate }}</p>
+    </div>
 </ng-template>
 
 <ng-template #pageCharging>
-  <isard-loading-screen></isard-loading-screen>
+    <isard-loading-screen></isard-loading-screen>
 </ng-template>
