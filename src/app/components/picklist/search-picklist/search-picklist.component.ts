@@ -26,14 +26,13 @@ export class SearchPicklistComponent {
   @Input() placeholder = "";
   @Output() searchChange = new EventEmitter<string>();
   @Output() itemClick = new EventEmitter<number>();
+  private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
 
   constructor(
     private readonly translateService: TranslateService,
   ) {
     this.placeholder = this.translateService.instant("Components.Input.DefaultPlaceholder");
   }
-
-  private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
 
   onSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;

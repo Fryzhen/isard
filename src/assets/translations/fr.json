@@ -29,7 +29,8 @@
       "CheckId": "Veuillez vérifier l'ID que vous avez entré.",
       "MemberNotFound": "Membre non trouvé, veuillez vérifier l'ID ou contactez le support.",
       "MemberNotFoundTitle": "ISACP : Membre non trouvé",
-      "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés"
+      "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés",
+      "ImpossibleGetData": "Les données n'ont pas pu être récupérés"
     },
     "Research": {
       "Title": "Rechercher un Pilote"
