@@ -25,13 +25,13 @@
             </ul>
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item dropdown">
-                    <isard-picklist
+                    <isard-search-picklist
                             (itemClick)="onItemClick($event)"
                             (searchChange)="onSearch($event)"
                             [items]="driversToItems(drivers)"
                             [placeholder]="'Components.Navbar.DriverSearchPlaceholder' | translate"
                     >
-                    </isard-picklist>
+                    </isard-search-picklist>
                 </li>
             </ul>
         </div>
