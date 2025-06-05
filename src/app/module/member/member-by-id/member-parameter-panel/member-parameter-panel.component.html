@@ -19,7 +19,23 @@
                 [class.active]="currentScreenDisplay === MemberScreenDisplay.AllRaces"
                 class="btn btn-primary"
                 type="button">
-            {{ 'Member.ParameterPanel.AllRaces' | translate }}
+            {{ 'Member.ParameterPanel.AllRaces.Title' | translate }}
         </button>
     </div>
+    <ng-container *ngIf="currentScreenDisplay === MemberScreenDisplay.AllRaces">
+        <div class="all-races-parameters">
+            <isard-item-picklist
+                    [label]="translateService.instant('Member.ParameterPanel.AllRaces.Year')"
+                    [items]="getItemsYear()">
+            </isard-item-picklist>
+            <isard-item-picklist
+                    [label]="translateService.instant('Member.ParameterPanel.AllRaces.Quarter.Title')"
+                    [items]="getItemsQuarter()">
+            </isard-item-picklist>
+            <isard-item-picklist
+                    [label]="translateService.instant('Member.ParameterPanel.AllRaces.Event.Title')"
+                    [items]="getItemsEventType()">
+            </isard-item-picklist>
+        </div>
+    </ng-container>
 </isard-box>

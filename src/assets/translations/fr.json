@@ -44,7 +44,25 @@
     "ParameterPanel": {
       "LastRaces": "Courses Récentes",
       "CareerStats": "Statistiques Globales",
-      "AllRaces": "Toutes les Courses"
+      "AllRaces": "Toutes les Courses",
+      "AllRaces": {
+        "Title": "Toutes les Courses",
+        "Year": "Année",
+        "Quarter": {
+          "Title": "Quartier",
+          "Q1": "Premier Quartier",
+          "Q2": "Second Quartier",
+          "Q3": "Troisième Quartier",
+          "Q4": "Quatrième Quartier"
+        },
+        "Event": {
+          "EventType": "Type d'évenement",
+          "Practice": "Essai",
+          "Qualify": "Qualification",
+          "TimeTrial": "Time Trial",
+          "Race": "Course"
+        }
+      }
     },
     "LastRacesPanel": {
       "Title": "Courses Récentes",
