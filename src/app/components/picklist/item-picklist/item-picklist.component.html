@@ -1,6 +1,6 @@
-<label [attr.for]="label.toLowerCase().replace(' ','')">{{ label }}</label>
-<select class="form-control" [attr.id]="label.toLowerCase().replace(' ','')">
+<label [attr.for]="label.toLowerCase().replace(' ','-')">{{ label }}</label>
+<select [attr.id]="label.toLowerCase().replace(' ','-')" class="form-control">
     <ng-container *ngFor="let item of items">
-        <option (click)="itemClick.emit(item.id)">{{item.text}}</option>
+        <option (click)="itemClick.emit(item.id)">{{ item.text }}</option>
     </ng-container>
 </select>
