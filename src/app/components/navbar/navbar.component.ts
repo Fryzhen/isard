@@ -1,7 +1,7 @@
 import {Component} from "@angular/core";
 import {Router} from "@angular/router";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
-import {PicklistComponent} from "../picklist/picklist.component";
+import {SearchPicklistComponent} from "../picklist/search-picklist/search-picklist.component";
 import {Driver} from "../../services/request-services/iracing-entities";
 import {LookupService} from "../../services/request-services/lookup.service";
 import {NotificationService} from "../../services/app-services/notification.service";
@@ -17,7 +17,7 @@ import {LanguageComponent} from "../language/language.component";
   imports: [
     CommonModule,
     NgOptimizedImage,
-    PicklistComponent,
+    SearchPicklistComponent,
     TranslatePipe,
     LanguageComponent
   ]
