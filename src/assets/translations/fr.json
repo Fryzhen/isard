@@ -30,7 +30,7 @@
       "MemberNotFound": "Membre non trouvé, veuillez vérifier l'ID ou contactez le support.",
       "MemberNotFoundTitle": "ISACP : Membre non trouvé",
       "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés",
-      "ImpossibleGetData": "The data could not be loaded"
+      "ImpossibleGetData": "Les données n'ont pas pu être récupérés"
     },
     "Research": {
       "Title": "Rechercher un Pilote"
