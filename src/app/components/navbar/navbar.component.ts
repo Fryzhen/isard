@@ -64,6 +64,6 @@ export class NavbarComponent {
   onItemClick(itemId: number): void {
     this.redirectTo([`/member/${itemId}`]).then(() => {
       this.drivers = [];
-    })
+    });
   }
 }
