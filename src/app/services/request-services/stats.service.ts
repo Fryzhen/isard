@@ -1,16 +1,16 @@
-import {inject, Injectable} from "@angular/core";
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
 import {CareerStats, RecentRace, YearStats} from "./iracing-entities";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {RequestService} from "./request.service";
 
 @Injectable({
   providedIn: "root",
 })
-export class StatsService {
-  baseUrl: string = environment.apiUrl + "/stats";
-  private readonly http = inject(HttpClient);
+export class StatsService extends RequestService {
+  constructor() {
+    super("stats");
+  }
 
   getRecentRaces(cust_id: number): Observable<RecentRace[]> {
     return this.http.get<{ races: RecentRace[] }>(`${this.baseUrl}/member_recent_races?cust_id=${cust_id}`).pipe(

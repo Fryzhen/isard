@@ -1,16 +1,16 @@
-import {inject, Injectable} from "@angular/core";
-import {environment} from "../../../environments/environment";
+import {Injectable} from "@angular/core";
 import {Member} from "./iracing-entities";
-import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
+import {RequestService} from "./request.service";
 
 @Injectable({
   providedIn: "root",
 })
-export class MemberService {
-  baseUrl: string = environment.apiUrl + "/member";
-  private readonly http = inject(HttpClient);
+export class MemberService extends RequestService {
+  constructor() {
+    super("member");
+  }
 
   getMember(cust_id: number, include_licenses?: boolean): Observable<Member> {
     return this.getMemberList([cust_id], include_licenses).pipe(

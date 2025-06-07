@@ -1,8 +1,7 @@
-import {inject, Injectable} from "@angular/core";
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {EventType, Race} from "./iracing-entities";
+import {RequestService} from "./request.service";
 
 export interface SearchSeriesConfig {
   race_week_num: number,
@@ -29,9 +28,10 @@ export interface SearchSeriesResponse {
 @Injectable({
   providedIn: "root",
 })
-export class ResultsService {
-  baseUrl: string = environment.apiUrl + "/results";
-  private readonly http = inject(HttpClient);
+export class ResultsService extends RequestService {
+  constructor() {
+    super("results");
+  }
 
   // getResult(subsession: number, include_licenses?: boolean): Observable<Object> {
   //   const include_licenses_param = include_licenses ? `&include_licenses=${include_licenses}` : '';
