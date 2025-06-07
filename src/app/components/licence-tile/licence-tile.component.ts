@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, inject, Input} from "@angular/core";
 import {NgClass, NgIf} from "@angular/common";
 import {License} from "../../services/request-services/iracing-entities";
 import {LicenceService} from "../../services/app-services/licence.service";
@@ -19,11 +19,7 @@ import {TranslatePipe} from "@ngx-translate/core";
 })
 export class LicenceTileComponent {
   @Input({required: true}) licence!: License;
-
-  constructor(
-    private readonly licenceService: LicenceService
-  ) {
-  }
+  private readonly licenceService = inject(LicenceService);
 
   getLicenceIcon(): string {
     return this.licenceService.getLicenceIcon(this.licence.category_id);

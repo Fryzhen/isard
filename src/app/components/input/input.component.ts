@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, EventEmitter, inject, Input, Output} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
@@ -13,10 +13,9 @@ export class InputComponent {
   @Input() emptyWhenChoose = false;
   @Output() searchChange = new EventEmitter<Event>();
   @Output() enterPressed = new EventEmitter<Event>();
+  private readonly translateService = inject(TranslateService);
 
-  constructor(
-    private readonly translateService: TranslateService,
-  ) {
+  constructor() {
     this.placeholder = this.translateService.instant("Components.Input.DefaultPlaceholder");
   }
 

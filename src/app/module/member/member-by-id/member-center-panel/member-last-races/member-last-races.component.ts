@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, inject, Input} from "@angular/core";
 import {RecentRace} from "../../../../../services/request-services/iracing-entities";
 import {CommonModule} from "@angular/common";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
@@ -23,13 +23,9 @@ import {NotificationService} from "../../../../../services/app-services/notifica
 })
 export class MemberLastRacesComponent {
   @Input() races: RecentRace[] | undefined = undefined;
-
-  constructor(
-    private readonly translate: TranslateService,
-    private readonly tableService: TableService,
-    private readonly notificationService: NotificationService,
-  ) {
-  }
+  private readonly translate = inject(TranslateService);
+  private readonly tableService = inject(TableService);
+  private readonly notificationService = inject(NotificationService);
 
   getHeader(): TableHeader[] {
     return [

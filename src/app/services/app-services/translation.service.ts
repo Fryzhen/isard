@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {inject, Injectable} from "@angular/core";
 import {registerLocaleData} from "@angular/common";
 import localeEn from "@angular/common/locales/en";
 import localeFr from "@angular/common/locales/fr";
@@ -9,11 +9,7 @@ import {TranslateService} from "@ngx-translate/core";
 })
 export class TranslationService {
   selectedLanguage = "en";
-
-  constructor(
-    private readonly translate: TranslateService
-  ) {
-  }
+  private readonly translate = inject(TranslateService);
 
   public init() {
     this.translate.addLangs(["fr", "en"]);

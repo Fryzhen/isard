@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, inject, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {INotification, NotificationService, NotificationType} from "../../services/app-services/notification.service";
 import {debounceTime, tap} from "rxjs/operators";
@@ -14,29 +14,24 @@ import {debounceTime, tap} from "rxjs/operators";
 })
 export class NotificationComponent implements OnInit {
   showNotification = false;
-
   notification: INotification = {
     message: "",
     type: NotificationType.Error,
   };
-
-  constructor(
-    private readonly notificationService: NotificationService
-  ) {
-  }
+  private readonly notificationService = inject(NotificationService);
 
   ngOnInit(): void {
     this.notificationService.notifyRequest$
-      .pipe(
-        tap((notification: INotification) => {
-          this.notification = notification;
-          this.showNotification = true;
-        }),
-        debounceTime(3000),
-        tap(() => {
-          this.showNotification = false;
-        })
-      )
-      .subscribe();
+    .pipe(
+      tap((notification: INotification) => {
+        this.notification = notification;
+        this.showNotification = true;
+      }),
+      debounceTime(3000),
+      tap(() => {
+        this.showNotification = false;
+      })
+    )
+    .subscribe();
   }
 }

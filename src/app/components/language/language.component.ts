@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, inject} from "@angular/core";
 import {NgOptimizedImage} from "@angular/common";
 import {TranslationService} from "../../services/app-services/translation.service";
 
@@ -12,11 +12,7 @@ import {TranslationService} from "../../services/app-services/translation.servic
   styleUrl: "./language.component.scss"
 })
 export class LanguageComponent {
-
-  constructor(
-    private readonly translationService: TranslationService
-  ) {
-  }
+  private readonly translationService = inject(TranslationService);
 
   setLanguage(language: string) {
     this.translationService.setLanguage(language);

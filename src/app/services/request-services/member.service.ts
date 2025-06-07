@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {inject, Injectable} from "@angular/core";
 import {environment} from "../../../environments/environment";
 import {Member} from "./iracing-entities";
 import {HttpClient} from "@angular/common/http";
@@ -10,11 +10,7 @@ import {map} from "rxjs/operators";
 })
 export class MemberService {
   baseUrl: string = environment.apiUrl + "/member";
-
-  constructor(
-    private readonly http: HttpClient,
-  ) {
-  }
+  private readonly http = inject(HttpClient);
 
   getMember(cust_id: number, include_licenses?: boolean): Observable<Member> {
     return this.getMemberList([cust_id], include_licenses).pipe(
@@ -34,7 +30,7 @@ export class MemberService {
     return this.http.get<{
       members: Member[]
     }>(`${this.baseUrl}/get?cust_ids=${cust_ids_strings}${include_licenses_param}`).pipe(
-      map((response: {members: Member[]}) => {
+      map((response: { members: Member[] }) => {
         return response.members;
       })
     );

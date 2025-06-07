@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges} from "@angular/core";
+import {Component, inject, Input, OnChanges} from "@angular/core";
 import {MemberScreenDisplay} from "../member-by-id.component";
 import {NgIf} from "@angular/common";
 import {MemberStatsYearlyComponent} from "./member-stats-yearly/member-stats-yearly.component";
@@ -32,14 +32,13 @@ export class MemberCenterPanelComponent implements OnChanges {
   @Input() member!: Member;
   @Input() parameters!: MemberParameters;
   protected readonly MemberScreenDisplay = MemberScreenDisplay;
+  private readonly loggerService = inject(LoggerService);
+  private readonly notificationService = inject(NotificationService);
+  private readonly translateService = inject(TranslateService);
+  private readonly statsService = inject(StatsService);
+  private readonly resultService = inject(ResultsService);
 
-  constructor(
-    private readonly loggerService: LoggerService,
-    private readonly notificationService: NotificationService,
-    private readonly translateService: TranslateService,
-    private readonly statsService: StatsService,
-    private readonly resultService: ResultsService
-  ) {
+  constructor() {
     this.centerPanelRequest = {} as CenterPanelRequest;
   }
 

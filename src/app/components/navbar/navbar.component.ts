@@ -1,4 +1,4 @@
-import {Component} from "@angular/core";
+import {Component, inject} from "@angular/core";
 import {Router} from "@angular/router";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {SearchPicklistComponent} from "../picklist/search-picklist/search-picklist.component";
@@ -24,15 +24,11 @@ import {LanguageComponent} from "../language/language.component";
 })
 export class NavbarComponent {
   drivers: Driver[] = [];
-
-  constructor(
-    private readonly router: Router,
-    private readonly lookupService: LookupService,
-    private readonly notificationService: NotificationService,
-    private readonly loggerService: LoggerService,
-    private readonly translateService: TranslateService,
-  ) {
-  }
+  private readonly router = inject(Router);
+  private readonly lookupService = inject(LookupService);
+  private readonly notificationService = inject(NotificationService);
+  private readonly loggerService = inject(LoggerService);
+  private readonly translateService = inject(TranslateService);
 
   redirectTo(route: string[]): Promise<boolean> {
     return this.router.navigate(route);

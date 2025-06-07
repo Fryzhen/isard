@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, inject, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {MemberService} from "../../../services/request-services/member.service";
 import {Member} from "../../../services/request-services/iracing-entities";
@@ -39,18 +39,13 @@ export enum MemberScreenDisplay {
 export class MemberByIdComponent implements OnInit {
   isCharging = true;
   member?: Member = undefined;
-
   currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.LastRaces;
-
-  constructor(
-    private readonly route: ActivatedRoute,
-    private readonly memberService: MemberService,
-    private readonly loggerService: LoggerService,
-    private readonly notificationService: NotificationService,
-    private readonly titleService: Title,
-    private readonly translateService: TranslateService,
-  ) {
-  }
+  private readonly route = inject(ActivatedRoute);
+  private readonly memberService = inject(MemberService);
+  private readonly loggerService = inject(LoggerService);
+  private readonly notificationService = inject(NotificationService);
+  private readonly titleService = inject(Title);
+  private readonly translateService = inject(TranslateService);
 
   ngOnInit(): void {
     this.route.params.subscribe(val => {
