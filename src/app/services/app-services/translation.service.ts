@@ -17,7 +17,7 @@ export class TranslationService {
 
   public init() {
     this.translate.addLangs(["fr", "en"]);
-    this.translate.setDefaultLang("en");
+    this.translate.setDefaultLang(this.selectedLanguage);
     registerLocaleData(localeFr, "fr");
     registerLocaleData(localeEn, "en");
 
