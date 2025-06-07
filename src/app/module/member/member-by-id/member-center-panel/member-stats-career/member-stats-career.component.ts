@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, inject, Input} from "@angular/core";
 import {CareerStats} from "../../../../../services/request-services/iracing-entities";
 import {NgIf} from "@angular/common";
 import {LicenceService} from "../../../../../services/app-services/licence.service";
@@ -23,13 +23,9 @@ import {TableCell, TableHeader, TableService} from "../../../../../services/app-
 })
 export class MemberStatsCareerComponent {
   @Input() stats: CareerStats[] | undefined = undefined;
-
-  constructor(
-    private readonly licenceService: LicenceService,
-    private readonly tableService: TableService,
-    private readonly translateService: TranslateService,
-  ) {
-  }
+  private readonly licenceService = inject(LicenceService);
+  private readonly tableService = inject(TableService);
+  private readonly translateService = inject(TranslateService);
 
   getIcon(category_id: number) {
     return this.licenceService.getLicenceIcon(category_id);

@@ -1,4 +1,4 @@
-import {Injectable} from "@angular/core";
+import {inject, Injectable} from "@angular/core";
 import {environment} from "../../../environments/environment";
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
@@ -31,11 +31,7 @@ export interface SearchSeriesResponse {
 })
 export class ResultsService {
   baseUrl: string = environment.apiUrl + "/results";
-
-  constructor(
-    private readonly http: HttpClient,
-  ) {
-  }
+  private readonly http = inject(HttpClient);
 
   // getResult(subsession: number, include_licenses?: boolean): Observable<Object> {
   //   const include_licenses_param = include_licenses ? `&include_licenses=${include_licenses}` : '';

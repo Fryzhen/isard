@@ -1,4 +1,4 @@
-import {Component, Input, OnChanges} from "@angular/core";
+import {Component, inject, Input, OnChanges} from "@angular/core";
 import {YearStats} from "../../../../../services/request-services/iracing-entities";
 import {NgForOf, NgIf} from "@angular/common";
 import {LicenceService} from "../../../../../services/app-services/licence.service";
@@ -25,13 +25,9 @@ import {TableCell, TableHeader, TableService} from "../../../../../services/app-
 export class MemberStatsYearlyComponent implements OnChanges {
   @Input() stats: YearStats[] | undefined = undefined;
   years: number[] = [];
-
-  constructor(
-    private readonly licenceService: LicenceService,
-    private readonly tableService: TableService,
-    private readonly translateService: TranslateService
-  ) {
-  }
+  private readonly licenceService = inject(LicenceService);
+  private readonly tableService = inject(TableService);
+  private readonly translateService = inject(TranslateService);
 
   ngOnChanges(): void {
     this.years = [...new Set(this.stats?.map((s: YearStats) => s.year).sort((a, b) => b - a))];

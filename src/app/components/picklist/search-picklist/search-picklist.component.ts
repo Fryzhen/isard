@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, EventEmitter, inject, Input, Output} from "@angular/core";
 import {NgForOf, NgIf, NgStyle} from "@angular/common";
 import {InputComponent} from "../../input/input.component";
 import {TranslateService} from "@ngx-translate/core";
@@ -26,11 +26,10 @@ export class SearchPicklistComponent {
   @Input() placeholder = "";
   @Output() searchChange = new EventEmitter<string>();
   @Output() itemClick = new EventEmitter<number>();
+  private readonly translateService = inject(TranslateService);
   private debounceTimeout: ReturnType<typeof setTimeout> | null = null;
 
-  constructor(
-    private readonly translateService: TranslateService,
-  ) {
+  constructor() {
     this.placeholder = this.translateService.instant("Components.Input.DefaultPlaceholder");
   }
 
