@@ -5,19 +5,19 @@ import {MemberStatsYearlyComponent} from "./member-stats-yearly/member-stats-yea
 import {MemberAllRacesComponent} from "./member-all-races/member-all-races.component";
 import {MemberStatsCareerComponent} from "./member-stats-career/member-stats-career.component";
 import {MemberLastRacesComponent} from "./member-last-races/member-last-races.component";
-import {CareerStats, Member, Race, RecentRace, YearStats} from "../../../../services/request-services/iracing-entities";
 import {ResultsService, SearchSeriesConfig} from "../../../../services/request-services/results.service";
 import {MemberParameters} from "../member-parameter-panel/member-parameter-panel.component";
 import {StatsService} from "../../../../services/request-services/stats.service";
 import {LoggerService} from "../../../../services/app-services/logger.service";
 import {NotificationService} from "../../../../services/app-services/notification.service";
 import {TranslateService} from "@ngx-translate/core";
+import {Member, RecentRace, SearchSeries, StatCarrer, StatYearly} from "../../../../services/iracing-entities";
 
 export interface CenterPanelRequest {
-  allRaces: Race[] | undefined;
+  allRaces: SearchSeries[] | undefined;
   lastRaces: RecentRace[] | undefined;
-  careerStats: CareerStats[] | undefined;
-  yearlyStats: YearStats[] | undefined;
+  careerStats: StatCarrer[] | undefined;
+  yearlyStats: StatYearly[] | undefined;
 }
 
 @Component({
@@ -73,7 +73,7 @@ export class MemberCenterPanelComponent implements OnChanges {
 
   private getCareerStats(memberId: number) {
     this.statsService.getCareerStats(memberId).subscribe({
-      next: (stats: CareerStats[]) => {
+      next: (stats: StatCarrer[]) => {
         this.centerPanelRequest.careerStats = stats;
       }, error: (error: string) => {
         this.notificationService.error(this.translateService.instant("Components.NavBar.ImpossibleGetData"));
@@ -84,7 +84,7 @@ export class MemberCenterPanelComponent implements OnChanges {
 
   private getYearlyStats(memberId: number) {
     this.statsService.getYearlyStats(memberId).subscribe({
-      next: (stats: YearStats[]) => {
+      next: (stats: StatYearly[]) => {
         this.centerPanelRequest.yearlyStats = stats;
       }, error: (error: string) => {
         this.notificationService.error(this.translateService.instant("Components.NavBar.ImpossibleGetData"));
@@ -95,7 +95,7 @@ export class MemberCenterPanelComponent implements OnChanges {
 
   private getAllRaces(memberId: number, season_year: number, season_quarter: number, config?: SearchSeriesConfig) {
     this.resultService.searchSeries(memberId, season_year, season_quarter, config).subscribe({
-      next: (races: Race[]) => {
+      next: (races: SearchSeries[]) => {
         this.centerPanelRequest.allRaces = races;
       }, error: (error: string) => {
         this.notificationService.error(this.translateService.instant("Components.NavBar.ImpossibleGetData"));

@@ -1,38 +1,44 @@
-import {inject, Injectable} from "@angular/core";
-import {environment} from "../../../environments/environment";
-import {HttpClient} from "@angular/common/http";
-import {CareerStats, RecentRace, YearStats} from "./iracing-entities";
+import {Injectable} from "@angular/core";
 import {map} from "rxjs/operators";
 import {Observable} from "rxjs";
+import {RequestService} from "./request.service";
+import {MemberCareer, MemberRecentRaces, MemberYearly, RecentRace, StatCarrer, StatYearly} from "../iracing-entities";
 
 @Injectable({
   providedIn: "root",
 })
-export class StatsService {
-  baseUrl: string = environment.apiUrl + "/stats";
-  private readonly http = inject(HttpClient);
+export class StatsService extends RequestService {
+  constructor() {
+    super("stats");
+  }
 
   getRecentRaces(cust_id: number): Observable<RecentRace[]> {
-    return this.http.get<{ races: RecentRace[] }>(`${this.baseUrl}/member_recent_races?cust_id=${cust_id}`).pipe(
-      map((request: { races: RecentRace[] }) => {
+    const params = new URLSearchParams();
+    params.set("cust_id", cust_id.toString());
+    return this.request<MemberRecentRaces>('member_recent_races', params).pipe(
+      map((request: MemberRecentRaces) => {
           return request.races;
         }
       )
     );
   }
 
-  getCareerStats(cust_id: number): Observable<CareerStats[]> {
-    return this.http.get<{ stats: CareerStats[] }>(`${this.baseUrl}/member_career?cust_id=${cust_id}`).pipe(
-      map((request: { stats: CareerStats[] }) => {
+  getCareerStats(cust_id: number): Observable<StatCarrer[]> {
+    const params = new URLSearchParams();
+    params.set("cust_id", cust_id.toString());
+    return this.request<MemberCareer>('member_career', params).pipe(
+      map((request: MemberCareer) => {
           return request.stats;
         }
       )
     );
   }
 
-  getYearlyStats(cust_id: number): Observable<YearStats[]> {
-    return this.http.get<{ stats: YearStats[] }>(`${this.baseUrl}/member_yearly?cust_id=${cust_id}`).pipe(
-      map((request: { stats: YearStats[] }) => {
+  getYearlyStats(cust_id: number): Observable<StatYearly[]> {
+    const params = new URLSearchParams();
+    params.set("cust_id", cust_id.toString());
+    return this.request<MemberYearly>('member_yearly', params).pipe(
+      map((request: MemberYearly) => {
           return request.stats;
         }
       )

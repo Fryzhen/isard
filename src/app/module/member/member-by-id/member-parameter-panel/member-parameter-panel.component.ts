@@ -2,7 +2,7 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {MemberScreenDisplay} from "../member-by-id.component";
 import {TranslatePipe} from "@ngx-translate/core";
 import {BoxComponent} from "../../../../components/box/box.component";
-import {EventType} from "../../../../services/request-services/iracing-entities";
+import {EventType} from "../../../../services/iracing-entities";
 
 export interface MemberParameters {
   screen: MemberScreenDisplay,

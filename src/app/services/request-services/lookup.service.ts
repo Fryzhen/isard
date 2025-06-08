@@ -1,18 +1,22 @@
-import {inject, Injectable} from "@angular/core";
-import {environment} from "../../../environments/environment";
+import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
-import {Driver} from "./iracing-entities";
+import {Driver} from "../iracing-entities";
+import {RequestService} from "./request.service";
 
 @Injectable({
   providedIn: "root",
 })
-export class LookupService {
-  baseUrl: string = environment.apiUrl + "/lookup";
-  private readonly http = inject(HttpClient);
+export class LookupService extends RequestService {
+  constructor() {
+    super("lookup");
+  }
 
   getLookupDrivers(search_term: string, league_id?: number): Observable<Driver[]> {
-    const league_id_param = league_id ? `&league_id=${league_id}` : "";
-    return this.http.get<Driver[]>(`${this.baseUrl}/drivers?search_term=${search_term}${league_id_param}`);
+    const params = new URLSearchParams();
+    params.append("search_term", search_term);
+    if (league_id) {
+      params.append("league_id", league_id.toString());
+    }
+    return this.request<Driver[]>("drivers", params)
   }
 }
