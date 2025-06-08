@@ -1,5 +1,4 @@
 import {Component, inject, Input} from "@angular/core";
-import {CareerStats} from "../../../../../services/request-services/iracing-entities";
 import {NgIf} from "@angular/common";
 import {LicenceService} from "../../../../../services/app-services/licence.service";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
@@ -7,6 +6,7 @@ import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {BoxComponent} from "../../../../../components/box/box.component";
 import {TableComponent} from "../../../../../components/table/table.component";
 import {TableCell, TableHeader, TableService} from "../../../../../services/app-services/table.service";
+import {StatCarrer} from "../../../../../services/iracing-entities";
 
 @Component({
   standalone: true,
@@ -22,7 +22,7 @@ import {TableCell, TableHeader, TableService} from "../../../../../services/app-
   styleUrl: "./member-stats-career.component.scss"
 })
 export class MemberStatsCareerComponent {
-  @Input() stats: CareerStats[] | undefined = undefined;
+  @Input() stats: StatCarrer[] | undefined = undefined;
   private readonly licenceService = inject(LicenceService);
   private readonly tableService = inject(TableService);
   private readonly translateService = inject(TranslateService);

@@ -1,8 +1,8 @@
 import {Injectable} from "@angular/core";
-import {Member} from "./iracing-entities";
 import {Observable} from "rxjs";
 import {map} from "rxjs/operators";
 import {RequestService} from "./request.service";
+import {Member, Members} from "../iracing-entities";
 
 @Injectable({
   providedIn: "root",
@@ -25,12 +25,13 @@ export class MemberService extends RequestService {
   }
 
   getMemberList(cust_ids: number[], include_licenses?: boolean): Observable<Member[]> {
-    const cust_ids_strings = cust_ids.join(",");
-    const include_licenses_param = include_licenses ? `&include_licenses=${include_licenses}` : "";
-    return this.http.get<{
-      members: Member[]
-    }>(`${this.baseUrl}/get?cust_ids=${cust_ids_strings}${include_licenses_param}`).pipe(
-      map((response: { members: Member[] }) => {
+    const params = new URLSearchParams();
+    params.append("cust_ids", cust_ids.join(","));
+    if (include_licenses) {
+      params.append("include_licenses", include_licenses.toString());
+    }
+    return this.request<Members>('get', params).pipe(
+      map((response: Members) => {
         return response.members;
       })
     );

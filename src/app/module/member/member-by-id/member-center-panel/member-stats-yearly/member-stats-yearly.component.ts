@@ -1,5 +1,4 @@
 import {Component, inject, Input, OnChanges} from "@angular/core";
-import {YearStats} from "../../../../../services/request-services/iracing-entities";
 import {NgForOf, NgIf} from "@angular/common";
 import {LicenceService} from "../../../../../services/app-services/licence.service";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
@@ -7,6 +6,7 @@ import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {BoxComponent} from "../../../../../components/box/box.component";
 import {TableComponent} from "../../../../../components/table/table.component";
 import {TableCell, TableHeader, TableService} from "../../../../../services/app-services/table.service";
+import {StatYearly} from "../../../../../services/iracing-entities";
 
 @Component({
   standalone: true,
@@ -23,22 +23,22 @@ import {TableCell, TableHeader, TableService} from "../../../../../services/app-
   styleUrl: "./member-stats-yearly.component.scss"
 })
 export class MemberStatsYearlyComponent implements OnChanges {
-  @Input() stats: YearStats[] | undefined = undefined;
+  @Input() stats: StatYearly[] | undefined = undefined;
   years: number[] = [];
   private readonly licenceService = inject(LicenceService);
   private readonly tableService = inject(TableService);
   private readonly translateService = inject(TranslateService);
 
   ngOnChanges(): void {
-    this.years = [...new Set(this.stats?.map((s: YearStats) => s.year).sort((a, b) => b - a))];
+    this.years = [...new Set(this.stats?.map((s: StatYearly) => s.year).sort((a, b) => b - a))];
   }
 
   getIcon(category_id: number) {
     return this.licenceService.getLicenceIcon(category_id);
   }
 
-  getYearStats(year: number): YearStats[] {
-    return this.stats?.filter((s: YearStats) => s.year === year) ?? [];
+  getStatYearly(year: number): StatYearly[] {
+    return this.stats?.filter((s: StatYearly) => s.year === year) ?? [];
   }
 
   getHeader(): TableHeader[] {
@@ -59,7 +59,7 @@ export class MemberStatsYearlyComponent implements OnChanges {
 
   }
 
-  getRows(stats: YearStats[]) {
+  getRows(stats: StatYearly[]) {
     const rows: TableCell[][] = [];
     if (!this.stats) {
       return rows;

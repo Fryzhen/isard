@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Driver} from "./iracing-entities";
+import {Driver} from "../iracing-entities";
 import {RequestService} from "./request.service";
 
 @Injectable({
@@ -12,10 +12,11 @@ export class LookupService extends RequestService {
   }
 
   getLookupDrivers(search_term: string, league_id?: number): Observable<Driver[]> {
-    const params = {
-      search_term: search_term,
+    const params = new URLSearchParams();
+    params.append("search_term", search_term);
+    if (league_id) {
+      params.append("league_id", league_id.toString());
     }
-    const league_id_param = league_id ? `&league_id=${league_id}` : '';
     return this.request<Driver[]>("drivers", params)
   }
 }

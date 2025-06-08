@@ -1,9 +1,9 @@
 import {Component, inject, Input} from "@angular/core";
 import {NgClass, NgIf} from "@angular/common";
-import {License} from "../../services/request-services/iracing-entities";
 import {LicenceService} from "../../services/app-services/licence.service";
 import {IconComponent} from "../icon/icon.component";
 import {TranslatePipe} from "@ngx-translate/core";
+import {License} from "../../services/iracing-entities";
 
 @Component({
   standalone: true,
@@ -18,7 +18,7 @@ import {TranslatePipe} from "@ngx-translate/core";
   styleUrl: "./licence-tile.component.scss"
 })
 export class LicenceTileComponent {
-  @Input({required: true}) licence!: License;
+  @Input() licence!: License;
   private readonly licenceService = inject(LicenceService);
 
   getLicenceIcon(): string {

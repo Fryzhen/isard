@@ -1,29 +1,7 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {EventType, Race} from "./iracing-entities";
+import {Category, EventType, SearchSeries} from "../iracing-entities";
 import {RequestService} from "./request.service";
-
-export interface SearchSeriesConfig {
-  race_week_num: number,
-  series_id?: number,
-  official_only?: boolean,
-  event_types?: EventType[],
-  category_ids?: number[],
-}
-
-export interface SearchSeriesResponse {
-  type: string;
-
-  data: {
-    chunk_info: {
-      base_download_url: string;
-      chunk_file_names: string[];
-      chunk_size: number;
-      num_chunks: number;
-      rows: number;
-    }
-  };
-}
 
 @Injectable({
   providedIn: "root",
@@ -38,17 +16,37 @@ export class ResultsService extends RequestService {
   //   return this.http.get(`${this.baseUrl}/get?subsession=${subsession}${include_licenses_param}`)
   // }
 
-  searchSeries(cust_id: number, season_year: number, season_quarter: number, config?: SearchSeriesConfig): Observable<Race[]> {
-    console.log("Search Series", cust_id, season_year, season_quarter);
-    let configString = "";
+  searchSeries(cust_id: number, season_year: number, season_quarter: number, config?: SearchSeriesConfig): Observable<SearchSeries[]> {
+    const params = new URLSearchParams;
+    params.set("cust_id", cust_id.toString());
+    params.set("season_year", season_year.toString());
+    params.set("season_quarter", season_quarter.toString());
     if (config) {
-      const race_week_num = config.race_week_num ? `&race_week_num=${config.race_week_num}` : "";
-      const series_id = config.series_id ? `&series_id=${config.series_id}` : "";
-      const official_only = config.official_only ? `&official_only=${config.official_only}` : "";
-      const event_types = config.event_types ? `&event_types=${config.event_types.join(",")}` : "";
-      const category_ids = config.category_ids ? `&category_ids=${config.category_ids.join(",")}` : "";
-      configString = `${series_id}${official_only}${event_types}${category_ids}${race_week_num}`;
+      if (config.race_week_num) {
+        params.set("race_week_num", config.race_week_num.toString());
+      }
+      if (config.series_id) {
+        params.set("series_id", config.series_id.toString());
+      }
+      if (config.official_only !== undefined) {
+        params.set("official_only", config.official_only.toString());
+      }
+      if (config.event_types) {
+        params.set("event_types", config.event_types.map((et: EventType) => et.value.toString()).join(","));
+      }
+      if (config.category_ids) {
+        params.set("category_ids", config.category_ids.map((cat: Category) => cat.value.toString()).join(","));
+      }
     }
-    return this.http.get<Race[]>(`${this.baseUrl}/search_series?cust_id=${cust_id}&season_year=${season_year}&season_quarter=${season_quarter}${configString}`);
+    console.log(params.toString());
+    return this.request<SearchSeries[]>('search_series', params);
   }
+}
+
+export interface SearchSeriesConfig {
+  race_week_num?: number,
+  series_id?: number,
+  official_only?: boolean,
+  event_types?: EventType[],
+  category_ids?: Category[],
 }

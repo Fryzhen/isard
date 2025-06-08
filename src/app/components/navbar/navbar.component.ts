@@ -2,12 +2,12 @@ import {Component, inject} from "@angular/core";
 import {Router} from "@angular/router";
 import {CommonModule, NgOptimizedImage} from "@angular/common";
 import {SearchPicklistComponent} from "../picklist/search-picklist/search-picklist.component";
-import {Driver} from "../../services/request-services/iracing-entities";
 import {LookupService} from "../../services/request-services/lookup.service";
 import {NotificationService} from "../../services/app-services/notification.service";
 import {LoggerService} from "../../services/app-services/logger.service";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {LanguageComponent} from "../language/language.component";
+import {Driver} from "../../services/iracing-entities";
 
 @Component({
   standalone: true,

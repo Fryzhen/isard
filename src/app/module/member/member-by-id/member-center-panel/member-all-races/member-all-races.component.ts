@@ -1,9 +1,9 @@
 import {Component, Input} from "@angular/core";
-import {Race} from "../../../../../services/request-services/iracing-entities";
 import {BoxComponent} from "../../../../../components/box/box.component";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
 import {NgIf} from "@angular/common";
 import {TranslatePipe} from "@ngx-translate/core";
+import {SearchSeries} from "../../../../../services/iracing-entities";
 
 @Component({
   standalone: true,
@@ -18,5 +18,5 @@ import {TranslatePipe} from "@ngx-translate/core";
   styleUrl: "./member-all-races.component.scss"
 })
 export class MemberAllRacesComponent {
-  @Input() races!: Race[] | undefined;
+  @Input() races!: SearchSeries[] | undefined;
 }

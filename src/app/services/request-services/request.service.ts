@@ -13,9 +13,9 @@ export abstract class RequestService {
   protected constructor(urlPart: string) {
     this.baseUrl = `${environment.apiUrl}/${urlPart}`;
   }
-  
-  protected request<T>(endpoint: string, params: Record<string, any> = {}): Observable<T> {
-    const url = `${this.baseUrl}/${endpoint}`;
-    return this.http.post<T>(url, {params});
+
+  protected request<T>(endpoint: string, searchParams: URLSearchParams): Observable<T> {
+    const url = `${this.baseUrl}/${endpoint}?${searchParams.toString()}`;
+    return this.http.get<T>(url);
   }
 }

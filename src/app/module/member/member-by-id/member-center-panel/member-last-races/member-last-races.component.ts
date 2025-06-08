@@ -1,5 +1,4 @@
 import {Component, inject, Input} from "@angular/core";
-import {RecentRace} from "../../../../../services/request-services/iracing-entities";
 import {CommonModule} from "@angular/common";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
@@ -7,6 +6,7 @@ import {BoxComponent} from "../../../../../components/box/box.component";
 import {TableComponent} from "../../../../../components/table/table.component";
 import {TableCell, TableHeader, TableService} from "../../../../../services/app-services/table.service";
 import {NotificationService} from "../../../../../services/app-services/notification.service";
+import {RecentRace} from "../../../../../services/iracing-entities";
 
 @Component({
   standalone: true,

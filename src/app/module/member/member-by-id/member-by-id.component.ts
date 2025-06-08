@@ -1,7 +1,6 @@
 import {Component, inject, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
 import {MemberService} from "../../../services/request-services/member.service";
-import {Member} from "../../../services/request-services/iracing-entities";
 import {Title} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
 import {LoggerService} from "../../../services/app-services/logger.service";
@@ -14,6 +13,7 @@ import {
 import {LoadingScreenComponent} from "../../../components/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {MemberCenterPanelComponent} from "./member-center-panel/member-center-panel.component";
+import {Member} from "../../../services/iracing-entities";
 
 export enum MemberScreenDisplay {
   LastRaces,
