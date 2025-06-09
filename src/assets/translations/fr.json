@@ -102,7 +102,8 @@
       "LapsLedPercentage": "Tours Menés %"
     },
     "AllRacesPanel": {
-      "Title": "Toutes les courses"
+      "Title": "Toutes les courses",
+      "Search": "Rechercher une course"
     }
   }
 }

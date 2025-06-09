@@ -1,7 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {MemberScreenDisplay} from "../member-by-id.component";
 import {MemberLastRacesComponent} from "./member-last-races/member-last-races.component";
-import {MemberParameters} from "../member-parameter-panel/member-parameter-panel.component";
+import {MemberParameters} from "../member-screen-selector/member-screen-selector.component";
 import {Member} from "../../../../services/iracing-entities";
 import {MemberStatsCareerComponent} from "./member-stats-career/member-stats-career.component";
 import {MemberStatsYearlyComponent} from "./member-stats-yearly/member-stats-yearly.component";

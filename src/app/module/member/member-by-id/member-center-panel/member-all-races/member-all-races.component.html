@@ -1,4 +1,24 @@
 <isard-box>
+    <div class="all-race-parameters">
+        <isard-item-picklist
+                [label]="translateService.instant('Member.ParameterPanel.AllRaces.Year')"
+                [items]="getItemsYear()"
+        />
+        <isard-item-picklist
+                [label]="translateService.instant('Member.ParameterPanel.AllRaces.Quarter.Title')"
+                [items]="getItemsQuarter()"
+        />
+        <isard-item-picklist
+                [label]="translateService.instant('Member.ParameterPanel.AllRaces.Event.Title')"
+                [items]="getItemsEventType()"
+        />
+    </div>
+    <button class="btn btn-primary mt-md-2"
+            (click)="null">
+        {{ 'Member.AllRacesPanel.Search' | translate }}
+    </button>
+</isard-box>
+<isard-box>
     <h3>{{ 'Member.AllRacesPanel.Title' | translate }}</h3>
     @if (cust_id) {
         <div>
