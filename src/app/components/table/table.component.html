@@ -1,56 +1,60 @@
 <table class="table">
-    <thead>
-    <tr>
-        @for (head of header; track head) {
-            <th [ngClass]="{'text-centrer': head.isCenter}" scope="col">{{ head.value }}</th>
-        }
-    </tr>
-    </thead>
-    <tbody>
-        @for (row of rows; track row) {
-            <tr>
-                @for (box of row; track box) {
-                    @switch (box.type) {
-                        @case (TableCellType.TEXT) {
-                            <td [ngClass]="{
+    @if (header) {
+        <thead>
+        <tr>
+            @for (head of header; track head) {
+                <th [ngClass]="{'text-center': head.isCenter}" scope="col">{{ head.value }}</th>
+            }
+        </tr>
+        </thead>
+    }
+    @if (rows) {
+        <tbody>
+            @for (row of rows; track row) {
+                <tr>
+                    @for (box of row; track box) {
+                        @switch (box.type) {
+                            @case (TableCellType.TEXT) {
+                                <td [ngClass]="{
                                 'positive': box.isPositive,
                                 'negative': box.isNegative,
-                                'text-centrer': box.isCenter
+                                'text-center': box.isCenter
                             }">
-                                {{ box.value }}
-                            </td>
-                        }
-                        @case (TableCellType.DATE) {
-                            <td [ngClass]="{
-                                'positive': box.isPositive,
-                                'negative': box.isNegative,
-                                'text-centrer': box.isCenter
-                            }">
-                                {{ getValueAsDate(box.value) | localizedDate: box.dateFormat }}
-                            </td>
-                        }
-                        @case (TableCellType.BUTTON) {
-                            <td [ngClass]="{'text-centrer': box.isCenter}">
-                                <button
-                                        (click)="box.onClick" class="btn btn-secondary"
-                                        type="button">
                                     {{ box.value }}
-                                </button>
-                            </td>
-                        }
-                        @case (TableCellType.ICON) {
-                            <td [ngClass]="{'text-centrer': box.isCenter}">
-                                <isard-icon
-                                        [height]="30"
-                                        [path]="box.value.toString()"
-                                        [width]="30"
-                                >
-                                </isard-icon>
-                            </td>
+                                </td>
+                            }
+                            @case (TableCellType.DATE) {
+                                <td [ngClass]="{
+                                'positive': box.isPositive,
+                                'negative': box.isNegative,
+                                'text-center': box.isCenter
+                            }">
+                                    {{ getValueAsDate(box.value) | localizedDate: box.dateFormat }}
+                                </td>
+                            }
+                            @case (TableCellType.BUTTON) {
+                                <td [ngClass]="{'text-center': box.isCenter}">
+                                    <button (click)="box.onClick"
+                                            class="btn btn-secondary"
+                                            type="button"
+                                    >
+                                        {{ box.value }}
+                                    </button>
+                                </td>
+                            }
+                            @case (TableCellType.ICON) {
+                                <td [ngClass]="{'text-center': box.isCenter}">
+                                    <isard-icon
+                                            [height]="30"
+                                            [path]="box.value.toString()"
+                                            [width]="30"
+                                    />
+                                </td>
+                            }
                         }
                     }
-                }
-            </tr>
-        }
-    </tbody>
+                </tr>
+            }
+        </tbody>
+    }
 </table>

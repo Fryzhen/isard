@@ -5,7 +5,6 @@ import {BoxComponent} from "../../../../components/box/box.component";
 import {EventType} from "../../../../services/iracing-entities";
 
 export interface MemberParameters {
-  screen: MemberScreenDisplay,
   year: number,
   quarter: number,
   eventType: EventType[]
@@ -23,11 +22,12 @@ export interface MemberParameters {
 })
 export class MemberParameterPanelComponent {
   @Input() currentScreenDisplay!: MemberScreenDisplay | undefined;
+  @Output() screen = new EventEmitter<MemberScreenDisplay>();
   @Output() parameters = new EventEmitter<MemberParameters>();
 
   protected readonly MemberScreenDisplay = MemberScreenDisplay;
 
   changeScreen(screen: MemberScreenDisplay): void {
-    this.parameters.emit({screen: screen} as MemberParameters);
+    this.screen.emit(screen);
   }
 }

@@ -1,8 +1,8 @@
 <isard-box>
     <h3>{{ 'Member.CareerPanel.Title' | translate }}</h3>
     @if (stats) {
-        <isard-stats-table [stats]="stats"></isard-stats-table>
+        <isard-stats-table [stats]="stats"/>
     } @else {
-        <isard-loading-screen></isard-loading-screen>
+        <isard-loading-screen/>
     }
 </isard-box>

@@ -40,6 +40,7 @@ export class MemberByIdComponent implements OnInit {
   isCharging = true;
   member?: Member = undefined;
   currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.LastRaces;
+  parameters: MemberParameters = {} as MemberParameters;
   private readonly route = inject(ActivatedRoute);
   private readonly memberService = inject(MemberService);
   private readonly loggerService = inject(LoggerService);
@@ -72,13 +73,11 @@ export class MemberByIdComponent implements OnInit {
     });
   }
 
-  setDisplay($event: MemberParameters): void {
-    this.currentScreenDisplay = $event.screen;
+  setParameters($event: MemberParameters): void {
+    this.parameters = $event;
   }
 
-  getParameters(): MemberParameters {
-    return {
-      screen: this.currentScreenDisplay
-    } as MemberParameters;
+  changeScreen($event: MemberScreenDisplay): void {
+    this.currentScreenDisplay = $event;
   }
 }

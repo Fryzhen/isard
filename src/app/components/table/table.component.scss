@@ -1,6 +1,16 @@
+@import "../../styles/variables";
+
 .table {
   tr td:first-child {
     font-weight: bold;
+  }
+
+  td.positive {
+    color: $green-2;
+  }
+
+  td.negative {
+    color: $red;
   }
 
   @media (width <= 1650px) {

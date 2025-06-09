@@ -1,22 +1,22 @@
 @if (isCharging) {
-    <isard-loading-screen></isard-loading-screen>
+    <isard-loading-screen/>
 } @else {
     @if (member) {
         <div class="fullscreen">
             <div class="side">
-                <isard-member-info-panel [member]="member"></isard-member-info-panel>
+                <isard-member-info-panel [member]="member"/>
                 <isard-member-parameter-panel
-                        (parameters)="setDisplay($event)"
-                        [currentScreenDisplay]="currentScreenDisplay">
-                </isard-member-parameter-panel>
-
+                        (parameters)="setParameters($event)"
+                        (screen)="changeScreen($event)"
+                        [currentScreenDisplay]="currentScreenDisplay"
+                />
             </div>
             <div class="center">
                 <isard-member-center-panel
                         [member]="member"
-                        [parameters]="getParameters()"
-                >
-                </isard-member-center-panel>
+                        [curentScreenDisplay]="currentScreenDisplay"
+                        [parameters]="parameters"
+                />
             </div>
         </div>
     } @else {

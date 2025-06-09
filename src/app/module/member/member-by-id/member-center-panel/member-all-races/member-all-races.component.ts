@@ -2,7 +2,6 @@ import {Component, Input} from "@angular/core";
 import {BoxComponent} from "../../../../../components/box/box.component";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
 import {TranslatePipe} from "@ngx-translate/core";
-import {SearchSeries} from "../../../../../services/iracing-entities";
 
 @Component({
   standalone: true,
@@ -16,5 +15,5 @@ import {SearchSeries} from "../../../../../services/iracing-entities";
   styleUrl: "./member-all-races.component.scss"
 })
 export class MemberAllRacesComponent {
-  @Input() races!: SearchSeries[] | undefined;
+  @Input() cust_id!: number;
 }
