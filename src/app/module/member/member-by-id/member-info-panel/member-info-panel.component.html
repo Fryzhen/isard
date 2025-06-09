@@ -1,17 +1,23 @@
 <isard-box>
     <div class="driver-info">
         <div class="driver-name">{{ member.display_name }}</div>
-        <div *ngIf="member.club_name" class="country-info">
-            <span>{{ member.club_name }}</span>
-        </div>
+        @if (member.club_name) {
+            <div class="country-info">
+                <span>{{ member.club_name }}</span>
+            </div>
+        }
         <div class="last-login">
             {{ 'Member.InfoPanel.LastConnection' | translate }} : {{ member.last_login | localizedDate:'short' }}
         </div>
     </div>
 
-    <div *ngIf="member.licenses" class="licenses">
-        <div *ngFor="let license of member.licenses" class="license-item">
-            <isard-licence-tile [licence]="license"></isard-licence-tile>
+    @if (member.licenses) {
+        <div class="licenses">
+            @for (license of member.licenses; track license.category_id) {
+                <div class="license-item">
+                    <isard-licence-tile [licence]="license"></isard-licence-tile>
+                </div>
+            }
         </div>
-    </div>
+    }
 </isard-box>

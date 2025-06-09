@@ -1,6 +1,5 @@
 import {CarClass} from "../carclass";
-import {Helmet} from "../common";
-import {Track} from "../common";
+import {Helmet, Track} from "../common";
 
 type ResultCarClass = Pick<CarClass, "car_class_id" | "short_name" | "name"> & {
   num_entries: number;

@@ -1,5 +1,5 @@
 import {Component, EventEmitter, inject, Input, Output} from "@angular/core";
-import {NgForOf, NgIf, NgStyle} from "@angular/common";
+import {NgStyle} from "@angular/common";
 import {InputComponent} from "../../input/input.component";
 import {TranslateService} from "@ngx-translate/core";
 
@@ -13,8 +13,6 @@ interface PickListItems {
   standalone: true,
   selector: "isard-search-picklist",
   imports: [
-    NgForOf,
-    NgIf,
     NgStyle,
     InputComponent
   ],

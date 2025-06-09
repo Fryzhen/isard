@@ -1,5 +1,4 @@
-import {Helmet} from "../common";
-import {Track} from "../common";
+import {Helmet, Track} from "../common";
 
 type LicenseHistory = Pick<
   License,

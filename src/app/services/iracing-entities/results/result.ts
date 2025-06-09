@@ -1,9 +1,5 @@
-import {AllowedLicense} from "../common";
+import {AllowedLicense, Helmet, Livery, Suit, Track} from "../common";
 import {Car} from "../car";
-import {Helmet} from "../common";
-import {Livery} from "../common";
-import {Suit} from "../common";
-import {Track} from "../common";
 
 export interface Result {
   allowed_licenses: AllowedLicense[];

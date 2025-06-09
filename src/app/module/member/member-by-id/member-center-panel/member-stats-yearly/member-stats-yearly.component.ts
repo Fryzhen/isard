@@ -1,5 +1,4 @@
 import {Component, inject, Input, OnChanges} from "@angular/core";
-import {NgForOf, NgIf} from "@angular/common";
 import {LicenceService} from "../../../../../services/app-services/licence.service";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
@@ -12,8 +11,6 @@ import {StatYearly} from "../../../../../services/iracing-entities";
   standalone: true,
   selector: "isard-member-stats-yearly",
   imports: [
-    NgForOf,
-    NgIf,
     LoadingScreenComponent,
     TranslatePipe,
     BoxComponent,

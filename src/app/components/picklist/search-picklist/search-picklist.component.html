@@ -4,8 +4,13 @@
         [emptyWhenChoose]="canBeEmptied()"
         [placeholder]="placeholder"
 ></isard-input>
-<ul *ngIf="items.length > 0" [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
-    <li *ngFor="let item of items">
-        <a (click)="onItemClick(item.id)" class="dropdown-item">{{ item.name }}</a>
-    </li>
-</ul>
+@if (items.length > 0) {
+    <ul [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
+        @for (item of items; track item.id) {
+            <li>
+                <a (click)="onItemClick(item.id)" class="dropdown-item">{{ item.name }}</a>
+            </li>
+        }
+    </ul>
+}
+

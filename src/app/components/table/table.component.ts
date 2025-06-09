@@ -1,5 +1,5 @@
 import {Component, Input} from "@angular/core";
-import {NgClass, NgForOf, NgIf} from "@angular/common";
+import {NgClass} from "@angular/common";
 import {TableCell, TableCellType, TableHeader} from "../../services/app-services/table.service";
 import {LocalizedDatePipe} from "../../services/app-services/localized-date.pipe";
 import {IconComponent} from "../icon/icon.component";
@@ -8,9 +8,7 @@ import {IconComponent} from "../icon/icon.component";
   standalone: true,
   selector: "isard-table",
   imports: [
-    NgForOf,
     NgClass,
-    NgIf,
     LocalizedDatePipe,
     IconComponent
   ],

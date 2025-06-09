@@ -1,5 +1,5 @@
 import {Component, inject, Input} from "@angular/core";
-import {NgClass, NgIf} from "@angular/common";
+import {NgClass} from "@angular/common";
 import {LicenceService} from "../../services/app-services/licence.service";
 import {IconComponent} from "../icon/icon.component";
 import {TranslatePipe} from "@ngx-translate/core";
@@ -10,7 +10,6 @@ import {License} from "../../services/iracing-entities";
   selector: "isard-licence-tile",
   imports: [
     NgClass,
-    NgIf,
     IconComponent,
     TranslatePipe
   ],
