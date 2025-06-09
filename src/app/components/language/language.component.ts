@@ -1,6 +1,6 @@
 import {Component, inject} from "@angular/core";
 import {NgOptimizedImage} from "@angular/common";
-import {TranslationService} from "../../services/app-services/translation.service";
+import {Language, TranslationService} from "../../services/app-services/translation.service";
 
 @Component({
   standalone: true,
@@ -14,7 +14,9 @@ import {TranslationService} from "../../services/app-services/translation.servic
 export class LanguageComponent {
   private readonly translationService = inject(TranslationService);
 
-  setLanguage(language: string) {
+  protected readonly Language = Language;
+
+  setLanguage(language: Language) {
     this.translationService.setLanguage(language);
   }
 }

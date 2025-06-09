@@ -66,7 +66,7 @@ export class MemberLastRacesComponent implements OnInit {
     const rows: TableCell[][] = [];
     for (const race of races) {
       rows.push([
-        this.tableService.createDate(race.session_start_time, "MMM d, y, h:mm:ss a"),
+        this.tableService.createDate(race.session_start_time, "short"),
         this.tableService.createCell(race.series_name),
         this.tableService.createCell(race.track.track_name),
         this.tableService.createCell(race.start_position, true),
