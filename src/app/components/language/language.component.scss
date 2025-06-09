@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@use "../../styles/variables" as *;
 
 .language {
   margin: var(--bs-nav-link-padding-y) var(--bs-nav-link-padding-x);
