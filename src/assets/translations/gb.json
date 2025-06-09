@@ -99,7 +99,8 @@
       "LapsLedPercentage": "Laps Led %"
     },
     "AllRacesPanel": {
-      "Title": "All Races"
+      "Title": "All Races",
+      "Search": "Search Races"
     }
   }
 }

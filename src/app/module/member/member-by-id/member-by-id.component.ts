@@ -7,9 +7,9 @@ import {LoggerService} from "../../../services/app-services/logger.service";
 import {NotificationService} from "../../../services/app-services/notification.service";
 import {MemberInfoPanelComponent} from "./member-info-panel/member-info-panel.component";
 import {
-  MemberParameterPanelComponent,
+  MemberScreenSelectorComponent,
   MemberParameters
-} from "./member-parameter-panel/member-parameter-panel.component";
+} from "./member-screen-selector/member-screen-selector.component";
 import {LoadingScreenComponent} from "../../../components/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {MemberCenterPanelComponent} from "./member-center-panel/member-center-panel.component";
@@ -30,7 +30,7 @@ export enum MemberScreenDisplay {
   imports: [
     CommonModule,
     MemberInfoPanelComponent,
-    MemberParameterPanelComponent,
+    MemberScreenSelectorComponent,
     LoadingScreenComponent,
     TranslatePipe,
     MemberCenterPanelComponent
