@@ -63,36 +63,23 @@
       }
     },
     "CareerPanel": {
-      "Title": "Career Stats",
-      "Table": {
-        "Category": "Category",
-        "Starts": "Starts",
-        "Wins": "Wins",
-        "Top5": "Top5",
-        "Poles": "Poles",
-        "AverageStart": "Avg Start",
-        "AverageFinish": "Avg Finish",
-        "AverageIncidents": "Avg Inc",
-        "WinPercentage": "Win %",
-        "Top5Percentage": "Top 5 %",
-        "PolePercentage": "Poles %"
-      }
+      "Title": "Career Stats"
     },
     "YearlyPanel": {
-      "Title": "Yearly Stats",
-      "Table": {
-        "Category": "Category",
-        "Starts": "Starts",
-        "Wins": "Wins",
-        "Top5": "Top5",
-        "Poles": "Poles",
-        "AverageStart": "Avg Start",
-        "AverageFinish": "Avg Finish",
-        "AverageIncidents": "Avg Inc",
-        "WinPercentage": "Win %",
-        "Top5Percentage": "Top 5 %",
-        "PolePercentage": "Poles %"
-      }
+      "Title": "Yearly Stats"
+    },
+    "StatTable": {
+      "Category": "Category",
+      "Starts": "Starts",
+      "Wins": "Wins",
+      "Top5": "Top5",
+      "Poles": "Poles",
+      "AverageStart": "Avg Start",
+      "AverageFinish": "Avg Finish",
+      "AverageIncidents": "Avg Inc",
+      "WinPercentage": "Win %",
+      "Top5Percentage": "Top 5 %",
+      "PolePercentage": "Poles %"
     },
     "AllRacesPanel": {
       "Title": "All Races"
