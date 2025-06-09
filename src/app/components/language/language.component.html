@@ -1,7 +1,7 @@
 <div class="language center">
     <button
-            (click)="setLanguage('fr')"
-            [attr.aria-label]="'French'"
+            (click)="setLanguage(Language.French)"
+            [attr.aria-label]="'Français'"
             class="flag-btn"
             type="button"
     >
@@ -14,7 +14,7 @@
     </button>
     /
     <button
-            (click)="setLanguage('en')"
+            (click)="setLanguage(Language.English)"
             [attr.aria-label]="'English'"
             class="flag-btn"
             type="button"
