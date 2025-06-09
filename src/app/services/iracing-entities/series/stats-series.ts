@@ -1,7 +1,5 @@
-import {AllowedLicense} from "../common";
+import {AllowedLicense, LicenseGroupType, Track} from "../common";
 import {CarClass} from "../carclass";
-import {Track} from "../common";
-import {LicenseGroupType} from "../common";
 
 export interface Series {
   active: boolean;

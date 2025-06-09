@@ -1,5 +1,4 @@
 import {Component, Input} from "@angular/core";
-import {NgForOf, NgIf} from "@angular/common";
 import {LicenceTileComponent} from "../../../../components/licence-tile/licence-tile.component";
 import {TranslatePipe} from "@ngx-translate/core";
 import {LocalizedDatePipe} from "../../../../services/app-services/localized-date.pipe";
@@ -11,8 +10,6 @@ import {Member} from "../../../../services/iracing-entities";
   selector: "isard-member-info-panel",
   imports: [
     LicenceTileComponent,
-    NgForOf,
-    NgIf,
     TranslatePipe,
     LocalizedDatePipe,
     BoxComponent

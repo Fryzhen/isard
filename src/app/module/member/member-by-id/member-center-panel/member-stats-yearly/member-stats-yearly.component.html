@@ -1,17 +1,16 @@
 <isard-box>
     <h3>{{ 'Member.YearlyPanel.Title' | translate }}</h3>
-    <ng-container *ngIf="stats; else pageCharging">
-        <ng-container *ngFor="let year of years">
+    @if (stats) {
+        @for (year of years; track year) {
             <h4 class="year">{{ year }}</h4>
             <isard-table
                     [header]="getHeader()"
                     [rows]="getRows(getStatYearly(year))"
             >
             </isard-table>
-        </ng-container>
-    </ng-container>
+        }
+    } @else {
+        <isard-loading-screen></isard-loading-screen>
+    }
 </isard-box>
-<ng-template #pageCharging>
-    <isard-loading-screen></isard-loading-screen>
-</ng-template>
 

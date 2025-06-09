@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, Output} from "@angular/core";
-import {NgForOf} from "@angular/common";
 
 export interface PicklistItem {
   text: string,
@@ -9,7 +8,7 @@ export interface PicklistItem {
 @Component({
   standalone: true,
   selector: "isard-item-picklist",
-  imports: [NgForOf],
+  imports: [],
   templateUrl: "./item-picklist.component.html",
   styleUrl: "./item-picklist.component.scss"
 })

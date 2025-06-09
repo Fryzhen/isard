@@ -7,9 +7,15 @@
             [width]="24"
     ></isard-icon>
     <span class="group-name">{{ licence.group_name }}</span>
-    <span *ngIf="licence.safety_rating"
-          class="safety-rating">{{ 'Components.LicenceTile.SafetyRating' | translate }}
-        :{{ licence.safety_rating.toFixed(2) }}</span>
-    <span *ngIf="licence.irating"
-          class="irating">{{ 'Components.LicenceTile.Irating' | translate }} :{{ licence.irating }}</span>
+    @if (licence.safety_rating) {
+        <span class="safety-rating">
+            {{ 'Components.LicenceTile.SafetyRating' | translate }}
+            :{{ licence.safety_rating.toFixed(2) }}
+        </span>
+    }
+    @if (licence.irating) {
+        <span class="irating">
+            {{ 'Components.LicenceTile.Irating' | translate }} :{{ licence.irating }}
+        </span>
+    }
 </div>

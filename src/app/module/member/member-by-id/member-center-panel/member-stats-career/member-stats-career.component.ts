@@ -1,5 +1,4 @@
 import {Component, inject, Input} from "@angular/core";
-import {NgIf} from "@angular/common";
 import {LicenceService} from "../../../../../services/app-services/licence.service";
 import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
@@ -12,7 +11,6 @@ import {StatCarrer} from "../../../../../services/iracing-entities";
   standalone: true,
   selector: "isard-member-stats-career",
   imports: [
-    NgIf,
     LoadingScreenComponent,
     TranslatePipe,
     BoxComponent,

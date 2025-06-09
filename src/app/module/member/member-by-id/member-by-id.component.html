@@ -1,5 +1,7 @@
-<ng-container *ngIf="!isCharging; else pageCharging">
-    <ng-container *ngIf="member; else memberNoExist">
+@if (isCharging) {
+    <isard-loading-screen></isard-loading-screen>
+} @else {
+    @if (member) {
         <div class="fullscreen">
             <div class="side">
                 <isard-member-info-panel [member]="member"></isard-member-info-panel>
@@ -17,16 +19,10 @@
                 </isard-member-center-panel>
             </div>
         </div>
-    </ng-container>
-</ng-container>
-
-<ng-template #memberNoExist>
-    <div class="center-screen">
-        <h3>{{ 'Member.Errors.NoDriver' | translate }}</h3>
-        <p>{{ 'Member.Errors.CheckId' | translate }}</p>
-    </div>
-</ng-template>
-
-<ng-template #pageCharging>
-    <isard-loading-screen></isard-loading-screen>
-</ng-template>
+    } @else {
+        <div class="center-screen">
+            <h3>{{ 'Member.Errors.NoDriver' | translate }}</h3>
+            <p>{{ 'Member.Errors.CheckId' | translate }}</p>
+        </div>
+    }
+}

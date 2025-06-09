@@ -1,6 +1,5 @@
 import {Component, inject, Input, OnChanges} from "@angular/core";
 import {MemberScreenDisplay} from "../member-by-id.component";
-import {NgIf} from "@angular/common";
 import {MemberStatsYearlyComponent} from "./member-stats-yearly/member-stats-yearly.component";
 import {MemberAllRacesComponent} from "./member-all-races/member-all-races.component";
 import {MemberStatsCareerComponent} from "./member-stats-career/member-stats-career.component";
@@ -23,7 +22,7 @@ export interface CenterPanelRequest {
 @Component({
   standalone: true,
   selector: "isard-member-center-panel",
-  imports: [NgIf, MemberStatsYearlyComponent, MemberAllRacesComponent, MemberStatsCareerComponent, MemberLastRacesComponent],
+  imports: [MemberStatsYearlyComponent, MemberAllRacesComponent, MemberStatsCareerComponent, MemberLastRacesComponent],
   templateUrl: "./member-center-panel.component.html",
   styleUrl: "./member-center-panel.component.scss"
 })
