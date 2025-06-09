@@ -18,4 +18,5 @@ export class MemberCenterPanelComponent {
   @Input() member!: Member;
   @Input() parameters!: MemberParameters;
   @Input() curentScreenDisplay!: MemberScreenDisplay;
+  protected readonly MemberScreenDisplay = MemberScreenDisplay;
 }
