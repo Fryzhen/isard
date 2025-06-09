@@ -63,36 +63,23 @@
       }
     },
     "CareerPanel": {
-      "Title": "Stats Globales",
-      "Table": {
-        "Category": "Catégorie",
-        "Starts": "Départs",
-        "Wins": "Victoires",
-        "Top5": "Top5",
-        "Poles": "Poles",
-        "AverageStart": "Moy Départ",
-        "AverageFinish": "Moy Arrivée",
-        "AverageIncidents": "Moy Incidents",
-        "WinPercentage": "Victoire %",
-        "Top5Percentage": "Top 5 %",
-        "PolePercentage": "Poles %"
-      }
+      "Title": "Stats Globales"
     },
     "YearlyPanel": {
-      "Title": "Stats Par Année",
-      "Table": {
-        "Category": "Catégorie",
-        "Starts": "Départs",
-        "Wins": "Victoires",
-        "Top5": "Top5",
-        "Poles": "Poles",
-        "AverageStart": "Moy Départ",
-        "AverageFinish": "Moy Arrivée",
-        "AverageIncidents": "Moy Incidents",
-        "WinPercentage": "Victoire %",
-        "Top5Percentage": "Top 5 %",
-        "PolePercentage": "Poles %"
-      }
+      "Title": "Stats Par Année"
+    },
+    "StatTable": {
+      "Category": "Catégorie",
+      "Starts": "Départs",
+      "Wins": "Victoires",
+      "Top5": "Top5",
+      "Poles": "Poles",
+      "AverageStart": "Moy Départ",
+      "AverageFinish": "Moy Arrivée",
+      "AverageIncidents": "Moy Incidents",
+      "WinPercentage": "Victoire %",
+      "Top5Percentage": "Top 5 %",
+      "PolePercentage": "Poles %"
     },
     "AllRacesPanel": {
       "Title": "Toutes les courses"

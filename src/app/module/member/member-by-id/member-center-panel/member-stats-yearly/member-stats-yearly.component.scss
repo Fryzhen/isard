@@ -1,9 +1,5 @@
 @import "../../../../../styles/variables";
 
-.table {
-  @media (width <= 1650px) {
-    width: 100%;
-    overflow-x: scroll;
-    display: block;
-  }
+.year {
+  margin-top: 10px;
 }
