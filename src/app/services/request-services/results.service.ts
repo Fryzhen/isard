@@ -38,7 +38,6 @@ export class ResultsService extends RequestService {
         params.set("category_ids", config.category_ids.map((cat: Category) => cat.value.toString()).join(","));
       }
     }
-    console.log(params.toString());
     return this.request<SearchSeries[]>('search_series', params);
   }
 }

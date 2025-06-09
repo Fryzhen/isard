@@ -18,7 +18,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <isard-language></isard-language>
+                <isard-language/>
                 <li class="nav-item">
                     <a (click)="redirectTo([''])" class="nav-link">{{ 'Components.Navbar.Home' | translate }}</a>
                 </li>
@@ -30,8 +30,7 @@
                             (searchChange)="onSearch($event)"
                             [items]="driversToItems(drivers)"
                             [placeholder]="'Components.Navbar.DriverSearchPlaceholder' | translate"
-                    >
-                    </isard-search-picklist>
+                    />
                 </li>
             </ul>
         </div>

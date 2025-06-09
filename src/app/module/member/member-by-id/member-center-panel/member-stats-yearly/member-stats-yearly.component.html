@@ -1,13 +1,14 @@
 <isard-box>
     <h3>{{ 'Member.YearlyPanel.Title' | translate }}</h3>
-    @if (stats) {
+    @if (years) {
         @for (year of years; track year) {
-            <h4 class="year">{{ year }}</h4>
-            <isard-stats-table [stats]="getStatYearly(year)">
-            </isard-stats-table>
+            <h3 class="year text-center">{{ year }}</h3>
+            @if (statByYear[year]) {
+                <isard-stats-table [stats]="statByYear[year]"/>
+            }
         }
     } @else {
-        <isard-loading-screen></isard-loading-screen>
+        <isard-loading-screen/>
     }
 </isard-box>
 

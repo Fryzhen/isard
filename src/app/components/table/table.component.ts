@@ -16,8 +16,8 @@ import {IconComponent} from "../icon/icon.component";
   styleUrl: "./table.component.scss"
 })
 export class TableComponent {
-  @Input() rows!: TableCell[][];
-  @Input() header!: TableHeader[];
+  @Input() rows!: TableCell[][] | undefined;
+  @Input() header!: TableHeader[] | undefined;
   protected readonly TableCellType = TableCellType;
 
   getValueAsDate(value: string | Date | number) {

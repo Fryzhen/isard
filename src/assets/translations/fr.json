@@ -74,12 +74,15 @@
       "Wins": "Victoires",
       "Top5": "Top5",
       "Poles": "Poles",
+      "Laps": "Tours",
+      "LapsLed": "Tours Menés",
       "AverageStart": "Moy Départ",
       "AverageFinish": "Moy Arrivée",
       "AverageIncidents": "Moy Incidents",
       "WinPercentage": "Victoire %",
       "Top5Percentage": "Top 5 %",
-      "PolePercentage": "Poles %"
+      "PolePercentage": "Poles %",
+      "LapsLedPercentage": "Tours Menés %"
     },
     "AllRacesPanel": {
       "Title": "Toutes les courses"

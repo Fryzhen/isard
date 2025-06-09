@@ -1,9 +1,9 @@
 <isard-box>
     <h3>{{ 'Member.AllRacesPanel.Title' | translate }}</h3>
-    @if (races) {
+    @if (cust_id) {
         <div>
         </div>
     } @else {
-        <isard-loading-screen></isard-loading-screen>
+        <isard-loading-screen/>
     }
 </isard-box>

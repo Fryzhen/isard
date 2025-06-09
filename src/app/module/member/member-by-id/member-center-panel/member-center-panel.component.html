@@ -1,22 +1,14 @@
-@switch (parameters.screen) {
+@switch (curentScreenDisplay) {
     @case (MemberScreenDisplay.LastRaces) {
-        <isard-member-last-races
-                [races]="centerPanelRequest.lastRaces">
-        </isard-member-last-races>
+        <isard-member-last-races [cust_id]="member.cust_id"/>
     }
     @case (MemberScreenDisplay.CareerStats) {
-        <isard-member-stats-career
-                [stats]="centerPanelRequest.careerStats">
-        </isard-member-stats-career>
+        <isard-member-stats-career [cust_id]="member.cust_id"/>
     }
     @case (MemberScreenDisplay.YearlyStats) {
-        <isard-member-stats-yearly
-                [stats]="centerPanelRequest.yearlyStats">
-        </isard-member-stats-yearly>
+        <isard-member-stats-yearly [cust_id]="member.cust_id"/>
     }
     @case (MemberScreenDisplay.AllRaces) {
-        <isard-member-all-races
-                [races]="centerPanelRequest.allRaces">
-        </isard-member-all-races>
+        <isard-member-all-races [cust_id]="member.cust_id"/>
     }
 }

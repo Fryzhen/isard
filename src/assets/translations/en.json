@@ -74,12 +74,15 @@
       "Wins": "Wins",
       "Top5": "Top5",
       "Poles": "Poles",
+      "Laps": "Laps",
+      "LapsLed": "Laps Led",
       "AverageStart": "Avg Start",
       "AverageFinish": "Avg Finish",
       "AverageIncidents": "Avg Inc",
       "WinPercentage": "Win %",
       "Top5Percentage": "Top 5 %",
-      "PolePercentage": "Poles %"
+      "PolePercentage": "Poles %",
+      "LapsLedPercentage": "Laps Led %"
     },
     "AllRacesPanel": {
       "Title": "All Races"

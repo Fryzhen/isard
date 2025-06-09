@@ -3,7 +3,7 @@
         (searchChange)="onSearch($event)"
         [emptyWhenChoose]="canBeEmptied()"
         [placeholder]="placeholder"
-></isard-input>
+/>
 @if (items.length > 0) {
     <ul [ngStyle]="{ 'display': 'block' }" class="dropdown-menu search-results">
         @for (item of items; track item.id) {
