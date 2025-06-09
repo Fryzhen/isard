@@ -1,10 +1,10 @@
-name: Lint All
+name: Lint and Test Build
 
 on:
   pull_request:
 
 jobs:
-  lint:
+  lint-and-build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,3 +21,6 @@ jobs:
 
       - name: Run Lint
         run: npm run lint:all
+
+      - name: Run Test Build
+        run: npm run build
