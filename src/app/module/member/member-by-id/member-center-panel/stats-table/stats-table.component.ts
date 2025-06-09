@@ -65,10 +65,10 @@ export class StatsTableComponent implements OnInit {
         this.tableService.createCell(stat.avg_start_position, true),
         this.tableService.createCell(stat.avg_finish_position, true),
         this.tableService.createCell(stat.avg_incidents.toFixed(2), true),
-        this.tableService.createCell(stat.win_percentage, true),
-        this.tableService.createCell(stat.top5_percentage, true),
-        this.tableService.createCell(stat.poles_percentage, true),
-        this.tableService.createCell(stat.laps_led_percentage, true),
+        this.tableService.createCell(`${stat.win_percentage}%`, true),
+        this.tableService.createCell(`${stat.top5_percentage}%`, true),
+        this.tableService.createCell(`${stat.poles_percentage}%`, true),
+        this.tableService.createCell(`${stat.laps_led_percentage}%`, true),
       ]);
     }
     return rows;
