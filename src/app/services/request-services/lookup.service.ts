@@ -1,22 +1,33 @@
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
-import {Driver} from "../iracing-entities";
+import {Driver, Flair, RequestFlairs} from "../iracing-entities";
 import {RequestService} from "./request.service";
+import {map} from "rxjs/operators";
 
 @Injectable({
   providedIn: "root",
 })
 export class LookupService extends RequestService {
+  private flairs: Observable<Flair[]> | undefined;
+
   constructor() {
     super("lookup");
   }
 
-  getLookupDrivers(search_term: string, league_id?: number): Observable<Driver[]> {
+  getDrivers(search_term: string, league_id?: number): Observable<Driver[]> {
     const params = new URLSearchParams();
     params.append("search_term", search_term);
     if (league_id) {
       params.append("league_id", league_id.toString());
     }
-    return this.request<Driver[]>("drivers", params)
+    return this.request<Driver[]>("drivers", params);
+  }
+
+  getFlairs(): Observable<Flair[]> {
+    this.flairs ??= this.request<RequestFlairs>("flairs", new URLSearchParams()).pipe(
+      map((requestFlairs: RequestFlairs ) => {
+        return requestFlairs.flairs;
+      }));
+    return this.flairs;
   }
 }

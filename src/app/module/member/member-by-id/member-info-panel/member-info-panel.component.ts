@@ -4,6 +4,7 @@ import {TranslatePipe} from "@ngx-translate/core";
 import {LocalizedDatePipe} from "../../../../services/app-services/localized-date.pipe";
 import {BoxComponent} from "../../../../components/box/box.component";
 import {Member} from "../../../../services/iracing-entities";
+import {FlagComponent} from "../../../../components/flag/flag.component";
 
 @Component({
   standalone: true,
@@ -12,7 +13,8 @@ import {Member} from "../../../../services/iracing-entities";
     LicenceTileComponent,
     TranslatePipe,
     LocalizedDatePipe,
-    BoxComponent
+    BoxComponent,
+    FlagComponent
   ],
   templateUrl: "./member-info-panel.component.html",
   styleUrl: "./member-info-panel.component.scss"

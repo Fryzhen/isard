@@ -36,7 +36,7 @@ export class NavbarComponent {
 
   onSearch(searchTerm: string): void {
     if (searchTerm !== "") {
-      this.lookupService.getLookupDrivers(searchTerm).subscribe({
+      this.lookupService.getDrivers(searchTerm).subscribe({
         next: (drivers: Driver[]) => {
           this.drivers = drivers;
         },

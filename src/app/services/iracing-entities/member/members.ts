@@ -12,8 +12,11 @@ export interface Member {
   helmet: Helmet;
   last_login: Date;
   member_since: Date;
-  club_id: number;
-  club_name: string;
+  flair_id: number;
+  flair_name: string;
+  flair_shortname: string;
+  flair_country_code?: string;
+  flags?: number;
   ai: boolean;
   licenses?: License[];
 }
