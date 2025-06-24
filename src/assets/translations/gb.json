@@ -51,7 +51,7 @@
       "Title": "Last Races",
       "Table": {
         "Date": "Date",
-        "Car": "Car",
+        "Series": "Serie",
         "Track": "Track",
         "Start": "Start",
         "Finish": "Finish",

@@ -51,7 +51,7 @@
       "Title": "Courses Récentes",
       "Table": {
         "Date": "Date",
-        "Car": "Voiture",
+        "Series": "Catégorie",
         "Track": "Circuit",
         "Start": "Pos Départ",
         "Finish": "Pos Arrivée",

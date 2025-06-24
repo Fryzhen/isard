@@ -5,7 +5,7 @@ import localeFr from "@angular/common/locales/fr";
 import {TranslateService} from "@ngx-translate/core";
 
 export enum Language {
-  English = "en",
+  English = "gb",
   French = "fr"
 }
 

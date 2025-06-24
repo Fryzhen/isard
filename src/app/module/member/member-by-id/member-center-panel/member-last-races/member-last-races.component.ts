@@ -49,7 +49,7 @@ export class MemberLastRacesComponent implements OnInit {
   setHeader(): TableHeader[] {
     return [
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Date")),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Car")),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Series")),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Track")),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Start"), true),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Finish"), true),
@@ -75,7 +75,7 @@ export class MemberLastRacesComponent implements OnInit {
         this.tableService.createCell(race.incidents, true),
         this.tableService.createCell(race.newi_rating - race.oldi_rating, true, race.newi_rating > race.oldi_rating, race.newi_rating < race.oldi_rating),
         this.tableService.createCell((race.new_sub_level - race.old_sub_level) / 100, true, race.new_sub_level > race.old_sub_level, race.new_sub_level < race.old_sub_level),
-        this.tableService.createButton(this.translateService.instant("Member.LastRacesPanel.Table.Result"), () => this.onClickResult(race), true),
+        this.tableService.createButton(this.translateService.instant("Member.LastRacesPanel.Table.Result"), () => console.log(race), true),
       ]);
     }
     return rows;
