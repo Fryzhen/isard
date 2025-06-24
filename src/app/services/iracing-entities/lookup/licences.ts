@@ -1,5 +1,3 @@
-import {Helmet} from "../common";
-
 export interface LicenseGroup {
   license_group: number;
   group_name: string;
@@ -17,10 +15,4 @@ interface LicenseLevel {
   short_name: string;
   license_letter: string;
   color: string;
-}
-
-export interface Driver {
-  cust_id: number;
-  display_name: string;
-  helmet: Helmet;
 }

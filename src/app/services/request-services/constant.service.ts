@@ -7,44 +7,26 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ConstantService extends RequestService {
-  private categories: Category[] = [];
-  private divisions: Division[] = [];
-  private eventTypes: EventType[] = [];
+  private categories: Observable<Category[]> | undefined;
+  private divisions: Observable<Division[]> | undefined;
+  private eventTypes: Observable<EventType[]> | undefined;
 
   constructor() {
     super('constant');
   }
 
   public getCategories(): Observable<Category[]> {
-    if (this.categories) {
-      return new Observable<Category[]>(subscriber => {
-        subscriber.next(this.categories);
-        subscriber.complete();
-      });
-    } else {
-      return this.request<Category[]>('categories', new URLSearchParams());
-    }
+    this.categories ??= this.request<Category[]>('categories', new URLSearchParams())
+    return this.categories;
   }
 
   public getDivisions(): Observable<Division[]> {
-    if (this.divisions) {
-      return new Observable<Division[]>(subscriber => {
-        subscriber.next(this.divisions);
-        subscriber.complete();
-      });
-    } else {
-      return this.request<Division[]>('divisions', new URLSearchParams());
-    }
+    this.divisions ??= this.request<Division[]>('divisions', new URLSearchParams())
+    return this.divisions;
   }
 
   public getEventTypes(): Observable<EventType[]> {
-    if (this.eventTypes) {
-      return new Observable<EventType[]>(subscriber => {
-        subscriber.next(this.eventTypes);
-        subscriber.complete();
-      });
-    } else {
-      return this.request<EventType[]>('event_types', new URLSearchParams());
-    }
+    this.eventTypes ??= this.request<EventType[]>('event_types', new URLSearchParams())
+    return this.eventTypes;
   }
 }

@@ -1,29 +1,15 @@
 <div class="language center">
-    <button
-            (click)="setLanguage(Language.French)"
+    <button (click)="setLanguage(Language.French)"
             [attr.aria-label]="'Français'"
             class="flag-btn"
-            type="button"
-    >
-        <img
-                alt="fr"
-                height="16"
-                ngSrc="assets/translations/fr-flag.svg"
-                width="24"
-        />
+            type="button">
+        <isard-flag [flairId]="71"/>
     </button>
     /
-    <button
-            (click)="setLanguage(Language.English)"
+    <button (click)="setLanguage(Language.English)"
             [attr.aria-label]="'English'"
             class="flag-btn"
-            type="button"
-    >
-        <img
-                alt="en"
-                height="16"
-                ngSrc="assets/translations/en-flag.svg"
-                width="24"
-        />
+            type="button">
+        <isard-flag [flairId]="222"/>
     </button>
 </div>

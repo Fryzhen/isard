@@ -1,9 +1,12 @@
 <isard-box>
     <div class="driver-info">
-        <div class="driver-name">{{ member.display_name }}</div>
-        @if (member.club_name) {
-            <div class="country-info">
-                <span>{{ member.club_name }}</span>
+        <div class="driver-name">
+            <span>{{ member.display_name }}</span>
+        </div>
+        @if (member.flair_id) {
+            <div class="flair-info">
+                <isard-flag [flairId]="member.flair_id"/>
+                <span>{{ member.flair_name }}</span>
             </div>
         }
         <div class="last-login">

@@ -57,6 +57,7 @@
               "outputHashing": "all"
             },
             "dev": {
+              "outputHashing": "all",
               "optimization": false,
               "extractLicenses": false,
               "sourceMap": true,

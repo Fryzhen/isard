@@ -11,18 +11,12 @@
     word-wrap: break-word;
   }
 
-  .country-info {
+  .flair-info {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
     margin: 10px 0;
-
-    img {
-      width: 24px;
-      height: 16px;
-      border-radius: 2px;
-    }
   }
 
   .last-login {

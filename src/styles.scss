@@ -1,5 +1,7 @@
 @use "./app/styles/variables" as *;
-@import "../node_modules/bootstrap/dist/css/bootstrap.css";
+@use "../node_modules/flag-icons/sass/flag-icons.scss";
+@use "../node_modules/bootstrap/dist/css/bootstrap.css";
+
 
 body {
   font-family: Arial, sans-serif;
