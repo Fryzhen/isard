@@ -1,0 +1,8 @@
+@if (items.length !== 0) {
+    <div class="btn-group">
+        @for (item of items; track item) {
+            <input type="radio" class="btn-check" id="btnradio{{item.label + item.value}}" autocomplete="off">
+            <label class="btn btn-outline-primary" for="btnradio{{item.label + item.value}}">{{ item.label }}</label>
+        }
+    </div>
+}

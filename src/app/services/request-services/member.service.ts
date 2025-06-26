@@ -30,7 +30,7 @@ export class MemberService extends RequestService {
     if (include_licenses) {
       params.append("include_licenses", include_licenses.toString());
     }
-    return this.request<Members>('get', params).pipe(
+    return this.request<Members>("get", params).pipe(
       map((response: Members) => {
         return response.members;
       })

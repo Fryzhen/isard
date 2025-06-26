@@ -29,6 +29,7 @@
       "CheckId": "Please check the ID you entered.",
       "MemberNotFound": "Member not found, please check the ID or contact support.",
       "MemberNotFoundTitle": "ISARD : Member not found",
+      "RecapNotFound": "Recap not found for this member.",
       "ImpossibleGetDrivers": "The drivers could not be loaded.",
       "ImpossibleGetData": "The data could not be loaded"
     },
@@ -39,12 +40,19 @@
       "Title": "ISARD"
     },
     "InfoPanel": {
-      "LastConnection": "Last Connection"
+      "LastConnection": "Last Connection",
+      "FavouriteCar": "Favourite Car",
+      "FavouriteTrack": "Favourite Track"
     },
     "ParameterPanel": {
       "LastRaces": "Last Races",
       "CareerStats": "Career Stats",
-      "AllRaces": "All Races"
+      "AllRaces": {
+        "Title": "All Races",
+        "Year": "Year",
+        "Season": "Season",
+        "EventType": "Event type"
+      }
     },
     "LastRacesPanel": {
       "Title": "Last Races",
@@ -82,7 +90,8 @@
       "LapsLedPercentage": "Laps Led %"
     },
     "AllRacesPanel": {
-      "Title": "All Races"
+      "Title": "All Races",
+      "Search": "Search Races"
     }
   }
 }

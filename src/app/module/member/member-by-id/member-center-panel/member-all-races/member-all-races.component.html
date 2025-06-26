@@ -1,9 +1,42 @@
 <isard-box>
     <h3>{{ 'Member.AllRacesPanel.Title' | translate }}</h3>
-    @if (cust_id) {
-        <div>
+    @if (eventTypes && categories) {
+        <div class="all-race-parameters">
+            <div class="all-race-picklists">
+                <isard-item-picklist
+                        [items]="getItemsYear()"
+                        (itemClick)="onYearClicked($event)"
+                />
+                <isard-item-picklist
+                        [items]="getItemsQuarter()"
+                        (itemClick)="onSeasonClicked($event)"
+                />
+            </div>
+            @if (eventTypes) {
+                <isard-checkbox-group
+                        [defaultSelected]="true"
+                        [items]="eventTypes"
+                        (itemClick)="onEventTypeClicked($event)"
+                />
+            }
+            @if (categories) {
+                <isard-checkbox-group
+                        [defaultSelected]="true"
+                        [items]="categories"
+                        (itemClick)="onCategorieClicked($event)"
+                />
+            }
         </div>
+        <button class="btn btn-primary mt-md-2"
+                (click)="findRaces()">
+            {{ 'Member.AllRacesPanel.Search' | translate }}
+        </button>
     } @else {
         <isard-loading-screen/>
+    }
+    @if (series && series.length > 0) {
+        @for (seriesItem of series; track seriesItem) {
+            <p>{{ seriesItem.car_name }}</p>
+        }
     }
 </isard-box>

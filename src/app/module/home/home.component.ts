@@ -1,5 +1,5 @@
 import {Component, inject} from "@angular/core";
-import {BackgroundComponent} from "../../components/background/background.component";
+import {BackgroundComponent} from "../../components/cosmetics/background/background.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {Title} from "@angular/platform-browser";
 
@@ -18,6 +18,6 @@ export class HomeComponent {
   constructor() {
     this.translateService.get("Home.Title").subscribe(title => {
       this.titleService.setTitle(title);
-    })
+    });
   }
 }

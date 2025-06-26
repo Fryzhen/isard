@@ -1,0 +1,6 @@
+<label [attr.for]="uuid" class="col-form-label">{{ label }}</label>
+<select [attr.id]="uuid" class="form-control form-select">
+    @for (item of items; track item.value) {
+        <option (click)="itemClick.emit(item)" class="jasmine-run-options">{{ item.label }}</option>
+    }
+</select>

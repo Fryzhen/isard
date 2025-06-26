@@ -1,5 +1,5 @@
 import {Component, inject, Input, OnChanges, OnInit} from "@angular/core";
-import {TableComponent} from "../../../../../../components/table/table.component";
+import {TableComponent} from "../../../../../../components/cosmetics/table/table.component";
 import {StatCarrer} from "../../../../../../services/iracing-entities";
 import {TableCell, TableHeader, TableService} from "../../../../../../services/app-services/table.service";
 import {TranslateService} from "@ngx-translate/core";

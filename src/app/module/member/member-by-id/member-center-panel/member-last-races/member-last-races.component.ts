@@ -1,14 +1,14 @@
 import {Component, inject, Input, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
-import {BoxComponent} from "../../../../../components/box/box.component";
-import {TableComponent} from "../../../../../components/table/table.component";
+import {BoxComponent} from "../../../../../components/cosmetics/box/box.component";
+import {TableComponent} from "../../../../../components/cosmetics/table/table.component";
 import {TableCell, TableHeader, TableService} from "../../../../../services/app-services/table.service";
 import {NotificationService} from "../../../../../services/app-services/notification.service";
 import {RecentRace} from "../../../../../services/iracing-entities";
 import {StatsService} from "../../../../../services/request-services/stats.service";
 import {LoggerService} from "../../../../../services/app-services/logger.service";
-import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
+import {LoadingScreenComponent} from "../../../../../components/cosmetics/loading-screen/loading-screen.component";
 
 @Component({
   standalone: true,
@@ -24,7 +24,7 @@ import {LoadingScreenComponent} from "../../../../../components/loading-screen/l
   styleUrl: "./member-last-races.component.scss"
 })
 export class MemberLastRacesComponent implements OnInit {
-  @Input() cust_id!: number;
+  @Input() custId!: number;
   rows: TableCell[][] | undefined;
   header: TableHeader[] | undefined;
   private readonly tableService = inject(TableService);
@@ -34,7 +34,7 @@ export class MemberLastRacesComponent implements OnInit {
   private readonly loggerService = inject(LoggerService);
 
   ngOnInit(): void {
-    this.statsService.getRecentRaces(this.cust_id).subscribe({
+    this.statsService.getRecentRaces(this.custId).subscribe({
       next: (races: RecentRace[]) => {
         this.header = this.setHeader();
         this.rows = this.setRows(races);
@@ -66,7 +66,7 @@ export class MemberLastRacesComponent implements OnInit {
     const rows: TableCell[][] = [];
     races.sort((a, b) => {
       return new Date(b.session_start_time).getTime() - new Date(a.session_start_time).getTime();
-    })
+    });
     for (const race of races) {
       rows.push([
         this.tableService.createDate(race.session_start_time, "short"),

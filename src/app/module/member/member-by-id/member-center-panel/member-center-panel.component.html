@@ -1,11 +1,11 @@
 @switch (curentScreenDisplay) {
     @case (MemberScreenDisplay.LastRaces) {
-        <isard-member-last-races [cust_id]="member.cust_id"/>
+        <isard-member-last-races [custId]="custId"/>
     }
     @case (MemberScreenDisplay.CareerStats) {
-        <isard-member-stats [cust_id]="member.cust_id"/>
+        <isard-member-stats [custId]="custId"/>
     }
     @case (MemberScreenDisplay.AllRaces) {
-        <isard-member-all-races [cust_id]="member.cust_id"/>
+        <isard-member-all-races [custId]="custId"/>
     }
 }

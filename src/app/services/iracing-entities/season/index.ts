@@ -1,1 +1,1 @@
-export * from './spectator-subsession-ids'
+export * from "./spectator-subsession-ids";

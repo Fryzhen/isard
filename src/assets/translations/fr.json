@@ -28,6 +28,7 @@
       "NoDriver": "Aucun pilote trouvé",
       "CheckId": "Veuillez vérifier l'ID que vous avez entré.",
       "MemberNotFound": "Membre non trouvé, veuillez vérifier l'ID ou contactez le support.",
+      "RecapNotFound": "Récapitulatif non trouvé pour ce membre.",
       "MemberNotFoundTitle": "ISARD : Membre non trouvé",
       "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés",
       "ImpossibleGetData": "Les données n'ont pas pu être récupérés"
@@ -39,12 +40,19 @@
       "Title": "ISARD"
     },
     "InfoPanel": {
-      "LastConnection": "Dernière connection"
+      "LastConnection": "Dernière connection",
+      "FavouriteCar": "Voiture Favorite",
+      "FavouriteTrack": "Circuit Favori"
     },
     "ParameterPanel": {
       "LastRaces": "Courses Récentes",
       "CareerStats": "Statistiques Globales",
-      "AllRaces": "Toutes les Courses"
+      "AllRaces": {
+        "Title": "Toutes les Courses",
+        "Year": "Année",
+        "Season": "Saison",
+        "EventType": "Type d'évenement"
+      }
     },
     "LastRacesPanel": {
       "Title": "Courses Récentes",
@@ -82,7 +90,8 @@
       "LapsLedPercentage": "Tours Menés %"
     },
     "AllRacesPanel": {
-      "Title": "Toutes les courses"
+      "Title": "Toutes les courses",
+      "Search": "Rechercher les courses"
     }
   }
 }

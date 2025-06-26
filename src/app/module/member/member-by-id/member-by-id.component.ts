@@ -1,19 +1,14 @@
 import {Component, inject, OnInit} from "@angular/core";
 import {ActivatedRoute} from "@angular/router";
-import {MemberService} from "../../../services/request-services/member.service";
-import {Title} from "@angular/platform-browser";
 import {CommonModule} from "@angular/common";
-import {LoggerService} from "../../../services/app-services/logger.service";
-import {NotificationService} from "../../../services/app-services/notification.service";
 import {MemberInfoPanelComponent} from "./member-info-panel/member-info-panel.component";
 import {
-  MemberParameterPanelComponent,
-  MemberParameters
-} from "./member-parameter-panel/member-parameter-panel.component";
-import {LoadingScreenComponent} from "../../../components/loading-screen/loading-screen.component";
-import {TranslatePipe, TranslateService} from "@ngx-translate/core";
+  MemberParameters,
+  MemberScreenSelectorComponent
+} from "./member-screen-selector/member-screen-selector.component";
+import {TranslatePipe} from "@ngx-translate/core";
 import {MemberCenterPanelComponent} from "./member-center-panel/member-center-panel.component";
-import {Member} from "../../../services/iracing-entities";
+import {Observable} from "rxjs";
 
 export enum MemberScreenDisplay {
   LastRaces,
@@ -30,45 +25,23 @@ export enum MemberScreenDisplay {
   imports: [
     CommonModule,
     MemberInfoPanelComponent,
-    MemberParameterPanelComponent,
-    LoadingScreenComponent,
+    MemberScreenSelectorComponent,
     TranslatePipe,
     MemberCenterPanelComponent
   ],
 })
 export class MemberByIdComponent implements OnInit {
-  isCharging = true;
-  member?: Member = undefined;
+  custId?: number = undefined;
+  custIdObservable?: Observable<number> = undefined;
   currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.LastRaces;
   parameters: MemberParameters = {} as MemberParameters;
   private readonly route = inject(ActivatedRoute);
-  private readonly memberService = inject(MemberService);
-  private readonly loggerService = inject(LoggerService);
-  private readonly notificationService = inject(NotificationService);
-  private readonly titleService = inject(Title);
-  private readonly translateService = inject(TranslateService);
 
   ngOnInit(): void {
     this.route.params.subscribe(val => {
-      this.isCharging = true;
+      this.custId = undefined;
       if (val["memberId"]) {
-        this.getMember(+val["memberId"]);
-      }
-    });
-  }
-
-  getMember(memberId: number): void {
-    this.memberService.getMember(memberId, true).subscribe({
-      next: (member: Member) => {
-        this.member = member;
-        this.isCharging = false;
-        this.titleService.setTitle(this.translateService.instant("Member.MainPanel.Title") + " : " + this.member?.display_name);
-      },
-      error: error => {
-        this.isCharging = false;
-        this.loggerService.error(error);
-        this.titleService.setTitle(this.translateService.instant("Member.Errors.MemberNotFoundTitle"));
-        this.notificationService.error(this.translateService.instant("Member.Errors.MemberNotFound"));
+        this.custId = +val["memberId"];
       }
     });
   }
