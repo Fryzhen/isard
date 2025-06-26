@@ -64,6 +64,9 @@ export class MemberLastRacesComponent implements OnInit {
 
   setRows(races: RecentRace[]): TableCell[][] {
     const rows: TableCell[][] = [];
+    races.sort((a, b) => {
+      return new Date(b.session_start_time).getTime() - new Date(a.session_start_time).getTime();
+    })
     for (const race of races) {
       rows.push([
         this.tableService.createDate(race.session_start_time, "short"),
