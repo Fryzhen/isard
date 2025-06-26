@@ -24,7 +24,6 @@ export class LookupService extends RequestService {
   }
 
   getFlairs(): Observable<Flair[]> {
-    console.log("Fetching flairs from the server");
     LookupService.flairs ??= this.request<RequestFlairs>("flairs", new URLSearchParams()).pipe(
       map((requestFlairs: RequestFlairs ) => {
         return requestFlairs.flairs;
