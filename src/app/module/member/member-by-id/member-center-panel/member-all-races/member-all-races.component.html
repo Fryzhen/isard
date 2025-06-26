@@ -4,12 +4,10 @@
         <div class="all-race-parameters">
             <div class="all-race-picklists">
                 <isard-item-picklist
-                        [label]="translateService.instant('Member.ParameterPanel.AllRaces.Year')"
                         [items]="getItemsYear()"
                         (itemClick)="onYearClicked($event)"
                 />
                 <isard-item-picklist
-                        [label]="translateService.instant('Member.ParameterPanel.AllRaces.Season')"
                         [items]="getItemsQuarter()"
                         (itemClick)="onSeasonClicked($event)"
                 />

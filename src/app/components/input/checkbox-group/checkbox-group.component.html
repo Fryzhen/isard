@@ -1,7 +1,8 @@
 @if (items.length !== 0) {
     <div class="btn-group">
         @for (item of items; track item) {
-            <input type="checkbox" class="btn-check" id="btncheck{{item.label + item.value }}" autocomplete="off" checked="{{defaultSelected}}" (change)="itemClick.emit(item)">
+            <input type="checkbox" class="btn-check" id="btncheck{{item.label + item.value }}" autocomplete="off"
+                   checked="{{defaultSelected}}" (change)="itemClick.emit(item)">
             <label class="btn btn-outline-primary" for="btncheck{{item.label + item.value}}">{{ item.label }}</label>
         }
     </div>

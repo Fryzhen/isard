@@ -1,26 +1,43 @@
-<isard-box>
-    <div class="driver-info">
-        <div class="driver-name">
-            <span>{{ member.display_name }}</span>
-        </div>
-        @if (member.flair_id) {
-            <div class="flair-info">
-                <isard-flag [flairId]="member.flair_id"/>
-                <span>{{ member.flair_name }}</span>
+@if (member) {
+    <isard-box>
+        <div class="driver-info">
+            <div class="driver-name">
+                <span>{{ member.display_name }}</span>
             </div>
-        }
-        <div class="last-login">
-            {{ 'Member.InfoPanel.LastConnection' | translate }} : {{ member.last_login | localizedDate:'short' }}
-        </div>
-    </div>
-
-    @if (member.licenses) {
-        <div class="licenses">
-            @for (license of member.licenses; track license.category_id) {
-                <div class="license-item">
-                    <isard-licence-tile [licence]="license"/>
+            @if (member.flair_id) {
+                <div class="flair-info">
+                    <isard-flag [flairId]="member.flair_id"/>
+                    <span>{{ member.flair_name }}</span>
                 </div>
             }
+            <div class="info-text">
+                {{ 'Member.InfoPanel.LastConnection' | translate }} : {{ member.last_login | localizedDate:'short' }}
+            </div>
+
+            @if (memberRecap) {
+                @if (memberRecap.favorite_car) {
+                    <div class="favourite-car">
+                    <span class="info-text">{{ 'Member.InfoPanel.FavouriteCar' | translate }}
+                        : {{ memberRecap.favorite_car.car_name }}</span>
+                    </div>
+                }
+                @if (memberRecap.favorite_track) {
+                    <div class="favourite-track">
+                    <span class="info-text">{{ 'Member.InfoPanel.FavouriteTrack' | translate }}
+                        : {{ memberRecap.favorite_track.track_name }}</span>
+                    </div>
+                }
+            }
         </div>
-    }
-</isard-box>
+
+        @if (member.licenses) {
+            <div class="licenses">
+                @for (license of member.licenses; track license.category_id) {
+                    <div class="license-item">
+                        <isard-licence-tile [licence]="license"/>
+                    </div>
+                }
+            </div>
+        }
+    </isard-box>
+}

@@ -18,6 +18,6 @@ export class HomeComponent {
   constructor() {
     this.translateService.get("Home.Title").subscribe(title => {
       this.titleService.setTitle(title);
-    })
+    });
   }
 }

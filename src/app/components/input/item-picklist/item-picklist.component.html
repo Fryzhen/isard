@@ -1,5 +1,5 @@
-<label [attr.for]="label.toLowerCase().replace(' ','-')" class="col-form-label">{{ label }}</label>
-<select [attr.id]="label.toLowerCase().replace(' ','-')" class="form-control form-select">
+<label [attr.for]="uuid" class="col-form-label">{{ label }}</label>
+<select [attr.id]="uuid" class="form-control form-select">
     @for (item of items; track item.value) {
         <option (click)="itemClick.emit(item)" class="jasmine-run-options">{{ item.label }}</option>
     }

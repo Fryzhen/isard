@@ -14,13 +14,7 @@ import {Driver} from "../../../services/iracing-entities";
   selector: "isard-navbar",
   templateUrl: "./navbar.component.html",
   styleUrl: "./navbar.component.scss",
-  imports: [
-    CommonModule,
-    NgOptimizedImage,
-    SearchPicklistComponent,
-    TranslatePipe,
-    LanguageComponent
-  ]
+  imports: [CommonModule, NgOptimizedImage, SearchPicklistComponent, TranslatePipe, LanguageComponent]
 })
 export class NavbarComponent {
   drivers: Driver[] = [];
@@ -30,8 +24,10 @@ export class NavbarComponent {
   private readonly loggerService = inject(LoggerService);
   private readonly translateService = inject(TranslateService);
 
-  redirectTo(route: string[]): Promise<boolean> {
-    return this.router.navigate(route);
+  redirectTo(route: string[]) {
+    return this.router.navigate(route).then(() => {
+      window.location.reload();
+    });
   }
 
   onSearch(searchTerm: string): void {
@@ -39,8 +35,7 @@ export class NavbarComponent {
       this.lookupService.getDrivers(searchTerm).subscribe({
         next: (drivers: Driver[]) => {
           this.drivers = drivers;
-        },
-        error: (error: Error) => {
+        }, error: (error: Error) => {
           this.loggerService.error(error.message);
           this.notificationService.error(this.translateService.instant("Components.Navbar.ErrorFailLoad"));
         }
@@ -52,8 +47,7 @@ export class NavbarComponent {
 
   driversToItems(drivers: Driver[]) {
     return drivers.map(driver => ({
-      name: driver.display_name,
-      id: driver.cust_id
+      name: driver.display_name, id: driver.cust_id
     }));
   }
 

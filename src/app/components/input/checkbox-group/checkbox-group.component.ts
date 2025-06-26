@@ -7,12 +7,12 @@ export interface CheckboxGroupItem {
 
 @Component({
   standalone: true,
-  selector: 'isard-checkbox-group',
+  selector: "isard-checkbox-group",
   imports: [],
-  templateUrl: './checkbox-group.html',
-  styleUrl: './checkbox-group.scss'
+  templateUrl: "./checkbox-group.component.html",
+  styleUrl: "./checkbox-group.component.scss"
 })
-export class CheckboxGroup {
+export class CheckboxGroupComponent {
   @Input() items: CheckboxGroupItem[] = [];
   @Input() defaultSelected = false;
 

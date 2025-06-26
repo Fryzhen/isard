@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, EventEmitter, inject, Input, Output} from "@angular/core";
+import {UuidService} from "../../../services/app-services/uuid.service";
 
 export interface PicklistItem {
   label: string,
@@ -13,8 +14,9 @@ export interface PicklistItem {
   styleUrl: "./item-picklist.component.scss"
 })
 export class ItemPicklistComponent {
-  @Input() label!: string;
+  @Input() label?: string = undefined;
   @Input() items: PicklistItem[] = [];
-
   @Output() itemClick = new EventEmitter<PicklistItem>();
+  protected readonly uuidService = inject(UuidService);
+  uuid: string = this.uuidService.generate();
 }

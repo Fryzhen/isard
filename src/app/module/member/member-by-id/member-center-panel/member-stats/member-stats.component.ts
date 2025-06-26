@@ -16,7 +16,7 @@ import {StatsTableComponent} from "./stats-table/stats-table.component";
   styleUrl: "./member-stats.component.scss"
 })
 export class MemberStatsComponent implements OnInit {
-  @Input() cust_id!: number;
+  @Input() custId!: number;
   displayStats?: StatCarrer[] = undefined;
   statsCarrer?: StatCarrer[] = undefined;
   statsYearly: Record<number, StatYearly[]> = {};
@@ -27,16 +27,16 @@ export class MemberStatsComponent implements OnInit {
   private readonly statsService = inject(StatsService);
 
   ngOnInit(): void {
-    this.statsService.getCareerStats(this.cust_id).subscribe({
+    this.statsService.getCareerStats(this.custId).subscribe({
       next: (stats: StatCarrer[]) => {
         this.statsCarrer = stats;
-        this.displayStats = stats
+        this.displayStats = stats;
       }, error: (error: string) => {
         this.notificationService.error(this.translateService.instant("Member.Errors.ImpossibleGetData"));
         this.loggerService.error(error);
       }
     });
-    this.statsService.getYearlyStats(this.cust_id).subscribe({
+    this.statsService.getYearlyStats(this.custId).subscribe({
       next: (stats: StatYearly[]) => {
         this.years = [...new Set(stats.map((s: StatYearly) => s.year).sort((a, b) => b - a))];
         this.years.forEach((year: number) => {
@@ -55,7 +55,7 @@ export class MemberStatsComponent implements OnInit {
 
   setStatsTotal() {
     console.log("Setting total stats");
-    this.displayStats = this.statsCarrer
+    this.displayStats = this.statsCarrer;
   }
 
   setStatsYear(year: number) {

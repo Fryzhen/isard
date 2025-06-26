@@ -1,10 +1,10 @@
-import {inject, Injectable} from '@angular/core';
+import {inject, Injectable} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
 import {environment} from "../../../environments/environment";
 import {Observable} from "rxjs";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export abstract class RequestService {
   protected baseUrl: string = environment.apiUrl;

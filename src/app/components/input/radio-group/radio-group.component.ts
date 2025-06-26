@@ -9,10 +9,10 @@ export interface RadioGroupItem {
   standalone: true,
   selector: "isard-radio-group",
   imports: [],
-  templateUrl: "./radio-group.html",
-  styleUrl: "./radio-group.scss"
+  templateUrl: "./radio-group.component.html",
+  styleUrl: "./radio-group.component.scss"
 })
-export class RadioGroup {
+export class RadioGroupComponent {
   @Input() items: RadioGroupItem[] = [];
 
   @Output() itemClick = new EventEmitter<number>();

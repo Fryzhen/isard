@@ -1,28 +1,25 @@
-@if (isCharging) {
-    <isard-loading-screen/>
+@if (custId) {
+    <div class="fullscreen">
+        <div class="side">
+            <isard-member-info-panel [custId]="custId"/>
+            <isard-member-parameter-panel
+                    (parameters)="setParameters($event)"
+                    (screen)="changeScreen($event)"
+                    [currentScreenDisplay]="currentScreenDisplay"
+            />
+        </div>
+        <div class="center">
+            <isard-member-center-panel
+                    [custId]="custId"
+                    [curentScreenDisplay]="currentScreenDisplay"
+                    [parameters]="parameters"
+            />
+        </div>
+    </div>
 } @else {
-    @if (member) {
-        <div class="fullscreen">
-            <div class="side">
-                <isard-member-info-panel [member]="member"/>
-                <isard-member-parameter-panel
-                        (parameters)="setParameters($event)"
-                        (screen)="changeScreen($event)"
-                        [currentScreenDisplay]="currentScreenDisplay"
-                />
-            </div>
-            <div class="center">
-                <isard-member-center-panel
-                        [member]="member"
-                        [curentScreenDisplay]="currentScreenDisplay"
-                        [parameters]="parameters"
-                />
-            </div>
-        </div>
-    } @else {
-        <div class="center-screen">
-            <h3>{{ 'Member.Errors.NoDriver' | translate }}</h3>
-            <p>{{ 'Member.Errors.CheckId' | translate }}</p>
-        </div>
-    }
+    <div class="center-screen">
+        <h3>{{ 'Member.Errors.NoDriver' | translate }}</h3>
+        <p>{{ 'Member.Errors.CheckId' | translate }}</p>
+    </div>
 }
+

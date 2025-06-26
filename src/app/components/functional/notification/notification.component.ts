@@ -1,6 +1,10 @@
 import {Component, inject, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
-import {INotification, NotificationService, NotificationType} from "../../../services/app-services/notification.service";
+import {
+  INotification,
+  NotificationService,
+  NotificationType
+} from "../../../services/app-services/notification.service";
 import {debounceTime, tap} from "rxjs/operators";
 
 @Component({
@@ -22,16 +26,16 @@ export class NotificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.notificationService.notifyRequest$
-    .pipe(
-      tap((notification: INotification) => {
-        this.notification = notification;
-        this.showNotification = true;
-      }),
-      debounceTime(3000),
-      tap(() => {
-        this.showNotification = false;
-      })
-    )
-    .subscribe();
+      .pipe(
+        tap((notification: INotification) => {
+          this.notification = notification;
+          this.showNotification = true;
+        }),
+        debounceTime(3000),
+        tap(() => {
+          this.showNotification = false;
+        })
+      )
+      .subscribe();
   }
 }

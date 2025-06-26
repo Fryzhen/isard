@@ -8,7 +8,7 @@ export interface Series {
   category_id: number;
   fixed_setup: boolean;
   license_group: number;
-  license_group_types: { license_group_type: number }[];
+  license_group_types: {license_group_type: number}[];
   logo: null | string;
   official: boolean;
   search_filters?: string;

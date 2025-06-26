@@ -9,22 +9,17 @@ import {
 import {ResultsService} from "../../../../../services/request-services/results.service";
 import {Category, EventType, SearchSeries} from "../../../../../services/iracing-entities";
 import {ConstantsService} from "../../../../../services/request-services/constants.service";
-import {CheckboxGroup} from "../../../../../components/input/checkbox-group/checkbox-group";
+import {CheckboxGroupComponent} from "../../../../../components/input/checkbox-group/checkbox-group.component";
 
 @Component({
   standalone: true,
   selector: "isard-member-all-races",
-  imports: [BoxComponent, LoadingScreenComponent, TranslatePipe, ItemPicklistComponent, CheckboxGroup],
+  imports: [BoxComponent, LoadingScreenComponent, TranslatePipe, ItemPicklistComponent, CheckboxGroupComponent],
   templateUrl: "./member-all-races.component.html",
   styleUrl: "./member-all-races.component.scss"
 })
 export class MemberAllRacesComponent implements OnInit {
-  protected readonly translateService = inject(TranslateService);
-  protected readonly resultService = inject(ResultsService);
-  protected readonly constantsService = inject(ConstantsService);
-
-  @Input() cust_id!: number;
-
+  @Input() custId!: number;
   eventTypes?: EventType[] = undefined;
   categories?: Category[] = undefined;
   params = {
@@ -33,22 +28,24 @@ export class MemberAllRacesComponent implements OnInit {
     eventType: [] as EventType[],
     categories: [] as Category[]
   };
-
-  series : SearchSeries[] = [];
+  series: SearchSeries[] = [];
+  protected readonly translateService = inject(TranslateService);
+  protected readonly resultService = inject(ResultsService);
+  protected readonly constantsService = inject(ConstantsService);
 
   ngOnInit() {
     this.constantsService.getEventTypes().subscribe({
       next: (data) => {
-        data.reverse()
-        this.eventTypes = data
-        this.params.eventType = this.eventTypes
+        data.reverse();
+        this.eventTypes = data;
+        this.params.eventType = this.eventTypes;
       }, error: (err) => {
         console.error(err);
       }
     });
     this.constantsService.getCategories().subscribe({
       next: (data) => {
-        this.categories = data
+        this.categories = data;
         this.params.categories = this.categories;
       }, error: (err) => {
         console.error(err);
@@ -79,7 +76,7 @@ export class MemberAllRacesComponent implements OnInit {
   }
 
   findRaces() {
-    this.resultService.searchSeries(this.cust_id, this.params.year, this.params.season, {
+    this.resultService.searchSeries(this.custId, this.params.year, this.params.season, {
       event_types: this.params.eventType,
       category_ids: this.params.categories
     }).subscribe({

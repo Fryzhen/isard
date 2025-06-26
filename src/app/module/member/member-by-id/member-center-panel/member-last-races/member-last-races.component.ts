@@ -24,7 +24,7 @@ import {LoadingScreenComponent} from "../../../../../components/cosmetics/loadin
   styleUrl: "./member-last-races.component.scss"
 })
 export class MemberLastRacesComponent implements OnInit {
-  @Input() cust_id!: number;
+  @Input() custId!: number;
   rows: TableCell[][] | undefined;
   header: TableHeader[] | undefined;
   private readonly tableService = inject(TableService);
@@ -34,7 +34,7 @@ export class MemberLastRacesComponent implements OnInit {
   private readonly loggerService = inject(LoggerService);
 
   ngOnInit(): void {
-    this.statsService.getRecentRaces(this.cust_id).subscribe({
+    this.statsService.getRecentRaces(this.custId).subscribe({
       next: (races: RecentRace[]) => {
         this.header = this.setHeader();
         this.rows = this.setRows(races);
@@ -66,7 +66,7 @@ export class MemberLastRacesComponent implements OnInit {
     const rows: TableCell[][] = [];
     races.sort((a, b) => {
       return new Date(b.session_start_time).getTime() - new Date(a.session_start_time).getTime();
-    })
+    });
     for (const race of races) {
       rows.push([
         this.tableService.createDate(race.session_start_time, "short"),

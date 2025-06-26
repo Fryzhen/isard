@@ -12,9 +12,8 @@ import {FlagComponent} from "../../cosmetics/flag/flag.component";
   styleUrl: "./language.component.scss"
 })
 export class LanguageComponent {
-  private readonly translationService = inject(TranslationService);
-
   protected readonly Language = Language;
+  private readonly translationService = inject(TranslationService);
 
   setLanguage(language: Language) {
     this.translationService.setLanguage(language);
