@@ -6,26 +6,30 @@ import {NgClass} from "@angular/common";
   standalone: true,
   selector: "isard-flag",
   templateUrl: "./flag.component.html",
-  imports: [
-    NgClass
-  ],
+  imports: [NgClass],
   styleUrl: "./flag.component.scss"
 })
 export class FlagComponent implements OnInit {
+  @Input() flairId: number | undefined = undefined;
+  @Input() flairTag: string | undefined = undefined;
+  classes: string[] = ["fi"];
+  unknown = false;
   private readonly lookupService = inject(LookupService);
 
-  @Input() flairId!: number;
-  classes: string[] = ['fi'];
-  unknown = false;
-
   ngOnInit() {
-    this.lookupService.getFlairs().subscribe(flairs => {
-      const flair = flairs.find(flair => flair.flair_id === this.flairId)
-      if (flair?.country_code) {
-        this.classes.push(`fi-${flair.country_code.toLowerCase()}`);
-      } else {
-        this.unknown = true;
-      }
-    })
+    if (this.flairId) {
+      this.lookupService.getFlairs().subscribe(flairs => {
+        const flair = flairs.find(flair => flair.flair_id === this.flairId);
+        if (flair?.country_code) {
+          this.classes.push(`fi-${flair.country_code.toLowerCase()}`);
+        } else {
+          this.unknown = true;
+        }
+      });
+    } else if (this.flairTag) {
+      this.classes.push(`fi-${this.flairTag.toLowerCase()}`);
+    } else {
+      this.unknown = true;
+    }
   }
 }

@@ -1,15 +1,12 @@
 <div class="language center">
     <button (click)="setLanguage(Language.French)"
-            [attr.aria-label]="'Français'"
             class="flag-btn"
             type="button">
-        <isard-flag [flairId]="71"/>
+        <isard-flag [flairTag]="Language.French"/>
     </button>
-    /
     <button (click)="setLanguage(Language.English)"
-            [attr.aria-label]="'English'"
             class="flag-btn"
             type="button">
-        <isard-flag [flairId]="222"/>
+        <isard-flag [flairTag]="Language.English"/>
     </button>
 </div>

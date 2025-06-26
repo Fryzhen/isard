@@ -8,7 +8,7 @@ import {map} from "rxjs/operators";
   providedIn: "root",
 })
 export class LookupService extends RequestService {
-  private flairs: Observable<Flair[]> | undefined;
+  private static flairs: Observable<Flair[]> | undefined;
 
   constructor() {
     super("lookup");
@@ -24,10 +24,10 @@ export class LookupService extends RequestService {
   }
 
   getFlairs(): Observable<Flair[]> {
-    this.flairs ??= this.request<RequestFlairs>("flairs", new URLSearchParams()).pipe(
+    LookupService.flairs ??= this.request<RequestFlairs>("flairs", new URLSearchParams()).pipe(
       map((requestFlairs: RequestFlairs ) => {
         return requestFlairs.flairs;
       }));
-    return this.flairs;
+    return LookupService.flairs;
   }
 }

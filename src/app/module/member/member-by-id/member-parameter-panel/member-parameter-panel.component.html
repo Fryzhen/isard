@@ -15,13 +15,6 @@
             {{ 'Member.ParameterPanel.CareerStats' | translate }}
         </button>
         <button
-                (click)="changeScreen(MemberScreenDisplay.YearlyStats)"
-                [class.active]="currentScreenDisplay === MemberScreenDisplay.YearlyStats"
-                class="btn btn-primary"
-                type="button">
-            {{ 'Member.ParameterPanel.YearlyStats' | translate }}
-        </button>
-        <button
                 (click)="changeScreen(MemberScreenDisplay.AllRaces)"
                 [class.active]="currentScreenDisplay === MemberScreenDisplay.AllRaces"
                 class="btn btn-primary"

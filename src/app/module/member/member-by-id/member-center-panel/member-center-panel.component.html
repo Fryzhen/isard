@@ -3,10 +3,7 @@
         <isard-member-last-races [cust_id]="member.cust_id"/>
     }
     @case (MemberScreenDisplay.CareerStats) {
-        <isard-member-stats-career [cust_id]="member.cust_id"/>
-    }
-    @case (MemberScreenDisplay.YearlyStats) {
-        <isard-member-stats-yearly [cust_id]="member.cust_id"/>
+        <isard-member-stats [cust_id]="member.cust_id"/>
     }
     @case (MemberScreenDisplay.AllRaces) {
         <isard-member-all-races [cust_id]="member.cust_id"/>

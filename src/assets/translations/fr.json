@@ -8,7 +8,7 @@
       "LoadingText": "Chargement en cours"
     },
     "Navbar": {
-      "Title": "ISACP",
+      "Title": "ISARD",
       "LabelToggleMenu": "Activer la navigation",
       "Home": "Accueil",
       "DriverSearchPlaceholder": "Rechercher un pilote",
@@ -20,7 +20,7 @@
     }
   },
   "Home": {
-    "Title": "ISACP",
+    "Title": "ISARD",
     "SubTitle": "IRacing Statistiques et Analyses des Courses et Pilotes"
   },
   "Member": {
@@ -28,7 +28,7 @@
       "NoDriver": "Aucun pilote trouvé",
       "CheckId": "Veuillez vérifier l'ID que vous avez entré.",
       "MemberNotFound": "Membre non trouvé, veuillez vérifier l'ID ou contactez le support.",
-      "MemberNotFoundTitle": "ISACP : Membre non trouvé",
+      "MemberNotFoundTitle": "ISARD : Membre non trouvé",
       "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés",
       "ImpossibleGetData": "Les données n'ont pas pu être récupérés"
     },
@@ -36,22 +36,21 @@
       "Title": "Rechercher un Pilote"
     },
     "MainPanel": {
-      "Title": "ISACP"
+      "Title": "ISARD"
     },
     "InfoPanel": {
       "LastConnection": "Dernière connection"
     },
     "ParameterPanel": {
       "LastRaces": "Courses Récentes",
-      "CareerStats": "Stats Globales",
-      "YearlyStats": "Stats Par Année",
+      "CareerStats": "Statistiques Globales",
       "AllRaces": "Toutes les Courses"
     },
     "LastRacesPanel": {
       "Title": "Courses Récentes",
       "Table": {
         "Date": "Date",
-        "Car": "Voiture",
+        "Series": "Catégorie",
         "Track": "Circuit",
         "Start": "Pos Départ",
         "Finish": "Pos Arrivée",
@@ -63,10 +62,8 @@
       }
     },
     "CareerPanel": {
-      "Title": "Stats Globales"
-    },
-    "YearlyPanel": {
-      "Title": "Stats Par Année"
+      "Title": "Statistiques Globales",
+      "Total": "Total"
     },
     "StatTable": {
       "Category": "Catégorie",
