@@ -1,7 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {NgClass} from "@angular/common";
 import {TableCell, TableCellType, TableHeader} from "../../services/app-services/table.service";
-import {LocalizedDatePipe} from "../../services/app-services/localized-date.pipe";
+import {LocalizedDatePipe} from "../../services/pipe/localized-date.pipe";
 import {IconComponent} from "../icon/icon.component";
 
 @Component({

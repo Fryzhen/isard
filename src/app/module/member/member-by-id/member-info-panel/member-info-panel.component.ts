@@ -1,7 +1,7 @@
 import {Component, Input} from "@angular/core";
 import {LicenceTileComponent} from "../../../../components/licence-tile/licence-tile.component";
 import {TranslatePipe} from "@ngx-translate/core";
-import {LocalizedDatePipe} from "../../../../services/app-services/localized-date.pipe";
+import {LocalizedDatePipe} from "../../../../services/pipe/localized-date.pipe";
 import {BoxComponent} from "../../../../components/box/box.component";
 import {Member} from "../../../../services/iracing-entities";
 import {FlagComponent} from "../../../../components/flag/flag.component";
