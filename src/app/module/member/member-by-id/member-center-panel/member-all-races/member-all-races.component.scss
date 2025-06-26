@@ -1,5 +1,12 @@
 .all-race-parameters {
   display: flex;
-  flex-direction: row;
-  gap: 20px;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+
+  .all-race-picklists {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
 }

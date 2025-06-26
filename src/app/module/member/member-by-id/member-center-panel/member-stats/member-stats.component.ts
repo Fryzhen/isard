@@ -1,11 +1,11 @@
 import {Component, inject, Input, OnInit} from "@angular/core";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
-import {BoxComponent} from "../../../../../components/box/box.component";
+import {BoxComponent} from "../../../../../components/cosmetics/box/box.component";
 import {StatCarrer, StatYearly} from "../../../../../services/iracing-entities";
 import {LoggerService} from "../../../../../services/app-services/logger.service";
 import {NotificationService} from "../../../../../services/app-services/notification.service";
 import {StatsService} from "../../../../../services/request-services/stats.service";
-import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
+import {LoadingScreenComponent} from "../../../../../components/cosmetics/loading-screen/loading-screen.component";
 import {StatsTableComponent} from "./stats-table/stats-table.component";
 
 @Component({

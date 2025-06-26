@@ -1,14 +1,14 @@
 import {Component, inject, Input, OnInit} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
-import {BoxComponent} from "../../../../../components/box/box.component";
-import {TableComponent} from "../../../../../components/table/table.component";
+import {BoxComponent} from "../../../../../components/cosmetics/box/box.component";
+import {TableComponent} from "../../../../../components/cosmetics/table/table.component";
 import {TableCell, TableHeader, TableService} from "../../../../../services/app-services/table.service";
 import {NotificationService} from "../../../../../services/app-services/notification.service";
 import {RecentRace} from "../../../../../services/iracing-entities";
 import {StatsService} from "../../../../../services/request-services/stats.service";
 import {LoggerService} from "../../../../../services/app-services/logger.service";
-import {LoadingScreenComponent} from "../../../../../components/loading-screen/loading-screen.component";
+import {LoadingScreenComponent} from "../../../../../components/cosmetics/loading-screen/loading-screen.component";
 
 @Component({
   standalone: true,

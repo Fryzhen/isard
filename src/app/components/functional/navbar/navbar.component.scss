@@ -1,0 +1,25 @@
+@use "../../../styles/variables" as *;
+
+.navbar {
+  z-index: 5;
+  display: flex;
+  background-color: $ir-blue-alt !important;
+
+  .navbar-logo {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-direction: row !important;
+    margin-right: 12px;
+  }
+
+  .navbar-toggler {
+    background-color: $white !important;
+  }
+
+  .nav-link,
+  .navbar-brand {
+    cursor: pointer;
+    color: $white !important;
+  }
+}

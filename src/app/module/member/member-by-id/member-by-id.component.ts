@@ -10,7 +10,7 @@ import {
   MemberScreenSelectorComponent,
   MemberParameters
 } from "./member-screen-selector/member-screen-selector.component";
-import {LoadingScreenComponent} from "../../../components/loading-screen/loading-screen.component";
+import {LoadingScreenComponent} from "../../../components/cosmetics/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {MemberCenterPanelComponent} from "./member-center-panel/member-center-panel.component";
 import {Member} from "../../../services/iracing-entities";

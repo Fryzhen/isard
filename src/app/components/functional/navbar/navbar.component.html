@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <div class="navbar-logo">
+            <img
+                    alt="logo"
+                    height="56"
+                    ngSrc="../../../../assets/iracing/iRacing-Icon-Color-White.svg"
+                    width="{{56 * 486 / 372}}"
+            >
+        </div>
+        <a (click)="redirectTo([''])" class="navbar-brand">{{ 'Components.Navbar.Title' | translate }}</a>
+        <button [attr.aria-label]='"Components.Navbar.LabelToggleMenu" | translate'
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                class="navbar-toggler"
+                data-bs-target="#navbarSupportedContent" data-bs-toggle="collapse" type="button">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <isard-language/>
+                <li class="nav-item">
+                    <a (click)="redirectTo([''])" class="nav-link">{{ 'Components.Navbar.Home' | translate }}</a>
+                </li>
+            </ul>
+            <ul class="navbar-nav mb-2 mb-lg-0">
+                <li class="nav-item dropdown">
+                    <isard-search-picklist
+                            (itemClick)="onItemClick($event)"
+                            (searchChange)="onSearch($event)"
+                            [items]="driversToItems(drivers)"
+                            [placeholder]="'Components.Navbar.DriverSearchPlaceholder' | translate"
+                    />
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

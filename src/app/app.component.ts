@@ -2,7 +2,7 @@ import {Component, inject} from "@angular/core";
 import {RouterOutlet} from "@angular/router";
 import {CommonModule} from "@angular/common";
 import {TranslationService} from "./services/app-services/translation.service";
-import {HeaderComponent} from "./components/header/header.component";
+import {HeaderComponent} from "./components/functional/header/header.component";
 
 @Component({
   standalone: true,

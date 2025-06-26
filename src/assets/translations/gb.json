@@ -47,20 +47,8 @@
       "AllRaces": {
         "Title": "All Races",
         "Year": "Year",
-        "Quarter": {
-          "Title": "Quarter",
-          "Q1": "First Quarter",
-          "Q2": "Second Quarter",
-          "Q3": "Third Quarter",
-          "Q4": "Fourth Quarter"
-        },
-        "Event": {
-          "Title": "Event type",
-          "Practice": "Practice",
-          "Qualify": "Qualify",
-          "TimeTrial": "Time Trial",
-          "Race": "Race"
-        }
+        "Season": "Season",
+        "EventType": "Event type"
       }
     },
     "LastRacesPanel": {

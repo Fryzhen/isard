@@ -1,0 +1,57 @@
+@use "../../../styles/variables" as *;
+
+.licence-tile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-family: Inter, sans-serif;
+  font-size: 14px;
+  height: 28px;
+  border: 1px solid;
+
+  .group-name {
+    font-weight: 600;
+    min-width: 65px;
+  }
+
+  .safety-rating {
+    font-weight: 600;
+  }
+
+  .irating {
+    font-weight: 600;
+  }
+
+  // License class colors
+  &.rookie {
+    background-color: $licence-rookie-background;
+    border-color: $licence-rookie-border;
+    color: $licence-rookie-text;
+  }
+
+  &.classd {
+    background-color: $licence-class-d-background;
+    border-color: $licence-class-d-border;
+    color: $licence-class-d-text;
+  }
+
+  &.classc {
+    background-color: $licence-class-c-background;
+    border-color: $licence-class-c-border;
+    color: $licence-class-c-text;
+  }
+
+  &.classb {
+    background-color: $licence-class-b-background;
+    border-color: $licence-class-b-border;
+    color: $licence-class-b-text;
+  }
+
+  &.classa {
+    background-color: $licence-class-a-background;
+    border-color: $licence-class-a-border;
+    color: $licence-class-a-text;
+  }
+}
