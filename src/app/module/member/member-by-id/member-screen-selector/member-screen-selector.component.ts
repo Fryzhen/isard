@@ -2,13 +2,7 @@ import {Component, EventEmitter, Input, Output} from "@angular/core";
 import {MemberScreenDisplay} from "../member-by-id.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {BoxComponent} from "../../../../components/box/box.component";
-import {
-  ItemPicklistComponent,
-  PicklistItem
-} from "../../../../components/picklist/item-picklist/item-picklist.component";
 import {EventType} from "../../../../services/iracing-entities";
-import {EventType} from "../../../../services/request-services/iracing-entities";
-import {NgIf} from "@angular/common";
 import {
   ItemPicklistComponent,
   PicklistItem
@@ -23,13 +17,7 @@ export interface MemberParameters {
 @Component({
   standalone: true,
   selector: "isard-member-parameter-panel",
-  imports: [TranslatePipe, BoxComponent, NgIf, ItemPicklistComponent],
-  templateUrl: "./member-parameter-panel.component.html",
-  styleUrl: "./member-parameter-panel.component.scss"
-  imports: [
-    TranslatePipe,
-    BoxComponent
-  ],
+  imports: [TranslatePipe, BoxComponent, ItemPicklistComponent],
   templateUrl: "./member-screen-selector.component.html",
   styleUrl: "./member-screen-selector.component.scss"
 })
