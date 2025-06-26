@@ -1,19 +1,20 @@
-import {Component, inject, Input, OnInit} from '@angular/core';
-import {TableComponent} from "../../../../../components/table/table.component";
-import {StatCarrer} from "../../../../../services/iracing-entities";
-import {TableCell, TableHeader, TableService} from "../../../../../services/app-services/table.service";
+import {Component, inject, Input, OnChanges, OnInit} from "@angular/core";
+import {TableComponent} from "../../../../../../components/table/table.component";
+import {StatCarrer} from "../../../../../../services/iracing-entities";
+import {TableCell, TableHeader, TableService} from "../../../../../../services/app-services/table.service";
 import {TranslateService} from "@ngx-translate/core";
-import {LicenceService} from "../../../../../services/app-services/licence.service";
+import {LicenceService} from "../../../../../../services/app-services/licence.service";
 
 @Component({
-  selector: 'isard-stats-table',
+  standalone: true,
+  selector: "isard-stats-table",
   imports: [
     TableComponent
   ],
-  templateUrl: './stats-table.component.html',
-  styleUrl: './stats-table.component.scss'
+  templateUrl: "./stats-table.component.html",
+  styleUrl: "./stats-table.component.scss"
 })
-export class StatsTableComponent implements OnInit {
+export class StatsTableComponent implements OnInit, OnChanges {
   @Input() stats!: StatCarrer[];
   rows!: TableCell[][];
   header!: TableHeader[];
@@ -24,6 +25,12 @@ export class StatsTableComponent implements OnInit {
   ngOnInit() {
     this.header = this.setHeader();
     this.rows = this.setRows();
+  }
+
+  ngOnChanges() {
+    if (this.stats) {
+      this.rows = this.setRows();
+    }
   }
 
   getIcon(category_id: number) {

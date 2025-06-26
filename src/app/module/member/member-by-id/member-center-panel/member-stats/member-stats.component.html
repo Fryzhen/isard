@@ -1,0 +1,32 @@
+<isard-box>
+    <h3>{{ 'Member.CareerPanel.Title' | translate }}</h3>
+    <div aria-label="Basic radio toggle button group" class="btn-group">
+        <input (click)="setStatsTotal()"
+               autocomplete="off"
+               checked
+               class="btn-check"
+               id="total"
+               name="btnradio"
+               type="radio"/>
+        <label class="btn btn-outline-primary" for="total">{{ 'Member.CareerPanel.Total' | translate }}</label>
+
+        @if (years) {
+            @for (year of years; track year) {
+                @if (statsYearly[year]) {
+                    <input type="radio"
+                           class="btn-check"
+                           name="btnradio"
+                           id="{{year}}"
+                           autocomplete="off"
+                           (click)="setStatsYear(year)"/>
+                    <label class="btn btn-outline-primary" for="{{year}}">{{ year }}</label>
+                }
+            }
+        }
+    </div>
+    @if (displayStats) {
+        <isard-stats-table [stats]="displayStats"/>
+    } @else {
+        <isard-loading-screen/>
+    }
+</isard-box>

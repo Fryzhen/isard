@@ -43,8 +43,7 @@
     },
     "ParameterPanel": {
       "LastRaces": "Courses Récentes",
-      "CareerStats": "Stats Globales",
-      "YearlyStats": "Stats Par Année",
+      "CareerStats": "Statistiques Globales",
       "AllRaces": "Toutes les Courses"
     },
     "LastRacesPanel": {
@@ -63,10 +62,8 @@
       }
     },
     "CareerPanel": {
-      "Title": "Stats Globales"
-    },
-    "YearlyPanel": {
-      "Title": "Stats Par Année"
+      "Title": "Statistiques Globales",
+      "Total": "Total"
     },
     "StatTable": {
       "Category": "Catégorie",

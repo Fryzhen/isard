@@ -44,7 +44,6 @@
     "ParameterPanel": {
       "LastRaces": "Last Races",
       "CareerStats": "Career Stats",
-      "YearlyStats": "Yearly Stats",
       "AllRaces": "All Races"
     },
     "LastRacesPanel": {
@@ -63,10 +62,8 @@
       }
     },
     "CareerPanel": {
-      "Title": "Career Stats"
-    },
-    "YearlyPanel": {
-      "Title": "Yearly Stats"
+      "Title": "Career Stats",
+      "Total": "Total"
     },
     "StatTable": {
       "Category": "Category",
