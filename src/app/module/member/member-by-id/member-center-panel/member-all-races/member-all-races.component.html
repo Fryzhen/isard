@@ -1,5 +1,6 @@
 <isard-box>
     <h3>{{ 'Member.AllRacesPanel.Title' | translate }}</h3>
+    <isard-divider [marginBottom]="10" [marginTop]="10"/>
     @if (eventTypes && categories) {
         <div class="all-race-parameters">
             <div class="all-race-picklists">
@@ -34,9 +35,21 @@
     } @else {
         <isard-loading-screen/>
     }
-    @if (series && series.length > 0) {
-        @for (seriesItem of series; track seriesItem) {
-            <p>{{ seriesItem.car_name }}</p>
+    @if (loadingSeries || (series && series.length > 0)) {
+        <isard-divider [marginBottom]="10" [marginTop]="10"/>
+        @if (!loadingSeries) {
+            @if (series.length > 0) {
+                @for (seriesItem of series; track seriesItem) {
+                    <p>{{ seriesItem.car_name }}</p>
+                }
+            } @else {
+                <h3> {{ "" | translate}}</h3>
+            }
+        } @else {
+            <isard-loading-screen/>
         }
+    }
+    @if (series && series.length > 0) {
+
     }
 </isard-box>

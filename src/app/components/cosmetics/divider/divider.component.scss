@@ -1,0 +1,7 @@
+@use "../../../styles/variables" as *;
+
+.divider {
+  width: 100%;
+  height: 1px;
+  border: solid 1px $gray-500;
+}

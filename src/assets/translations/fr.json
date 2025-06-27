@@ -25,13 +25,14 @@
   },
   "Member": {
     "Errors": {
-      "NoDriver": "Aucun pilote trouvé",
+      "NoDriver": "Aucun pilote trouvé.",
       "CheckId": "Veuillez vérifier l'ID que vous avez entré.",
       "MemberNotFound": "Membre non trouvé, veuillez vérifier l'ID ou contactez le support.",
       "RecapNotFound": "Récapitulatif non trouvé pour ce membre.",
       "MemberNotFoundTitle": "ISARD : Membre non trouvé",
-      "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés",
-      "ImpossibleGetData": "Les données n'ont pas pu être récupérés"
+      "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés.",
+      "ImpossibleGetData": "Les données n'ont pas pu être récupérés.",
+      "NoRaceFound": "Aucune course trouvée."
     },
     "Research": {
       "Title": "Rechercher un Pilote"
@@ -40,6 +41,7 @@
       "Title": "ISARD"
     },
     "InfoPanel": {
+      "FirstConnection": "Membre depuis",
       "LastConnection": "Dernière connection",
       "FavouriteCar": "Voiture Favorite",
       "FavouriteTrack": "Circuit Favori"
@@ -91,7 +93,7 @@
     },
     "AllRacesPanel": {
       "Title": "Toutes les courses",
-      "Search": "Rechercher les courses"
+      "Search": "Rechercher les courses",
     }
   }
 }

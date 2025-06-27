@@ -10,16 +10,22 @@ import {ResultsService} from "../../../../../services/request-services/results.s
 import {Category, EventType, SearchSeries} from "../../../../../services/iracing-entities";
 import {ConstantsService} from "../../../../../services/request-services/constants.service";
 import {CheckboxGroupComponent} from "../../../../../components/input/checkbox-group/checkbox-group.component";
+import {DividerComponent} from "../../../../../components/cosmetics/divider/divider.component";
 
 @Component({
   standalone: true,
   selector: "isard-member-all-races",
-  imports: [BoxComponent, LoadingScreenComponent, TranslatePipe, ItemPicklistComponent, CheckboxGroupComponent],
+  imports: [BoxComponent, LoadingScreenComponent, TranslatePipe, ItemPicklistComponent, CheckboxGroupComponent, DividerComponent],
   templateUrl: "./member-all-races.component.html",
   styleUrl: "./member-all-races.component.scss"
 })
 export class MemberAllRacesComponent implements OnInit {
+  protected readonly translateService = inject(TranslateService);
+  protected readonly resultService = inject(ResultsService);
+  protected readonly constantsService = inject(ConstantsService);
+
   @Input() custId!: number;
+
   eventTypes?: EventType[] = undefined;
   categories?: Category[] = undefined;
   params = {
@@ -29,9 +35,7 @@ export class MemberAllRacesComponent implements OnInit {
     categories: [] as Category[]
   };
   series: SearchSeries[] = [];
-  protected readonly translateService = inject(TranslateService);
-  protected readonly resultService = inject(ResultsService);
-  protected readonly constantsService = inject(ConstantsService);
+  loadingSeries: boolean = false;
 
   ngOnInit() {
     this.constantsService.getEventTypes().subscribe({
@@ -76,12 +80,14 @@ export class MemberAllRacesComponent implements OnInit {
   }
 
   findRaces() {
+    this.loadingSeries = true;
     this.resultService.searchSeries(this.custId, this.params.year, this.params.season, {
       event_types: this.params.eventType,
       category_ids: this.params.categories
     }).subscribe({
       next: (data) => {
-        console.log(data);
+        this.loadingSeries = false;
+        this.series = data;
       }, error: (err) => {
         console.error(err);
       }
