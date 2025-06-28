@@ -4,13 +4,11 @@ import {TableComponent} from "../../../../../../components/cosmetics/table/table
 import {TableCell, TableHeader, TableService} from "../../../../../../services/app-services/table.service";
 import {TranslateService} from "@ngx-translate/core";
 import {NotificationService} from "../../../../../../services/app-services/notification.service";
-import {DividerComponent} from "../../../../../../components/cosmetics/divider/divider.component";
 
 @Component({
   selector: 'isard-member-all-races-results',
   imports: [
-    TableComponent,
-    DividerComponent
+    TableComponent
   ],
   templateUrl: './member-all-races-results.component.html',
   styleUrl: './member-all-races-results.component.scss'
