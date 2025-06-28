@@ -20,13 +20,11 @@ import {MemberAllRacesFilterComponent} from "./member-all-races-filter/member-al
   styleUrl: "./member-all-races.component.scss"
 })
 export class MemberAllRacesComponent {
-  protected readonly resultService = inject(ResultsService);
-
   @Input() custId!: number;
-
   series?: SearchSeries[] = undefined;
   loadingSeries = false;
   filteredSeries?: SearchSeries[] = undefined;
+  protected readonly resultService = inject(ResultsService);
 
   findRaces(params: MemberAllRacesParameters) {
     this.loadingSeries = true;

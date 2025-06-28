@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {RequestService} from "./request.service";
 import {Observable} from "rxjs";
 import {Series} from "../iracing-entities";

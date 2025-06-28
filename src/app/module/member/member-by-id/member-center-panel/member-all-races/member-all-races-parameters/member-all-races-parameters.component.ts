@@ -6,7 +6,7 @@ import {
 } from "../../../../../../components/input/item-picklist/item-picklist.component";
 import {LoadingScreenComponent} from "../../../../../../components/cosmetics/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
-import {Category, EventType, Series, SeriesStats} from "../../../../../../services/iracing-entities";
+import {Category, EventType, Series} from "../../../../../../services/iracing-entities";
 import {ConstantsService} from "../../../../../../services/request-services/constants.service";
 import {SeriesService} from "../../../../../../services/request-services/series.service";
 
@@ -30,19 +30,12 @@ export interface MemberAllRacesParameters {
   styleUrl: './member-all-races-parameters.component.scss'
 })
 export class MemberAllRacesParametersComponent implements OnInit {
-  protected readonly constantsService = inject(ConstantsService);
-  protected readonly translateService = inject(TranslateService);
-  private seriesService = inject(SeriesService);
-
   @Output() research = new EventEmitter<MemberAllRacesParameters>();
-
   eventTypes?: EventType[] = undefined;
   eventTypesSelected?: EventType[] = undefined;
   categories?: Category[] = undefined;
   series?: Series[] = undefined;
   displaySeries?: PicklistItem[] = undefined;
-  labelEmpty = this.translateService.instant("Member.AllRacesPanel.SelectSerie")
-
   params: MemberAllRacesParameters = {
     year: new Date().getFullYear(),
     season: 1,
@@ -50,6 +43,10 @@ export class MemberAllRacesParametersComponent implements OnInit {
     eventType: [],
     categories: []
   };
+  protected readonly constantsService = inject(ConstantsService);
+  protected readonly translateService = inject(TranslateService);
+  labelEmpty = this.translateService.instant("Member.AllRacesPanel.SelectSerie")
+  private seriesService = inject(SeriesService);
 
   ngOnInit() {
     this.constantsService.getEventTypes().subscribe({
@@ -159,7 +156,7 @@ export class MemberAllRacesParametersComponent implements OnInit {
           value: s.series_id,
         } as PicklistItem
       })
-      .sort((s1: PicklistItem, s2:PicklistItem) => {
+      .sort((s1: PicklistItem, s2: PicklistItem) => {
         return s1.label.localeCompare(s2.label)
       })
     }
