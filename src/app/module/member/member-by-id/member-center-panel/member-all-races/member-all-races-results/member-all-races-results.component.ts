@@ -37,8 +37,8 @@ export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
 
   getHeader(): TableHeader[] {
     return [
-      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Date")),
-      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.EventType")),
+      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Date"), true),
+      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.EventType"), true),
       this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Series")),
       this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Car")),
       this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Track")),
@@ -66,9 +66,7 @@ export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
         this.tableService.createCell(race.car_name),
         this.tableService.createCell(race.track.track_name),
         this.tableService.createCell(
-          race.starting_position === race.starting_position_in_class || race.starting_position == -1
-            ? race.starting_position_in_class
-            : `${race.starting_position_in_class} (${race.starting_position})`
+          race.starting_position_in_class !== 0 ? race.starting_position_in_class : "-"
           , {
             "text-center": true,
             "podium": race.starting_position_in_class >= 1 && race.starting_position_in_class <= 3,
@@ -77,9 +75,7 @@ export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
             "third": race.starting_position_in_class === 3
           }),
         this.tableService.createCell(
-          race.finish_position === race.finish_position_in_class || race.finish_position == -1
-            ? race.finish_position_in_class
-            : `${race.finish_position_in_class} (${race.finish_position})`
+          race.finish_position_in_class !== 0 ? race.finish_position_in_class : "-"
           , {
             "text-center": true,
             "podium": race.finish_position_in_class >= 1 && race.finish_position_in_class <= 3,
@@ -96,27 +92,5 @@ export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
 
   onClickResult(race: SearchSeries) {
     this.notificationService.error("This feature is not implemented yet." + race.subsession_id);
-  }
-
-  private getStartPosition(race: SearchSeries): string {
-    if (race.event_type === 5) {
-      if (race.starting_position != race.starting_position_in_class ||
-        race.finish_position != race.finish_position_in_class) {
-        return `${race.starting_position_in_class} (${race.starting_position})`;
-      } else {
-        return `${race.starting_position_in_class}`;
-      }
-    } else {
-      return '-';
-    }
-  }
-
-  private getFinishPosition(race: SearchSeries): string {
-    if (race.starting_position != race.starting_position_in_class ||
-      race.finish_position != race.finish_position_in_class) {
-      return `${race.starting_position_in_class} (${race.starting_position})`;
-    } else {
-      return `${race.starting_position_in_class}`;
-    }
   }
 }

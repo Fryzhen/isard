@@ -7,7 +7,19 @@
                     <th [ngClass]="head.classes" scope="col" (click)="sortColumn(i)">
                         <span>
                             {{ head.value }}
+                            @if (head.sortable) {
+                                @if (sortedColumn === i) {
+                                    @if (sortAsc) {
+                                        <span>&#9650;</span><!-- ▲ -->
+                                    } @else {
+                                        <span>&#9660;</span><!-- ▼ -->
+                                    }
+                                } @else {
+                                    <span style="opacity: 0.3;">&#9660;</span><!-- ▼ faded when not sorted -->
+                                }
+                            }
                         </span>
+                        <div class="sortable"></div>
                     </th>
                 } @else {
                     <th [ngClass]="head.classes" scope="col">

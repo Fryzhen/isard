@@ -41,13 +41,13 @@ export class MemberLastRacesComponent implements OnInit {
 
   getHeader(): TableHeader[] {
     return [
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Date")),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Date"), true),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Series")),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Track")),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Start"), true, {"text-center": true}),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Finish"), true, {"text-center": true}),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.PosDif"), true, {"text-center": true}),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Incidents"), true, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Incidents"), false, {"text-center": true}),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.IrDif"), true, {"text-center": true}),
       this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.SrDif"), true, {"text-center": true}),
       this.tableService.createHeader("")
