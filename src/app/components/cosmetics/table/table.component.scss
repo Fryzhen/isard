@@ -13,6 +13,59 @@
     color: $red;
   }
 
+  td.event-type, td.podium{
+    span {
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  }
+
+  td.race {
+    span {
+      background-color: $red-3;
+      color: $red-1;
+    }
+  }
+
+  td.qualify {
+    span {
+      background-color: $yellow-3;
+      color: $yellow-2;
+    }
+  }
+
+  td.time-trial {
+    span {
+      background-color: $blue-8;
+      color: $blue-1;
+    }
+  }
+
+  td.practice {
+    span {
+      background-color: $green-5;
+      color: $green-2;
+    }
+  }
+
+  td.first {
+    span {
+      background-color: $gold;
+    }
+  }
+
+  td.second {
+    span {
+      background-color: $silver;
+    }
+  }
+
+  td.third {
+    span {
+      background-color: $bronze;
+    }
+  }
+
   @media (width <= 1650px) {
     width: 100%;
     overflow-x: scroll;

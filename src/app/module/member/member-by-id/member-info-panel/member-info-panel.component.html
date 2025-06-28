@@ -11,10 +11,12 @@
                 </div>
             }
             <div class="info-text">
-                {{ 'Member.InfoPanel.LastConnection' | translate }} : {{ member.last_login | localizedDate:'shortDate' }}
+                {{ 'Member.InfoPanel.LastConnection' | translate }}
+                : {{ member.last_login | localizedDate:'shortDate' }}
             </div>
             <div class="info-text">
-                {{ 'Member.InfoPanel.FirstConnection' | translate }} : {{ member.member_since | localizedDate:'shortDate' }}
+                {{ 'Member.InfoPanel.FirstConnection' | translate }}
+                : {{ member.member_since | localizedDate:'shortDate' }}
             </div>
 
             @if (memberRecap) {

@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   standalone: true,
@@ -8,6 +8,4 @@ import {Component, Input} from '@angular/core';
   styleUrl: './divider.component.scss'
 })
 export class DividerComponent {
-  @Input() marginTop: number = 0;
-  @Input() marginBottom: number = 0;
 }

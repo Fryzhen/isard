@@ -1,49 +1,14 @@
 <isard-box>
     <h3>{{ 'Member.AllRacesPanel.Title' | translate }}</h3>
-    <isard-divider [marginBottom]="10" [marginTop]="10"/>
-    @if (eventTypes && categories) {
-        <div class="all-race-parameters">
-            <div class="all-race-picklists">
-                <isard-item-picklist
-                        [items]="getItemsYear()"
-                        (itemClick)="onYearClicked($event)"
-                />
-                <isard-item-picklist
-                        [items]="getItemsQuarter()"
-                        (itemClick)="onSeasonClicked($event)"
-                />
-            </div>
-            @if (eventTypes) {
-                <isard-checkbox-group
-                        [defaultSelected]="true"
-                        [items]="eventTypes"
-                        (itemClick)="onEventTypeClicked($event)"
-                />
-            }
-            @if (categories) {
-                <isard-checkbox-group
-                        [defaultSelected]="true"
-                        [items]="categories"
-                        (itemClick)="onCategorieClicked($event)"
-                />
-            }
-        </div>
-        <button class="btn btn-primary mt-md-2"
-                (click)="findRaces()">
-            {{ 'Member.AllRacesPanel.Search' | translate }}
-        </button>
-    } @else {
-        <isard-loading-screen/>
-    }
-    @if (loadingSeries || (series && series.length > 0)) {
-        <isard-divider [marginBottom]="10" [marginTop]="10"/>
+    <isard-divider/>
+    <isard-member-all-races-parameters (research)="findRaces($event)"/>
+    @if (loadingSeries || series) {
+        <isard-divider/>
         @if (!loadingSeries) {
-            @if (series.length > 0) {
-                @for (seriesItem of series; track seriesItem) {
-                    <p>{{ seriesItem.car_name }}</p>
-                }
+            @if (series && series.length > 0) {
+                <isard-member-all-races-results [series]="series"/>
             } @else {
-                <h3> {{ "" | translate}}</h3>
+                <h3 class="text-center"> {{ "Member.Errors.NoRaceFound" | translate }}</h3>
             }
         } @else {
             <isard-loading-screen/>

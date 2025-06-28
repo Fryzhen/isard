@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output} from "@angular/core";
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 
 export interface CheckboxGroupItem {
   label: string,
@@ -12,10 +12,13 @@ export interface CheckboxGroupItem {
   templateUrl: "./checkbox-group.component.html",
   styleUrl: "./checkbox-group.component.scss"
 })
-export class CheckboxGroupComponent {
+export class CheckboxGroupComponent implements OnInit {
   @Input() items: CheckboxGroupItem[] = [];
-  @Input() defaultSelected = false;
+  @Input() selected: CheckboxGroupItem[] = [];
 
   @Output() itemClick = new EventEmitter<CheckboxGroupItem>();
 
+  ngOnInit() {
+    console.log(this.selected)
+  }
 }

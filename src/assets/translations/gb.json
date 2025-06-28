@@ -93,7 +93,18 @@
     },
     "AllRacesPanel": {
       "Title": "All Races",
-      "Search": "Search Races"
+      "Search": "Search Races",
+      "Table": {
+        "Date": "Date",
+        "EventType": "Event Type",
+        "Series": "Series",
+        "Car": "Car",
+        "Track": "Track",
+        "StartPosition": "Start",
+        "FinishPosition": "Finish",
+        "Incidents": "Inc",
+        "Result": "Result"
+      }
     }
   }
 }

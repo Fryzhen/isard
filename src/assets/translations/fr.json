@@ -94,6 +94,17 @@
     "AllRacesPanel": {
       "Title": "Toutes les courses",
       "Search": "Rechercher les courses",
+      "Table": {
+        "Date": "Date",
+        "EventType": "Type",
+        "Series": "Series",
+        "Car": "Voiture",
+        "Track": "Circuit",
+        "StartPosition": "Pos Départ",
+        "FinishPosition": "Pos Arrivée",
+        "Incidents": "Inc",
+        "Result": "Résultat"
+      }
     }
   }
 }

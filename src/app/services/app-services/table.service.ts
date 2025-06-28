@@ -5,17 +5,16 @@ export enum TableCellType {
 }
 
 export interface TableHeader {
-  value: string | Date;
-  isCenter?: boolean;
+  value: string;
+  sortable: boolean;
+  classes?: Record<string, boolean>;
 }
 
 export interface TableCell {
   type?: TableCellType;
   value: string | Date | number;
-  isPositive?: boolean;
-  isNegative?: boolean;
-  isCenter?: boolean;
-  onClick?: (obj: never) => void;
+  classes?: Record<string, boolean>;
+  onClick?: (obj: any) => void;
   dateFormat?: string;
   height?: number;
   width?: number;
@@ -26,33 +25,33 @@ export interface TableCell {
 })
 export class TableService {
 
-  public createHeader(value: string | Date, isCenter?: boolean): TableHeader {
+  public createHeader(value: string, sortable: boolean = false, classes?: Record<string, boolean>): TableHeader {
     return {
-      value, isCenter
+      value, sortable, classes
     };
   }
 
-  public createCell(value: string | number, isCenter?: boolean, isPositive?: boolean, isNegative?: boolean): TableCell {
+  public createCell(value: string | number, classes?: Record<string, boolean>): TableCell {
     return {
-      type: TableCellType.TEXT, value, isCenter, isPositive, isNegative,
+      type: TableCellType.TEXT, value, classes
     };
   }
 
-  public createDate(value: Date, dateFormat: string, isCenter?: boolean): TableCell {
+  public createDate(value: Date, dateFormat: string, classes?: Record<string, boolean>): TableCell {
     return {
-      type: TableCellType.DATE, value, dateFormat, isCenter,
+      type: TableCellType.DATE, value, dateFormat, classes,
     };
   }
 
-  public createButton(value: string, onClick: (obj: never) => void, isCenter?: boolean): TableCell {
+  public createButton(value: string, onClick: (obj: any) => void, classes?: Record<string, boolean>): TableCell {
     return {
-      type: TableCellType.BUTTON, value, isCenter, onClick
+      type: TableCellType.BUTTON, value, onClick, classes
     };
   }
 
-  public createIcon(value: string, height: number, width: number, isCenter?: boolean): TableCell {
+  public createIcon(value: string, height: number, width: number, classes?: Record<string, boolean>): TableCell {
     return {
-      type: TableCellType.ICON, value, height, width, isCenter
+      type: TableCellType.ICON, value, height, width, classes
     };
   }
 

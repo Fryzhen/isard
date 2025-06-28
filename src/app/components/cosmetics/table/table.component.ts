@@ -23,4 +23,12 @@ export class TableComponent {
   getValueAsDate(value: string | Date | number) {
     return value as Date;
   }
+
+  sortColumn(i: number) {
+    if (this.rows?.forEach((cell) => {
+      return typeof cell[i].value === "number"
+    })) {
+      this.rows = this.rows?.sort((a, b) => +a[i].value - +b[i].value)
+    }
+  }
 }
