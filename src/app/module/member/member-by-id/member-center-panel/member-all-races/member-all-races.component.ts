@@ -30,7 +30,8 @@ export class MemberAllRacesComponent {
     this.loadingSeries = true;
     this.resultService.searchSeries(this.custId, params.year, params.season, {
       event_types: params.eventType,
-      category_ids: params.categories
+      category_ids: params.categories,
+      series_id: params.serie ? params.serie : undefined,
     }).subscribe({
       next: (data) => {
         this.loadingSeries = false;
