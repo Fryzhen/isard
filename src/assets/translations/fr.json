@@ -94,10 +94,6 @@
     "AllRacesPanel": {
       "Title": "Toutes les courses",
       "Search": "Rechercher les courses",
-      "SelectSerie": "Sélectionner une série ...",
-      "FilterSeries": "Filtrer sur une série ...",
-      "FilterCars": "Filtrer sur une voiture ...",
-      "FilterTracks": "Filtrer sur un circuit ...",
       "Table": {
         "Date": "Date",
         "EventType": "Type",
