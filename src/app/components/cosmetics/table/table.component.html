@@ -4,22 +4,22 @@
         <tr>
             @for (head of header; track head; let i = $index) {
                 @if (head.sortable) {
-                    <th [ngClass]="head.classes" scope="col" (click)="sortColumn(i)">
-                        <span>
+                    <th class="sortable-header" [ngClass]="head.classes" scope="col" (click)="sortColumn(i)">
+                        <span class="box-sort">
                             {{ head.value }}
-                            @if (head.sortable) {
-                                @if (sortedColumn === i) {
-                                    @if (sortAsc) {
-                                        <span>&#9650;</span><!-- ▲ -->
-                                    } @else {
-                                        <span>&#9660;</span><!-- ▼ -->
-                                    }
-                                } @else {
-                                    <span style="opacity: 0.3;">&#9660;</span><!-- ▼ faded when not sorted -->
-                                }
-                            }
+                            <span class="sorting">
+                                <div class="up-triangle" [ngClass]="{
+                                'hide': sortedColumn === i && !sortAsc,
+                                'fade': sortedColumn !== i
+                                }">
+                                </div>
+                                <div class="down-triangle" [ngClass]="{
+                                'hide': sortedColumn === i && sortAsc,
+                                'fade': sortedColumn !== i
+                                }">
+                                </div>
+                          </span>
                         </span>
-                        <div class="sortable"></div>
                     </th>
                 } @else {
                     <th [ngClass]="head.classes" scope="col">

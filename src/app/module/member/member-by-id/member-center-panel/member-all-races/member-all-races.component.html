@@ -5,8 +5,10 @@
     @if (loadingSeries || series) {
         <isard-divider/>
         @if (!loadingSeries) {
-            @if (series && series.length > 0) {
-                <isard-member-all-races-results [series]="series"/>
+            @if (series && filteredSeries && filteredSeries.length > 0) {
+                <isard-member-all-races-filter [series]="series" (filter)="onFilter($event)"/>
+                <isard-divider/>
+                <isard-member-all-races-results [series]="filteredSeries"/>
             } @else {
                 <h3 class="text-center"> {{ "Member.Errors.NoRaceFound" | translate }}</h3>
             }

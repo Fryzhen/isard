@@ -1,7 +1,7 @@
 import {AllowedLicense, LicenseGroupType, Track} from "../common";
 import {CarClass} from "../carclass";
 
-export interface Series {
+export interface SeriesStats {
   active: boolean;
   allowed_licenses: AllowedLicense[];
   category: string;

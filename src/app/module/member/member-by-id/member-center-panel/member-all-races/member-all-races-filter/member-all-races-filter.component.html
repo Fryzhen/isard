@@ -1,0 +1,23 @@
+<div class="filter-screen">
+    @if (seriesInput) {
+        <isard-item-picklist
+                [items]="seriesInput"
+                [labelEmpty]="seriesEmpty"
+                (itemClick)="onSerieSelected($event)"
+        />
+    }
+    @if (cars) {
+        <isard-item-picklist
+                [items]="cars"
+                [labelEmpty]="carsEmpty"
+                (itemClick)="onCarSelected($event)"
+        />
+    }
+    @if (tracks) {
+        <isard-item-picklist
+                [items]="tracks"
+                [labelEmpty]="tracksEmpty"
+                (itemClick)="onTrackSelected($event)"
+        />
+    }
+</div>

@@ -10,19 +10,23 @@ import {
   MemberAllRacesParametersComponent
 } from "./member-all-races-parameters/member-all-races-parameters.component";
 import {MemberAllRacesResultsComponent} from "./member-all-races-results/member-all-races-results.component";
+import {MemberAllRacesFilterComponent} from "./member-all-races-filter/member-all-races-filter.component";
 
 @Component({
   standalone: true,
   selector: "isard-member-all-races",
-  imports: [BoxComponent, LoadingScreenComponent, TranslatePipe, DividerComponent, MemberAllRacesParametersComponent, MemberAllRacesResultsComponent],
+  imports: [BoxComponent, LoadingScreenComponent, TranslatePipe, DividerComponent, MemberAllRacesParametersComponent, MemberAllRacesResultsComponent, MemberAllRacesFilterComponent],
   templateUrl: "./member-all-races.component.html",
   styleUrl: "./member-all-races.component.scss"
 })
 export class MemberAllRacesComponent {
-  @Input() custId!: number;
-  series?: SearchSeries[] = undefined;
-  loadingSeries: boolean = false;
   protected readonly resultService = inject(ResultsService);
+
+  @Input() custId!: number;
+
+  series?: SearchSeries[] = undefined;
+  loadingSeries = false;
+  filteredSeries?: SearchSeries[] = undefined;
 
   findRaces(params: MemberAllRacesParameters) {
     this.loadingSeries = true;
@@ -33,9 +37,14 @@ export class MemberAllRacesComponent {
       next: (data) => {
         this.loadingSeries = false;
         this.series = data;
+        this.filteredSeries = data;
       }, error: (err) => {
         console.error(err);
       }
     });
+  }
+
+  onFilter($event: SearchSeries[]) {
+    this.filteredSeries = $event;
   }
 }

@@ -5,6 +5,48 @@
     font-weight: bold;
   }
 
+  .sortable-header {
+    cursor: pointer;
+
+    .box-sort {
+      display: flex;
+      flex-direction: row;
+
+      .sorting {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 15px;
+
+        .up-triangle {
+          border-right: 5px solid transparent;
+          border-bottom: 9px solid black;
+          border-left: 5px solid transparent;
+          position: absolute;
+          bottom: 17px;
+          right: 0;
+        }
+
+        .down-triangle {
+          border-top: 9px solid black;
+          border-right: 5px solid transparent;
+          border-left: 5px solid transparent;
+          position: absolute;
+          bottom: 5px;
+          right: 0;
+        }
+
+        .hide {
+          opacity: 0;
+        }
+
+        .fade {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
   td.positive {
     color: $green-2;
   }
@@ -13,7 +55,8 @@
     color: $red;
   }
 
-  td.event-type, td.podium{
+  td.event-type,
+  td.podium {
     span {
       padding: 5px 10px;
       border-radius: 5px;

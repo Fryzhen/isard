@@ -1,4 +1,4 @@
-@if (eventTypes && categories) {
+@if (eventTypes && categories && displaySeries) {
     <div class="all-race-parameters">
         <div class="all-race-picklists">
             <isard-item-picklist
@@ -10,6 +10,11 @@
                     (itemClick)="onSeasonClicked($event)"
             />
         </div>
+        <isard-item-picklist
+                [items]="displaySeries"
+                [labelEmpty]="labelEmpty"
+                (itemClick)="onSerieClicked($event)"
+        />
         @if (eventTypes && eventTypesSelected) {
             <isard-checkbox-group
                     [selected]="eventTypesSelected"

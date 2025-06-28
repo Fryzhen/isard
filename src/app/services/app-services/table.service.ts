@@ -14,7 +14,7 @@ export interface TableCell {
   type?: TableCellType;
   value: string | Date | number;
   classes?: Record<string, boolean>;
-  onClick?: (obj: any) => void;
+  onClick?: (obj: unknown) => void;
   dateFormat?: string;
   height?: number;
   width?: number;
@@ -25,7 +25,7 @@ export interface TableCell {
 })
 export class TableService {
 
-  public createHeader(value: string, sortable: boolean = false, classes?: Record<string, boolean>): TableHeader {
+  public createHeader(value: string, sortable = false, classes?: Record<string, boolean>): TableHeader {
     return {
       value, sortable, classes
     };
@@ -43,7 +43,7 @@ export class TableService {
     };
   }
 
-  public createButton(value: string, onClick: (obj: any) => void, classes?: Record<string, boolean>): TableCell {
+  public createButton(value: string, onClick: (obj: unknown) => void, classes?: Record<string, boolean>): TableCell {
     return {
       type: TableCellType.BUTTON, value, onClick, classes
     };

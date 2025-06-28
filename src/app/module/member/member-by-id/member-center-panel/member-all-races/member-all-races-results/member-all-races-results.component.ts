@@ -1,27 +1,27 @@
 import {Component, inject, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
-import {RecentRace, SearchSeries} from "../../../../../../services/iracing-entities";
+import {SearchSeries} from "../../../../../../services/iracing-entities";
 import {TableComponent} from "../../../../../../components/cosmetics/table/table.component";
 import {TableCell, TableHeader, TableService} from "../../../../../../services/app-services/table.service";
 import {TranslateService} from "@ngx-translate/core";
 import {NotificationService} from "../../../../../../services/app-services/notification.service";
+import {DividerComponent} from "../../../../../../components/cosmetics/divider/divider.component";
 
 @Component({
   selector: 'isard-member-all-races-results',
   imports: [
-    TableComponent
+    TableComponent,
+    DividerComponent
   ],
   templateUrl: './member-all-races-results.component.html',
   styleUrl: './member-all-races-results.component.scss'
 })
 export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
+  @Input() series!: SearchSeries[];
+  rows: TableCell[][] | undefined;
+  header: TableHeader[] | undefined;
   private readonly tableService = inject(TableService);
   private readonly translateService = inject(TranslateService);
   private readonly notificationService = inject(NotificationService);
-
-  @Input() series!: SearchSeries[];
-
-  rows: TableCell[][] | undefined;
-  header: TableHeader[] | undefined;
 
   ngOnInit() {
     this.header = this.getHeader()
@@ -30,8 +30,8 @@ export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes["series"]) {
-      this.getHeader()
-      this.getRows(this.series)
+      this.header = this.getHeader()
+      this.rows = this.getRows(this.series)
     }
   }
 
@@ -39,17 +39,18 @@ export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
     return [
       this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Date"), true),
       this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.EventType"), true),
-      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Series")),
-      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Car")),
-      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Track")),
-      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.StartPosition"),true, {"text-center": true}),
-      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.FinishPosition"),true, {"text-center": true}),
-      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Incidents"),true, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Series"), true),
+      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Car"), true),
+      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Track"), true),
+      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.StartPosition"), true, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.FinishPosition"), true, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.AllRacesPanel.Table.Incidents"), true, {"text-center": true}),
       this.tableService.createHeader(""),
     ];
   }
 
   getRows(races: SearchSeries[]): TableCell[][] {
+    console.log(races)
     const rows: TableCell[][] = [];
     races.sort((a, b) => {
       return new Date(b.start_time).getTime() - new Date(a.start_time).getTime();
@@ -83,7 +84,7 @@ export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
             "second": race.finish_position_in_class === 2,
             "third": race.finish_position_in_class === 3
           }),
-        this.tableService.createCell(`${race.incidents}x`, {"text-center": true}),
+        this.tableService.createCell(race.incidents, {"text-center": true}),
         this.tableService.createButton(this.translateService.instant("Member.AllRacesPanel.Table.Result"), () => this.onClickResult(race), {"text-center": true}),
       ]);
     }

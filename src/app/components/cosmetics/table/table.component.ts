@@ -21,7 +21,7 @@ export class TableComponent {
   protected readonly TableCellType = TableCellType;
 
   protected sortedColumn: number | null = null;
-  protected sortAsc: boolean = true;
+  protected sortAsc = true;
 
   getValueAsDate(value: string | Date | number) {
     return value as Date;
