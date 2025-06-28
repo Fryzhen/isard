@@ -1,14 +1,14 @@
 import {AllowedLicense, LicenseGroupType, Track} from "../common";
 import {CarClass} from "../carclass";
 
-export interface Series {
+export interface SeriesStats {
   active: boolean;
   allowed_licenses: AllowedLicense[];
   category: string;
   category_id: number;
   fixed_setup: boolean;
   license_group: number;
-  license_group_types: {license_group_type: number}[];
+  license_group_types: { license_group_type: number }[];
   logo: null | string;
   official: boolean;
   search_filters?: string;

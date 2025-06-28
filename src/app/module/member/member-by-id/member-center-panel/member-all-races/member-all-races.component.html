@@ -1,42 +1,22 @@
 <isard-box>
     <h3>{{ 'Member.AllRacesPanel.Title' | translate }}</h3>
-    @if (eventTypes && categories) {
-        <div class="all-race-parameters">
-            <div class="all-race-picklists">
-                <isard-item-picklist
-                        [items]="getItemsYear()"
-                        (itemClick)="onYearClicked($event)"
-                />
-                <isard-item-picklist
-                        [items]="getItemsQuarter()"
-                        (itemClick)="onSeasonClicked($event)"
-                />
-            </div>
-            @if (eventTypes) {
-                <isard-checkbox-group
-                        [defaultSelected]="true"
-                        [items]="eventTypes"
-                        (itemClick)="onEventTypeClicked($event)"
-                />
+    <isard-divider/>
+    <isard-member-all-races-parameters (research)="findRaces($event)"/>
+    @if (loadingSeries || series) {
+        <isard-divider/>
+        @if (!loadingSeries) {
+            @if (series && filteredSeries && filteredSeries.length > 0) {
+                <isard-member-all-races-filter [series]="series" (filter)="onFilter($event)"/>
+                <isard-divider/>
+                <isard-member-all-races-results [series]="filteredSeries"/>
+            } @else {
+                <h3 class="text-center"> {{ "Member.Errors.NoRaceFound" | translate }}</h3>
             }
-            @if (categories) {
-                <isard-checkbox-group
-                        [defaultSelected]="true"
-                        [items]="categories"
-                        (itemClick)="onCategorieClicked($event)"
-                />
-            }
-        </div>
-        <button class="btn btn-primary mt-md-2"
-                (click)="findRaces()">
-            {{ 'Member.AllRacesPanel.Search' | translate }}
-        </button>
-    } @else {
-        <isard-loading-screen/>
+        } @else {
+            <isard-loading-screen/>
+        }
     }
     @if (series && series.length > 0) {
-        @for (seriesItem of series; track seriesItem) {
-            <p>{{ seriesItem.car_name }}</p>
-        }
+
     }
 </isard-box>

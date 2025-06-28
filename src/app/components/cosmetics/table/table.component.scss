@@ -5,12 +5,108 @@
     font-weight: bold;
   }
 
+  .sortable-header {
+    cursor: pointer;
+
+    .box-sort {
+      display: flex;
+      flex-direction: row;
+
+      .sorting {
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        width: 15px;
+
+        .up-triangle {
+          border-right: 5px solid transparent;
+          border-bottom: 9px solid black;
+          border-left: 5px solid transparent;
+          position: absolute;
+          bottom: 17px;
+          right: 0;
+        }
+
+        .down-triangle {
+          border-top: 9px solid black;
+          border-right: 5px solid transparent;
+          border-left: 5px solid transparent;
+          position: absolute;
+          bottom: 5px;
+          right: 0;
+        }
+
+        .hide {
+          opacity: 0;
+        }
+
+        .fade {
+          opacity: 0.3;
+        }
+      }
+    }
+  }
+
   td.positive {
     color: $green-2;
   }
 
   td.negative {
     color: $red;
+  }
+
+  td.event-type,
+  td.podium {
+    span {
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+  }
+
+  td.race {
+    span {
+      background-color: $red-3;
+      color: $red-1;
+    }
+  }
+
+  td.qualify {
+    span {
+      background-color: $yellow-3;
+      color: $yellow-2;
+    }
+  }
+
+  td.time-trial {
+    span {
+      background-color: $blue-8;
+      color: $blue-1;
+    }
+  }
+
+  td.practice {
+    span {
+      background-color: $green-5;
+      color: $green-2;
+    }
+  }
+
+  td.first {
+    span {
+      background-color: $gold;
+    }
+  }
+
+  td.second {
+    span {
+      background-color: $silver;
+    }
+  }
+
+  td.third {
+    span {
+      background-color: $bronze;
+    }
   }
 
   @media (width <= 1650px) {

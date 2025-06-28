@@ -2,8 +2,32 @@
     @if (header) {
         <thead>
         <tr>
-            @for (head of header; track head) {
-                <th [ngClass]="{'text-center': head.isCenter}" scope="col">{{ head.value }}</th>
+            @for (head of header; track head; let i = $index) {
+                @if (head.sortable) {
+                    <th class="sortable-header" [ngClass]="head.classes" scope="col" (click)="sortColumn(i)">
+                        <span class="box-sort">
+                            {{ head.value }}
+                            <span class="sorting">
+                                <div class="up-triangle" [ngClass]="{
+                                'hide': sortedColumn === i && !sortAsc,
+                                'fade': sortedColumn !== i
+                                }">
+                                </div>
+                                <div class="down-triangle" [ngClass]="{
+                                'hide': sortedColumn === i && sortAsc,
+                                'fade': sortedColumn !== i
+                                }">
+                                </div>
+                          </span>
+                        </span>
+                    </th>
+                } @else {
+                    <th [ngClass]="head.classes" scope="col">
+                        <span>
+                            {{ head.value }}
+                        </span>
+                    </th>
+                }
             }
         </tr>
         </thead>
@@ -15,35 +39,31 @@
                     @for (box of row; track box) {
                         @switch (box.type) {
                             @case (TableCellType.TEXT) {
-                                <td [ngClass]="{
-                                'positive': box.isPositive,
-                                'negative': box.isNegative,
-                                'text-center': box.isCenter
-                            }">
-                                    {{ box.value }}
+                                <td [ngClass]="box.classes">
+                                    <span>
+                                        {{ box.value }}
+                                    </span>
                                 </td>
                             }
                             @case (TableCellType.DATE) {
-                                <td [ngClass]="{
-                                'positive': box.isPositive,
-                                'negative': box.isNegative,
-                                'text-center': box.isCenter
-                            }">
-                                    {{ getValueAsDate(box.value) | localizedDate: box.dateFormat }}
+                                <td [ngClass]="box.classes">
+                                    <span>
+                                        {{ getValueAsDate(box.value) | localizedDate: box.dateFormat }}
+                                    </span>
                                 </td>
                             }
                             @case (TableCellType.BUTTON) {
-                                <td [ngClass]="{'text-center': box.isCenter}">
-                                    <button (click)="box.onClick"
+                                <td [ngClass]="box.classes">
+                                    <button (click)="box.onClick && box.onClick($event)"
                                             class="btn btn-secondary"
                                             type="button"
                                     >
-                                        {{ box.value }}
+                                        <span>{{ box.value }}</span>
                                     </button>
                                 </td>
                             }
                             @case (TableCellType.ICON) {
-                                <td [ngClass]="{'text-center': box.isCenter}">
+                                <td [ngClass]="box.classes">
                                     <isard-icon
                                             [height]="30"
                                             [path]="box.value.toString()"

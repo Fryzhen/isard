@@ -13,13 +13,7 @@ import {LoadingScreenComponent} from "../../../../../components/cosmetics/loadin
 @Component({
   standalone: true,
   selector: "isard-member-last-races",
-  imports: [
-    CommonModule,
-    TranslatePipe,
-    BoxComponent,
-    TableComponent,
-    LoadingScreenComponent
-  ],
+  imports: [CommonModule, TranslatePipe, BoxComponent, TableComponent, LoadingScreenComponent],
   templateUrl: "./member-last-races.component.html",
   styleUrl: "./member-last-races.component.scss"
 })
@@ -36,33 +30,31 @@ export class MemberLastRacesComponent implements OnInit {
   ngOnInit(): void {
     this.statsService.getRecentRaces(this.custId).subscribe({
       next: (races: RecentRace[]) => {
-        this.header = this.setHeader();
-        this.rows = this.setRows(races);
-      },
-      error: (error: string) => {
+        this.header = this.getHeader();
+        this.rows = this.getRows(races);
+      }, error: (error: string) => {
         this.notificationService.error(this.translateService.instant("Member.Errors.ImpossibleGetData"));
         this.loggerService.error(error);
       }
     });
   }
 
-  setHeader(): TableHeader[] {
+  getHeader(): TableHeader[] {
     return [
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Date")),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Series")),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Track")),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Start"), true),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Finish"), true),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.PosDif"), true),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Incidents"), true),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.IrDif"), true),
-      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.SrDif"), true),
-      this.tableService.createHeader(""),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Date"), true),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Series"), true),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Track"), true),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Start"), true, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Finish"), true, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.PosDif"), true, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.Incidents"), false, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.IrDif"), true, {"text-center": true}),
+      this.tableService.createHeader(this.translateService.instant("Member.LastRacesPanel.Table.SrDif"), true, {"text-center": true}),
+      this.tableService.createHeader("")
     ];
-
   }
 
-  setRows(races: RecentRace[]): TableCell[][] {
+  getRows(races: RecentRace[]): TableCell[][] {
     const rows: TableCell[][] = [];
     races.sort((a, b) => {
       return new Date(b.session_start_time).getTime() - new Date(a.session_start_time).getTime();
@@ -70,16 +62,38 @@ export class MemberLastRacesComponent implements OnInit {
     for (const race of races) {
       rows.push([
         this.tableService.createDate(race.session_start_time, "short"),
-        this.tableService.createCell(race.series_name),
-        this.tableService.createCell(race.track.track_name),
-        this.tableService.createCell(race.start_position, true),
-        this.tableService.createCell(race.finish_position, true),
-        this.tableService.createCell(race.start_position - race.finish_position, true, race.start_position > race.finish_position, race.start_position < race.finish_position),
-        this.tableService.createCell(race.incidents, true),
-        this.tableService.createCell(race.newi_rating - race.oldi_rating, true, race.newi_rating > race.oldi_rating, race.newi_rating < race.oldi_rating),
-        this.tableService.createCell((race.new_sub_level - race.old_sub_level) / 100, true, race.new_sub_level > race.old_sub_level, race.new_sub_level < race.old_sub_level),
-        this.tableService.createButton(this.translateService.instant("Member.LastRacesPanel.Table.Result"), () => console.log(race), true),
-      ]);
+        this.tableService.createCell(race.series_name), this.tableService.createCell(race.track.track_name),
+        this.tableService.createCell(race.start_position, {
+          "text-center": true,
+          "podium": race.start_position >= 1 && race.start_position <= 3,
+          "first": race.start_position === 1,
+          "second": race.start_position === 2,
+          "third": race.start_position === 3
+        }),
+        this.tableService.createCell(race.finish_position, {
+          "text-center": true,
+          "podium": race.finish_position >= 1 && race.finish_position <= 3,
+          "first": race.finish_position === 1,
+          "second": race.finish_position === 2,
+          "third": race.finish_position === 3
+        }),
+        this.tableService.createCell(race.start_position - race.finish_position, {
+          "text-center": true,
+          "positive": race.finish_position < race.start_position,
+          "negative": race.finish_position > race.start_position,
+        }),
+        this.tableService.createCell(`${race.incidents}x`, {"text-center": true}),
+        this.tableService.createCell(race.newi_rating - race.oldi_rating, {
+          "text-center": true,
+          "positive": race.oldi_rating < race.newi_rating,
+          "negative": race.oldi_rating > race.newi_rating
+        }),
+        this.tableService.createCell((race.new_sub_level - race.old_sub_level) / 100, {
+          "text-center": true,
+          "positive": race.old_sub_level < race.new_sub_level,
+          "negative": race.old_sub_level > race.new_sub_level
+        }),
+        this.tableService.createButton(this.translateService.instant("Member.LastRacesPanel.Table.Result"), () => this.onClickResult(race), {"text-center": true}),]);
     }
     return rows;
   }

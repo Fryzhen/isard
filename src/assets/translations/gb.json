@@ -31,7 +31,8 @@
       "MemberNotFoundTitle": "ISARD : Member not found",
       "RecapNotFound": "Recap not found for this member.",
       "ImpossibleGetDrivers": "The drivers could not be loaded.",
-      "ImpossibleGetData": "The data could not be loaded"
+      "ImpossibleGetData": "The data could not be loaded.",
+      "NoRaceFound": "No races have been found."
     },
     "Research": {
       "Title": "Research a Driver"
@@ -40,6 +41,7 @@
       "Title": "ISARD"
     },
     "InfoPanel": {
+      "FirstConnection": "Member since",
       "LastConnection": "Last Connection",
       "FavouriteCar": "Favourite Car",
       "FavouriteTrack": "Favourite Track"
@@ -91,7 +93,22 @@
     },
     "AllRacesPanel": {
       "Title": "All Races",
-      "Search": "Search Races"
+      "Search": "Search Races",
+      "SelectSerie": "Select a serie ...",
+      "FilterSeries": "Filter on a serie ...",
+      "FilterCars": "Filter on a car ...",
+      "FilterTracks": "Filter on a track ...",
+      "Table": {
+        "Date": "Date",
+        "EventType": "Event Type",
+        "Series": "Series",
+        "Car": "Car",
+        "Track": "Track",
+        "StartPosition": "Start",
+        "FinishPosition": "Finish",
+        "Incidents": "Inc",
+        "Result": "Result"
+      }
     }
   }
 }

@@ -1,0 +1,39 @@
+@if (eventTypes && categories && displaySeries) {
+    <div class="all-race-parameters">
+        <div class="all-race-picklists">
+            <isard-item-picklist
+                    [items]="getItemsYear()"
+                    (itemClick)="onYearClicked($event)"
+            />
+            <isard-item-picklist
+                    [items]="getItemsQuarter()"
+                    (itemClick)="onSeasonClicked($event)"
+            />
+        </div>
+        <isard-item-picklist
+                [items]="displaySeries"
+                [labelEmpty]="labelEmpty"
+                (itemClick)="onSerieClicked($event)"
+        />
+        @if (eventTypes && eventTypesSelected) {
+            <isard-checkbox-group
+                    [selected]="eventTypesSelected"
+                    [items]="eventTypes"
+                    (itemClick)="onEventTypeClicked($event)"
+            />
+        }
+        @if (categories) {
+            <isard-checkbox-group
+                    [selected]="categories"
+                    [items]="categories"
+                    (itemClick)="onCategorieClicked($event)"
+            />
+        }
+    </div>
+    <button class="btn btn-primary mt-md-2"
+            (click)="onResearchClicked()">
+        {{ 'Member.AllRacesPanel.Search' | translate }}
+    </button>
+} @else {
+    <isard-loading-screen/>
+}
