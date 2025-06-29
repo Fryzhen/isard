@@ -119,7 +119,6 @@ export class MemberAllRacesParametersComponent implements OnInit {
   }
 
   onSeasonClicked($event: PicklistItem | null) {
-    console.log(this.params, $event?.value)
     if ($event) {
       this.params.season = $event.value;
     }
