@@ -101,7 +101,7 @@
       "Table": {
         "Date": "Date",
         "EventType": "Type",
-        "Series": "Series",
+        "Series": "Catégorie",
         "Car": "Voiture",
         "Track": "Circuit",
         "StartPosition": "Pos Départ",
