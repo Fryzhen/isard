@@ -9,6 +9,8 @@ import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {Category, EventType, Series} from "../../../../../../services/iracing-entities";
 import {ConstantsService} from "../../../../../../services/request-services/constants.service";
 import {SeriesService} from "../../../../../../services/request-services/series.service";
+import {LoggerService} from "../../../../../../services/app-services/logger.service";
+import {NotificationService} from "../../../../../../services/app-services/notification.service";
 
 export interface MemberAllRacesParameters {
   serie: number | null;
@@ -46,6 +48,8 @@ export class MemberAllRacesParametersComponent implements OnInit {
   protected readonly constantsService = inject(ConstantsService);
   protected readonly translateService = inject(TranslateService);
   labelEmpty = this.translateService.instant("Member.AllRacesPanel.SelectSerie")
+  protected readonly loggerService = inject(LoggerService);
+  protected readonly notificationService = inject(NotificationService);
   private seriesService = inject(SeriesService);
 
   ngOnInit() {
@@ -58,7 +62,8 @@ export class MemberAllRacesParametersComponent implements OnInit {
         })
         this.params.eventType = this.eventTypesSelected;
       }, error: (err) => {
-        console.error(err);
+        this.loggerService.error(err);
+        this.notificationService.error(this.translateService.instant("Member.Errors.NoEventTypeFound"));
       }
     });
     this.constantsService.getCategories().subscribe({
@@ -66,7 +71,8 @@ export class MemberAllRacesParametersComponent implements OnInit {
         this.categories = data;
         this.params.categories = this.categories;
       }, error: (err) => {
-        console.error(err);
+        this.loggerService.error(err);
+        this.notificationService.error(this.translateService.instant("Member.Errors.NoCategorieFound"));
       }
     });
     this.seriesService.getSeries().subscribe({
@@ -75,7 +81,8 @@ export class MemberAllRacesParametersComponent implements OnInit {
         this.setDisplaySeries()
         this.params.serie = null;
       }, error: (err) => {
-        console.error(err);
+        this.loggerService.error(err);
+        this.notificationService.error(this.translateService.instant("Member.Errors.NoSeriesFound"));
       }
     });
   }

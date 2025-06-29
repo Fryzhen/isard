@@ -54,12 +54,10 @@ export class MemberStatsComponent implements OnInit {
   }
 
   setStatsTotal() {
-    console.log("Setting total stats");
     this.displayStats = this.statsCarrer;
   }
 
   setStatsYear(year: number) {
-    console.log("Setting stats for year: " + year);
     this.displayStats = this.statsYearly[year];
   }
 }

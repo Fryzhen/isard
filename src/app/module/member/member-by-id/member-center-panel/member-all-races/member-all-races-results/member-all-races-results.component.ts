@@ -48,7 +48,6 @@ export class MemberAllRacesResultsComponent implements OnInit, OnChanges {
   }
 
   getRows(races: SearchSeries[]): TableCell[][] {
-    console.log(races)
     const rows: TableCell[][] = [];
     races.sort((a, b) => {
       return new Date(b.start_time).getTime() - new Date(a.start_time).getTime();
