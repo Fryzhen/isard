@@ -34,7 +34,7 @@ const chunkRoutes = ["search_series_results"]
 app.use(cors());
 
 app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', 'https://iracing.fryzhen.fr');
+    res.header('Access-Control-Allow-Origin', process.env.ORIGIN_URL);
     next();
 });
 
@@ -42,18 +42,18 @@ app.get('/', (req, res) => {
     fetch('https://members-ng.iracing.com/data/doc', {
         method: 'get', headers: {'Accept': 'application/json', 'cookie': loginCookies}, cache: "no-store"
     })
-    .then((response) => response.json())
-    .then((data) => {
-        for (let first in data) {
-            for (let second in data[first]) {
-                data[first][second]['link'] = data[first][second]['link'].replace('https://members-ng.iracing.com/data/', 'http://api.iracing.fryzhen.fr/')
+        .then((response) => response.json())
+        .then((data) => {
+            for (let first in data) {
+                for (let second in data[first]) {
+                    data[first][second]['link'] = data[first][second]['link'].replace('https://members-ng.iracing.com/data/', process.env.CURRENT_URL);
+                }
             }
-        }
-        res.status(200).json({
-            message: "Welcome !",
-            documentation: data,
-        });
-    })
+            res.status(200).json({
+                message: "Welcome !",
+                documentation: data,
+            });
+        })
 })
 
 app.get('/:first/:second', (req, res) => {
@@ -63,36 +63,35 @@ app.get('/:first/:second', (req, res) => {
         headers: {'Accept': 'application/json', 'cookie': loginCookies},
         cache: "no-store",
         body: req.body
-    }).then((response) => {
-        if (response.status >= 404) {
-            throw "Not Found";
-        }
-        else if (response.status >= 400) {
-            throw response.statusText;
-        }
-        response.json().then(data => {
-            if (data.link || data.data_url) {
-                fetch(data.link ?? data.data_url).then((response) => {
-                    response.json().then((data) => {
-                        res.status(200).json(data);
+    })
+        .then((response) => {
+            if (response.status >= 400) {
+                throw response.statusText;
+            }
+            response.json().then(data => {
+                if (data.link || data.data_url) {
+                    fetch(data.link ?? data.data_url).then((response) => {
+                        response.json().then((data) => {
+                            res.status(200).json(data);
+                        })
+                    }).catch(error => {
+                        res.status(500).json(error);
                     })
-                }).catch(error => {
-                    res.status(500).json(error);
-                })
-            } else if (chunkRoutes.includes(data.type)) {
-                const fetches = data.data.chunk_info.chunk_file_names.map((fileName) => {
-                    return fetch(data.data.chunk_info.base_download_url + fileName)
-                        .then((response) => response.json());
-                });
-                Promise.all(fetches).then((allRows) => {
-                    res.status(200).json(allRows.flat());
-                });
-            }
-            else {
-                res.status(200).json(data);
-            }
-        })
-    }).catch(error => {
+                }
+                else if (chunkRoutes.includes(data.type)) {
+                    const fetches = data.data.chunk_info.chunk_file_names.map((fileName) => {
+                        return fetch(data.data.chunk_info.base_download_url + fileName)
+                            .then((response) => response.json());
+                    });
+                    Promise.all(fetches).then((allRows) => {
+                        res.status(200).json(allRows.flat());
+                    });
+                }
+                else {
+                    res.status(200).json(data);
+                }
+            })
+        }).catch(error => {
         res.status(500).json(error);
     })
 });
