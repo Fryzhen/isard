@@ -101,7 +101,7 @@
         "Search": "Rechercher les courses",
         "SelectSerie": "Sélectionner une série ..."
       },
-      "FilterSection": {
+      "FilterSection" : {
         "Title": "Filtres",
         "FilterSeries": "Filtrer sur une série ...",
         "FilterCars": "Filtrer sur une voiture ...",

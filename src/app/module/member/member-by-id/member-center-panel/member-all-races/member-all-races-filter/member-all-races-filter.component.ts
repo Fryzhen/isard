@@ -4,7 +4,7 @@ import {
   ItemPicklistComponent,
   PicklistItem
 } from "../../../../../../components/input/item-picklist/item-picklist.component";
-import {TranslatePipe} from "@ngx-translate/core";
+import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {CollapseComponent} from "../../../../../../components/cosmetics/collapse/collapse.component";
 
 @Component({
@@ -15,8 +15,8 @@ import {CollapseComponent} from "../../../../../../components/cosmetics/collapse
     TranslatePipe,
     CollapseComponent
   ],
-  templateUrl: "./member-all-races-filter.component.html",
-  styleUrl: "./member-all-races-filter.component.scss"
+  templateUrl: './member-all-races-filter.component.html',
+  styleUrl: './member-all-races-filter.component.scss'
 })
 export class MemberAllRacesFilterComponent implements OnInit {
   @Input() series!: SearchSeries[];
@@ -27,6 +27,7 @@ export class MemberAllRacesFilterComponent implements OnInit {
   serieSelected: PicklistItem | null = null;
   carSelected: PicklistItem | null = null;
   trackSelected: PicklistItem | null = null;
+  protected readonly translateService = inject(TranslateService);
 
   ngOnInit() {
     this.tracks = this.uniqueAndSorted(
