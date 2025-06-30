@@ -4,12 +4,15 @@ import {
   ItemPicklistComponent,
   PicklistItem
 } from "../../../../../../components/input/item-picklist/item-picklist.component";
-import {TranslateService} from "@ngx-translate/core";
+import {TranslatePipe, TranslateService} from "@ngx-translate/core";
+import {CollapseComponent} from "../../../../../../components/cosmetics/collapse/collapse.component";
 
 @Component({
   selector: 'isard-member-all-races-filter',
   imports: [
-    ItemPicklistComponent
+    ItemPicklistComponent,
+    TranslatePipe,
+    CollapseComponent
   ],
   templateUrl: './member-all-races-filter.component.html',
   styleUrl: './member-all-races-filter.component.scss'
@@ -24,9 +27,6 @@ export class MemberAllRacesFilterComponent implements OnInit {
   carSelected: PicklistItem | null = null;
   trackSelected: PicklistItem | null = null;
   protected readonly translateService = inject(TranslateService);
-  seriesEmpty: string = this.translateService.instant("Member.AllRacesPanel.FilterSeries");
-  carsEmpty: string = this.translateService.instant("Member.AllRacesPanel.FilterCars");
-  tracksEmpty: string = this.translateService.instant("Member.AllRacesPanel.FilterTracks");
 
   ngOnInit() {
     this.tracks = this.uniqueAndSorted(

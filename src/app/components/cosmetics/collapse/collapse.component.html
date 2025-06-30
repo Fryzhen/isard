@@ -1,0 +1,6 @@
+<h3 [attr.aria-controls]="uuid" aria-expanded="false" data-bs-toggle="collapse" [attr.href]="'#'+ uuid">
+    {{ label }}
+</h3>
+<div class="collapse" [ngClass]="{'show': !defaultCollapsed}" id="{{uuid}}">
+    <ng-content/>
+</div>

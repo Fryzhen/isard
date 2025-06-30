@@ -11,6 +11,7 @@ import {ConstantsService} from "../../../../../../services/request-services/cons
 import {SeriesService} from "../../../../../../services/request-services/series.service";
 import {LoggerService} from "../../../../../../services/app-services/logger.service";
 import {NotificationService} from "../../../../../../services/app-services/notification.service";
+import {CollapseComponent} from "../../../../../../components/cosmetics/collapse/collapse.component";
 
 export interface MemberAllRacesParameters {
   serie: number | null;
@@ -26,7 +27,8 @@ export interface MemberAllRacesParameters {
     CheckboxGroupComponent,
     ItemPicklistComponent,
     LoadingScreenComponent,
-    TranslatePipe
+    TranslatePipe,
+    CollapseComponent
   ],
   templateUrl: './member-all-races-parameters.component.html',
   styleUrl: './member-all-races-parameters.component.scss'
@@ -47,7 +49,6 @@ export class MemberAllRacesParametersComponent implements OnInit {
   };
   protected readonly constantsService = inject(ConstantsService);
   protected readonly translateService = inject(TranslateService);
-  labelEmpty = this.translateService.instant("Member.AllRacesPanel.SelectSerie")
   protected readonly loggerService = inject(LoggerService);
   protected readonly notificationService = inject(NotificationService);
   private seriesService = inject(SeriesService);

@@ -1,23 +1,25 @@
-<div class="filter-screen">
-    @if (seriesInput) {
-        <isard-item-picklist
-                [items]="seriesInput"
-                [labelEmpty]="seriesEmpty"
-                (itemClick)="onSerieSelected($event)"
-        />
-    }
-    @if (cars) {
-        <isard-item-picklist
-                [items]="cars"
-                [labelEmpty]="carsEmpty"
-                (itemClick)="onCarSelected($event)"
-        />
-    }
-    @if (tracks) {
-        <isard-item-picklist
-                [items]="tracks"
-                [labelEmpty]="tracksEmpty"
-                (itemClick)="onTrackSelected($event)"
-        />
-    }
-</div>
+<isard-collapse [label]="'Member.AllRacesPanel.FilterSection.Title' | translate">
+    <div class="filter-screen">
+        @if (seriesInput) {
+            <isard-item-picklist
+                    [items]="seriesInput"
+                    [labelEmpty]="'Member.AllRacesPanel.FilterSection.FilterSeries' | translate"
+                    (itemClick)="onSerieSelected($event)"
+            />
+        }
+        @if (cars) {
+            <isard-item-picklist
+                    [items]="cars"
+                    [labelEmpty]="'Member.AllRacesPanel.FilterSection.FilterCars' | translate"
+                    (itemClick)="onCarSelected($event)"
+            />
+        }
+        @if (tracks) {
+            <isard-item-picklist
+                    [items]="tracks"
+                    [labelEmpty]="'Member.AllRacesPanel.FilterSection.FilterTracks' | translate"
+                    (itemClick)="onTrackSelected($event)"
+            />
+        }
+    </div>
+</isard-collapse>

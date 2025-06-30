@@ -96,11 +96,17 @@
     },
     "AllRacesPanel": {
       "Title": "All Races",
-      "Search": "Search Races",
-      "SelectSerie": "Select a serie ...",
-      "FilterSeries": "Filter on a serie ...",
-      "FilterCars": "Filter on a car ...",
-      "FilterTracks": "Filter on a track ...",
+      "ParameterSection": {
+        "Title": "Parameters",
+        "Search": "Search Races",
+        "SelectSerie": "Select a serie ..."
+      },
+      "FilterSection": {
+        "Title": "Filters",
+        "FilterSeries": "Filter on a serie ...",
+        "FilterCars": "Filter on a car ...",
+        "FilterTracks": "Filter on a track ..."
+      },
       "Table": {
         "Date": "Date",
         "EventType": "Event Type",
