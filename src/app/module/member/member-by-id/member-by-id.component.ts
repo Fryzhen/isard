@@ -32,7 +32,6 @@ export enum MemberScreenDisplay {
 })
 export class MemberByIdComponent implements OnInit {
   custId?: number = undefined;
-  custIdObservable?: Observable<number> = undefined;
   currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.LastRaces;
   parameters: MemberParameters = {} as MemberParameters;
   private readonly route = inject(ActivatedRoute);

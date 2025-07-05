@@ -25,9 +25,7 @@ export class NavbarComponent {
   private readonly translateService = inject(TranslateService);
 
   redirectTo(route: string[]) {
-    return this.router.navigate(route).then(() => {
-      window.location.reload();
-    });
+    return this.router.navigate(route);
   }
 
   onSearch(searchTerm: string): void {

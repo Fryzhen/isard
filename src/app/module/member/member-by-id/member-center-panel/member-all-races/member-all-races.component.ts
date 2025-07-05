@@ -1,4 +1,4 @@
-import {Component, inject, Input} from "@angular/core";
+import {Component, inject, Input, OnChanges, SimpleChanges} from "@angular/core";
 import {BoxComponent} from "../../../../../components/cosmetics/box/box.component";
 import {LoadingScreenComponent} from "../../../../../components/cosmetics/loading-screen/loading-screen.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
@@ -21,7 +21,7 @@ import {NotificationService} from "../../../../../services/app-services/notifica
   templateUrl: "./member-all-races.component.html",
   styleUrl: "./member-all-races.component.scss"
 })
-export class MemberAllRacesComponent {
+export class MemberAllRacesComponent implements OnChanges {
   @Input() custId!: number;
   series?: SearchSeries[] = undefined;
   loadingSeries = false;
@@ -52,4 +52,14 @@ export class MemberAllRacesComponent {
   onFilter($event: SearchSeries[]) {
     this.filteredSeries = $event;
   }
+
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['custId'] && !changes['custId'].firstChange) {
+      this.series = undefined;
+      this.filteredSeries = undefined;
+      this.loadingSeries = false;
+    }
+  }
+
 }
