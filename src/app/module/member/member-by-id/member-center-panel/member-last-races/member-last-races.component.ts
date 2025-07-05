@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from "@angular/core";
+import {Component, inject, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {CommonModule} from "@angular/common";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {BoxComponent} from "../../../../../components/cosmetics/box/box.component";
@@ -17,7 +17,7 @@ import {LoadingScreenComponent} from "../../../../../components/cosmetics/loadin
   templateUrl: "./member-last-races.component.html",
   styleUrl: "./member-last-races.component.scss"
 })
-export class MemberLastRacesComponent implements OnInit {
+export class MemberLastRacesComponent implements OnInit, OnChanges {
   @Input() custId!: number;
   rows: TableCell[][] | undefined;
   header: TableHeader[] | undefined;
@@ -28,15 +28,13 @@ export class MemberLastRacesComponent implements OnInit {
   private readonly loggerService = inject(LoggerService);
 
   ngOnInit(): void {
-    this.statsService.getRecentRaces(this.custId).subscribe({
-      next: (races: RecentRace[]) => {
-        this.header = this.getHeader();
-        this.rows = this.getRows(races);
-      }, error: (error: string) => {
-        this.notificationService.error(this.translateService.instant("Member.Errors.ImpossibleGetData"));
-        this.loggerService.error(error);
-      }
-    });
+    this.loadMemberData(this.custId);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['custId'] && !changes['custId'].firstChange) {
+      this.loadMemberData(this.custId);
+    }
   }
 
   getHeader(): TableHeader[] {
@@ -100,5 +98,17 @@ export class MemberLastRacesComponent implements OnInit {
 
   onClickResult(race: RecentRace) {
     this.notificationService.error("This feature is not implemented yet." + race.subsession_id);
+  }
+
+  private loadMemberData(custId: number) {
+    this.statsService.getRecentRaces(custId).subscribe({
+      next: (races: RecentRace[]) => {
+        this.header = this.getHeader();
+        this.rows = this.getRows(races);
+      }, error: (error: string) => {
+        this.notificationService.error(this.translateService.instant("Member.Errors.ImpossibleGetData"));
+        this.loggerService.error(error);
+      }
+    });
   }
 }

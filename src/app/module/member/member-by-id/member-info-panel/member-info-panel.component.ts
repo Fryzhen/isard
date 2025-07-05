@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, inject, Input, OnChanges, OnInit, Output, SimpleChanges} from "@angular/core";
 import {LicenceTileComponent} from "../../../../components/iracing/licence-tile/licence-tile.component";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {LocalizedDatePipe} from "../../../../services/pipe/localized-date.pipe";
@@ -18,7 +18,7 @@ import {Title} from "@angular/platform-browser";
   templateUrl: "./member-info-panel.component.html",
   styleUrl: "./member-info-panel.component.scss"
 })
-export class MemberInfoPanelComponent implements OnInit {
+export class MemberInfoPanelComponent implements OnInit, OnChanges {
   @Input() custId!: number;
   @Output() memberLoaded = new EventEmitter<boolean>();
   member?: Member = undefined;
@@ -32,6 +32,12 @@ export class MemberInfoPanelComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadMemberData(this.custId);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['custId'] && !changes['custId'].firstChange) {
+      this.loadMemberData(this.custId);
+    }
   }
 
   loadMemberData(custId: number) {
