@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, inject, OnInit, Output} from "@angular/core";
 import {CheckboxGroupComponent} from "../../../../../../components/input/checkbox-group/checkbox-group.component";
 import {
   ItemPicklistComponent,
@@ -22,7 +22,8 @@ export interface MemberAllRacesParameters {
 }
 
 @Component({
-  selector: 'isard-member-all-races-parameters',
+  standalone: true,
+  selector: "isard-member-all-races-parameters",
   imports: [
     CheckboxGroupComponent,
     ItemPicklistComponent,
@@ -30,8 +31,8 @@ export interface MemberAllRacesParameters {
     TranslatePipe,
     CollapseComponent
   ],
-  templateUrl: './member-all-races-parameters.component.html',
-  styleUrl: './member-all-races-parameters.component.scss'
+  templateUrl: "./member-all-races-parameters.component.html",
+  styleUrl: "./member-all-races-parameters.component.scss"
 })
 export class MemberAllRacesParametersComponent implements OnInit {
   @Output() research = new EventEmitter<MemberAllRacesParameters>();
@@ -47,11 +48,11 @@ export class MemberAllRacesParametersComponent implements OnInit {
     eventType: [],
     categories: []
   };
-  protected readonly constantsService = inject(ConstantsService);
-  protected readonly translateService = inject(TranslateService);
-  protected readonly loggerService = inject(LoggerService);
-  protected readonly notificationService = inject(NotificationService);
-  private seriesService = inject(SeriesService);
+  private readonly constantsService = inject(ConstantsService);
+  private readonly translateService = inject(TranslateService);
+  private readonly loggerService = inject(LoggerService);
+  private readonly notificationService = inject(NotificationService);
+  private readonly seriesService = inject(SeriesService);
 
   ngOnInit() {
     this.constantsService.getEventTypes().subscribe({
@@ -59,8 +60,8 @@ export class MemberAllRacesParametersComponent implements OnInit {
         data.reverse();
         this.eventTypes = data;
         this.eventTypesSelected = data.filter((et) => {
-          return et.value === 5
-        })
+          return et.value === 5;
+        });
         this.params.eventType = this.eventTypesSelected;
       }, error: (err) => {
         this.loggerService.error(err);
@@ -79,7 +80,7 @@ export class MemberAllRacesParametersComponent implements OnInit {
     this.seriesService.getSeries().subscribe({
       next: (data) => {
         this.series = data;
-        this.setDisplaySeries()
+        this.setDisplaySeries();
         this.params.serie = null;
       }, error: (err) => {
         this.loggerService.error(err);
@@ -118,6 +119,7 @@ export class MemberAllRacesParametersComponent implements OnInit {
   }
 
   onSeasonClicked($event: PicklistItem | null) {
+    console.log(this.params, $event?.value)
     if ($event) {
       this.params.season = $event.value;
     }
@@ -146,27 +148,27 @@ export class MemberAllRacesParametersComponent implements OnInit {
   }
 
   onResearchClicked() {
-    this.research.emit(this.params)
+    this.research.emit(this.params);
   }
 
   private setDisplaySeries() {
     if (this.series) {
       this.displaySeries = this.series
-      .filter((s: Series) => {
-        return s.first_season.season_year < this.params.year || (s.first_season.season_year == this.params.year && s.first_season.season_quarter <= this.params.season)
-      })
-      .filter((s: Series) => {
-        return this.params.categories.map(c => c.value).includes(s.category_id);
-      })
-      .map((s) => {
-        return {
-          label: s.series_short_name,
-          value: s.series_id,
-        } as PicklistItem
-      })
-      .sort((s1: PicklistItem, s2: PicklistItem) => {
-        return s1.label.localeCompare(s2.label)
-      })
+        .filter((s: Series) => {
+          return s.first_season.season_year < this.params.year || (s.first_season.season_year == this.params.year && s.first_season.season_quarter <= this.params.season);
+        })
+        .filter((s: Series) => {
+          return this.params.categories.map(c => c.value).includes(s.category_id);
+        })
+        .map((s) => {
+          return {
+            label: s.series_short_name,
+            value: s.series_id,
+          } as PicklistItem;
+        })
+        .sort((s1: PicklistItem, s2: PicklistItem) => {
+          return s1.label.localeCompare(s2.label);
+        });
     }
   }
 }

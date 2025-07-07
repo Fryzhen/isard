@@ -1,21 +1,22 @@
-import {Component, EventEmitter, inject, Input, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
 import {SearchSeries} from "../../../../../../services/iracing-entities";
 import {
   ItemPicklistComponent,
   PicklistItem
 } from "../../../../../../components/input/item-picklist/item-picklist.component";
-import {TranslatePipe, TranslateService} from "@ngx-translate/core";
+import {TranslatePipe} from "@ngx-translate/core";
 import {CollapseComponent} from "../../../../../../components/cosmetics/collapse/collapse.component";
 
 @Component({
-  selector: 'isard-member-all-races-filter',
+  standalone: true,
+  selector: "isard-member-all-races-filter",
   imports: [
     ItemPicklistComponent,
     TranslatePipe,
     CollapseComponent
   ],
-  templateUrl: './member-all-races-filter.component.html',
-  styleUrl: './member-all-races-filter.component.scss'
+  templateUrl: "./member-all-races-filter.component.html",
+  styleUrl: "./member-all-races-filter.component.scss"
 })
 export class MemberAllRacesFilterComponent implements OnInit {
   @Input() series!: SearchSeries[];
@@ -26,7 +27,6 @@ export class MemberAllRacesFilterComponent implements OnInit {
   serieSelected: PicklistItem | null = null;
   carSelected: PicklistItem | null = null;
   trackSelected: PicklistItem | null = null;
-  protected readonly translateService = inject(TranslateService);
 
   ngOnInit() {
     this.tracks = this.uniqueAndSorted(
@@ -81,6 +81,6 @@ export class MemberAllRacesFilterComponent implements OnInit {
       .filter((s) => {
         return this.trackSelected === null || this.trackSelected.value === s.track.track_id;
       })
-    )
+    );
   }
 }

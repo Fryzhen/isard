@@ -8,7 +8,7 @@ export interface Series {
   first_season: {
     season_year: number;
     season_quarter: number;
-  }
+  };
   forum_url: string;
   max_starters: number;
   min_starters: number;

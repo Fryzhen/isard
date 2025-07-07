@@ -26,17 +26,17 @@ export class MemberAllRacesComponent {
   series?: SearchSeries[] = undefined;
   loadingSeries = false;
   filteredSeries?: SearchSeries[] = undefined;
-  protected readonly resultService = inject(ResultsService);
-  protected readonly loggerService = inject(LoggerService);
-  protected readonly notificationService = inject(NotificationService);
-  protected readonly translateService = inject(TranslateService);
+  private readonly resultService = inject(ResultsService);
+  private readonly loggerService = inject(LoggerService);
+  private readonly notificationService = inject(NotificationService);
+  private readonly translateService = inject(TranslateService);
 
   findRaces(params: MemberAllRacesParameters) {
     this.loadingSeries = true;
     this.resultService.searchSeries(this.custId, params.year, params.season, {
       event_types: params.eventType,
       category_ids: params.categories,
-      series_id: params.serie ? params.serie : undefined,
+      series_id: params.serie ?? undefined,
     }).subscribe({
       next: (data) => {
         this.loadingSeries = false;

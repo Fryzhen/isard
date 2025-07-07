@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
+import {Injectable} from "@angular/core";
 import {RequestService} from "./request.service";
 import {Observable} from "rxjs";
 import {Series} from "../iracing-entities";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class SeriesService extends RequestService {
   constructor() {
@@ -12,6 +12,6 @@ export class SeriesService extends RequestService {
   }
 
   getSeries(): Observable<Series[]> {
-    return this.request<Series[]>("get", new URLSearchParams())
+    return this.request<Series[]>("get", new URLSearchParams());
   }
 }
