@@ -27,12 +27,12 @@ export class MemberStatsComponent implements OnInit, OnChanges {
   private readonly statsService = inject(StatsService);
 
   ngOnInit(): void {
-    this.loadMemberData(this.custId);
+    this.loadMemberData();
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['custId'] && !changes['custId'].firstChange) {
-      this.loadMemberData(this.custId);
+      this.loadMemberData();
     }
   }
 
