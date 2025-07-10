@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, inject, Input, OnInit, Output} from "@angular/core";
 import {SearchSeries} from "../../../../../../services/iracing-entities";
 import {
   ItemPicklistComponent,
