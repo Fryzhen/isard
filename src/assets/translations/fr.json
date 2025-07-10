@@ -32,7 +32,10 @@
       "MemberNotFoundTitle": "ISARD : Membre non trouvé",
       "ImpossibleGetDrivers": "Les Pilotes n'ont pas pu être récupérés.",
       "ImpossibleGetData": "Les données n'ont pas pu être récupérés.",
-      "NoRaceFound": "Aucune course trouvée."
+      "NoRaceFound": "Aucune course trouvée.",
+      "NoEventTypeFound": "Aucun événement n'as pu être récupéré.",
+      "NoCategorieFound": "Aucune catégorie n'as pu être récupéré.",
+      "NoSeriesFound": "Aucune série n'as pu être récupéré."
     },
     "Research": {
       "Title": "Rechercher un Pilote"
@@ -93,11 +96,17 @@
     },
     "AllRacesPanel": {
       "Title": "Toutes les courses",
-      "Search": "Rechercher les courses",
-      "SelectSerie": "Sélectionner une série ...",
-      "FilterSeries": "Filtrer sur une série ...",
-      "FilterCars": "Filtrer sur une voiture ...",
-      "FilterTracks": "Filtrer sur un circuit ...",
+      "ParameterSection": {
+        "Title": "Paramètres",
+        "Search": "Rechercher les courses",
+        "SelectSerie": "Sélectionner une série ..."
+      },
+      "FilterSection": {
+        "Title": "Filtres",
+        "FilterSeries": "Filtrer sur une série ...",
+        "FilterCars": "Filtrer sur une voiture ...",
+        "FilterTracks": "Filtrer sur un circuit ..."
+      },
       "Table": {
         "Date": "Date",
         "EventType": "Type",

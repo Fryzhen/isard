@@ -8,7 +8,7 @@ import {Observable} from "rxjs";
 })
 export abstract class RequestService {
   protected baseUrl: string = environment.apiUrl;
-  protected readonly http = inject(HttpClient);
+  private readonly http = inject(HttpClient);
 
   protected constructor(urlPart: string) {
     this.baseUrl = `${environment.apiUrl}/${urlPart}`;

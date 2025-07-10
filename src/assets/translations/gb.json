@@ -32,7 +32,10 @@
       "RecapNotFound": "Recap not found for this member.",
       "ImpossibleGetDrivers": "The drivers could not be loaded.",
       "ImpossibleGetData": "The data could not be loaded.",
-      "NoRaceFound": "No races have been found."
+      "NoRaceFound": "No races have been found.",
+      "NoEventTypeFound": "No event types has been found.",
+      "NoCategorieFound": "No categorie have been found.",
+      "NoSeriesFound": "No series have been found."
     },
     "Research": {
       "Title": "Research a Driver"
@@ -93,11 +96,17 @@
     },
     "AllRacesPanel": {
       "Title": "All Races",
-      "Search": "Search Races",
-      "SelectSerie": "Select a serie ...",
-      "FilterSeries": "Filter on a serie ...",
-      "FilterCars": "Filter on a car ...",
-      "FilterTracks": "Filter on a track ...",
+      "ParameterSection": {
+        "Title": "Parameters",
+        "Search": "Search Races",
+        "SelectSerie": "Select a serie ..."
+      },
+      "FilterSection": {
+        "Title": "Filters",
+        "FilterSeries": "Filter on a serie ...",
+        "FilterCars": "Filter on a car ...",
+        "FilterTracks": "Filter on a track ..."
+      },
       "Table": {
         "Date": "Date",
         "EventType": "Event Type",

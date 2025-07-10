@@ -3,9 +3,9 @@
 }
 <select [attr.id]="uuid" class="form-control form-select picklist">
     @if (labelEmpty) {
-        <option (click)="itemClick.emit(null)" class="jasmine-run-options">{{ labelEmpty }}</option>
+        <option (click)="itemClick.emit(null)">{{ labelEmpty }}</option>
     }
     @for (item of items; track item.value) {
-        <option (click)="itemClick.emit(item)" class="jasmine-run-options">{{ item.label }}</option>
+        <option (click)="itemClick.emit(item)">{{ item.label }}</option>
     }
 </select>

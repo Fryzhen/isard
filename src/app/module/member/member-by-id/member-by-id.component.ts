@@ -8,13 +8,11 @@ import {
 } from "./member-screen-selector/member-screen-selector.component";
 import {TranslatePipe} from "@ngx-translate/core";
 import {MemberCenterPanelComponent} from "./member-center-panel/member-center-panel.component";
-import {Observable} from "rxjs";
 
 export enum MemberScreenDisplay {
   LastRaces,
   AllRaces,
   CareerStats,
-  YearlyStats,
 }
 
 @Component({
@@ -32,7 +30,6 @@ export enum MemberScreenDisplay {
 })
 export class MemberByIdComponent implements OnInit {
   custId?: number = undefined;
-  custIdObservable?: Observable<number> = undefined;
   currentScreenDisplay: MemberScreenDisplay = MemberScreenDisplay.LastRaces;
   parameters: MemberParameters = {} as MemberParameters;
   private readonly route = inject(ActivatedRoute);

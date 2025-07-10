@@ -18,6 +18,6 @@ export class ItemPicklistComponent {
   @Input() labelEmpty?: string = undefined;
   @Input() items: PicklistItem[] = [];
   @Output() itemClick = new EventEmitter<PicklistItem | null>();
-  protected readonly uuidService = inject(UuidService);
+  private readonly uuidService = inject(UuidService);
   uuid: string = this.uuidService.generate();
 }

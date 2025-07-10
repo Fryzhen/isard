@@ -1,4 +1,4 @@
-import {Component, inject, Input, OnInit} from "@angular/core";
+import {Component, inject, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {TranslatePipe, TranslateService} from "@ngx-translate/core";
 import {BoxComponent} from "../../../../../components/cosmetics/box/box.component";
 import {StatCarrer, StatYearly} from "../../../../../services/iracing-entities";
@@ -15,7 +15,7 @@ import {StatsTableComponent} from "./stats-table/stats-table.component";
   templateUrl: "./member-stats.component.html",
   styleUrl: "./member-stats.component.scss"
 })
-export class MemberStatsComponent implements OnInit {
+export class MemberStatsComponent implements OnInit, OnChanges {
   @Input() custId!: number;
   displayStats?: StatCarrer[] = undefined;
   statsCarrer?: StatCarrer[] = undefined;
@@ -27,6 +27,28 @@ export class MemberStatsComponent implements OnInit {
   private readonly statsService = inject(StatsService);
 
   ngOnInit(): void {
+    this.loadMemberData();
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['custId'] && !changes['custId'].firstChange) {
+      this.loadMemberData();
+    }
+  }
+
+  getStatYearly(year: number, stats: StatYearly[]): StatYearly[] {
+    return stats.filter((s: StatYearly) => s.year === year) ?? [];
+  }
+
+  setStatsTotal() {
+    this.displayStats = this.statsCarrer;
+  }
+
+  setStatsYear(year: number) {
+    this.displayStats = this.statsYearly[year];
+  }
+
+  private loadMemberData() {
     this.statsService.getCareerStats(this.custId).subscribe({
       next: (stats: StatCarrer[]) => {
         this.statsCarrer = stats;
@@ -47,19 +69,5 @@ export class MemberStatsComponent implements OnInit {
         this.loggerService.error(error);
       }
     });
-  }
-
-  getStatYearly(year: number, stats: StatYearly[]): StatYearly[] {
-    return stats.filter((s: StatYearly) => s.year === year) ?? [];
-  }
-
-  setStatsTotal() {
-    console.log("Setting total stats");
-    this.displayStats = this.statsCarrer;
-  }
-
-  setStatsYear(year: number) {
-    console.log("Setting stats for year: " + year);
-    this.displayStats = this.statsYearly[year];
   }
 }
