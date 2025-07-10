@@ -1,4 +1,4 @@
-import {Component, EventEmitter, inject, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
 import {CheckboxGroupComponent} from "../../../../../../components/input/checkbox-group/checkbox-group.component";
 import {
   ItemPicklistComponent,
@@ -31,8 +31,8 @@ export interface MemberAllRacesParameters {
     TranslatePipe,
     CollapseComponent
   ],
-  templateUrl: "./member-all-races-parameters.component.html",
-  styleUrl: "./member-all-races-parameters.component.scss"
+  templateUrl: './member-all-races-parameters.component.html',
+  styleUrl: './member-all-races-parameters.component.scss'
 })
 export class MemberAllRacesParametersComponent implements OnInit {
   @Output() research = new EventEmitter<MemberAllRacesParameters>();
@@ -119,7 +119,6 @@ export class MemberAllRacesParametersComponent implements OnInit {
   }
 
   onSeasonClicked($event: PicklistItem | null) {
-    console.log(this.params, $event?.value)
     if ($event) {
       this.params.season = $event.value;
     }
