@@ -48,7 +48,7 @@ export class MemberStatsComponent implements OnInit, OnChanges {
     this.displayStats = this.statsYearly[year];
   }
 
-  private loadMemberData(custId: number) {
+  private loadMemberData() {
     this.statsService.getCareerStats(this.custId).subscribe({
       next: (stats: StatCarrer[]) => {
         this.statsCarrer = stats;
