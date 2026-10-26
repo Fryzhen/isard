@@ -51,7 +51,9 @@ api.get('/', (req, res) => {
                 message: "Welcome !",
                 documentation: data,
             });
-        })
+        }).catch(error => {
+        res.status(500).json(error);
+    })
 })
 
 api.get('/:first/:second', (req, res) => {
@@ -66,10 +68,10 @@ api.get('/:first/:second', (req, res) => {
             if (response.status >= 400) {
                 throw response.statusText;
             }
-            response.json().then(data => {
+            return response.json().then(data => {
                 if (data.link || data.data_url) {
-                    fetch(data.link ?? data.data_url).then((response) => {
-                        response.json().then((data) => {
+                    return fetch(data.link ?? data.data_url).then((response) => {
+                        return response.json().then((data) => {
                             res.status(200).json(data);
                         })
                     }).catch(error => {
@@ -81,7 +83,7 @@ api.get('/:first/:second', (req, res) => {
                         return fetch(data.data.chunk_info.base_download_url + fileName)
                             .then((response) => response.json());
                     });
-                    Promise.all(fetches).then((allRows) => {
+                    return Promise.all(fetches).then((allRows) => {
                         res.status(200).json(allRows.flat());
                     });
                 }
