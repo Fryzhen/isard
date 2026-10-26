@@ -1,0 +1,21 @@
+# Copié dans /opt/stacks/isard par .github/workflows/main.yml.
+# EMAIL et ENCODED_PASSWORD sont dans /opt/stacks/isard/.env, écrit à la main sur le serveur.
+name: isard
+
+services:
+  isard:
+    # Image envoyée par SSH (pas de registre) : ne jamais tenter de pull
+    image: isard:current
+    pull_policy: never
+    # Caddy route iracing.fryzhen.fr vers ce nom d'hôte
+    container_name: isard
+    restart: unless-stopped
+    mem_limit: 128m
+    env_file: .env
+    environment:
+      CURRENT_URL: https://iracing.fryzhen.fr/api/
+    networks: [proxy]
+
+networks:
+  proxy:
+    external: true

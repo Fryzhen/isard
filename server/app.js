@@ -1,0 +1,113 @@
+const path = require('path');
+const express = require('express');
+const app = express();
+const api = express.Router();
+const port = 3000;
+const front = path.join(__dirname, '../dist/isard/browser');
+
+let isAuthenticated = false;
+let loginCookies;
+
+const auth = async () => {
+    const password = process.env.ENCODED_PASSWORD;
+    const email = process.env.EMAIL;
+    await fetch('https://members-ng.iracing.com/auth', {
+        method: "POST",
+        body: JSON.stringify({email: email, password: password}),
+        credentials: 'include',
+        headers: {'Accept': '*/*', "Content-type": "application/json"}
+    }).then(r => {
+        loginCookies = parseCookies(r);
+        console.log("Authenticated with cookies: " + loginCookies);
+        isAuthenticated = true;
+    })
+}
+const parseCookies = (response) => {
+    const raw = response.headers.get('set-cookie');
+    if (!raw) {
+        return '';
+    }
+    return raw.split(',').map((entry) => {
+        return entry.split(';')[0];
+    }).join(';');
+}
+const chunkRoutes = ["search_series_results"]
+app.use('/api', api);
+app.use(express.static(front));
+app.get('/{*splat}', (req, res) => res.sendFile(path.join(front, 'index.html')));
+
+api.get('/', (req, res) => {
+    fetch('https://members-ng.iracing.com/data/doc', {
+        method: 'get', headers: {'Accept': 'application/json', 'cookie': loginCookies}, cache: "no-store"
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            for (let first in data) {
+                for (let second in data[first]) {
+                    data[first][second]['link'] = data[first][second]['link'].replace('https://members-ng.iracing.com/data/', process.env.CURRENT_URL);
+                }
+            }
+            res.status(200).json({
+                message: "Welcome !",
+                documentation: data,
+            });
+        }).catch(error => {
+        res.status(500).json(error);
+    })
+})
+
+api.get('/:first/:second', (req, res) => {
+    console.log(req.url + " => " + "https://members-ng.iracing.com/data" + req.url);
+    fetch("https://members-ng.iracing.com/data" + req.url, {
+        method: 'get',
+        headers: {'Accept': 'application/json', 'cookie': loginCookies},
+        cache: "no-store",
+        body: req.body
+    })
+        .then((response) => {
+            if (response.status >= 400) {
+                throw response.statusText;
+            }
+            return response.json().then(data => {
+                if (data.link || data.data_url) {
+                    return fetch(data.link ?? data.data_url).then((response) => {
+                        return response.json().then((data) => {
+                            res.status(200).json(data);
+                        })
+                    }).catch(error => {
+                        res.status(500).json(error);
+                    })
+                }
+                else if (chunkRoutes.includes(data.type)) {
+                    const fetches = data.data.chunk_info.chunk_file_names.map((fileName) => {
+                        return fetch(data.data.chunk_info.base_download_url + fileName)
+                            .then((response) => response.json());
+                    });
+                    return Promise.all(fetches).then((allRows) => {
+                        res.status(200).json(allRows.flat());
+                    });
+                }
+                else {
+                    res.status(200).json(data);
+                }
+            })
+        }).catch(error => {
+        res.status(500).json(error);
+    })
+});
+
+auth().then(() => {
+    console.log("Application démmarée sur le port : " + port);
+    app.listen(port);
+
+    // Lancer auth toutes les heures (3600000 ms)
+    setInterval(() => {
+        auth().then(() => {
+            console.log("Réauthentification réussie");
+        }).catch(error => {
+            console.error("Erreur lors de l'exécution de auth :", error);
+        });
+    }, 3000000);
+}).catch(error => {
+    console.log(error);
+})
