@@ -1,0 +1,28 @@
+name: Deploy Node.js App via FTP
+
+on:
+  push:
+    branches:
+      - main  # Change this if your main branch is different
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install lftp
+        run: sudo apt-get update && sudo apt-get install -y lftp
+
+      - name: Deploy via FTP
+        run: |
+          lftp -e "
+            set ftp:ssl-allow no;
+            open ${{ secrets.FTP_SERVER }};
+            user ${{ secrets.FTP_USERNAME }} ${{ secrets.FTP_PASSWORD }};
+            put -O ${{ secrets.FTP_PATH }} app.js;
+            put -O ${{ secrets.FTP_PATH }} package.json;
+            bye
+          "
