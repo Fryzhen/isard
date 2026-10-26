@@ -32,3 +32,12 @@ And if you want to try to correct them automaticaly :
 ```bash
 npm run lint:all:fix
 ```
+
+## API (server/)
+
+The Express server proxies the iRacing API under `/api` and serves the Angular build.
+It needs a `.env` with `EMAIL`, `ENCODED_PASSWORD` and `CURRENT_URL` (e.g. `http://localhost:3000/api/`).
+
+```bash
+npm run server   # API on http://localhost:3000, `npm run dev` proxies /api to it
+```

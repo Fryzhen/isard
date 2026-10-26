@@ -1,8 +1,9 @@
-require('dotenv').config();
+const path = require('path');
 const express = require('express');
-const cors = require('cors');
 const app = express();
+const api = express.Router();
 const port = 3000;
+const front = path.join(__dirname, '../dist/isard/browser');
 
 let isAuthenticated = false;
 let loginCookies;
@@ -31,14 +32,11 @@ const parseCookies = (response) => {
     }).join(';');
 }
 const chunkRoutes = ["search_series_results"]
-app.use(cors());
+app.use('/api', api);
+app.use(express.static(front));
+app.get('/{*splat}', (req, res) => res.sendFile(path.join(front, 'index.html')));
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', process.env.ORIGIN_URL);
-    next();
-});
-
-app.get('/', (req, res) => {
+api.get('/', (req, res) => {
     fetch('https://members-ng.iracing.com/data/doc', {
         method: 'get', headers: {'Accept': 'application/json', 'cookie': loginCookies}, cache: "no-store"
     })
@@ -56,7 +54,7 @@ app.get('/', (req, res) => {
         })
 })
 
-app.get('/:first/:second', (req, res) => {
+api.get('/:first/:second', (req, res) => {
     console.log(req.url + " => " + "https://members-ng.iracing.com/data" + req.url);
     fetch("https://members-ng.iracing.com/data" + req.url, {
         method: 'get',
