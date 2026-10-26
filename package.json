@@ -9,6 +9,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "test:server": "node --test server/",
     "lint:html": "eslint \"src/app/**/*.html\" --max-warnings=0",
     "lint:scss": "stylelint \"src/**/*.scss\" --max-warnings=0",
     "lint:script": "eslint \"src/**/*.{js,ts}\" --max-warnings=0",

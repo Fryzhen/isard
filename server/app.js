@@ -1,45 +1,76 @@
 const path = require('path');
+const crypto = require('crypto');
 const express = require('express');
 const app = express();
 const api = express.Router();
 const port = 3000;
 const front = path.join(__dirname, '../dist/isard/browser');
 
-let isAuthenticated = false;
-let loginCookies;
+// https://oauth.iracing.com/oauth2/book/token_endpoint.html
+// Le secret et le mot de passe sont envoyés masqués : base64(sha256(valeur + identifiant normalisé))
+const mask = (value, id) => crypto.createHash('sha256').update(value + id.trim().toLowerCase()).digest('base64');
 
-const auth = async () => {
-    const password = process.env.ENCODED_PASSWORD;
-    const email = process.env.EMAIL;
-    await fetch('https://members-ng.iracing.com/auth', {
-        method: "POST",
-        body: JSON.stringify({email: email, password: password}),
-        credentials: 'include',
-        headers: {'Accept': '*/*', "Content-type": "application/json"}
-    }).then(r => {
-        loginCookies = parseCookies(r);
-        console.log("Authenticated with cookies: " + loginCookies);
-        isAuthenticated = true;
-    })
-}
-const parseCookies = (response) => {
-    const raw = response.headers.get('set-cookie');
-    if (!raw) {
-        return '';
+let token;
+let pendingToken;
+// Les échecs répétés verrouillent le compte côté iRacing : on attend avant de réessayer
+let retryAt = 0;
+
+const requestToken = async (params) => {
+    const response = await fetch('https://oauth.iracing.com/oauth2/token', {
+        method: 'POST',
+        body: new URLSearchParams({
+            client_id: process.env.CLIENT_ID,
+            client_secret: mask(process.env.CLIENT_SECRET, process.env.CLIENT_ID),
+            ...params,
+        }),
+    });
+    if (!response.ok) {
+        token = null;
+        retryAt = Date.now() + (Number(response.headers.get('retry-after')) || 60) * 1000;
+        throw new Error(`OAuth ${response.status} : ${await response.text()}`);
     }
-    return raw.split(',').map((entry) => {
-        return entry.split(';')[0];
-    }).join(';');
-}
+    const data = await response.json();
+    const now = Date.now();
+    token = {
+        access: data.access_token,
+        expiresAt: now + data.expires_in * 1000,
+        refresh: data.refresh_token,
+        refreshExpiresAt: now + (data.refresh_token_expires_in ?? 0) * 1000,
+    };
+    console.log(`Token OAuth obtenu (${params.grant_type}), valable ${data.expires_in}s`);
+};
+
+// password_limited une seule fois (rate limit strict), puis refresh_token tant qu'il est valide
+const getToken = async () => {
+    const soon = Date.now() + 60000;
+    if (token && soon < token.expiresAt) {
+        return token.access;
+    }
+    if (Date.now() < retryAt) {
+        throw new Error("Authentification iRacing en pause après un échec");
+    }
+    pendingToken ??= (token?.refresh && soon < token.refreshExpiresAt
+        ? requestToken({grant_type: 'refresh_token', refresh_token: token.refresh})
+        : requestToken({
+            grant_type: 'password_limited',
+            username: process.env.EMAIL,
+            password: process.env.ENCODED_PASSWORD,
+            scope: 'iracing.auth',
+        })
+    ).finally(() => pendingToken = null);
+    await pendingToken;
+    return token.access;
+};
+
 const chunkRoutes = ["search_series_results"]
 app.use('/api', api);
 app.use(express.static(front));
 app.get('/{*splat}', (req, res) => res.sendFile(path.join(front, 'index.html')));
 
 api.get('/', (req, res) => {
-    fetch('https://members-ng.iracing.com/data/doc', {
-        method: 'get', headers: {'Accept': 'application/json', 'cookie': loginCookies}, cache: "no-store"
-    })
+    getToken().then((accessToken) => fetch('https://members-ng.iracing.com/data/doc', {
+        method: 'get', headers: {'Accept': 'application/json', 'Authorization': `Bearer ${accessToken}`}, cache: "no-store"
+    }))
         .then((response) => response.json())
         .then((data) => {
             for (let first in data) {
@@ -58,12 +89,12 @@ api.get('/', (req, res) => {
 
 api.get('/:first/:second', (req, res) => {
     console.log(req.url + " => " + "https://members-ng.iracing.com/data" + req.url);
-    fetch("https://members-ng.iracing.com/data" + req.url, {
+    getToken().then((accessToken) => fetch("https://members-ng.iracing.com/data" + req.url, {
         method: 'get',
-        headers: {'Accept': 'application/json', 'cookie': loginCookies},
+        headers: {'Accept': 'application/json', 'Authorization': `Bearer ${accessToken}`},
         cache: "no-store",
         body: req.body
-    })
+    }))
         .then((response) => {
             if (response.status >= 400) {
                 throw response.statusText;
@@ -96,18 +127,8 @@ api.get('/:first/:second', (req, res) => {
     })
 });
 
-auth().then(() => {
-    console.log("Application démmarée sur le port : " + port);
-    app.listen(port);
+const server = app.listen(port, () => console.log("Application démmarée sur le port : " + port));
+// Authentification au démarrage pour voir tout de suite dans les logs si les identifiants sont bons
+getToken().catch(error => console.error("Authentification iRacing impossible :", error.message));
 
-    // Lancer auth toutes les heures (3600000 ms)
-    setInterval(() => {
-        auth().then(() => {
-            console.log("Réauthentification réussie");
-        }).catch(error => {
-            console.error("Erreur lors de l'exécution de auth :", error);
-        });
-    }, 3000000);
-}).catch(error => {
-    console.log(error);
-})
+module.exports = {mask, server};

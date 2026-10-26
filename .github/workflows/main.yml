@@ -59,7 +59,7 @@ jobs:
       - name: Check the Site
         run: |
           for i in $(seq 10); do
-            curl -fsS --max-time 20 https://iracing.fryzhen.fr/ | grep -q '<app-root' && exit 0
+            curl -fsS --max-time 20 https://iracing.fryzhen.fr/ | grep -q '<isard-root' && exit 0
             sleep 6
           done
           echo "::error::https://iracing.fryzhen.fr ne sert pas l'app"

@@ -36,8 +36,10 @@ npm run lint:all:fix
 ## API (server/)
 
 The Express server proxies the iRacing API under `/api` and serves the Angular build.
-It needs a `.env` with `EMAIL`, `ENCODED_PASSWORD` and `CURRENT_URL` (e.g. `http://localhost:3000/api/`).
+It authenticates with iRacing OAuth (`password_limited`) and needs a `.env` with `CLIENT_ID`, `CLIENT_SECRET`, `EMAIL`,
+`ENCODED_PASSWORD` (`base64(sha256(password + lowercase(email)))`) and `CURRENT_URL` (e.g. `http://localhost:3000/api/`).
 
 ```bash
 npm run server   # API on http://localhost:3000, `npm run dev` proxies /api to it
+npm run test:server  # OAuth flow against a mocked iRacing
 ```
