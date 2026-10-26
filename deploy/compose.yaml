@@ -1,5 +1,5 @@
 # Copié dans /opt/stacks/isard par .github/workflows/main.yml.
-# EMAIL et ENCODED_PASSWORD sont dans /opt/stacks/isard/.env, écrit à la main sur le serveur.
+# CLIENT_ID, CLIENT_SECRET, EMAIL et ENCODED_PASSWORD sont dans /opt/stacks/isard/.env, écrit à la main sur le serveur.
 name: isard
 
 services:
